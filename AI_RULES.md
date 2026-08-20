@@ -1,158 +1,303 @@
-# AI Collaboration Rules - AI_RULES.md
+# AI Collaboration Rules — Merge
 
-## Rôles et Responsabilités
+## 1. Purpose
 
-### ChatGPT
-**Rôle**: Lead Developer
+`AI_RULES.md` définit le protocole de collaboration entre les agents IA travaillant sur Merge.
 
-**Responsabilités**:
-- Architecture générale du projet
-- Intégration des systèmes
-- Code principal et infrastructure
-- Systèmes techniques
-- Coordination technique
-- Résolution des conflits entre systèmes
+L'objectif est de permettre à plusieurs agents de travailler comme **une seule équipe**, avec le dépôt GitHub comme source de vérité partagée.
+
+Le Game Director (utilisateur) donne les objectifs de haut niveau. Les agents et l'orchestrateur déterminent ensuite les tâches nécessaires, leurs dépendances et les validations requises.
 
 ---
 
-### Claude
-**Rôle**: Gameplay & RPG Designer
+## 2. Autorité et source de vérité
 
-**Responsabilités**:
-- Compétences et progression
-- Combat
-- Magie
-- Inventaire et équipement
-- Factions et réputation
-- Quêtes
-- Équilibrage des systèmes RPG
-
----
-
-### Gemini
-**Rôle**: World Designer & Content Creator
-
-**Responsabilités**:
-- Monde et régions
-- Lieux et géographie
-- PNJ et caractères
-- Dialogues
-- Lore et worldbuilding
-- Objets et artefacts
-- Événements
-- Contenu général
-- Level design conceptuel
-
----
-
-### Grok
-**Rôle**: QA / Critic
-
-**Responsabilités**:
-- Tests et vérification
-- Détection de bugs
-- Détection d'incohérences
-- Recherche d'exploits
-- Problèmes de gameplay
-- Équilibrage critique
-- Vérification des régressions
-- Critique constructive des systèmes
-
----
-
-### GitHub Copilot
-**Rôle**: Repository Maintenance & Documentation
-
-**Responsabilités**:
-- Organisation du dépôt
-- Maintenance de la documentation
-- Gestion Git
-- Cohérence des fichiers
-- Corrections documentaires mineures
-- Assistance ponctuelle
-- Liaison entre les différentes IA
-
----
-
-## Autorité Finale
-
-**Le Game Director (utilisateur)** prend les décisions finales sur :
-- La vision générale du projet
-- Les changements majeurs de direction
-- Les conflits non résolus
-- Les priorités de développement
-- Les décisions arbitrales
-
-Les IA fournissent des recommandations, propositions et expertise, mais l'utilisateur a le dernier mot.
-
----
-
-## Principes de Collaboration
-
-1. **Communication claire** : Tous les changements importants sont documentés
-2. **Respect des domaines** : Chaque IA respecte les responsabilités des autres
-3. **Cohérence** : Les systèmes doivent fonctionner ensemble
-4. **Documentation** : Les décisions sont justifiées et expliquées
-5. **Flexibilité** : La collaboration peut nécessiter des ajustements
-6. **Aide mutuelle** : Les IA s'entraident sur les zones de chevauchement
-
----
-
-## Statut des Propositions
-
-Chaque proposition ou décision doit être clairement étiquetée :
-
-- **À DÉCIDER** : Nécessite une décision du Game Director
-- **PROPOSITION À VALIDER** : Idée en attente d'approbation
-- **DÉCIDÉ** : Approuvé et validé
-- **EN COURS** : Actuellement en développement
-- **COMPLÉTÉ** : Terminé et testé
-
----
-
-## Source de Vérité
-
-En cas de contradiction :
+Ordre d'autorité en cas de contradiction :
 
 1. Décision explicite du Game Director
-2. GAME_BIBLE.md
-3. specs/ (fichiers de spécification)
-4. docs/ (documentation générale)
-5. Propositions individuelles des IA
+2. `GAME_BIBLE.md`
+3. `specs/`
+4. `docs/`
+5. `/ai/DECISIONS.md`
+6. Propositions et analyses individuelles des agents
+
+Une proposition ne devient pas une décision simplement parce qu'elle a été écrite par une IA.
+
+Les décisions critiques doivent être explicitement marquées `APPROVED` ou `PENDING_HUMAN`.
 
 ---
 
-## Règles de Communication
+## 3. Rôles, pas modèles
 
-### Dans les Pull Requests
-- Description claire du changement
-- Justification de la modification
-- Lien vers les issues/décisions concernées
-- Revue requise avant fusion
+Les responsabilités sont définies par **rôle et capacité**, et non par un modèle IA permanent.
 
-### Dans les Commits
-- Messages clairs et descriptifs
-- Petits commits atomiques
-- Référence aux issues quand applicable
+Un même agent peut remplir plusieurs rôles et un rôle peut être assuré par plusieurs agents.
 
-### Documentation
-- Chaque système doit être documenté
-- Les décisions doivent être justifiées
-- Les dépendances doivent être clarifiées
+Rôles principaux :
 
----
+- `ARCHITECT` — architecture technique, dépendances, intégration
+- `PROGRAMMER` — implémentation C++ / Unreal Engine
+- `GAMEPLAY_DESIGNER` — systèmes RPG, combat, magie, progression
+- `WORLD_DESIGNER` — monde, régions, PNJ, lore, contenu
+- `RESEARCHER` — recherche et comparaison de solutions
+- `REVIEWER` — revue critique, architecture et code
+- `QA` — tests, régressions, bugs et validation
+- `DOCUMENTATION` — documentation et cohérence du dépôt
+- `RELEASE` — builds, packaging et préparation de release
 
-## Dépendances Entre Systèmes
-
-Antés de commencer le travail sur un système, vérifier les dépendances :
-
-- **Combat** dépend de : Attributs, Compétences, Équipement, IA Ennemis
-- **Magie** dépend de : Attributs, Compétences, Ressource Magique
-- **Quêtes** dépend de : PNJ, Dialogues, Factions, Réputation
-- **Factions** dépend de : Lore, Réputation, PNJ, Monde
-- **Inventaire** dépend de : Équipement, Poids, Système de prix
+Les agents réellement disponibles et leurs capacités sont enregistrés dans `/ai/AGENT_REGISTRY.md`.
 
 ---
 
-**Dernière mise à jour** : 2026-08-19
-**Statut** : En vigueur
+## 4. Principe d'orchestration
+
+Un utilisateur peut donner un objectif unique, par exemple :
+
+> Développe le système de combat de Merge.
+
+L'orchestrateur doit alors :
+
+1. lire l'état du projet ;
+2. lire les spécifications pertinentes ;
+3. identifier les dépendances ;
+4. décomposer l'objectif en tâches ;
+5. sélectionner les rôles/agents adaptés ;
+6. exécuter les tâches dans l'ordre approprié ;
+7. valider les résultats ;
+8. créer automatiquement les tâches suivantes ;
+9. arrêter et escalader uniquement lorsqu'une décision humaine est nécessaire ou qu'un blocage ne peut pas être résolu automatiquement.
+
+Aucun agent ne doit attendre inutilement que le Game Director lui indique manuellement la tâche suivante lorsqu'elle peut être déduite de l'état du projet.
+
+---
+
+## 5. Avant toute tâche
+
+Chaque agent doit :
+
+1. lire `AI_RULES.md` ;
+2. lire les documents sources nécessaires ;
+3. consulter `/ai/PROJECT_STATE.md` ;
+4. consulter la tâche courante ;
+5. vérifier les dépendances ;
+6. inspecter l'état Git et les fichiers concernés ;
+7. éviter de recréer ce qui existe déjà.
+
+Une tâche ne doit pas être commencée si une dépendance critique est `BLOCKED`.
+
+---
+
+## 6. Contrat de tâche
+
+Toute tâche orchestrée doit disposer au minimum de :
+
+- `ID`
+- `OBJECTIVE`
+- `STATUS`
+- `PRIORITY`
+- `ROLE`
+- `ASSIGNED_AGENT`
+- `DEPENDENCIES`
+- `CONTEXT`
+- `INPUTS`
+- `EXPECTED_OUTPUT`
+- `ACCEPTANCE_CRITERIA`
+- `VALIDATION`
+- `CREATED_BY`
+- `CREATED_AT`
+- `UPDATED_AT`
+
+Statuts autorisés :
+
+`PENDING`, `READY`, `IN_PROGRESS`, `REVIEW`, `BLOCKED`, `FAILED`, `COMPLETED`, `CANCELLED`.
+
+---
+
+## 7. Handoff obligatoire
+
+À la fin d'une tâche, l'agent doit fournir :
+
+```text
+TASK_ID
+STATUS
+SUMMARY
+FILES_CHANGED
+TESTS_RUN
+TEST_RESULTS
+DECISIONS
+PROBLEMS_FOUND
+WARNINGS
+BLOCKERS
+RECOMMENDED_NEXT_TASKS
+```
+
+Le handoff doit être exploitable par un autre agent sans conversation privée avec l'agent précédent.
+
+---
+
+## 8. Validation
+
+« Terminé » ne signifie pas « l'agent affirme avoir terminé ».
+
+Une tâche doit être validée par les critères appropriés :
+
+- compilation ;
+- tests unitaires ;
+- tests d'intégration ;
+- validation Unreal ;
+- analyse statique ;
+- inspection Git diff ;
+- revue architecture ;
+- validation documentaire ;
+- tests de régression.
+
+Une tâche qui échoue doit générer une correction ou être marquée `BLOCKED`.
+
+---
+
+## 9. Reviews croisées
+
+Les changements importants doivent être revus par un agent différent de celui qui les a produits lorsque cela est possible.
+
+Exemple :
+
+```text
+ARCHITECT
+    ↓
+PROGRAMMER
+    ↓
+REVIEWER
+    ↓
+PROGRAMMER (correction si nécessaire)
+    ↓
+QA
+```
+
+Limiter les boucles automatiques par un nombre maximal de tentatives défini par l'orchestrateur.
+
+---
+
+## 10. Décisions humaines
+
+Une IA ne doit jamais inventer une décision qui relève du Game Director.
+
+Si une information critique est inconnue, créer une décision :
+
+`PENDING_HUMAN`
+
+avec :
+
+- le problème ;
+- le contexte ;
+- les options ;
+- les avantages/inconvénients ;
+- la recommandation de l'agent ;
+- les tâches bloquées par cette décision.
+
+Exemples : vision du jeu, changement majeur d'architecture, changement de moteur, suppression d'un système majeur, modification substantielle du scope.
+
+---
+
+## 11. Permissions
+
+Les agents doivent appliquer le principe du moindre privilège.
+
+Niveaux conceptuels :
+
+- `L0_READ` — lecture/analyse
+- `L1_DOCS` — documentation
+- `L2_CODE` — code et tests
+- `L3_COMMIT` — commits atomiques
+- `L4_MERGE` — fusion de changements validés
+- `L5_CRITICAL` — décisions/changements d'architecture critique, toujours humains par défaut
+
+L'absence de permission ne doit jamais être contournée.
+
+---
+
+## 12. Git
+
+Règles :
+
+- petits commits atomiques ;
+- messages descriptifs ;
+- jamais écraser silencieusement le travail d'un autre agent ;
+- inspecter les changements avant commit ;
+- éviter les modifications non liées à la tâche ;
+- documenter les changements importants ;
+- utiliser branches/PR lorsque le niveau de risque le justifie.
+
+---
+
+## 13. Gestion des conflits
+
+En cas de :
+
+- conflit Git ;
+- décisions contradictoires ;
+- modifications concurrentes ;
+- dépendance cassée ;
+- architecture incompatible ;
+
+l'agent doit arrêter la partie concernée, documenter le problème et demander une résolution via l'orchestrateur ou le Game Director selon la gravité.
+
+Aucune correction silencieuse ne doit masquer un conflit critique.
+
+---
+
+## 14. Dépendances connues
+
+Ces dépendances sont indicatives et doivent être vérifiées contre les spécifications actuelles avant exécution :
+
+- Combat → Attributs, Compétences, Équipement, IA ennemis
+- Magie → Attributs, Compétences, Ressource magique
+- Quêtes → PNJ, Dialogues, Factions, Réputation
+- Factions → Lore, Réputation, PNJ, Monde
+- Inventaire → Équipement, Poids, Prix
+
+L'orchestrateur doit pouvoir découvrir et compléter les dépendances plutôt que de considérer cette liste comme exhaustive.
+
+---
+
+## 15. Mise à jour de l'état
+
+Après chaque tâche significative, l'état pertinent doit être mis à jour dans `/ai/PROJECT_STATE.md` et/ou les fichiers de tâches concernés.
+
+L'état doit permettre à un nouvel agent de reprendre le travail après une interruption sans dépendre du contexte conversationnel précédent.
+
+---
+
+## 16. Règle de non-hallucination
+
+Un agent ne doit jamais prétendre avoir :
+
+- exécuté une commande qu'il n'a pas exécutée ;
+- compilé un projet qu'il n'a pas compilé ;
+- testé une fonctionnalité qu'il n'a pas testée ;
+- modifié un fichier qu'il n'a pas modifié ;
+- utilisé une API ou un autre agent auquel il n'a pas réellement accès.
+
+Toute limitation d'environnement doit être explicitement signalée.
+
+---
+
+## 17. Compatibilité Merge
+
+Les décisions actuellement approuvées comprennent :
+
+- **Engine : Unreal Engine 5**
+- **Langage principal : C++**
+- **Blueprint : complémentaire**
+- Direction artistique : PS1 low-poly 1996–1999
+- Action-RPG troisième personne
+
+Toute modification de ces choix nécessite une décision explicite du Game Director.
+
+---
+
+## 18. Mise à jour
+
+Ce document évolue avec le système d'orchestration. Toute règle ajoutée doit préserver la traçabilité, la sécurité, la cohérence du projet et l'autorité finale du Game Director.
+
+**Dernière mise à jour : 2026-08-20**  
+**Statut : EN VIGUEUR**
