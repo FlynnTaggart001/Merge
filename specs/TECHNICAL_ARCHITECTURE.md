@@ -3,7 +3,7 @@
 
 **Date** : 2026-08-19
 **Statut** : APPROUVÉ
-**Engine** : Unreal Engine 5
+**Engine** : Unreal Engine 5.8.1
 **Langage Principal** : C++
 **Langage Complémentaire** : Blueprint (prototypage & UI)
 
@@ -27,7 +27,7 @@ L'architecture est conçue pour :
 ## 2. Stack Technologique
 
 ### Engine
-- **Unreal Engine 5.x** (dernière version stable)
+- **Unreal Engine 5.8.1** (version obligatoire)
 - **Plateforme cible** : Windows PC (extensible)
 - **Résolution cible** : À DÉCIDER
 - **FPS cible** : À DÉCIDER

@@ -607,7 +607,7 @@ Le jeu fusionne l'exploration libre et l'immersion narrative des The Elder Scrol
 ## 25. Architecture Technique
 
 ### Moteur
-À DÉCIDER : Unity, Godot, Unreal, custom, autre
+CHOISI : Unreal Engine 5.8.1
 
 ### Langage de Programmation
 À DÉCIDER (dépend du moteur)

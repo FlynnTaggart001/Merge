@@ -38,7 +38,7 @@ Cette roadmap définit les grandes phases de développement de **Merge**.
 **Statut : 🟡 SCAFFOLD LIVRÉ — compilation locale requise**
 
 ### Livré sur GitHub
-- [x] `Merge.uproject` (UE 5.5)
+- [x] `Merge.uproject` (UE 5.8.1)
 - [x] Module C++ `Merge` (Core + Character)
 - [x] Config DefaultEngine / Input / GameplayTags
 - [x] Guide `docs/UE5_SETUP.md`
@@ -57,5 +57,5 @@ Prototype technique → gameplay → vertical slice → contenu → release.
 ---
 
 **Dernière mise à jour** : 2026-08-20  
-**Moteur** : Unreal Engine 5.5  
+**Moteur** : Unreal Engine 5.8.1  
 **Langage principal** : C++

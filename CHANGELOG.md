@@ -9,6 +9,9 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Updated
+- Engine version standardized to **Unreal Engine 5.8.1** across project configuration and documentation.
+
 ### Phase 1 (in progress on local machines)
 - UE5 scaffold created; compile/PIE must be validated with Unreal Editor.
 

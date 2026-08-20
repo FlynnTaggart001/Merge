@@ -1,7 +1,7 @@
 # Merge
 
 Action-RPG with intentional PS1 aesthetic.  
-**Engine:** Unreal Engine 5.5 · **Primary language:** C++ · **Complementary:** Blueprint
+**Engine:** Unreal Engine 5.8.1 · **Primary language:** C++ · **Complementary:** Blueprint
 
 ## Status
 
@@ -33,7 +33,7 @@ specs/            Architecture docs
 
 ## Local first steps (Phase 1)
 
-1. Install **UE 5.5**
+1. Install **UE 5.8.1**
 2. Generate project files from `Merge.uproject`
 3. Compile
 4. Create Blueprints + `L_TestArena` as described in `Content/README.md`

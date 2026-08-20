@@ -285,7 +285,7 @@ Toute limitation d'environnement doit être explicitement signalée.
 
 Les décisions actuellement approuvées comprennent :
 
-- **Engine : Unreal Engine 5**
+- **Engine : Unreal Engine 5.8.1**
 - **Langage principal : C++**
 - **Blueprint : complémentaire**
 - Direction artistique : PS1 low-poly 1996–1999
