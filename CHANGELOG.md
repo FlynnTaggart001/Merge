@@ -27,10 +27,16 @@ Le format est basé sur Keep a Changelog et le projet suit Semantic Versioning.
 - ✅ Tests déterministes des garde-fous (`ai/tests/test_runtime_guards.py`)
 - ✅ **CI GitHub Actions** pour compilation, tests et détection basique de credentials (`.github/workflows/ai-runtime.yml`)
 
+### Agents
+- ✅ **Claude Code désigné comme agent d'implémentation principal** pour le rôle `PROGRAMMER` (`ai/AGENT_REGISTRY.md`)
+- ✅ Périmètre Claude Code défini : Unreal Engine 5, C++, gameplay systems, outils, debugging, refactoring, intégration et tests
+- ✅ Autorité Claude Code limitée à l'implémentation ; aucune autorité sur la vision, le Game Design ou les décisions critiques d'architecture
+- ✅ Chaîne recommandée : Game Director → spécification approuvée → Claude Code → Review → Claude Code (corrections) → QA
+
 ### Validation
 - ✅ Suite locale de validation des garde-fous exécutée sur une reconstruction isolée des modules concernés : **4 tests / 4 passés**.
 - ⚠️ L'environnement d'exécution n'a pas permis de cloner le dépôt GitHub directement ; la validation locale ne constitue donc pas encore une exécution du checkout GitHub complet.
-- 🟡 La CI GitHub est désormais la source de vérité pour la validation du dépôt réel.
+- 🟡 La CI GitHub est la source de vérité pour la validation du dépôt réel.
 
 ### API
 - 🔒 **Aucune clé API réelle n'est nécessaire ou incluse.**
