@@ -2,8 +2,7 @@
 
 Tous les changements notables du projet sont documentés dans ce fichier.
 
-Le format est basé sur [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+Le format est basé sur Keep a Changelog et le projet suit Semantic Versioning.
 
 ---
 
@@ -15,34 +14,41 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - ✅ **Langage complémentaire : Blueprint (prototypage & UI)**
 - ✅ **Architecture technique UE5 approuvée** (`specs/TECHNICAL_ARCHITECTURE.md`)
 
-### Infrastructure IA
+### Infrastructure IA — hardening runtime
 - ✅ Politique de sécurité et gestion des secrets (`ai/SECURITY.md`)
 - ✅ Contrôle des tokens et coûts (`ai/COST_CONTROL.md`)
-- ✅ Protocole d'orchestration (`ai/ORCHESTRATION_PROTOCOL.md`)
-- ✅ Gate QA / Definition of Done (`ai/QA_GATE.md`)
-- ✅ État partagé du projet (`ai/PROJECT_STATE.md`)
-- ✅ `.gitignore` renforcé contre les secrets et fichiers locaux
-- ✅ `.env.example` ajouté sans credentials réels
-- ✅ Budget guard fail-closed
-- ✅ Suivi d'usage/coûts
-- ✅ Rate limiter multi-fenêtres
-- ✅ Circuit breaker fournisseur
-- ✅ Tests déterministes des nouveaux garde-fous
-- 🟡 Intégration de tous les garde-fous dans un orchestrateur unique encore à faire
+- ✅ Budget guard fail-closed (`ai/runtime/budget_guard.py`)
+- ✅ Suivi d'usage/coûts (`ai/runtime/cost_tracker.py`)
+- ✅ Rate limiter multi-fenêtres (`ai/runtime/rate_limiter.py`)
+- ✅ Circuit breaker fournisseur (`ai/runtime/circuit_breaker.py`)
+- ✅ **Hard token limits** input/output/total (`ai/runtime/token_budget.py`)
+- ✅ **Orchestrateur runtime** avec dépendances, routage par rôle et garde-fous (`ai/runtime/orchestrator.py`)
+- ✅ **Timeout réseau + retry borné + exponential backoff** (`ai/runtime/retry.py`, `ai/runtime/providers_api.py`)
+- ✅ Tests déterministes des garde-fous (`ai/tests/test_runtime_guards.py`)
+- ✅ **CI GitHub Actions** pour compilation, tests et détection basique de credentials (`.github/workflows/ai-runtime.yml`)
 
-### À Venir
-- Intégration complète de l'infrastructure IA
-- Prototype technique Unreal Engine 5
-- Systèmes de gameplay
-- Contenu du monde
+### Validation
+- ✅ Suite locale de validation des garde-fous exécutée sur une reconstruction isolée des modules concernés : **4 tests / 4 passés**.
+- ⚠️ L'environnement d'exécution n'a pas permis de cloner le dépôt GitHub directement ; la validation locale ne constitue donc pas encore une exécution du checkout GitHub complet.
+- 🟡 La CI GitHub est désormais la source de vérité pour la validation du dépôt réel.
+
+### API
+- 🔒 **Aucune clé API réelle n'est nécessaire ou incluse.**
+- 🔒 Le runtime reste utilisable en mode dry-run sans fournisseur externe.
+
+### À venir
+- Finaliser la validation CI du branch hardening.
+- Après validation, fusionner l'infrastructure de hardening vers `main`.
+- Puis seulement connecter les fournisseurs IA réels et leurs clés.
+- Prototype technique Unreal Engine 5.
 
 ---
 
 ## [0.0.5] - 2026-08-20
 
 ### Security
-- 🔐 Implémentation d'un rate limiter indépendant des fournisseurs (`ai/runtime/rate_limiter.py`).
-- 🔐 Implémentation d'un circuit breaker fail-safe (`ai/runtime/circuit_breaker.py`).
+- 🔐 Implémentation d'un rate limiter indépendant des fournisseurs.
+- 🔐 Implémentation d'un circuit breaker fail-safe.
 - 🔐 Conservation d'un budget guard fail-closed et d'un suivi d'usage/coûts dans le runtime IA.
 
 ### Tests
@@ -50,14 +56,8 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - 🧪 Ajout de tests de bascule et récupération du circuit breaker.
 
 ### Architecture
-- 📝 La Phase 0.5 distingue désormais les garde-fous déjà implémentés de leur intégration finale dans l'orchestrateur.
-- 📝 Les clés API restent volontairement absentes : aucune intégration fournisseur réelle n'est nécessaire pour tester ces protections.
-
-### Status
-- Fondations de sécurité : solides.
-- Runtime de sécurité : partiellement implémenté.
-- API keys : non configurées.
-- Prochaine priorité : orchestrateur unique + plafonds tokens runtime + timeout/backoff + CI.
+- 📝 La Phase 0.5 distingue les garde-fous déjà implémentés de leur intégration finale dans l'orchestrateur.
+- 📝 Les clés API restent volontairement absentes.
 
 ---
 
@@ -73,17 +73,8 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - 💰 `ai/COST_CONTROL.md`
 - 🔄 `ai/ORCHESTRATION_PROTOCOL.md`
 - 🧪 `ai/QA_GATE.md`
-- 📊 Renforcement de `ai/PROJECT_STATE.md`
-- ⚙️ `.env.example` avec garde-fous initiaux.
-
-### Changed
-- 📝 `AI_RULES.md` renforcé avec règles de sécurité, quotas, coûts, retries, circuit breaker et autonomie contrôlée.
-- 📝 `ROADMAP.md` mis à jour pour distinguer les fondations documentaires déjà établies de l'implémentation runtime restante.
-
-### Status
-- Phase 0.5 : fondations de l'infrastructure IA établies.
-- API keys : non configurées volontairement.
-- Aucun fournisseur IA externe requis pour poursuivre le travail de préparation.
+- 📊 `ai/PROJECT_STATE.md`
+- ⚙️ `.env.example`
 
 ---
 
@@ -91,36 +82,20 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 - 🎮 **Choix définitif du moteur : Unreal Engine 5**
-- 📝 Mise à jour du statut du projet : la Phase 1 « Choix du moteur » est désormais considérée comme complétée.
-- 📝 Alignement du changelog avec `specs/TECHNICAL_ARCHITECTURE.md`.
-
-### Status
-- Préproduction en cours
-- Documentation technique approuvée
-- **Engine : Unreal Engine 5**
-- Prêt pour la suite du développement technique et le prototype.
+- 📝 Phase 1 « Choix du moteur » considérée comme complétée.
+- 📝 Alignement avec `specs/TECHNICAL_ARCHITECTURE.md`.
 
 ---
 
 ## [0.0.2] - 2026-08-19
 
 ### Added
-- ✅ AI_RULES.md : Rôles et responsabilités des IA collaboratrices
-- ✅ ROADMAP.md : Plan de développement complet en 10 phases
-- ✅ CHANGELOG.md : Ce fichier (historique des changements)
+- ✅ AI_RULES.md
+- ✅ ROADMAP.md
+- ✅ CHANGELOG.md
 - ✅ Structure complète du dépôt documentée
 - ✅ Principes de collaboration multi-IA établis
 - ✅ Jalons critiques définis
-
-### Modified
-- 📝 GAME_BIBLE.md : Intégration de la structure 30 sections complète
-- 📝 README.md : Lien vers tous les documents centraux
-
-### Status
-- Préproduction en cours
-- Documentation de base complète
-- Prêt pour Phase 1 : Choix du moteur
-- Système de collaboration multi-IA en place
 
 ---
 
@@ -128,42 +103,15 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 - ✅ Structure initiale du dépôt GitHub
-- ✅ README.md : Documentation d'accueil du projet
-- ✅ GAME_BIBLE.md : Vision complète du projet action-RPG PS1 style MediEvil
-- ✅ Définiton de l'esthétique PS1 intentionnelle
+- ✅ README.md
+- ✅ GAME_BIBLE.md
+- ✅ Direction artistique PS1
 - ✅ Systèmes principaux documentés
 - ✅ Ambiance gothique et rétro établie
-
-### Status
-- Projet initialisé
-- Vision générale définie
-- Prêt pour phase de préproduction
-
----
-
-## Conventions de Ce Changelog
-
-### Types de Changements
-- **Added** : Nouvelles fonctionnalités ou sections
-- **Changed** : Changements à la fonctionnalité existante
-- **Deprecated** : Fonctionnalité à venir mais pas encore active
-- **Removed** : Fonctionnalité supprimée
-- **Fixed** : Bugs correctifs
-- **Security** : Changements de sécurité
-- **Modified** : Modifications à la documentation existante
-
-### Statuts de Développement
-- 🟢 **EN COURS** : Actuellement en développement
-- 🟡 **EN ATTENTE** : Bloqué ou en pause
-- 🔴 **À VENIR** : Planifié mais pas commencé
-- ✅ **COMPLÉTÉ** : Fini et testé
-- 🔄 **EN RÉVISION** : Attente de feedback/validation
-
-### Tickets Associés
-Chaque entrée importante inclut une référence aux issues/PRs pertinentes.
 
 ---
 
 **Dernière mise à jour** : 2026-08-20
-**Responsable** : GitHub Copilot
-**Vérifié par** : Game Director
+**Statut** : Hardening runtime IA en validation CI
+**Moteur** : Unreal Engine 5 — APPROUVÉ
+**Langage principal** : C++ — APPROUVÉ
