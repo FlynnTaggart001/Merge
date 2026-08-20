@@ -15,10 +15,47 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - ✅ **Langage complémentaire : Blueprint (prototypage & UI)**
 - ✅ **Architecture technique UE5 approuvée** (`specs/TECHNICAL_ARCHITECTURE.md`)
 
+### Infrastructure IA
+- ✅ Politique de sécurité et gestion des secrets (`ai/SECURITY.md`)
+- ✅ Contrôle des tokens et coûts (`ai/COST_CONTROL.md`)
+- ✅ Protocole d'orchestration (`ai/ORCHESTRATION_PROTOCOL.md`)
+- ✅ Gate QA / Definition of Done (`ai/QA_GATE.md`)
+- ✅ État partagé du projet (`ai/PROJECT_STATE.md`)
+- ✅ `.gitignore` renforcé contre les secrets et fichiers locaux
+- ✅ `.env.example` ajouté sans credentials réels
+- 🟡 Implémentation runtime des quotas, circuit breaker et compteurs encore à faire
+
 ### À Venir
-- Prototype technique
+- Implémentation runtime de l'infrastructure IA
+- Prototype technique Unreal Engine 5
 - Systèmes de gameplay
 - Contenu du monde
+
+---
+
+## [0.0.4] - 2026-08-20
+
+### Security
+- 🔐 Ajout d'une politique explicite de protection des secrets.
+- 🔐 Interdiction de stocker clés API, tokens et credentials dans Git.
+- 🔐 Ajout d'un `.gitignore` dédié Unreal Engine et environnement IA.
+
+### Added
+- 🤖 `ai/SECURITY.md`
+- 💰 `ai/COST_CONTROL.md`
+- 🔄 `ai/ORCHESTRATION_PROTOCOL.md`
+- 🧪 `ai/QA_GATE.md`
+- 📊 Renforcement de `ai/PROJECT_STATE.md`
+- ⚙️ `.env.example` avec garde-fous initiaux.
+
+### Changed
+- 📝 `AI_RULES.md` renforcé avec règles de sécurité, quotas, coûts, retries, circuit breaker et autonomie contrôlée.
+- 📝 `ROADMAP.md` mis à jour pour distinguer les fondations documentaires déjà établies de l'implémentation runtime restante.
+
+### Status
+- Phase 0.5 : fondations de l'infrastructure IA établies.
+- API keys : non configurées volontairement.
+- Aucun fournisseur IA externe requis pour poursuivre le travail de préparation.
 
 ---
 
