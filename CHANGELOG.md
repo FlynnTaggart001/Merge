@@ -9,161 +9,87 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Décisions techniques
-- ✅ **Moteur de jeu choisi : Unreal Engine 5**
-- ✅ **Langage principal : C++**
-- ✅ **Langage complémentaire : Blueprint (prototypage & UI)**
-- ✅ **Architecture technique UE5 approuvée** (`specs/TECHNICAL_ARCHITECTURE.md`)
+### Phase 1 (in progress on local machines)
+- UE5 scaffold created; compile/PIE must be validated with Unreal Editor.
 
-### Infrastructure IA
-- ✅ Politique de sécurité et gestion des secrets (`ai/SECURITY.md`)
-- ✅ Contrôle des tokens et coûts (`ai/COST_CONTROL.md`)
-- ✅ Protocole d'orchestration (`ai/ORCHESTRATION_PROTOCOL.md`)
-- ✅ Gate QA / Definition of Done (`ai/QA_GATE.md`)
-- ✅ État partagé du projet (`ai/PROJECT_STATE.md`)
-- ✅ `.gitignore` renforcé contre les secrets et fichiers locaux
-- ✅ `.env.example` ajouté sans credentials réels
-- ✅ Budget guard fail-closed
-- ✅ Suivi d'usage/coûts
-- ✅ Rate limiter multi-fenêtres
-- ✅ Circuit breaker fournisseur
-- ✅ Tests déterministes des nouveaux garde-fous
-- 🟡 Intégration de tous les garde-fous dans un orchestrateur unique encore à faire
+---
 
-### À Venir
-- Intégration complète de l'infrastructure IA
-- Prototype technique Unreal Engine 5
-- Systèmes de gameplay
-- Contenu du monde
+## [0.1.0] - 2026-08-20
+
+### Added — UE5 Foundation scaffold
+- `Merge.uproject` (EngineAssociation 5.5)
+- C++ module `Merge` with Core + Character foundation
+- Classes: `UMergeGameInstance`, `AMergeGameMode`, `AMergePlayerController`, `AMergeCharacter`
+- Config: DefaultEngine, DefaultGame, DefaultInput, DefaultGameplayTags
+- Enhanced Input dependency
+- Content layout + setup guide (`docs/UE5_SETUP.md`, `Content/README.md`)
+- Updated `.gitignore` for UE5
+
+### Status
+- Source tree ready.
+- **Compilation and PIE not verified in CI environment** (no Unreal installed).
+- Local checklist required before claiming Phase 1 complete.
+
+---
+
+## [0.0.6] - 2026-08-20
+
+### Security / Runtime
+- Central orchestrator: all calls go through `Orchestrator.execute()`.
+- Token limits runtime (`token_limits.py`): max input/output/task/session before provider call.
+- Retry + exponential backoff + jitter (`retry.py`).
+- Circuit breaker wired into the pipeline.
+- Fail-closed on validation, tokens, budget, rate limit and open circuit.
+
+### Tests
+- 12 offline integration tests (`ai/tests/test_orchestrator_pipeline.py`).
+
+### CI
+- GitHub Actions: `ai-runtime.yml` (unit + integration + secrets hygiene).
+
+### Status
+- Phase 0.5 P0: **COMPLETE**.
 
 ---
 
 ## [0.0.5] - 2026-08-20
 
 ### Security
-- 🔐 Implémentation d'un rate limiter indépendant des fournisseurs (`ai/runtime/rate_limiter.py`).
-- 🔐 Implémentation d'un circuit breaker fail-safe (`ai/runtime/circuit_breaker.py`).
-- 🔐 Conservation d'un budget guard fail-closed et d'un suivi d'usage/coûts dans le runtime IA.
+- Rate limiter (`ai/runtime/rate_limiter.py`).
+- Circuit breaker (`ai/runtime/circuit_breaker.py`).
+- Budget guard + cost tracker.
 
 ### Tests
-- 🧪 Ajout de tests déterministes pour les limites de requêtes.
-- 🧪 Ajout de tests de bascule et récupération du circuit breaker.
-
-### Architecture
-- 📝 La Phase 0.5 distingue désormais les garde-fous déjà implémentés de leur intégration finale dans l'orchestrateur.
-- 📝 Les clés API restent volontairement absentes : aucune intégration fournisseur réelle n'est nécessaire pour tester ces protections.
-
-### Status
-- Fondations de sécurité : solides.
-- Runtime de sécurité : partiellement implémenté.
-- API keys : non configurées.
-- Prochaine priorité : orchestrateur unique + plafonds tokens runtime + timeout/backoff + CI.
+- Deterministic tests for rate limiter and circuit breaker.
 
 ---
 
 ## [0.0.4] - 2026-08-20
 
 ### Security
-- 🔐 Ajout d'une politique explicite de protection des secrets.
-- 🔐 Interdiction de stocker clés API, tokens et credentials dans Git.
-- 🔐 Ajout d'un `.gitignore` dédié Unreal Engine et environnement IA.
-
-### Added
-- 🤖 `ai/SECURITY.md`
-- 💰 `ai/COST_CONTROL.md`
-- 🔄 `ai/ORCHESTRATION_PROTOCOL.md`
-- 🧪 `ai/QA_GATE.md`
-- 📊 Renforcement de `ai/PROJECT_STATE.md`
-- ⚙️ `.env.example` avec garde-fous initiaux.
-
-### Changed
-- 📝 `AI_RULES.md` renforcé avec règles de sécurité, quotas, coûts, retries, circuit breaker et autonomie contrôlée.
-- 📝 `ROADMAP.md` mis à jour pour distinguer les fondations documentaires déjà établies de l'implémentation runtime restante.
-
-### Status
-- Phase 0.5 : fondations de l'infrastructure IA établies.
-- API keys : non configurées volontairement.
-- Aucun fournisseur IA externe requis pour poursuivre le travail de préparation.
+- Secrets policy, `.gitignore`, `.env.example`.
 
 ---
 
 ## [0.0.3] - 2026-08-20
 
 ### Changed
-- 🎮 **Choix définitif du moteur : Unreal Engine 5**
-- 📝 Mise à jour du statut du projet : la Phase 1 « Choix du moteur » est désormais considérée comme complétée.
-- 📝 Alignement du changelog avec `specs/TECHNICAL_ARCHITECTURE.md`.
-
-### Status
-- Préproduction en cours
-- Documentation technique approuvée
-- **Engine : Unreal Engine 5**
-- Prêt pour la suite du développement technique et le prototype.
+- Engine: Unreal Engine 5 approved.
 
 ---
 
 ## [0.0.2] - 2026-08-19
 
 ### Added
-- ✅ AI_RULES.md : Rôles et responsabilités des IA collaboratrices
-- ✅ ROADMAP.md : Plan de développement complet en 10 phases
-- ✅ CHANGELOG.md : Ce fichier (historique des changements)
-- ✅ Structure complète du dépôt documentée
-- ✅ Principes de collaboration multi-IA établis
-- ✅ Jalons critiques définis
-
-### Modified
-- 📝 GAME_BIBLE.md : Intégration de la structure 30 sections complète
-- 📝 README.md : Lien vers tous les documents centraux
-
-### Status
-- Préproduction en cours
-- Documentation de base complète
-- Prêt pour Phase 1 : Choix du moteur
-- Système de collaboration multi-IA en place
+- AI_RULES, ROADMAP, CHANGELOG, collaboration structure.
 
 ---
 
 ## [0.0.1] - 2026-08-18
 
 ### Added
-- ✅ Structure initiale du dépôt GitHub
-- ✅ README.md : Documentation d'accueil du projet
-- ✅ GAME_BIBLE.md : Vision complète du projet action-RPG PS1 style MediEvil
-- ✅ Définiton de l'esthétique PS1 intentionnelle
-- ✅ Systèmes principaux documentés
-- ✅ Ambiance gothique et rétro établie
-
-### Status
-- Projet initialisé
-- Vision générale définie
-- Prêt pour phase de préproduction
-
----
-
-## Conventions de Ce Changelog
-
-### Types de Changements
-- **Added** : Nouvelles fonctionnalités ou sections
-- **Changed** : Changements à la fonctionnalité existante
-- **Deprecated** : Fonctionnalité à venir mais pas encore active
-- **Removed** : Fonctionnalité supprimée
-- **Fixed** : Bugs correctifs
-- **Security** : Changements de sécurité
-- **Modified** : Modifications à la documentation existante
-
-### Statuts de Développement
-- 🟢 **EN COURS** : Actuellement en développement
-- 🟡 **EN ATTENTE** : Bloqué ou en pause
-- 🔴 **À VENIR** : Planifié mais pas commencé
-- ✅ **COMPLÉTÉ** : Fini et testé
-- 🔄 **EN RÉVISION** : Attente de feedback/validation
-
-### Tickets Associés
-Chaque entrée importante inclut une référence aux issues/PRs pertinentes.
+- Initial repo, README, GAME_BIBLE.
 
 ---
 
 **Dernière mise à jour** : 2026-08-20
-**Responsable** : GitHub Copilot
-**Vérifié par** : Game Director
