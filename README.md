@@ -1,25 +1,42 @@
-# Merge - Collaborative Game Development
+# Merge
 
-A shared knowledge base for ChatGPT, Grok, Gemini, and Claude to collaboratively develop a video game.
+Action-RPG with intentional PS1 aesthetic.  
+**Engine:** Unreal Engine 5.5 · **Primary language:** C++ · **Complementary:** Blueprint
 
 ## Status
 
-⚠️ Project initialization in progress...
+| Phase | Status |
+|-------|--------|
+| 0 — Vision / Game Bible | Done |
+| 0.5 — AI infrastructure / security | Done |
+| 1 — UE5 foundation | Scaffold ready — compile & assets local |
+| 2+ | Not started |
 
-## Quick Links
+## Quick links
 
-- [GAME_BIBLE.md](GAME_BIBLE.md) - Game vision and objectives
-- [AI_RULES.md](AI_RULES.md) - Collaboration rules and AI roles
-- [ROADMAP.md](ROADMAP.md) - Development roadmap
-- [CHANGELOG.md](CHANGELOG.md) - Project changes log
+- [GAME_BIBLE.md](GAME_BIBLE.md) — vision
+- [specs/TECHNICAL_ARCHITECTURE.md](specs/TECHNICAL_ARCHITECTURE.md) — technical architecture
+- [docs/UE5_SETUP.md](docs/UE5_SETUP.md) — local UE5 setup
+- [ROADMAP.md](ROADMAP.md) — phases
+- [ai/](ai/) — multi-agent protocol + runtime guards
 
 ## Structure
 
-- **docs/** - Game documentation
-- **specs/** - Technical specifications
-- **game/** - Game code (when ready)
-- **assets/** - Game assets (when ready)
-- **ai/** - AI-specific guidelines
-- **qa/** - Quality assurance
+```
+Merge.uproject
+Source/Merge/     C++ module (Core, Character, …)
+Content/          Maps, Blueprints, Input (Editor assets)
+Config/           DefaultEngine, Input, GameplayTags
+ai/               AI orchestration + security runtime
+specs/            Architecture docs
+```
 
-More information coming soon...
+## Local first steps (Phase 1)
+
+1. Install **UE 5.5**
+2. Generate project files from `Merge.uproject`
+3. Compile
+4. Create Blueprints + `L_TestArena` as described in `Content/README.md`
+5. PIE → verify move / look / jump
+
+See `docs/UE5_SETUP.md` for the full checklist.

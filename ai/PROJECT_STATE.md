@@ -6,58 +6,38 @@
 
 - Preproduction documentation: established
 - Game vision: established in `GAME_BIBLE.md`
-- Technical architecture: approved in `specs/TECHNICAL_ARCHITECTURE.md`
-- Engine: Unreal Engine 5 — approved
+- Technical architecture: approved
+- Engine: **Unreal Engine 5.5** (documented choice)
 - Primary language: C++ — approved
 - Blueprint: complementary
-- Unreal project/codebase: not yet bootstrapped
-- AI orchestration infrastructure: being established
-- Security/secrets policy: established
-- Token/cost guardrails: established
-- QA validation gate: established
-- Shared orchestration protocol: established
+- Unreal project scaffold: **created** (`Merge.uproject`, Source/, Config/)
+- Unreal local compile / PIE: **must be validated on a machine with UE5**
+- AI orchestration infrastructure: operational (Phase 0.5)
+- Security/secrets policy: enforced
 
 ## Current milestone
 
-**Phase 0.5 — AI Development Infrastructure**
+**Phase 1 — UE5 Foundation (scaffold delivered, local compile pending)**
 
 ## Immediate objectives
 
-1. Establish shared agent protocol.
-2. Establish task/dependency tracking.
-3. Establish handoffs and validation.
-4. Establish safe autonomy rules.
-5. Test local guardrails before external API integration.
-6. Prepare Phase 1 Unreal bootstrap.
+1. Open `Merge.uproject` with UE 5.5 and compile the `Merge` module.
+2. Create foundation Blueprints + `L_TestArena` map.
+3. Verify movement / camera / jump in PIE.
+4. Only then start Core Game Systems (Phase 2).
 
-## API state
+## Safety baseline (AI)
 
-- API keys: not configured
-- External AI providers: not connected
-- `.env.example`: available
-- Real secrets must remain outside Git.
-
-## Safety baseline
-
-- Request rate limits defined.
-- Token limits defined.
-- Task/session/day budgets defined.
-- Timeout and retry limits defined.
-- Concurrency limit defined.
-- Circuit-breaker policy defined.
+- All AI calls through `Orchestrator.execute()`
+- Token / budget / rate / circuit / retry enforced
+- CI: `.github/workflows/ai-runtime.yml`
 
 ## Known blockers
 
-No technical blocker currently recorded.
+- This environment cannot run Unreal Editor or compile UE C++.
+  Local validation required (see `docs/UE5_SETUP.md`).
 
-## Human decisions required
+## Constraints
 
-Only decisions explicitly marked `PENDING_HUMAN` in `DECISIONS.md` block automated work.
-
-## Important constraints
-
-- Do not change approved engine/language decisions without Game Director approval.
-- Do not invent missing game design decisions.
-- Do not claim tests/builds were executed unless actually executed.
-- Preserve the PS1 1996–1999 visual target.
-- Never commit credentials or bypass resource limits.
+- Do not put core game rules only in Blueprint.
+- Do not expand combat/inventory/quest systems until foundation PIE works.

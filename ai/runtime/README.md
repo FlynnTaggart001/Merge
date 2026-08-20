@@ -1,31 +1,54 @@
 # Merge AI Orchestrator Runtime
 
-This directory contains the provider-agnostic executable orchestration layer.
+Executable, provider-agnostic orchestration layer with mandatory safety guards.
 
-## Design
+## Pipeline (enforced order)
 
 ```text
-CLI
- ↓
-Orchestrator
- ├── RepositoryState
- ├── TaskPlanner
- ├── AgentRouter
- ├── ValidationRunner
- └── Persistence
-       ↓
-    AgentProvider
-       ├── OpenAI/Codex
-       ├── Claude
-       ├── Gemini
-       ├── GitHub/Copilot
-       └── Future providers
+AI Request
+  → Validation
+  → Token Limits          (TokenGuard)
+  → Budget Guard          (BudgetGuard)
+  → Rate Limiter          (RateLimiter)
+  → Circuit Breaker       (CircuitBreaker)
+  → Provider + Retry/Backoff
+  → Cost Tracker          (CostTracker)
+  → Response
 ```
 
-The runtime must never contain provider secrets. Credentials are supplied through environment variables or the host's secret manager.
+No normal code path can bypass the Orchestrator.
 
-## Current status
+## Key modules
 
-Scaffold only. Provider calls are intentionally not implemented until the corresponding integrations are configured.
+| Module | Role |
+|--------|------|
+| `orchestrator.py` | Central entry-point, wires all guards |
+| `token_limits.py` | Hard max input/output/task/session tokens |
+| `budget_guard.py` | Cost ceilings (call/task/day/month) |
+| `rate_limiter.py` | Sliding-window rate limits |
+| `circuit_breaker.py` | Provider failure isolation |
+| `retry.py` | Exponential backoff + jitter, non-retryable errors |
+| `cost_tracker.py` | Append-only usage log |
+| `config.py` | Env-driven configuration |
+| `provider_base.py` | Provider protocol + MockProvider |
 
-The first executable milestone is a dry-run that reads the repository and produces a task plan without changing game code.
+## Running tests (no API keys required)
+
+```bash
+# From repository root
+python -m ai.tests.test_orchestrator_pipeline
+```
+
+## Configuration
+
+Copy `config.example.env` or root `.env.example` to a local `.env`.
+All limits are loaded by `RuntimeConfig.from_env()`.
+
+## Status
+
+Phase 0.5 P0 complete:
+- Central orchestrator
+- Runtime token limits
+- Configurable timeout + real retry + exponential backoff
+- Circuit breaker wired into the pipeline
+- Integration tests + minimal CI

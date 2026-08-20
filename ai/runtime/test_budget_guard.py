@@ -1,6 +1,6 @@
 """Deterministic offline safety tests. No provider/API is called."""
 
-from budget_guard import BudgetDecision, BudgetGuard, BudgetLimits, Usage
+from ai.runtime.budget_guard import BudgetDecision, BudgetGuard, BudgetLimits, Usage
 
 
 def test_allow_under_limits() -> None:
