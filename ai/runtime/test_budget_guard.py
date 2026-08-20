@@ -8,16 +8,17 @@ def test_allow_under_limits() -> None:
     assert guard.authorize(0.10) == BudgetDecision.ALLOW
 
 
-def test_warn_at_daily_threshold() -> None:
+def test_warn_at_task_threshold() -> None:
     guard = BudgetGuard()
-    guard.record_call(Usage(cost_usd=3.50))
+    guard.record_call(Usage(cost_usd=1.40))
     assert guard.authorize(0.10) == BudgetDecision.WARN
 
 
-def test_warn_at_monthly_threshold_after_day_reset() -> None:
+def test_warn_at_monthly_threshold_after_resets() -> None:
     guard = BudgetGuard()
     guard.record_call(Usage(cost_usd=35.00))
     guard.reset_day()
+    guard.reset_task()
     assert guard.authorize(0.10) == BudgetDecision.WARN
 
 
@@ -33,9 +34,10 @@ def test_deny_task_limit() -> None:
     assert guard.authorize(0.11) == BudgetDecision.DENY
 
 
-def test_deny_daily_limit() -> None:
+def test_deny_daily_limit_after_task_reset() -> None:
     guard = BudgetGuard()
     guard.record_call(Usage(cost_usd=4.90))
+    guard.reset_task()
     assert guard.authorize(0.10) == BudgetDecision.WARN
     assert guard.authorize(0.11) == BudgetDecision.DENY
 
