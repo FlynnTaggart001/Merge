@@ -40,7 +40,7 @@ Rôles principaux :
 - `GAMEPLAY_DESIGNER` — systèmes RPG, combat, magie, progression
 - `WORLD_DESIGNER` — monde, régions, PNJ, lore, contenu
 - `RESEARCHER` — recherche et comparaison de solutions
-- `REVIEWER` — revue critique, architecture et code
+- `REVIEWER` — revue critique, architecture et code review
 - `QA` — tests, régressions, bugs et validation
 - `DOCUMENTATION` — documentation et cohérence du dépôt
 - `RELEASE` — builds, packaging et préparation de release
@@ -295,7 +295,47 @@ Toute modification de ces choix nécessite une décision explicite du Game Direc
 
 ---
 
-## 18. Mise à jour
+## 18. Sécurité, coûts et autonomie contrôlée
+
+Les règles détaillées sont définies dans :
+
+- `/ai/SECURITY.md`
+- `/ai/COST_CONTROL.md`
+- `/ai/ORCHESTRATION_PROTOCOL.md`
+- `/ai/QA_GATE.md`
+
+Règles obligatoires :
+
+1. Aucun secret dans Git.
+2. Les limites de tokens, coût, durée, concurrence et retries sont des plafonds durs.
+3. L'agent ne peut jamais augmenter automatiquement une limite.
+4. Une limite atteinte doit arrêter proprement la tâche ou déclencher l'escalade prévue.
+5. Toute boucle d'agents/reviews possède un nombre maximal d'itérations.
+6. Toute sortie IA externe est considérée comme une entrée non fiable et doit être validée avant exécution.
+7. Les logs ne doivent jamais contenir de clés ou credentials.
+8. Le système doit rester fonctionnel sans API afin de permettre les tests locaux des garde-fous.
+
+---
+
+## 19. Intégration des fournisseurs IA
+
+Les fournisseurs réels sont configurés uniquement par l'environnement d'exécution. Les clés ne sont jamais enregistrées dans les fichiers du dépôt.
+
+Avant chaque appel externe, l'orchestrateur doit vérifier :
+
+- permission du rôle ;
+- budget restant ;
+- quota restant ;
+- nombre de requêtes concurrentes ;
+- timeout ;
+- taille maximale du contexte ;
+- état du circuit breaker.
+
+Après l'appel, il doit enregistrer les métriques non sensibles nécessaires à l'audit : fournisseur, modèle, tâche, durée, tokens et statut lorsque disponibles.
+
+---
+
+## 20. Mise à jour
 
 Ce document évolue avec le système d'orchestration. Toute règle ajoutée doit préserver la traçabilité, la sécurité, la cohérence du projet et l'autorité finale du Game Director.
 
