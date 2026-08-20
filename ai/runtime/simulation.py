@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from budget_guard import BudgetDecision, BudgetGuard, Usage
+from .budget_guard import BudgetDecision, BudgetGuard
 
 
 @dataclass
