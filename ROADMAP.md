@@ -1,377 +1,255 @@
 # Development Roadmap - ROADMAP.md
 
-## Vue d'Ensemble
+## Vue d'ensemble
 
-Ce document définit les grandes phases de développement du projet Merge, du concept initial jusqu'à la release finale.
+Cette roadmap définit les grandes phases de développement de **Merge**, du projet de préproduction jusqu'à la release.
 
-Chaque phase a des objectifs clairs, des dépendances, et des critères de succès.
+Le développement est piloté par le Game Director et peut être exécuté par le système multi-agents défini dans `/ai/`.
 
 ---
 
 ## PHASE 0 : Préproduction
 
-**Durée estimée** : À DÉCIDER
-**Statut** : 🟢 EN COURS
+**Statut : 🟢 QUASI TERMINÉE**
 
-### Objectif
-Préparer le terrain pour le développement.
+### Terminé
+- [x] Structure initiale du dépôt
+- [x] Vision du jeu (`GAME_BIBLE.md`)
+- [x] Règles de collaboration (`AI_RULES.md`)
+- [x] Architecture technique initiale (`specs/TECHNICAL_ARCHITECTURE.md`)
+- [x] Moteur choisi : Unreal Engine 5
+- [x] Langage principal choisi : C++
 
-### Tâches
-- [x] Créer la structure du dépôt
-- [x] Définir la vision du jeu (GAME_BIBLE.md)
-- [x] Établir les règles de collaboration (AI_RULES.md)
-- [ ] Créer un document de design détaillé
-- [ ] Valider les systèmes clés avec le Game Director
-- [ ] Planifier les phases suivantes
+### Restant
+- [ ] Finaliser les systèmes encore marqués « À DÉCIDER »
+- [ ] Mettre en place l'infrastructure de développement multi-agents
+- [ ] Valider les décisions critiques restantes avec le Game Director
 
-### Dépendances
-Aucune
-
-### Critères de Succès
-- Documentation complète et accessible
-- Tous les systèmes principaux définis
-- Accord sur la vision générale
-- Prêt à passer à la Phase 1
+### Critères de sortie
+- Vision validée
+- Architecture technique approuvée
+- Infrastructure IA opérationnelle
+- Décisions critiques identifiées et tracées
 
 ---
 
-## PHASE 1 : Choix du Moteur
+## PHASE 0.5 : Infrastructure de développement IA
 
-**Durée estimée** : À DÉCIDER
-**Statut** : 🔴 EN ATTENTE DE DÉCISION
+**Statut : 🟡 EN COURS**
 
 ### Objectif
-Sélectionner et mettre en place l'infrastructure technique.
+Créer l'environnement permettant à plusieurs agents IA de collaborer sur Merge à partir d'un objectif unique donné par le Game Director.
 
 ### Tâches
-- [ ] Évaluer les options (Unity, Godot, Unreal, Bevy, custom, etc.)
-- [ ] Prendre une décision officielle
-- [ ] Mettre en place le projet de base
-- [ ] Configurer le pipeline de build
-- [ ] Tester l'esthétique PS1 avec le moteur choisi
-- [ ] Mettre en place Git et versioning
+- [ ] Créer `/ai/` et son protocole de collaboration
+- [ ] Créer le registre des agents et capacités
+- [ ] Créer le système de tâches et dépendances
+- [ ] Créer le système de handoff
+- [ ] Créer l'état partagé du projet
+- [ ] Créer le système de reviews et validations
+- [ ] Définir les niveaux de permission
+- [ ] Définir les conditions d'escalade humaine
+- [ ] Documenter le protocole d'orchestration
+
+### Critères de sortie
+- Un objectif unique peut être transformé en tâches
+- Les tâches sont attribuables par rôle/capacité
+- Les agents peuvent transmettre leur contexte au suivant
+- Les résultats sont vérifiables
+- Les blocages critiques remontent au Game Director
+
+---
+
+## PHASE 1 : Bootstrap Unreal Engine 5
+
+**Statut : 🔴 À VENIR**
+
+### Objectif
+Créer le projet Unreal Engine 5 réel et établir le pipeline de développement C++.
+
+### Tâches
+- [ ] Créer le projet UE5
+- [ ] Configurer le module C++ principal
+- [ ] Mettre en place la structure `Source/Merge/`
+- [ ] Configurer Git/LFS si nécessaire
+- [ ] Configurer le build et les configurations de développement
+- [ ] Mettre en place les conventions Unreal définies dans la spécification
+- [ ] Créer une scène de test minimale
+- [ ] Valider le pipeline de compilation
 
 ### Dépendances
-- Phase 0 complétée
+- Phase 0
+- Phase 0.5
 
-### Critères de Succès
-- Moteur choisi et justifié
-- Projet de base fonctionnel
-- Esthétique PS1 testée et validée
-- Pipeline de dev fonctionnel
-
-### Points de Décision Clés
-- **À DÉCIDER** : Quel moteur de jeu ?
-- **À DÉCIDER** : Quel langage de programmation ?
-- **À DÉCIDER** : Plateforme cible (PC, console, etc.) ?
+### Critères de sortie
+- Projet UE5 compilable
+- Projet versionné
+- Build reproductible
+- Structure C++ conforme à la spécification
 
 ---
 
 ## PHASE 2 : Prototype Technique
 
-**Durée estimée** : À DÉCIDER
-**Statut** : 🔴 À VENIR
+**Statut : 🔴 À VENIR**
 
 ### Objectif
-Démontrer les capacités techniques de base.
+Démontrer les capacités techniques fondamentales de Merge.
 
 ### Tâches
-- [ ] Implémentation du joueur et déplacement
+- [ ] Joueur et déplacement
 - [ ] Caméra troisième personne
-- [ ] Système d'esthétique PS1
-- [ ] Chargement du monde basique
-- [ ] UI basique (menu, HUD)
-- [ ] Gestion de la sauvegarde
+- [ ] Esthétique PS1
+- [ ] Chargement/streaming du monde de test
+- [ ] UI basique
+- [ ] Sauvegarde minimale
 - [ ] Tests de performance
 
 ### Dépendances
-- Phase 1 complétée
-- Moteur choisi et configuré
+- Phase 1
 
-### Critères de Succès
-- Personnage jouable et déplaçable
+### Critères de sortie
+- Personnage jouable
 - Caméra fonctionnelle
-- Esthétique PS1 appliquée
-- Pas de crashes
+- Direction visuelle PS1 validée
+- Sauvegarde fonctionnelle
+- Pas de crash critique
 
 ---
 
 ## PHASE 3 : Prototype Gameplay
 
-**Durée estimée** : À DÉCIDER
-**Statut** : 🔴 À VENIR
+**Statut : 🔴 À VENIR**
 
 ### Objectif
-Tester les mécaniques essentielles du RPG.
+Valider les mécaniques fondamentales du RPG.
 
 ### Tâches
-- [ ] Combat de base (attaque légère/lourde)
-- [ ] Magie simple (2-3 sorts)
-- [ ] Inventaire basique
-- [ ] Équipement fonctionnel
-- [ ] PNJ avec dialogue simple
+- [ ] Combat de base
+- [ ] Magie simple
+- [ ] Inventaire
+- [ ] Équipement
+- [ ] PNJ et dialogue simple
 - [ ] Quête simple
-- [ ] Système de progression
+- [ ] Progression
 
 ### Dépendances
-- Phase 2 complétée
+- Phase 2
 
-### Critères de Succès
-- Combat temps réel fonctionnel
-- Une quête complète du début à la fin
+### Critères de sortie
+- Combat temps réel jouable
+- Une quête complète
 - Progression visible
-- Pas de bugs critiques
+- Aucun bug critique bloquant
 
 ---
 
 ## PHASE 4 : Vertical Slice
 
-**Durée estimée** : À DÉCIDER
-**Statut** : 🔴 À VENIR
+**Statut : 🔴 À VENIR**
 
 ### Objectif
-Créer une démo verticale complète et jouable.
+Créer une démonstration verticale complète de 30 à 60 minutes.
 
-### Le Vertical Slice Doit Démontrer
-- [x] Déplacement du personnage
-- [ ] Caméra dynamique fonctionnelle
-- [ ] Combat (attaque, esquive, parade)
-- [ ] Ennemi avec IA basique
-- [ ] Armes et équipement fonctionnels
-- [ ] Magie (au moins 2-3 sorts)
-- [ ] Inventaire complet
-- [ ] Compétences et progression
-- [ ] PNJ avec routine
-- [ ] Dialogues arborescents
-- [ ] Une quête simple du début à la fin
-- [ ] Une petite zone explorée (village + forêt)
-- [ ] Esthétique PS1 validée
-- [ ] Cycle jour/nuit
+### Démonstration minimale
+- Déplacement
+- Caméra dynamique
+- Combat
+- Ennemi avec IA
+- Armes/équipement
+- Magie
+- Inventaire
+- Progression
+- PNJ et routines
+- Dialogues arborescents
+- Une quête complète
+- Village + forêt
+- Esthétique PS1 cohérente
+- Cycle jour/nuit
 
 ### Dépendances
-- Phase 3 complétée
-- Tous les systèmes de base en place
-
-### Critères de Succès
-- Démo jouable de 30-60 minutes
-- Tous les systèmes clés fonctionnels
-- Esthétique PS1 cohérente
-- Aucun crash bloquant
-- Gameplay fluide
-
-### Durée Estimée
-À DÉCIDER
+- Phase 3
 
 ---
 
 ## PHASE 5 : Première Région Complète
 
-**Durée estimée** : À DÉCIDER
-**Statut** : 🔴 À VENIR
+**Statut : 🔴 À VENIR**
 
-### Objectif
-Développer une région entière jouable.
+Développer une région complète avec lieux, PNJ, factions, quêtes, lore et économie.
 
-### Tâches
-- [ ] Définir la première région (géographie, lieux)
-- [ ] Implémenter tous les lieux principaux
-- [ ] Créer des quêtes pour la région
-- [ ] Mettre en place les factions de la région
-- [ ] Balancer le contenu
-- [ ] Remplir de PNJ et dialogues
-- [ ] Ajouter lore et détails
-
-### Dépendances
-- Phase 4 complétée
-
-### Critères de Succès
-- Région entière jouable
-- Contenu varié et engageant
-- 10+ heures de gameplay
+### Critères de sortie
+- Région entièrement jouable
+- Contenu cohérent
 - Équilibrage acceptable
+- Au moins 10 heures de contenu visé
 
 ---
 
 ## PHASE 6 : Expansion du Monde
 
-**Durée estimée** : À DÉCIDER
-**Statut** : 🔴 À VENIR
+**Statut : 🔴 À VENIR**
 
-### Objectif
-Ajouter des régions supplémentaires.
-
-### Tâches
-- [ ] Développer 2-3 régions additionnelles
-- [ ] Connecter les régions de manière logique
-- [ ] Implémenter le système de voyage
-- [ ] Ajouter du contenu pour chaque région
-- [ ] Créer des ponts narratifs
-
-### Dépendances
-- Phase 5 complétée
-
-### Critères de Succès
-- Monde interconnecté fonctionnel
-- 30+ heures de gameplay
-- Aucune région isolée
+Ajouter et connecter les régions supplémentaires, les systèmes de voyage et les ponts narratifs.
 
 ---
 
 ## PHASE 7 : Contenu
 
-**Durée estimée** : À DÉCIDER
-**Statut** : 🔴 À VENIR
+**Statut : 🔴 À VENIR**
 
-### Objectif
-Remplir le monde de quêtes, lore et détails.
-
-### Tâches
-- [ ] Quêtes principales (main storyline)
-- [ ] Quêtes secondaires
-- [ ] Livres et journaux
-- [ ] Légendes et lore
-- [ ] Événements dynamiques
-- [ ] Contenu caché
-
-### Dépendances
-- Phase 6 complétée
-
-### Critères de Succès
-- Monde riche en contenu
-- 50+ heures de gameplay
-- Histoire cohérente
+Développer la campagne principale, les quêtes secondaires, le lore, les événements dynamiques et le contenu caché.
 
 ---
 
 ## PHASE 8 : Polish
 
-**Durée estimée** : À DÉCIDER
-**Statut** : 🔴 À VENIR
+**Statut : 🔴 À VENIR**
 
-### Objectif
-Raffiner l'expérience globale.
-
-### Tâches
-- [ ] Améliorer l'esthétique visuelle
-- [ ] Animations supplémentaires
-- [ ] Effets sonores et musique
-- [ ] Raffinement des dialogues
-- [ ] Correction des bugs visuels
-- [ ] Équilibrage final
-- [ ] UX improvements
-
-### Dépendances
-- Phase 7 complétée
-
-### Critères de Succès
-- Jeu visuellement cohérent
-- Aucun glitch visuel visible
-- Audio immersif
+Raffiner visuels, animations, audio, UX, dialogues et équilibrage.
 
 ---
 
 ## PHASE 9 : Optimisation
 
-**Durée estimée** : À DÉCIDER
-**Statut** : 🔴 À VENIR
+**Statut : 🔴 À VENIR**
 
-### Objectif
-Assurer performance et stabilité.
-
-### Tâches
-- [ ] Optimisation des performances
-- [ ] Réduction de la taille du jeu
-- [ ] Tests de compatibilité
-- [ ] Profiling et debugging
-- [ ] Optimisation mémoire
-- [ ] Tests sur configurations variées
-
-### Dépendances
-- Phase 8 complétée
-
-### Critères de Succès
-- FPS stable sur cible
-- Taille acceptable
-- Aucune fuite mémoire
+Profiling, performances, mémoire, taille du build et compatibilité avec les plateformes cibles.
 
 ---
 
 ## PHASE 10 : Release
 
-**Durée estimée** : À DÉCIDER
-**Statut** : 🔴 À VENIR
+**Statut : 🔴 À VENIR**
 
-### Objectif
-Préparer le lancement.
-
-### Tâches
-- [ ] Tests finaux complets
-- [ ] Build de release
-- [ ] Documentation utilisateur
-- [ ] Configuration des plateformes
-- [ ] Préparation du marketing
-- [ ] Lancement officiel
-
-### Dépendances
-- Phase 9 complétée
-
-### Critères de Succès
-- Jeu stable et jouable
-- Documentation complète
-- Lancement réussi
+Tests finaux, build release, documentation utilisateur, plateformes et lancement.
 
 ---
 
-## Jalons Critiques
+## Jalons critiques
 
 | Jalon | Phase | Impact |
-|-------|-------|--------|
-| **Moteur choisi** | 1 | Détermine toute l'architecture technique |
-| **Vertical Slice complété** | 4 | Valide que le projet est réalisable |
-| **Première région complète** | 5 | Démontre la capacité à créer du contenu |
-| **Monde entier** | 6 | Fixe l'ampleur finale |
-| **Release** | 10 | Lancement officiel |
+|---|---:|---|
+| Infrastructure IA opérationnelle | 0.5 | Permet le développement multi-agents autonome |
+| Projet Unreal compilable | 1 | Valide le pipeline technique |
+| Prototype technique | 2 | Valide la faisabilité technique |
+| Prototype gameplay | 3 | Valide les mécaniques fondamentales |
+| Vertical Slice | 4 | Valide la faisabilité de production |
+| Première région | 5 | Valide la production de contenu à grande échelle |
+| Monde complet | 6 | Valide l'ampleur du projet |
+| Release | 10 | Lancement officiel |
 
 ---
 
-## Dépendances Entre Phases
+## Règle d'avancement autonome
 
-```
-Phase 0 (Préproduction)
-    ↓
-Phase 1 (Choix du moteur)
-    ↓
-Phase 2 (Prototype technique)
-    ↓
-Phase 3 (Prototype gameplay)
-    ↓
-Phase 4 (Vertical Slice)
-    ↓
-Phase 5 (Première région)
-    ↓
-Phase 6 (Expansion du monde)
-    ↓
-Phase 7 (Contenu)
-    ↓
-Phase 8 (Polish)
-    ↓
-Phase 9 (Optimisation)
-    ↓
-Phase 10 (Release)
-```
+Le système multi-agents peut proposer et exécuter les tâches techniques nécessaires pour atteindre le prochain jalon, sous réserve des permissions définies dans `/ai/AI_ORCHESTRATOR.md`.
+
+Une décision relevant du Game Director ne doit jamais être inventée par un agent. Elle doit être créée comme décision `PENDING_HUMAN` et bloquer uniquement les tâches qui en dépendent.
 
 ---
 
-## Notes Importantes
-
-- Les phases peuvent se chevaucher partiellement
-- Les estimations de durée dépendent des ressources
-- Chaque phase demande validation du Game Director avant de procéder
-- Les phases peuvent être ajustées selon les découvertes techniques
-- Les retours peuvent nécessiter du travail de phase précédente
-
----
-
-**Dernière mise à jour** : 2026-08-19
-**Statut** : Actif
-**Prochaine décision** : Choix du moteur de jeu
+**Dernière mise à jour** : 2026-08-20  
+**Statut** : Actif  
+**Moteur** : Unreal Engine 5 — APPROUVÉ  
+**Langage principal** : C++ — APPROUVÉ
