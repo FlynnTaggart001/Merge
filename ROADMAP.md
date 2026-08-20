@@ -35,7 +35,7 @@ Le développement est piloté par le Game Director et peut être exécuté par l
 
 ## PHASE 0.5 : Infrastructure de développement IA
 
-**Statut : 🟡 EN COURS — fondations et garde-fous établis**
+**Statut : 🟡 EN COURS — garde-fous runtime partiellement implémentés**
 
 ### Objectif
 Créer l'environnement permettant à plusieurs agents IA de collaborer sur Merge à partir d'un objectif unique donné par le Game Director, avec une autonomie contrôlée et des limites de sécurité/coût explicites.
@@ -50,13 +50,19 @@ Créer l'environnement permettant à plusieurs agents IA de collaborer sur Merge
 - [x] Gate QA et Definition of Done (`ai/QA_GATE.md`)
 - [x] Protection Git contre secrets et fichiers locaux (`.gitignore`)
 - [x] Template de configuration locale non sensible (`.env.example`)
+- [x] Budget guard fail-closed (`ai/runtime/budget_guard.py`)
+- [x] Suivi d'usage/coûts (`ai/runtime/cost_tracker.py`)
+- [x] Rate limiter multi-fenêtres (`ai/runtime/rate_limiter.py`)
+- [x] Circuit breaker fournisseur (`ai/runtime/circuit_breaker.py`)
+- [x] Tests déterministes rate limiter + circuit breaker (`ai/tests/test_runtime_guards.py`)
 
 ### Restant
-- [ ] Implémenter le gestionnaire de quotas/rate limiting dans l'outil d'orchestration
-- [ ] Implémenter le compteur de tokens et budget
-- [ ] Implémenter timeouts, retries et backoff
-- [ ] Implémenter le circuit breaker
-- [ ] Ajouter les tests automatisés de ces garde-fous
+- [ ] Ajouter les plafonds d'input/output/total tokens au runtime du budget guard
+- [ ] Implémenter timeout réel par appel fournisseur
+- [ ] Implémenter backoff/retry orchestration autour des fournisseurs
+- [ ] Intégrer rate limiter + budget guard + circuit breaker dans un orchestrateur unique
+- [ ] Ajouter les tests d'intégration de la chaîne complète
+- [ ] Ajouter un workflow CI pour exécuter automatiquement les tests IA
 - [ ] Finaliser le système de tâches et dépendances exécutable
 - [ ] Connecter les fournisseurs IA uniquement après validation locale des garde-fous
 
