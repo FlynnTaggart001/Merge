@@ -1,0 +1,51 @@
+name: AI Runtime Guards
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test-ai-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run unit tests (BudgetGuard, RateLimiter, CircuitBreaker)
+        run: |
+          python -c "
+          from ai.runtime.test_budget_guard import *
+          from ai.tests.test_runtime_guards import *
+          for t in [
+              test_allow_under_limits,
+              test_warn_at_task_threshold,
+              test_deny_call_limit,
+              test_fail_closed_when_cost_unknown,
+              test_retry_limit,
+              test_rate_limiter_blocks_after_window_limit,
+              test_circuit_breaker_opens_and_recovers,
+              test_circuit_breaker_reopens_after_half_open_failure,
+          ]:
+              t()
+              print('PASS', t.__name__)
+          print('unit ok')
+          "
+
+      - name: Run integration tests (full orchestrator pipeline)
+        run: python -m ai.tests.test_orchestrator_pipeline
+
+      - name: Secrets hygiene check
+        run: |
+          if grep -RInE '(API_KEY|SECRET|TOKEN|PASSWORD)\s*=\s*['\''\"]?[A-Za-z0-9_\-]{16,}' \
+              --include='*.py' --include='*.md' --include='*.env' \
+              --exclude-dir=.git --exclude='*.example' . ; then
+            echo "Possible secret found in repository"
+            exit 1
+          fi
+          echo "No hardcoded secrets detected"

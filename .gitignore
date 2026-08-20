@@ -1,9 +1,10 @@
-# Merge / Unreal Engine 5
-# Generated files
+# Unreal Engine 5
 Binaries/
 DerivedDataCache/
 Intermediate/
 Saved/
+Build/
+StagedBuilds/
 .vs/
 .vscode/
 *.sln
@@ -11,18 +12,21 @@ Saved/
 *.opensdf
 *.sdf
 *.VC.db
+*.VC.opendb
+*.xcodeproj
+*.xcworkspace
+*.code-workspace
 
-# Unreal generated project files
+# Generated project files
 *.gen.cpp
-
-# Build / packaging
-Build/
-StagedBuilds/
+*.gen.h
 
 # IDE / OS
 .idea/
 .DS_Store
 Thumbs.db
+*.swp
+*~
 
 # Secrets and local configuration
 .env
@@ -39,8 +43,15 @@ credentials/
 ai/.local/
 ai/cache/
 ai/logs/
+ai/runtime/logs/
 
 # Logs
 *.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
 
 # Never commit API keys, access tokens or private credentials.
