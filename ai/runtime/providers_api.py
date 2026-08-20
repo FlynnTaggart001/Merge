@@ -1,16 +1,18 @@
 """HTTP provider adapters for OpenAI, Gemini and xAI.
 
-These adapters are intentionally small: the orchestrator owns task/state
-management, while each provider only turns a task+context into model output.
-Secrets are read exclusively from environment variables.
+Secrets are read only from environment variables. Network operations use the
+shared timeout/retry policy and never contain credentials in logs or errors.
 """
 
 from __future__ import annotations
 
 import json
 import os
+import urllib.error
 import urllib.request
 from dataclasses import dataclass
+
+from .retry import RetryPolicy, execute_with_retry
 
 
 @dataclass
@@ -19,15 +21,32 @@ class APIResponse:
     text: str
 
 
+TRANSIENT_HTTP_STATUS = {408, 409, 425, 429, 500, 502, 503, 504}
+
+
+def _retryable(exc: Exception) -> bool:
+    if isinstance(exc, (TimeoutError, urllib.error.URLError)):
+        return True
+    return isinstance(exc, urllib.error.HTTPError) and exc.code in TRANSIENT_HTTP_STATUS
+
+
 def _post_json(url: str, headers: dict[str, str], payload: dict) -> dict:
-    request = urllib.request.Request(
-        url,
-        data=json.dumps(payload).encode("utf-8"),
-        headers={**headers, "Content-Type": "application/json"},
-        method="POST",
+    policy = RetryPolicy(
+        max_retries=int(os.getenv("MERGE_MAX_RETRIES", "2")),
+        timeout_seconds=float(os.getenv("AI_REQUEST_TIMEOUT_SECONDS", "60")),
     )
-    with urllib.request.urlopen(request, timeout=180) as response:
-        return json.loads(response.read().decode("utf-8"))
+
+    def operation() -> dict:
+        request = urllib.request.Request(
+            url,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={**headers, "Content-Type": "application/json"},
+            method="POST",
+        )
+        with urllib.request.urlopen(request, timeout=policy.timeout_seconds) as response:
+            return json.loads(response.read().decode("utf-8"))
+
+    return execute_with_retry(operation, policy, _retryable)
 
 
 def openai_execute(prompt: str) -> APIResponse:
@@ -45,11 +64,7 @@ def gemini_execute(prompt: str) -> APIResponse:
     key = os.environ["GEMINI_API_KEY"]
     model = os.getenv("GEMINI_MODEL", "gemini-2.5-pro")
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
-    data = _post_json(
-        url,
-        {},
-        {"contents": [{"parts": [{"text": prompt}]}]},
-    )
+    data = _post_json(url, {}, {"contents": [{"parts": [{"text": prompt}]}]})
     text = ""
     for candidate in data.get("candidates", []):
         for part in candidate.get("content", {}).get("parts", []):
