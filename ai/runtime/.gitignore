@@ -1,6 +1,24 @@
+# Secrets and local runtime state
 .env
-*.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.token
+secrets/
+
+# Local usage/budget logs
+logs/
+*.usage.jsonl
+*.cost.json
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
 .venv/
 venv/
+
+# Local IDE/system files
+.vscode/
+.idea/
+.DS_Store/
