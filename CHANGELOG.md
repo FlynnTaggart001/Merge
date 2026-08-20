@@ -20,7 +20,7 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [0.1.0] - 2026-08-20
 
 ### Added — UE5 Foundation scaffold
-- `Merge.uproject` (EngineAssociation 5.5)
+- `Merge.uproject` (EngineAssociation 5.8.1)
 - C++ module `Merge` with Core + Character foundation
 - Classes: `UMergeGameInstance`, `AMergeGameMode`, `AMergePlayerController`, `AMergeCharacter`
 - Config: DefaultEngine, DefaultGame, DefaultInput, DefaultGameplayTags
@@ -77,7 +77,7 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [0.0.3] - 2026-08-20
 
 ### Changed
-- Engine: Unreal Engine 5 approved.
+- Engine: Unreal Engine 5.8.1 approved.
 
 ---
 
