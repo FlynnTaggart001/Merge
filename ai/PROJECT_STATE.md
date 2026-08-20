@@ -16,6 +16,15 @@
 - Token/cost guardrails: established
 - QA validation gate: established
 - Shared orchestration protocol: established
+- Primary implementation agent: **Claude Code — PROGRAMMER (target integration)**
+
+## Agent responsibility model
+
+- **Claude Code:** default implementation agent for C++/Unreal, gameplay systems, tooling, debugging, refactoring, integration and tests, when connected and available.
+- **Architecture / Game Direction:** remains governed by the Game Director and approved project specifications.
+- **Review / QA:** performed by dedicated roles or another agent when possible; Claude Code should not be the sole validator of its own critical changes.
+
+Claude Code has high implementation authority but no authority to redefine the game vision, approve major game-design changes, or unilaterally change critical architecture.
 
 ## Current milestone
 
@@ -61,3 +70,4 @@ Only decisions explicitly marked `PENDING_HUMAN` in `DECISIONS.md` block automat
 - Do not claim tests/builds were executed unless actually executed.
 - Preserve the PS1 1996–1999 visual target.
 - Never commit credentials or bypass resource limits.
+- Claude Code must remain within its implementation authority and escalate decisions outside its scope.
