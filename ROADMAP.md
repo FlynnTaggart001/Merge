@@ -35,21 +35,30 @@ Le développement est piloté par le Game Director et peut être exécuté par l
 
 ## PHASE 0.5 : Infrastructure de développement IA
 
-**Statut : 🟡 EN COURS**
+**Statut : 🟡 EN COURS — fondations et garde-fous établis**
 
 ### Objectif
-Créer l'environnement permettant à plusieurs agents IA de collaborer sur Merge à partir d'un objectif unique donné par le Game Director.
+Créer l'environnement permettant à plusieurs agents IA de collaborer sur Merge à partir d'un objectif unique donné par le Game Director, avec une autonomie contrôlée et des limites de sécurité/coût explicites.
 
-### Tâches
-- [ ] Créer `/ai/` et son protocole de collaboration
-- [ ] Créer le registre des agents et capacités
-- [ ] Créer le système de tâches et dépendances
-- [ ] Créer le système de handoff
-- [ ] Créer l'état partagé du projet
-- [ ] Créer le système de reviews et validations
-- [ ] Définir les niveaux de permission
-- [ ] Définir les conditions d'escalade humaine
-- [ ] Documenter le protocole d'orchestration
+### Fondations établies
+- [x] Protocole de collaboration (`AI_RULES.md`)
+- [x] Registre des rôles (`ai/AGENT_REGISTRY.md`)
+- [x] État partagé (`ai/PROJECT_STATE.md`)
+- [x] Protocole d'orchestration (`ai/ORCHESTRATION_PROTOCOL.md`)
+- [x] Politique de sécurité et secrets (`ai/SECURITY.md`)
+- [x] Contrôle tokens/coûts (`ai/COST_CONTROL.md`)
+- [x] Gate QA et Definition of Done (`ai/QA_GATE.md`)
+- [x] Protection Git contre secrets et fichiers locaux (`.gitignore`)
+- [x] Template de configuration locale non sensible (`.env.example`)
+
+### Restant
+- [ ] Implémenter le gestionnaire de quotas/rate limiting dans l'outil d'orchestration
+- [ ] Implémenter le compteur de tokens et budget
+- [ ] Implémenter timeouts, retries et backoff
+- [ ] Implémenter le circuit breaker
+- [ ] Ajouter les tests automatisés de ces garde-fous
+- [ ] Finaliser le système de tâches et dépendances exécutable
+- [ ] Connecter les fournisseurs IA uniquement après validation locale des garde-fous
 
 ### Critères de sortie
 - Un objectif unique peut être transformé en tâches
@@ -57,6 +66,9 @@ Créer l'environnement permettant à plusieurs agents IA de collaborer sur Merge
 - Les agents peuvent transmettre leur contexte au suivant
 - Les résultats sont vérifiables
 - Les blocages critiques remontent au Game Director
+- Les limites tokens/coûts/retries/concurrence sont appliquées techniquement
+- Aucun secret n'est stocké dans Git
+- Les tests de sécurité passent sans API externe
 
 ---
 
