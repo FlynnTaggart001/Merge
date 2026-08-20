@@ -23,13 +23,41 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - ✅ État partagé du projet (`ai/PROJECT_STATE.md`)
 - ✅ `.gitignore` renforcé contre les secrets et fichiers locaux
 - ✅ `.env.example` ajouté sans credentials réels
-- 🟡 Implémentation runtime des quotas, circuit breaker et compteurs encore à faire
+- ✅ Budget guard fail-closed
+- ✅ Suivi d'usage/coûts
+- ✅ Rate limiter multi-fenêtres
+- ✅ Circuit breaker fournisseur
+- ✅ Tests déterministes des nouveaux garde-fous
+- 🟡 Intégration de tous les garde-fous dans un orchestrateur unique encore à faire
 
 ### À Venir
-- Implémentation runtime de l'infrastructure IA
+- Intégration complète de l'infrastructure IA
 - Prototype technique Unreal Engine 5
 - Systèmes de gameplay
 - Contenu du monde
+
+---
+
+## [0.0.5] - 2026-08-20
+
+### Security
+- 🔐 Implémentation d'un rate limiter indépendant des fournisseurs (`ai/runtime/rate_limiter.py`).
+- 🔐 Implémentation d'un circuit breaker fail-safe (`ai/runtime/circuit_breaker.py`).
+- 🔐 Conservation d'un budget guard fail-closed et d'un suivi d'usage/coûts dans le runtime IA.
+
+### Tests
+- 🧪 Ajout de tests déterministes pour les limites de requêtes.
+- 🧪 Ajout de tests de bascule et récupération du circuit breaker.
+
+### Architecture
+- 📝 La Phase 0.5 distingue désormais les garde-fous déjà implémentés de leur intégration finale dans l'orchestrateur.
+- 📝 Les clés API restent volontairement absentes : aucune intégration fournisseur réelle n'est nécessaire pour tester ces protections.
+
+### Status
+- Fondations de sécurité : solides.
+- Runtime de sécurité : partiellement implémenté.
+- API keys : non configurées.
+- Prochaine priorité : orchestrateur unique + plafonds tokens runtime + timeout/backoff + CI.
 
 ---
 
