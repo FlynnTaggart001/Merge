@@ -9,11 +9,31 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Décisions techniques
+- ✅ **Moteur de jeu choisi : Unreal Engine 5**
+- ✅ **Langage principal : C++**
+- ✅ **Langage complémentaire : Blueprint (prototypage & UI)**
+- ✅ **Architecture technique UE5 approuvée** (`specs/TECHNICAL_ARCHITECTURE.md`)
+
 ### À Venir
-- Choix du moteur de jeu
 - Prototype technique
 - Systèmes de gameplay
 - Contenu du monde
+
+---
+
+## [0.0.3] - 2026-08-20
+
+### Changed
+- 🎮 **Choix définitif du moteur : Unreal Engine 5**
+- 📝 Mise à jour du statut du projet : la Phase 1 « Choix du moteur » est désormais considérée comme complétée.
+- 📝 Alignement du changelog avec `specs/TECHNICAL_ARCHITECTURE.md`.
+
+### Status
+- Préproduction en cours
+- Documentation technique approuvée
+- **Engine : Unreal Engine 5**
+- Prêt pour la suite du développement technique et le prototype.
 
 ---
 
@@ -79,6 +99,6 @@ Chaque entrée importante inclut une référence aux issues/PRs pertinentes.
 
 ---
 
-**Dernière mise à jour** : 2026-08-19
+**Dernière mise à jour** : 2026-08-20
 **Responsable** : GitHub Copilot
 **Vérifié par** : Game Director
