@@ -47,6 +47,34 @@ Rôles principaux :
 
 Les agents réellement disponibles et leurs capacités sont enregistrés dans `/ai/AGENT_REGISTRY.md`.
 
+### Agent d'implémentation par défaut : Claude Code
+
+Lorsque Claude Code est connecté et disponible, il est l'agent **par défaut pour les tâches de codage** affectées au rôle `PROGRAMMER`.
+
+Son périmètre privilégié est :
+
+- Unreal Engine 5 et C++ ;
+- gameplay systems ;
+- outils et infrastructure technique ;
+- debugging et correction de bugs ;
+- refactoring ;
+- intégration ;
+- tests ;
+- optimisation technique.
+
+Claude Code dispose d'une **forte autorité d'implémentation**, mais d'une autorité nulle sur les décisions de Game Design et les changements critiques d'architecture. Il doit exécuter les spécifications approuvées plutôt que les réinterpréter.
+
+Claude Code ne doit jamais :
+
+- modifier la vision du jeu de sa propre initiative ;
+- changer une mécanique majeure sans décision approuvée ;
+- modifier une décision critique d'architecture sans validation ;
+- supprimer ou affaiblir une spécification pour faire passer son code ;
+- contourner les garde-fous ou gates ;
+- présenter une décision technique ou design comme approuvée lorsqu'elle ne l'est pas.
+
+Si Claude Code rencontre une ambiguïté relevant du Game Director, il crée `PENDING_HUMAN` et bloque uniquement les tâches dépendantes.
+
 ---
 
 ## 4. Principe d'orchestration
@@ -66,6 +94,8 @@ L'orchestrateur doit alors :
 7. valider les résultats ;
 8. créer automatiquement les tâches suivantes ;
 9. arrêter et escalader uniquement lorsqu'une décision humaine est nécessaire ou qu'un blocage ne peut pas être résolu automatiquement.
+
+Pour une tâche `PROGRAMMER`, l'orchestrateur doit préférer Claude Code lorsqu'il est disponible et compatible avec les permissions de la tâche.
 
 Aucun agent ne doit attendre inutilement que le Game Director lui indique manuellement la tâche suivante lorsqu'elle peut être déduite de l'état du projet.
 
@@ -164,11 +194,11 @@ Exemple :
 ```text
 ARCHITECT
     ↓
-PROGRAMMER
+CLAUDE CODE — PROGRAMMER
     ↓
 REVIEWER
     ↓
-PROGRAMMER (correction si nécessaire)
+CLAUDE CODE — correction
     ↓
 QA
 ```
@@ -210,6 +240,8 @@ Niveaux conceptuels :
 - `L3_COMMIT` — commits atomiques
 - `L4_MERGE` — fusion de changements validés
 - `L5_CRITICAL` — décisions/changements d'architecture critique, toujours humains par défaut
+
+Pour Claude Code, l'affectation par défaut est `L2_CODE`. Les permissions `L3_COMMIT` ou supérieures restent soumises aux règles de branche, de review et de validation du dépôt.
 
 L'absence de permission ne doit jamais être contournée.
 
