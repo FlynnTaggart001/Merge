@@ -1,0 +1,46 @@
+# Merge / Unreal Engine 5
+# Generated files
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vs/
+.vscode/
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+
+# Unreal generated project files
+*.gen.cpp
+
+# Build / packaging
+Build/
+StagedBuilds/
+
+# IDE / OS
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# AI local state / caches
+ai/.local/
+ai/cache/
+ai/logs/
+
+# Logs
+*.log
+
+# Never commit API keys, access tokens or private credentials.
