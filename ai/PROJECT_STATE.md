@@ -12,6 +12,10 @@
 - Blueprint: complementary
 - Unreal project/codebase: not yet bootstrapped
 - AI orchestration infrastructure: being established
+- Security/secrets policy: established
+- Token/cost guardrails: established
+- QA validation gate: established
+- Shared orchestration protocol: established
 
 ## Current milestone
 
@@ -23,7 +27,24 @@
 2. Establish task/dependency tracking.
 3. Establish handoffs and validation.
 4. Establish safe autonomy rules.
-5. Prepare Phase 1 Unreal bootstrap.
+5. Test local guardrails before external API integration.
+6. Prepare Phase 1 Unreal bootstrap.
+
+## API state
+
+- API keys: not configured
+- External AI providers: not connected
+- `.env.example`: available
+- Real secrets must remain outside Git.
+
+## Safety baseline
+
+- Request rate limits defined.
+- Token limits defined.
+- Task/session/day budgets defined.
+- Timeout and retry limits defined.
+- Concurrency limit defined.
+- Circuit-breaker policy defined.
 
 ## Known blockers
 
@@ -39,3 +60,4 @@ Only decisions explicitly marked `PENDING_HUMAN` in `DECISIONS.md` block automat
 - Do not invent missing game design decisions.
 - Do not claim tests/builds were executed unless actually executed.
 - Preserve the PS1 1996–1999 visual target.
+- Never commit credentials or bypass resource limits.
