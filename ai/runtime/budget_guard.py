@@ -127,3 +127,12 @@ class BudgetGuard:
         self.state.retries = 0
         self.state.iterations = 0
         self.state.handoffs = 0
+
+    def reset_day(self) -> None:
+        """Reset only the daily spend window; monthly spend is retained."""
+        self.state.day_cost_usd = 0.0
+
+    def reset_month(self) -> None:
+        """Reset the monthly and daily spend windows."""
+        self.state.month_cost_usd = 0.0
+        self.state.day_cost_usd = 0.0
