@@ -8,9 +8,16 @@ def test_allow_under_limits() -> None:
     assert guard.authorize(0.10) == BudgetDecision.ALLOW
 
 
-def test_warn_at_threshold() -> None:
+def test_warn_at_daily_threshold() -> None:
     guard = BudgetGuard()
-    guard.record_call(Usage(cost_usd=35.0))
+    guard.record_call(Usage(cost_usd=3.50))
+    assert guard.authorize(0.10) == BudgetDecision.WARN
+
+
+def test_warn_at_monthly_threshold_after_day_reset() -> None:
+    guard = BudgetGuard()
+    guard.record_call(Usage(cost_usd=35.00))
+    guard.reset_day()
     assert guard.authorize(0.10) == BudgetDecision.WARN
 
 
