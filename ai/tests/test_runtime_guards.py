@@ -1,6 +1,7 @@
 from ai.runtime.budget_guard import BudgetDecision, BudgetGuard, BudgetLimits, Usage
 from ai.runtime.circuit_breaker import CircuitBreaker, CircuitState
 from ai.runtime.rate_limiter import RateLimit, RateLimiter
+from ai.runtime.retry import RetryPolicy, execute_with_retry
 from ai.runtime.token_budget import TokenBudget, TokenLimitError
 
 
@@ -86,3 +87,39 @@ def test_token_budget_tracks_usage() -> None:
     assert budget.input_used == 40
     assert budget.output_used == 20
     assert budget.total_used == 60
+
+
+def test_retry_backoff_is_bounded_and_retries_only_when_allowed() -> None:
+    attempts = {"count": 0}
+    sleeps: list[float] = []
+
+    def operation() -> str:
+        attempts["count"] += 1
+        if attempts["count"] < 3:
+            raise TimeoutError("temporary")
+        return "ok"
+
+    result = execute_with_retry(
+        operation,
+        RetryPolicy(max_retries=2, base_delay_seconds=1.0, max_delay_seconds=2.0, jitter_ratio=0.0),
+        lambda exc: isinstance(exc, TimeoutError),
+        sleep=sleeps.append,
+    )
+    assert result == "ok"
+    assert attempts["count"] == 3
+    assert sleeps == [1.0, 2.0]
+
+
+def test_retry_stops_on_non_retryable_error() -> None:
+    attempts = {"count": 0}
+
+    def operation() -> None:
+        attempts["count"] += 1
+        raise ValueError("permanent")
+
+    try:
+        execute_with_retry(operation, RetryPolicy(max_retries=5), lambda exc: False, sleep=lambda _: None)
+        assert False, "non-retryable error should propagate"
+    except ValueError:
+        pass
+    assert attempts["count"] == 1
