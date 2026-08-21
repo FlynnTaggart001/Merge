@@ -9,7 +9,16 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added — Gameplay & World Design
+- Spécification `specs/GAMEPLAY_AND_PERSISTENT_WORLD.md` couvrant mouvement, accroupissement, roulade, furtivité, détection progressive et Backstab.
+- Spécification d'un bestiaire à populations dynamiques avec reproduction, mortalité, prédation, ressources, migration et extinction locale.
+- Règle fondamentale de monde non régénératif : les morts, destructions et suppressions définitives persistent.
+- Architecture conceptuelle de persistance par monde et de plusieurs mondes indépendants.
+- Documentation `docs/gameplay.md` et `docs/world.md`.
+
 ### Updated
+- Roadmap enrichie avec les nouveaux systèmes de gameplay, d'écologie et de persistance.
+- Les nouveaux systèmes sont spécifiés mais ne sont pas déclarés comme implémentés.
 - Engine version standardized to **Unreal Engine 5.8.1** across project configuration and documentation.
 
 ### Phase 1 (in progress on local machines)
@@ -95,4 +104,4 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-**Dernière mise à jour** : 2026-08-20
+**Dernière mise à jour** : 2026-08-21
