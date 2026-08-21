@@ -15,6 +15,8 @@ MountSystem
 ├── MountDefinition
 ├── MountState
 ├── MountInteraction
+├── MountAcquisition
+├── TamingSystem
 ├── MountMovement
 ├── MountCombat
 ├── MountAI
@@ -24,17 +26,114 @@ MountSystem
 
 ## 2. Acquisition et interaction
 
-Le système doit pouvoir gérer :
+Le joueur dispose de plusieurs voies d'acquisition, selon la monture et les règles du monde :
 
-- approche d'une monture ;
-- interaction / montée ;
-- refus ou impossibilité de monter ;
-- démontage ;
-- interruption forcée ;
-- perte de la monture ou séparation ;
-- retour du joueur sur la monture lorsque le contexte le permet.
+### 2.1 Achat
 
-Les règles d'apprivoisement, recrutement, achat, capture ou élevage restent ouvertes et dépendront du game design des montures.
+Certaines montures peuvent être achetées auprès de vendeurs, éleveurs, factions ou autres sources prévues par le game design.
+
+L'achat peut dépendre de :
+- prix ;
+- disponibilité ;
+- réputation ;
+- région ;
+- type de monture ;
+- conditions de faction ou de quête ;
+- qualité de l'animal.
+
+L'achat doit créer une association persistante entre la monture et le joueur lorsqu'elle devient sa monture.
+
+### 2.2 Domptage / capture
+
+Certaines montures peuvent être obtenues sans achat grâce à une compétence de **Domptage**.
+
+Le joueur doit pouvoir :
+
+```text
+Repérer une créature compatible
+        ↓
+S'approcher / l'approcher sans la faire fuir
+        ↓
+Déclencher une tentative de domptage
+        ↓
+Calcul de la difficulté
+        ↓
+Résolution progressive
+   ┌────┴────┐
+   ↓         ↓
+Succès     Échec
+   ↓         ↓
+Créature   fuite / résistance /
+acceptée   tentative à reprendre
+```
+
+La compétence de Domptage est une compétence de progression distincte des maîtrises d'armes et du Réflexe.
+
+### 2.3 Compétence de Domptage
+
+Le **Domptage** progresse avec des tentatives et réussites de domestication réellement pertinentes.
+
+Le système doit pouvoir prendre en compte :
+
+- difficulté de l'espèce ;
+- tempérament ;
+- niveau de peur/agression ;
+- état de la créature ;
+- familiarité avec l'espèce ;
+- expérience du joueur en Domptage ;
+- contexte et approche ;
+- qualité des interactions précédentes ;
+- éventuels objets ou techniques d'aide.
+
+La compétence doit réduire progressivement la difficulté effective et augmenter la fiabilité, sans transformer automatiquement toute créature en monture.
+
+```text
+Domptage faible
+→ espèces dociles / faciles
+→ forte probabilité d'échec sur créatures sauvages difficiles
+
+Domptage moyen
+→ plus d'espèces accessibles
+→ meilleure tolérance aux erreurs
+
+Domptage élevé
+→ créatures plus rares / sauvages potentiellement domptables
+→ meilleure fiabilité
+```
+
+Les espèces intrinsèquement incompatibles avec le domptage doivent pouvoir être déclarées **non domptables** dans leurs données.
+
+### 2.4 Familles et familiarité
+
+La familiarité avec une espèce ou une famille de montures peut être enregistrée séparément ou comme modificateur du Domptage.
+
+Exemple : un joueur ayant beaucoup de pratique avec les équidés peut mieux gérer une nouvelle créature de la même famille qu'une créature complètement inconnue.
+
+La familiarité ne doit pas remplacer la compétence générale de Domptage.
+
+### 2.5 Relation et confiance
+
+Après l'acquisition, la monture peut posséder un état de relation avec le joueur :
+
+```text
+Nouvellement domptée / achetée
+        ↓
+Confiance faible
+        ↓
+Utilisation / soins / interactions positives
+        ↓
+Confiance accrue
+```
+
+Le niveau de confiance peut, selon le game design final, influencer :
+- réponse aux commandes ;
+- stress / peur ;
+- obéissance ;
+- stabilité en combat ;
+- comportement face aux catastrophes ;
+- performances de certaines capacités.
+
+La confiance ne doit pas être obligatoire pour toutes les montures et reste data-driven.
 
 ## 3. Mouvement
 
@@ -67,87 +166,35 @@ Monture
 
 Les coûts doivent être data-driven et varier selon le type de déplacement.
 
-Exemples :
-
-```text
-Marche      → coût faible ou nul
-Course      → coût progressif
-Sprint      → coût élevé
-Saut        → coût d'impulsion
-Charge      → coût spécifique
-```
-
-Une monture épuisée doit pouvoir ralentir, refuser certaines actions ou nécessiter une récupération selon le design final.
-
 ## 5. Terrain et environnement
 
-Les montures doivent interagir avec les systèmes de terrain déjà prévus :
-
-- pente ;
-- boue ;
-- neige ;
-- feu ;
-- zones volcaniques ;
-- eau ;
-- falaises ;
-- obstacles ;
-- catastrophes naturelles.
+Les montures doivent interagir avec les systèmes de terrain déjà prévus : pente, boue, neige, feu, zones volcaniques, eau, falaises, obstacles et catastrophes naturelles.
 
 Une monture peut posséder des résistances et capacités spécifiques.
-
-Exemple : certaines montures pourraient traverser l'eau, alors que d'autres paniquent, flottent, coulent ou refusent certaines profondeurs.
 
 ## 6. Combat monté
 
 Le système doit pouvoir supporter le combat depuis une monture lorsque la monture et l'arme le permettent.
 
-Le joueur doit pouvoir, selon le design :
+Le joueur doit pouvoir, selon le design : attaquer depuis la monture, utiliser certaines armes, utiliser certaines magies, être désarçonné ou descendre volontairement.
 
-- attaquer depuis la monture ;
-- utiliser certaines armes ;
-- utiliser certaines magies ;
-- être désarçonné ;
-- subir des attaques visant le joueur ou la monture ;
-- descendre volontairement pour combattre à pied.
-
-Le combat monté doit utiliser le `CombatResolver` commun et ne pas créer un deuxième système de dégâts.
+Le combat monté doit utiliser le `CombatResolver` commun.
 
 ## 7. Montures et progression
 
-Le système doit pouvoir supporter une progression propre à la monture sans la rendre obligatoire.
+Le système peut supporter une progression propre à la monture sans la rendre obligatoire : maîtrise de conduite, familiarité, endurance, vitesse, maniabilité, confiance/lien joueur-monture.
 
-Possibilités extensibles :
+La **compétence de Domptage** appartient au joueur et reste distincte de ces éventuelles caractéristiques de la monture.
 
-- maîtrise de conduite ;
-- familiarité du joueur avec une famille de montures ;
-- endurance de la monture ;
-- vitesse ;
-- maniabilité ;
-- confiance / lien joueur-monture.
-
-Aucune statistique supplémentaire n'est imposée tant que le game design n'est pas décidé.
-
-La conduite et l'utilisation d'une monture peuvent contribuer à l'expérience appropriée du joueur si le système de progression le confirme.
+L'utilisation effective de montures peut contribuer aux événements de progression pertinents si le game design le confirme.
 
 ## 8. IA et comportement
 
-Une monture autonome doit conserver une IA distincte du joueur :
-
-- déplacement ;
-- évitement ;
-- peur ;
-- combat ou fuite ;
-- réactions aux catastrophes ;
-- retour vers le joueur ;
-- routines dans son environnement.
-
-Les mêmes règles de simulation distante s'appliquent : hors zone active, une monture non pertinente ne doit pas avoir une IA complète exécutée à chaque frame.
+Une monture autonome doit conserver une IA distincte du joueur : déplacement, évitement, peur, combat/fuite, réactions aux catastrophes, retour vers le joueur et routines.
 
 ## 9. Montures et groupe
 
 Une monture peut appartenir au groupe du joueur sans être considérée comme un PNJ de groupe classique.
-
-Elle doit pouvoir être intégrée aux commandes de groupe, au déplacement et aux événements de combat lorsque nécessaire.
 
 ## 10. Persistance
 
@@ -161,30 +208,24 @@ MountState
 ├── Stamina
 ├── Equipment
 ├── CurrentOwner / Association
+├── AcquisitionMethod
+├── TamingProgress / TamingHistory
+├── TrustState
 ├── Status
 └── WorldRelationship
 ```
 
 La mort d'une monture persistante doit respecter les règles du monde non régénératif si le design final retient la mortalité permanente.
 
-Une monture tuée ne doit pas réapparaître artificiellement par un simple respawn global.
-
 ## 11. Optimisation
 
 Les montures suivent les mêmes règles de simulation que les autres créatures :
 
 ```text
-Hors zone
-→ état abstrait / simulation probabiliste
-
-À proximité
-→ Actor + IA adaptée
-
-Joueur monté
-→ simulation complète
+Hors zone → état abstrait / simulation probabiliste
+À proximité → Actor + IA adaptée
+Joueur monté → simulation complète
 ```
-
-Une monture contrôlée par le joueur doit être traitée comme un élément gameplay critique et recevoir la précision nécessaire au mouvement, à la collision et à l'animation.
 
 ## 12. Architecture cible
 
@@ -196,12 +237,14 @@ MountSystem
 │   ├── StaminaProfile
 │   ├── TerrainCapabilities
 │   ├── CombatCapabilities
+│   ├── AcquisitionRules
 │   └── InteractionRules
 │
 ├── MountComponent / MountActor
 ├── RiderComponent
-├── MountMovement
 ├── MountInteraction
+├── TamingComponent
+├── MountMovement
 ├── MountCombatAdapter
 ├── MountAI
 └── MountPersistence
@@ -209,24 +252,28 @@ MountSystem
 
 ## 13. Tests prioritaires
 
-- monter / descendre ;
-- blocage de montée dans une situation invalide ;
+- achat d'une monture ;
+- conditions d'achat ;
+- tentative de domptage d'une monture facile ;
+- tentative sur une monture difficile ;
+- échec de domptage ;
+- réussite de domptage ;
+- espèce déclarée non domptable ;
+- progression de Domptage ;
+- familiarité par famille ;
+- montée / descente ;
 - déplacement monté ;
-- course / sprint ;
 - endurance de la monture ;
-- terrain pentu ;
-- obstacles ;
-- eau selon les capacités ;
-- interaction avec une catastrophe ;
+- terrain et eau ;
 - combat monté ;
 - désarçonnement ;
 - sauvegarde / chargement ;
-- mort permanente si activée ;
+- mortalité persistante si activée ;
 - simulation distante probabiliste ;
-- streaming et déplacement du joueur monté entre cellules.
+- streaming entre cellules.
 
 ## 14. Ce qui reste volontairement ouvert
 
-Les espèces de montures, leur nombre, leurs statistiques, leurs méthodes d'acquisition, leurs capacités spéciales, leur reproduction éventuelle, leur mortalité et leurs systèmes de progression restent des décisions de game design.
+Les espèces de montures, leur nombre, leurs statistiques, leurs capacités spéciales, leurs prix, leurs méthodes exactes d'acquisition, leurs difficultés de domptage, leur reproduction éventuelle, leur mortalité et leurs systèmes de progression restent des décisions de game design.
 
 Le cœur technique doit être prêt à recevoir ces choix sans refonte majeure.
