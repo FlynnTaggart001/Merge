@@ -19,12 +19,36 @@ L'Endurance progresse progressivement avec les efforts physiques répétés :
 - saut ;
 - roulade / esquive ;
 - bond en arrière ;
+- pas de côté ;
 - franchissement d'obstacles ;
-- escalade et autres activités physiques pertinentes.
+- escalade ;
+- autres activités physiques pertinentes.
+
+Toutes ces actions ont un **coût d'Endurance** lorsqu'elles représentent un effort physique significatif. Les coûts sont data-driven et peuvent varier selon l'action, sa durée, son intensité, l'équipement et le contexte.
 
 Le système doit mesurer l'effort utile plutôt que compter aveuglément chaque input.
 
+Une action nécessitant de l'Endurance ne doit normalement pas être exécutée lorsque la ressource est insuffisante. Le comportement exact en cas d'Endurance faible sera équilibré dans le prototype.
+
 Objectifs : récompenser l'activité physique réelle, éviter le farming artificiel et permettre un équilibrage du gain selon l'intensité et la durée de l'effort.
+
+### 2.1 Coûts par mouvement
+
+Les coûts sont volontairement **paramétrables individuellement** :
+
+```text
+Course / Sprint          → coût selon durée et intensité
+Saut                     → coût par impulsion
+Roulade                  → coût par utilisation
+Bond en arrière          → coût par utilisation
+Pas de côté              → coût par utilisation
+Franchissement           → coût selon l'obstacle / effort
+Escalade                 → coût progressif selon durée et effort
+```
+
+Une escalade peut donc drainer l'Endurance progressivement plutôt que d'appliquer un coût unique. Les mouvements courts utilisent principalement un coût à l'activation.
+
+Le système doit exposer ces coûts comme données d'équilibrage et ne doit pas coder des valeurs fixes directement dans les animations ou le personnage.
 
 ## 3. Agilité
 
@@ -70,6 +94,8 @@ Réception possible ?
 ```
 
 Cette mécanique ne doit pas supprimer les conséquences d'une chute importante.
+
+La réception contrôlée peut avoir un coût d'Endurance faible ou contextuel si elle implique une action physique active ; elle ne doit pas consommer systématiquement une ressource lorsqu'aucun effort distinct n'est effectué.
 
 ## 4. Défense
 
@@ -146,6 +172,8 @@ ProgressionSystem
 ├── CombatExperience
 │   └── Reflex
 │       └── AutomaticDodgeChance
+├── PhysicalEffort
+│   └── EnduranceCost[*]
 ├── MagicProgression
 │   └── MagicDomainMastery[*]
 └── ProgressionRules
@@ -160,9 +188,11 @@ ProgressionSystem
 2. Une action doit progresser l'aptitude à laquelle elle correspond.
 3. Les systèmes gameplay ne doivent pas modifier directement toutes les statistiques sans passer par une logique de progression cohérente.
 4. La roulade, le bond en arrière et le pas de côté sont des mécaniques d'esquive distinctes.
-5. Le Réflexe est distinct de l'Agilité.
-6. Le Réflexe peut déclencher une esquive automatique avec une probabilité limitée lorsque les conditions sont réunies.
-7. L'esquive automatique ne doit jamais rendre l'esquive manuelle inutile.
-8. Les mouvements d'exploration doivent rester contextuels et ne pas transformer Merge en système de parkour intégral sans décision de game design ultérieure.
-9. Les mécanismes anti-farming sont nécessaires et seront équilibrés au prototype.
-10. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
+5. Les actions physiques significatives — course, saut, roulade, bond en arrière, pas de côté, franchissement et escalade — ont un coût d'Endurance data-driven.
+6. Une action nécessitant de l'Endurance ne doit normalement pas être exécutée lorsque le coût ne peut pas être payé.
+7. Le Réflexe est distinct de l'Agilité.
+8. Le Réflexe peut déclencher une esquive automatique avec une probabilité limitée lorsque les conditions sont réunies.
+9. L'esquive automatique ne doit jamais rendre l'esquive manuelle inutile.
+10. Les mouvements d'exploration doivent rester contextuels et ne pas transformer Merge en système de parkour intégral sans décision de game design ultérieure.
+11. Les mécanismes anti-farming sont nécessaires et seront équilibrés au prototype.
+12. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
