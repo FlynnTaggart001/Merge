@@ -2,11 +2,15 @@
 
 Cette documentation synthétise les mécaniques de gameplay actuellement approuvées. Les spécifications détaillées et normatives se trouvent dans `specs/GAMEPLAY_AND_PERSISTENT_WORLD.md`, `specs/PLAYER_PROGRESSION.md` et `specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md`.
 
-## Mouvement
+## Mouvement du joueur
 
-Merge est un Action-RPG à la troisième personne. Le joueur dispose d'un déplacement direct, du saut, de l'accroupissement, d'une roulade/esquive et d'un **saut arrière**.
+Merge est un Action-RPG à la troisième personne. Le joueur dispose d'un déplacement direct, du saut, de la course, de l'accroupissement, d'une roulade/esquive et d'un **bond en arrière** dédié.
 
-La roulade et le saut arrière sont des variantes du même système d'esquive afin de partager les règles de coût d'Endurance, collision, récupération et invulnérabilité lorsqu'elles sont retenues.
+Le **bond en arrière** est une vraie action de mouvement du joueur, et pas uniquement une variante théorique du système de combat. Il permet de prendre rapidement de la distance avec un ennemi et peut être utilisé comme esquive/mobilité. Il possède ses propres paramètres de déplacement, d'animation, de collision, de récupération et de coût en Endurance.
+
+La roulade et le bond en arrière sont des variantes du système d'esquive afin de partager les règles communes de défense, tout en conservant des comportements et animations distincts.
+
+La roulade possède une fenêtre temporaire d'invulnérabilité (i-frames). La durée de cette fenêtre progresse avec le Réflexe sans rendre toute la roulade invulnérable. Le bond en arrière n'hérite pas automatiquement des mêmes i-frames : ses propriétés défensives seront équilibrées séparément.
 
 ## Combat
 
@@ -14,7 +18,7 @@ Le combat physique distingue trois réponses défensives :
 
 - **Blocage** : défense plus permissive qui réduit/absorbe une attaque selon l'équipement et les règles de défense.
 - **Parade** : défense active fondée sur une fenêtre de timing précise avant l'impact. Une réussite peut annuler/réduire le coup, déséquilibrer l'attaquant et ouvrir une fenêtre de riposte.
-- **Esquive** : évitement spatial via roulade, saut arrière ou autres variantes futures.
+- **Esquive** : évitement spatial via roulade, bond en arrière ou autres variantes futures.
 
 La parade n'est pas un simple blocage et n'est pas déclenchée automatiquement par le Réflexe. Les attaques non parables et les paramètres de fenêtre seront définis dans le prototype.
 
@@ -23,7 +27,7 @@ La parade n'est pas un simple blocage et n'est pas déclenchée automatiquement 
 La progression est organique et liée à l'utilisation réelle :
 
 - Endurance : course, combat, sauts et efforts physiques ;
-- Agilité : esquives, roulades, sauts et mobilité ;
+- Agilité : esquives, roulades, bonds en arrière, sauts et mobilité ;
 - Défense : dégâts réellement subis ;
 - Réflexe : expérience de combat réelle ;
 - maîtrise d'arme : utilisation significative de la famille correspondante ;
@@ -34,6 +38,8 @@ La progression est organique et liée à l'utilisation réelle :
 Le Réflexe est différent de l'Agilité. Il représente les automatismes acquis par l'expérience du combat.
 
 À mesure que le Réflexe augmente, le personnage peut obtenir une chance de déclencher automatiquement une esquive lorsqu'une attaque ennemie est sur le point de le toucher et que les conditions sont réunies.
+
+Le Réflexe augmente également la tolérance de timing de la parade et la durée des i-frames de la roulade. La familiarité acquise contre certaines familles d'attaques peut améliorer l'anticipation, sans rendre les attaques inconnues triviales.
 
 Cette esquive automatique reste limitée : elle ne garantit pas l'évitement, ne remplace pas l'esquive manuelle et doit respecter l'espace disponible, l'état du personnage, l'Endurance et les règles normales du système d'esquive.
 
