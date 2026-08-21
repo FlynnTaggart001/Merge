@@ -81,29 +81,59 @@ Réflexe moyen → fenêtre légèrement plus permissive
 Réflexe élevé → fenêtre nettement plus permissive
 ```
 
-Cette assistance peut être modulée par une **familiarité de combat** acquise à force d'affronter réellement certaines familles d'attaques :
+Cette assistance peut être modulée par une **familiarité de combat** acquise à force d'affronter réellement certaines familles d'attaques.
+
+L'assistance de parade est différente de l'esquive automatique :
 
 ```text
-Réflexe général
-      ↓
-Familiarité
- ┌────┼───────────┐
-Épées  Griffes  Crocs  Magie  Attaques spéciales...
+Esquive automatique → le système peut déclencher une esquive selon le Réflexe et les conditions.
+Parade réflexe → le système ne déclenche rien ; il améliore uniquement la fenêtre de timing après l'input du joueur.
 ```
 
-La familiarité doit rester data-driven et représenter une expérience réelle. Un personnage très expérimenté contre les épées peut mieux anticiper une attaque d'épée qu'une créature inconnue, sans pour autant connaître automatiquement ses attaques spéciales.
+### 3.3 Réflexe et invulnérabilité de roulade
 
-La familiarité ne doit jamais rendre un type d'ennemi trivial ou supprimer le besoin de jouer.
+La roulade accorde une **fenêtre temporaire d'invulnérabilité (i-frames)** pendant son exécution. Cette protection fait partie du système de défense de la roulade et non d'une invulnérabilité générale du personnage.
 
-L'assistance de parade est donc différente de l'esquive automatique :
+Le **Réflexe** influence la durée de cette fenêtre : plus le personnage est expérimenté, plus il peut exploiter précisément le moment où l'attaque passe à proximité.
 
 ```text
-Esquive automatique
-→ le système peut déclencher une esquive selon le Réflexe et les conditions.
+Réflexe faible
+→ i-frames courtes, timing très exigeant
 
-Parade réflexe
-→ le système ne déclenche rien ; il améliore uniquement la fenêtre de timing après l'input du joueur.
+Réflexe moyen
+→ i-frames plus tolérantes
+
+Réflexe élevé
+→ i-frames nettement plus longues
 ```
+
+Règles :
+
+- les i-frames ne commencent qu'à une phase définie de la roulade ;
+- elles cessent avant la fin complète de l'animation ;
+- le Réflexe augmente la fenêtre d'invulnérabilité, mais ne rend pas toute la roulade invulnérable ;
+- la roulade conserve son coût en Endurance ;
+- l'espace disponible, les collisions et l'état du personnage restent déterminants ;
+- certaines attaques spéciales, attaques imparables ou effets explicitement définis peuvent ignorer les i-frames ;
+- le système doit empêcher le spam de roulades de créer une invulnérabilité quasi permanente ;
+- les valeurs exactes de durée, seuils et courbes restent des paramètres d'équilibrage data-driven.
+
+La **familiarité de combat** peut améliorer l'anticipation contre des familles d'attaques réellement connues, mais ne doit pas créer une immunité automatique contre un nouvel ennemi.
+
+Le modèle défensif devient donc :
+
+```text
+                 Réflexe
+                    │
+       ┌────────────┼─────────────┐
+       ↓            ↓             ↓
+  Esquive auto   Parade        Roulade
+  probabilité    fenêtre       durée des i-frames
+       │          timing             │
+       └──── Familiarité ────────────┘
+```
+
+Le Réflexe améliore ainsi les automatismes et la tolérance défensive sans supprimer l'importance du joueur.
 
 ## 4. Mouvement et esquives
 
@@ -118,7 +148,7 @@ Le joueur doit pouvoir effectuer un **saut arrière** comme mouvement d'esquive/
 Le saut arrière doit pouvoir :
 
 - être déclenché par une combinaison d'input dédiée ;
-- propulser le personnage vers l'arrière par rapport à son orientation ou à la direction de déplacement selon le design final ;
+- propulser le personnage vers l'arrière selon le design final ;
 - être intégré au système d'Endurance ;
 - contribuer à la progression d'Agilité lorsqu'il est utilisé de manière pertinente ;
 - interagir avec le combat, la furtivité et les animations ;
@@ -134,6 +164,25 @@ DodgeSystem
 └── FutureDodgeTypes[*]
 ```
 
+### 4.1 Roulade et i-frames
+
+La roulade possède une fenêtre d'invulnérabilité temporaire, calculée par le `DodgeSystem` à partir de la progression de Réflexe et des paramètres de l'attaque.
+
+Le système doit exposer une fenêtre de protection exploitable par le `CombatResolver` plutôt que d'ajouter un booléen global `IsInvincible` au personnage.
+
+Ainsi, une attaque peut demander au système :
+
+```text
+CanAttackHit(Target, AttackContext)
+        ↓
+Target possède-t-il une DefensiveWindow active ?
+        ↓
+Oui → vérifier si l'attaque ignore cette fenêtre
+Non → résolution normale
+```
+
+Cela permet de conserver une architecture propre pour la roulade, les esquives futures et les attaques spéciales.
+
 ## 5. Combat et dégâts
 
 Le combat physique utilise des définitions data-driven d'armes et de familles. Le système central doit gérer :
@@ -143,7 +192,7 @@ Le combat physique utilise des définitions data-driven d'armes et de familles. 
 - résistances ;
 - armure ;
 - blocage ;
-- **parade active à timing précis** ;
+- parade active à timing précis ;
 - riposte après parade réussie ;
 - attaques imparables/non parables définies par données ;
 - stagger / équilibre ;
@@ -160,14 +209,9 @@ Le combat physique utilise des définitions data-driven d'armes et de familles. 
 Le système distingue trois réponses défensives :
 
 ```text
-Blocage
-→ absorbe/réduit l'attaque selon les règles d'équipement.
-
-Parade
-→ timing précis avant impact, pouvant annuler/réduire le coup et ouvrir une riposte.
-
-Esquive
-→ évitement spatial via le DodgeSystem.
+Blocage → absorbe/réduit l'attaque selon les règles d'équipement.
+Parade  → timing précis avant impact, pouvant annuler/réduire le coup et ouvrir une riposte.
+Esquive → évitement spatial via le DodgeSystem, avec i-frames pour la roulade.
 ```
 
 La parade doit être résolue par le même `CombatResolver` que les autres interactions et produire des événements comme `SuccessfulParry` ou `ParryFailed`.
@@ -238,8 +282,6 @@ La furtivité du joueur exploite cette couche. Les états de détection restent 
 Calme → Soupçon → Recherche → Alerte → Combat
 ```
 
-Les IA peuvent ensuite utiliser Behavior Trees, State Trees ou autres outils UE selon le prototype, sans imposer prématurément une solution unique.
-
 ## 9. Bestiaire et écologie
 
 Le bestiaire fonctionne avec des populations abstraites lorsque les individus ne sont pas matérialisés.
@@ -280,130 +322,35 @@ WorldState
 
 ## 11. Factions et réputation
 
-Prévoir un système data-driven de factions et de relations :
-
-- réputation du joueur ;
-- relations inter-factions ;
-- alliances/hostilité ;
-- territoire ;
-- membres et dirigeants ;
-- conséquences de morts ou destructions.
-
-Une faction peut être durablement affaiblie ou disparaître si le game design le permet.
+Prévoir un système data-driven de factions et de relations : réputation du joueur, relations inter-factions, alliances/hostilité, territoire, membres et conséquences des morts ou destructions.
 
 ## 12. Quêtes et dialogues réactifs
 
 Les quêtes et dialogues doivent consulter l'état du monde plutôt que supposer que les PNJ, créatures et objets existent toujours.
 
-Exemples de conditions :
-
-```text
-NPC_DEAD
-FACTION_DESTROYED
-CREATURE_EXTINCT_LOCALLY
-LOCATION_DESTROYED
-OBJECT_ALREADY_CONSUMED
-WORLD_EVENT_OCCURRED
-```
-
-Une quête doit pouvoir échouer, évoluer ou changer de contexte lorsqu'un événement permanent rend son état initial impossible.
-
 ## 13. Temps et environnement
 
-Prévoir un système de temps mondial pouvant alimenter :
-
-- cycle jour/nuit ;
-- routines PNJ ;
-- reproduction ;
-- migration ;
-- événements ;
-- comportement des créatures.
-
-Prévoir également une couche météo/environnement extensible pouvant influencer visibilité, bruit, navigation et comportements.
-
-Les saisons restent optionnelles et ne doivent pas être codées comme une dépendance obligatoire.
+Prévoir un système de temps mondial pouvant alimenter cycle jour/nuit, routines PNJ, reproduction, migration, événements et comportement des créatures. Une couche météo/environnement reste extensible.
 
 ## 14. Événements mondiaux
 
-Un `WorldEventSystem` doit permettre de diffuser des événements persistants ou temporaires :
-
-```text
-CreatureKilled
-FactionLeaderKilled
-FactionDestroyed
-LocationDestroyed
-PopulationCollapse
-Migration
-WorldDiscovery
-QuestCompleted
-SuccessfulParry
-ParryFailed
-```
-
-Les événements importants peuvent alimenter un historique du monde pour les sauvegardes et futurs systèmes narratifs.
+Un `WorldEventSystem` doit permettre de diffuser des événements persistants ou temporaires, dont `CreatureKilled`, `FactionDestroyed`, `LocationDestroyed`, `SuccessfulParry`, `ParryFailed` et les événements défensifs nécessaires au suivi de progression.
 
 ## 15. Sauvegarde et multi-mondes
 
-La sauvegarde est divisée en état du joueur et état du monde. Chaque monde possède un identifiant unique et ses propres données persistantes.
-
-```text
-World_001
-World_002
-World_003
-```
-
-Créer un nouveau monde ne réinitialise ni ne détruit les anciens mondes.
-
-Le chargement doit restaurer les conséquences persistantes avant ou pendant la matérialisation des Actors concernés.
+Chaque monde possède un identifiant unique et ses propres données persistantes. Créer un nouveau monde ne réinitialise ni ne détruit les anciens mondes.
 
 ## 16. Streaming et performance
 
-World Partition est prévu pour le monde ouvert. Les populations hors zone active restent abstraites lorsque possible.
-
-La simulation écologique doit être tickée à une fréquence adaptée ou par événements/batches, pas nécessairement chaque frame.
-
-Mass Framework reste optionnel et doit être adopté seulement si les profils de performance justifient son utilisation.
+World Partition est prévu pour le monde ouvert. Les populations hors zone active restent abstraites lorsque possible. La simulation écologique doit être tickée à une fréquence adaptée ou par événements/batches.
 
 ## 17. Tests
 
-Les systèmes critiques doivent être conçus pour être testables indépendamment du rendu 3D :
-
-- progression ;
-- calcul de dégâts ;
-- sauvegarde/chargement ;
-- évolution de population ;
-- prédateur/proie ;
-- persistance de destruction ;
-- événements mondiaux ;
-- conditions de quêtes ;
-- Réflexe et probabilité d'esquive automatique ;
-- variantes d'esquive dont le saut arrière ;
-- fenêtre et résolution de parade ;
-- attaques parables/non parables ;
-- ouverture de riposte après parade ;
-- assistance de fenêtre de parade par Réflexe ;
-- familiarité de combat par famille d'attaque.
-
-Les tests de performance et de gameplay réels dans Unreal restent nécessaires après implémentation.
+Les systèmes critiques doivent être testables indépendamment du rendu 3D : progression, dégâts, sauvegarde, écologie, persistance, événements, quêtes, Réflexe, esquives, saut arrière, fenêtre de parade, familiarité, et **durée des i-frames de roulade selon le Réflexe**.
 
 ## 18. Ce qui reste volontairement ouvert
 
-Ne pas figer dans cette architecture :
-
-- domaines magiques définitifs ;
-- nombre exact de familles d'armes ;
-- valeurs de dégâts ;
-- courbes de progression ;
-- courbe et probabilité exactes du Réflexe ;
-- fenêtre exacte de parade ;
-- courbe exacte de familiarité de combat ;
-- nombre définitif de factions ;
-- bestiaire final ;
-- contenu des quêtes ;
-- valeurs de météo/temps ;
-- règles d'équilibrage finales.
-
-Ces éléments sont des données de game design, pas des contraintes du cœur technique.
+Les domaines magiques, familles d'armes, dégâts, courbes de progression, probabilité exacte du Réflexe, durée exacte des i-frames, fenêtre exacte de parade, familiarité, factions, bestiaire, quêtes et valeurs d'équilibrage restent des données de game design à régler pendant les prototypes.
 
 ## 19. Ordre recommandé d'implémentation Unreal
 
@@ -413,9 +360,9 @@ Ces éléments sont des données de game design, pas des contraintes du cœur te
 3. Attributes + Progression Events
 4. Combat + Damage + Effects
 5. Weapons + Weapon Mastery
-6. Dodge / BackwardJump / Crouch / Stealth / Backstab
+6. Dodge / Roll / BackwardJump / Crouch / Stealth / Backstab
 7. Parry / Block / Defense reactions
-8. Reflex System + automatic reaction prototype
+8. Reflex System + automatic reaction + reflex-scaled i-frames
 9. Inventory + Equipment
 10. AI + Perception
 11. Save/Load + World Persistence
