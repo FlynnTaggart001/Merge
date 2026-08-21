@@ -92,17 +92,38 @@ Une parade réussie peut produire un événement de gameplay `SuccessfulParry` d
 
 La progression exacte associée à cet événement reste à définir : elle ne doit pas automatiquement créer une nouvelle statistique si une maîtrise existante suffit.
 
-La parade doit pouvoir coexister avec :
+### Parade et Réflexe
 
-- esquive ;
-- saut arrière ;
-- blocage ;
-- Réflexe ;
-- attaques ;
-- Backstab ;
-- maîtrise des armes.
+Le **Réflexe** intervient dans la parade comme une aide passive liée à l'expérience de combat, mais ne remplace pas l'input du joueur.
 
-L'esquive automatique du Réflexe **ne doit pas déclencher automatiquement une parade** : ce sont deux automatismes et compétences distincts.
+Le joueur doit toujours déclencher la tentative de parade. Le niveau de Réflexe peut ensuite modifier la **tolérance de la fenêtre de parade** : plus le personnage est expérimenté, plus il peut anticiper légèrement l'impact.
+
+```text
+Réflexe faible
+→ fenêtre de parade très exigeante
+
+Réflexe moyen
+→ fenêtre légèrement plus permissive
+
+Réflexe élevé
+→ fenêtre nettement plus permissive
+```
+
+Le Réflexe ne doit pas fournir une parade automatique complète. Cela préserve la maîtrise du joueur et différencie clairement :
+
+```text
+Esquive automatique
+→ automatisme possible selon le Réflexe
+
+Parade réflexe
+→ assistance au timing, input toujours requis
+```
+
+La tolérance peut également être influencée par la **familiarité de combat** : un personnage très expérimenté contre une famille d'attaques peut mieux anticiper celle-ci qu'une attaque totalement inconnue. Cette familiarité doit rester data-driven et ne doit pas rendre les nouveaux ennemis trivialement prévisibles.
+
+### Saut arrière et parade
+
+Le saut arrière et la parade restent deux réponses défensives différentes. Une tentative de parade ne doit pas déclencher automatiquement un saut arrière. Les deux peuvent cependant être enchaînés selon les fenêtres de récupération et l'Endurance.
 
 ## Blocage vs parade vs esquive
 
@@ -146,3 +167,4 @@ Les effets doivent pouvoir être définis comme données et composés sans modif
 6. Une parade réussie doit pouvoir créer une ouverture de riposte.
 7. Les attaques non parables doivent être définissables par données.
 8. Les valeurs finales sont réservées à l'équilibrage du prototype.
+9. Le Réflexe peut assister la parade par la fenêtre de timing, mais ne doit pas la déclencher automatiquement.
