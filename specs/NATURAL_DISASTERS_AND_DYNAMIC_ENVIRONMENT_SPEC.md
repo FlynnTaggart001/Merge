@@ -29,6 +29,7 @@ Le système doit pouvoir gérer au minimum :
 - foudre / tonnerre ;
 - pluies torrentielles ;
 - glissements de terrain ;
+- **activité et éruptions volcaniques** ;
 - autres catastrophes naturelles futures sans modifier le cœur du système.
 
 Les phénomènes peuvent être rares, régionaux, saisonniers ou dépendants de conditions spécifiques. Les valeurs exactes ne sont pas figées.
@@ -44,306 +45,269 @@ Un tremblement de terre peut provoquer :
 - fissures / dommages environnementaux ;
 - destruction ou affaiblissement de structures ;
 - glissements de terrain dans les zones instables ;
-- modification temporaire de l'accessibilité.
+- modification temporaire de l'accessibilité ;
+- **perturbation ou activation d'un volcan lorsque les conditions géologiques prévues sont réunies**.
 
 Les conséquences importantes doivent être persistantes lorsqu'elles modifient réellement le WorldState.
 
-## 4. Tornades
+## 4. Volcan et réveil volcanique
 
-Les tornades doivent être des phénomènes mobiles et localisés.
+Le monde peut contenir un ou plusieurs volcans situés dans des régions montagneuses.
 
-Elles peuvent :
-- se déplacer selon une trajectoire ;
-- modifier leur intensité ;
-- repousser ou soulever des objets et entités ;
-- endommager des structures ;
-- modifier localement la navigation et la visibilité ;
-- provoquer ou aggraver des dégâts environnementaux.
-
-Le système doit privilégier une simulation abstraite et des effets matérialisés autour du joueur afin de préserver les performances.
-
-## 5. Feux de forêt
-
-Le feu doit être un phénomène **propagatif** plutôt qu'une simple zone de dégâts.
+Un volcan possède un état pouvant évoluer :
 
 ```text
-Source d'ignition
+Dormant
+  ↓
+Dormance active / Pression interne
+  ↓
+Activité accrue
+  ↓
+Signes précurseurs
+  ↓
+Éruption
+  ↓
+Coulées / projections / fumées / chaleur
+  ↓
+Phase post-éruptive
+  ↓
+Refroidissement / nouvelle stabilité
+```
+
+### 4.1 Déclenchement par événements naturels
+
+Un volcan ne doit pas forcément se réveiller uniquement selon un timer.
+
+Un **tremblement de terre** suffisamment important, proche et compatible avec l'état du volcan peut augmenter sa pression d'activité et provoquer une transition vers un état plus actif.
+
+```text
+Séisme régional
       ↓
-Combustion
+Évaluation de la proximité / magnitude / état du volcan
       ↓
-Propagation selon vent / sécheresse / végétation
+Impact géologique
       ↓
+Pression volcanique ↑
+      ↓
+Activité accrue
+      ↓
+Signes précurseurs
+      ↓
+Éruption possible
+```
+
+La règle ne doit pas être déterministe : un séisme compatible peut **augmenter la probabilité** d'un réveil sans garantir une éruption à chaque fois.
+
+D'autres événements géologiques futurs pourront également influencer l'activité du volcan via le même système d'événements.
+
+### 4.2 Signes précurseurs
+
+Les signes précurseurs peuvent inclure :
+
+- fumées ou vapeur ;
+- grondements ;
+- secousses locales ;
+- chaleur accrue ;
+- changements de sources ou d'eau selon le design ;
+- comportement inhabituel de la faune ;
+- modifications locales de l'environnement.
+
+Ces signes peuvent avertir le joueur et les PNJ sans révéler immédiatement la conséquence finale.
+
+## 5. Coulées de lave
+
+Une éruption peut générer une ou plusieurs **coulées de lave** suivant le relief.
+
+La lave doit :
+
+- suivre la topographie autant que possible ;
+- ralentir ou s'arrêter selon la pente, le terrain et les obstacles ;
+- produire des zones de chaleur et de danger ;
+- détruire ou transformer certains éléments de l'environnement ;
+- pouvoir déclencher des incendies ;
+- pouvoir obstruer des passages ;
+- pouvoir remplir progressivement des creux et certains fonds de ravins ;
+- créer de nouvelles surfaces dangereuses après refroidissement.
+
+Le chemin exact de la lave doit être déterminé par les données de terrain/région plutôt que par un tracé arbitraire.
+
+## 6. Lave et incendies
+
+Une coulée de lave peut enflammer la végétation, les structures ou d'autres matériaux combustibles compatibles :
+
+```text
+Éruption
+   ↓
+Lave
+   ↓
+Contact avec végétation / structures combustibles
+   ↓
 Incendie
-      ↓
-Extinction / manque de combustible
+   ↓
+Feu de forêt / destruction locale
 ```
 
-Le feu doit pouvoir affecter :
-- végétation ;
-- créatures ;
-- PNJ ;
+Le système doit fusionner avec la propagation des feux de forêt déjà prévue.
+
+## 7. Lave et ravins
+
+Les ravins, vallées et dépressions du terrain sont des zones importantes pour la simulation des coulées.
+
+Une coulée peut descendre dans un ravin, s'accumuler dans une dépression, former une zone de lave temporairement active, refroidir et solidifier progressivement et modifier durablement certains itinéraires selon les possibilités techniques du prototype.
+
+Le jeu doit distinguer :
+
+```text
+Lave active
+→ dégâts extrêmes / chaleur / zone interdite
+
+Lave refroidissante
+→ danger résiduel / température / accès limité
+
+Roche solidifiée
+→ nouvelle surface / modification du terrain
+```
+
+## 8. Zones de danger dynamiques
+
+Les catastrophes doivent pouvoir créer des `DynamicHazardZone` persistantes :
+
+```text
+Volcan
+ ↓
+Coulée de lave
+ ↓
+DynamicHazardZone
+ ├── BurnDamage
+ ├── ExtremeHeat
+ ├── NavigationRestriction
+ ├── FirePropagation
+ └── TerrainChange
+```
+
+Les zones de danger doivent être connues du système d'IA, du système de navigation, du joueur, des quêtes et de la sauvegarde du monde lorsque nécessaire.
+
+## 9. Interactions entre catastrophes
+
+Les phénomènes peuvent se déclencher ou amplifier mutuellement :
+
+```text
+Séisme → instabilité du terrain → glissement de terrain
+Séisme → impact volcanique → réveil possible du volcan
+Éruption → lave → feu de forêt
+Pluie torrentielle → terrain saturé → glissement / inondation
+Foudre → végétation inflammable → incendie
+```
+
+Ces chaînes sont pilotées par des événements et des conditions plutôt que par des scripts uniques.
+
+## 10. Impact sur le monde
+
+Une catastrophe peut modifier :
+- terrain et passages ;
+- routes ;
 - bâtiments ;
-- ressources ;
-- visibilité ;
-- qualité de certaines zones ;
-- équilibre écologique.
-
-Un incendie important peut modifier durablement une région : habitat détruit, population déplacée, ressources perdues, espèces favorisées ou pénalisées.
-
-Le feu de forêt est donc connecté à `EcologySystem` et `WorldPersistence`.
-
-## 6. Foudre et tonnerre
-
-La foudre doit pouvoir être associée aux conditions météorologiques.
-
-Elle peut :
-- causer des dégâts ;
-- enflammer certains matériaux ;
-- provoquer des feux de forêt ;
-- perturber certaines activités ;
-- produire des événements environnementaux.
-
-Le tonnerre est un événement sonore et atmosphérique distinct de la résolution des dégâts de foudre.
-
-## 7. Pluies torrentielles
-
-Les pluies fortes peuvent modifier progressivement l'environnement :
-
-```text
-Pluie intense
-   ↓
-Sol saturé
-   ↓
-Accumulation / ruissellement
-   ↓
-Zones boueuses / eau montante
-   ↓
-Érosion / inondation / instabilité
-```
-
-Conséquences possibles :
-- visibilité réduite ;
-- bruit ambiant modifié ;
-- déplacement plus difficile ;
-- débit des rivières augmenté ;
-- inondation locale ;
-- terrains fragilisés ;
-- déclenchement ou aggravation de glissements de terrain.
-
-## 8. Glissements de terrain
-
-Un glissement de terrain peut être déclenché ou favorisé par :
-- pluie intense ;
-- tremblement de terre ;
-- pente ;
-- saturation du sol ;
-- modification du terrain ;
-- destruction de végétation.
-
-Il peut :
-- bloquer une route ;
-- ensevelir une zone ;
-- détruire des structures ;
-- modifier une pente ou un passage ;
-- créer ou supprimer un accès.
-
-Le changement du terrain doit être enregistré dans le WorldState lorsqu'il est persistant.
-
-## 9. Interactions entre phénomènes
-
-Les catastrophes doivent pouvoir se déclencher ou se renforcer mutuellement.
-
-Exemple :
-
-```text
-Orage
-  ↓
-Foudre
-  ↓
-Feu de forêt
-  ↓
-Végétation détruite
-  ↓
-Sol fragilisé
-  ↓
-Pluie torrentielle
-  ↓
-Glissement de terrain
-```
-
-Autre exemple :
-
-```text
-Tremblement de terre
-  ↓
-Terrain instable
-  ↓
-Rupture / éboulement
-  ↓
-Rivière obstruée
-  ↓
-Inondation locale
-```
-
-Le système ne doit pas nécessiter un script unique pour chaque chaîne d'événements.
-
-## 10. Relations avec l'écologie
-
-Les catastrophes naturelles peuvent modifier :
-
-- populations animales ;
-- zones de reproduction ;
-- ressources alimentaires ;
 - végétation ;
+- ressources ;
+- populations animales ;
 - migration ;
-- prédation ;
-- capacité écologique d'une région.
+- territoires ;
+- factions ;
+- PNJ ;
+- quêtes ;
+- zones de danger ;
+- navigation IA.
+
+Les conséquences permanentes doivent être sauvegardées avec le `WorldState` lorsque leur effet est durable.
+
+## 11. Écologie
+
+Les événements naturels doivent être intégrés à l'écologie.
 
 Exemple :
 
 ```text
-Feu de forêt
-   ↓
-Habitat détruit
-   ↓
-Population locale ↓
-   ↓
-Migration
-   ↓
-Nouvelle pression écologique ailleurs
+Éruption
+ ↓
+Forêt détruite
+ ↓
+Herbivores déplacés / morts
+ ↓
+Prédateurs déplacés
+ ↓
+Nouvel équilibre écologique
 ```
 
-Ces effets doivent alimenter le système écologique plutôt que d'être simulés indépendamment.
-
-## 11. Relations avec les PNJ et factions
-
-Les catastrophes peuvent provoquer :
-- évacuations ;
-- déplacements ;
-- changements de routes ;
-- pénuries ;
-- perte de territoire ;
-- destruction de villages ;
-- changements de réputation ou de pouvoir si le game design le prévoit.
-
-Les quêtes et dialogues réactifs doivent pouvoir consulter les événements naturels importants.
-
-## 12. Persistance
-
-Une catastrophe qui modifie réellement le monde doit pouvoir laisser une trace persistante.
-
-Exemples :
-- forêt brûlée ;
-- bâtiment détruit ;
-- route ensevelie ;
-- terrain effondré ;
-- ressource détruite ;
-- population déplacée.
-
-Le système doit distinguer :
+## 12. Architecture
 
 ```text
-Effet temporaire
-→ météo / visibilité / vent / secousses
+NaturalEventSystem
+├── Earthquake
+├── Tornado
+├── Wildfire
+├── Lightning
+├── TorrentialRain
+├── Flood
+├── Landslide
+├── VolcanicEruption
+└── FutureNaturalEvents[*]
 
-Effet persistant
-→ destruction / terrain modifié / population déplacée / ressources perdues
+VolcanoSystem
+├── VolcanoState
+├── GeologicalTriggers
+│   ├── EarthquakeInfluence
+│   └── FutureGeologicalInfluences[*]
+├── Precursors
+├── EruptionEvent
+├── LavaFlowSimulation
+├── HeatZones
+├── Ash / Smoke
+└── Cooling / Solidification
+
+DynamicHazardSystem
+├── Burn
+├── ExtremeHeat
+├── Collapse
+├── HazardZone
+└── NavigationImpact
 ```
 
-La mort du joueur ne restaure jamais automatiquement ces changements.
+La simulation des événements hors zone active doit pouvoir être abstraite et régionale. Les effets visuels détaillés peuvent être matérialisés uniquement lorsque la zone est chargée.
 
-## 13. Simulation et performances
+## 13. Persistance
 
-Le système doit fonctionner par régions et niveaux de détail.
+Les catastrophes ne doivent pas réinitialiser automatiquement le monde après chargement.
 
-```text
-Simulation abstraite régionale
-        ↓
-Détermination des zones affectées
-        ↓
-Matérialisation détaillée autour du joueur
-```
+Selon le phénomène, la sauvegarde peut conserver : état du volcan, activité déclenchée par un séisme, zones incendiées, terrain modifié, zones de lave, passages bloqués, nouvelles zones de danger, conséquences écologiques et historique des événements.
 
-Il ne faut pas simuler chaque particule, arbre ou objet du monde en permanence.
+## 14. Tests prioritaires
 
-Les événements hors zone active peuvent être résolus statistiquement ou par batches lorsque cela ne compromet pas la cohérence du WorldState.
+- séisme proche d'un volcan dormant ;
+- séisme suffisamment puissant augmentant la probabilité d'activité ;
+- absence d'éruption lorsque les conditions ne sont pas remplies ;
+- accumulation de plusieurs signaux précurseurs ;
+- transition activité → éruption ;
+- génération de plusieurs coulées ;
+- suivi de la topographie ;
+- lave entrant dans un ravin ;
+- accumulation dans une dépression ;
+- déclenchement d'un feu de forêt ;
+- création d'une zone de danger ;
+- refroidissement / solidification ;
+- modification des chemins et navigation ;
+- impact sur une population animale ;
+- persistance après sauvegarde/chargement ;
+- interaction séisme → glissement ;
+- interaction pluie → terrain instable.
 
-## 14. Architecture cible
+## 15. Principes
 
-```text
-NaturalEnvironmentSystem
-├── WeatherSystem
-│   ├── Rain
-│   ├── Storm
-│   ├── Wind
-│   └── Lightning
-│
-├── NaturalDisasterSystem
-│   ├── Earthquake
-│   ├── Tornado
-│   ├── Wildfire
-│   ├── TorrentialRain
-│   └── Landslide
-│
-├── PropagationSystem
-│   ├── FireSpread
-│   ├── FloodSpread
-│   └── TerrainInstability
-│
-└── WorldImpactResolver
-    ├── Damage
-    ├── Destruction
-    ├── EcologyImpact
-    ├── FactionImpact
-    └── Persistence
-```
-
-Le système communique avec `WorldEventSystem`, `EcologySystem`, `EnvironmentalDamageSystem`, `AquaticMovementSystem`, `FactionSystem`, `QuestSystem` et `WorldPersistence`.
-
-## 15. Événements à exposer
-
-Prévoir des événements génériques tels que :
-
-```text
-WeatherChanged
-StormStarted
-LightningStrike
-EarthquakeStarted
-EarthquakeEnded
-TornadoStarted
-TornadoEnded
-WildfireStarted
-WildfireSpread
-WildfireExtinguished
-TorrentialRainStarted
-FloodExpanded
-LandslideTriggered
-TerrainChanged
-NaturalDisasterImpact
-```
-
-## 16. Tests prioritaires
-
-- déclenchement régional d'un phénomène ;
-- propagation d'un feu ;
-- interaction vent / feu ;
-- foudre pouvant déclencher un incendie ;
-- pluie intense augmentant l'humidité du terrain ;
-- glissement provoqué par terrain instable ;
-- tremblement de terre affectant des structures ;
-- catastrophe modifiant une population animale ;
-- catastrophe modifiant une route ou une zone ;
-- persistance des dégâts environnementaux ;
-- cohérence hors zone chargée ;
-- absence de simulation inutile à chaque frame.
-
-## 17. Principes de conception
-
-1. Les catastrophes naturelles sont émergentes et data-driven.
-2. Elles doivent pouvoir interagir entre elles.
-3. Elles peuvent modifier durablement le monde.
-4. Elles peuvent modifier l'écosystème et les populations.
-5. Elles peuvent modifier le comportement des PNJ et les quêtes.
-6. Les effets temporaires et persistants doivent être séparés.
-7. Les valeurs de fréquence, intensité et propagation restent des paramètres de game design.
-8. La simulation doit être scalable et compatible avec World Partition.
+1. Une catastrophe naturelle est un événement systémique, pas seulement un effet visuel.
+2. Les phénomènes doivent pouvoir agir sur le monde de manière émergente.
+3. Les coulées de lave suivent autant que possible le relief.
+4. La lave peut déclencher des incendies et transformer des ravins/vallées.
+5. Un séisme peut augmenter la probabilité de réveil d'un volcan lorsque les conditions régionales sont réunies, sans rendre l'éruption automatique.
+6. Les conséquences durables doivent être compatibles avec le monde non régénératif.
+7. Les zones de danger doivent être utilisables par les autres systèmes du jeu.
+8. Les simulations hors zone active doivent rester abstraites lorsque possible pour préserver les performances.
+9. Les valeurs d'intensité, fréquence, vitesse, durée, seuils géologiques et dégâts sont des paramètres de game design à équilibrer dans Unreal.
