@@ -44,14 +44,7 @@ Les seuils, durées et effets exacts sont data-driven.
 
 Lorsque le personnage reste trop longtemps sans alimentation suffisante, il peut entrer dans un état `Malnourished` ou dans des paliers équivalents.
 
-Conséquences potentielles, à équilibrer :
-- récupération physique réduite ;
-- Endurance maximale ou récupération diminuée ;
-- faiblesse générale ;
-- capacité d'effort réduite ;
-- résistance aux blessures éventuellement diminuée ;
-- progression physique temporairement moins efficace ;
-- à un stade critique, perte de santé ou incapacité prolongée.
+Conséquences potentielles, à équilibrer : récupération physique réduite, Endurance maximale ou récupération diminuée, faiblesse générale, capacité d'effort réduite, résistance aux blessures éventuellement diminuée, progression physique temporairement moins efficace et, à un stade critique, perte de santé ou incapacité prolongée.
 
 Les effets doivent progresser graduellement plutôt que passer brutalement de normal à critique.
 
@@ -59,13 +52,7 @@ Les effets doivent progresser graduellement plutôt que passer brutalement de no
 
 Lorsque le personnage reste trop longtemps sans boire, il peut entrer dans un état `Dehydrated` ou dans des paliers équivalents.
 
-Conséquences potentielles, à équilibrer :
-- récupération d'Endurance réduite ;
-- consommation d'Endurance augmentée ;
-- efficacité des déplacements réduite ;
-- faiblesse générale ;
-- récupération des blessures ralentie ;
-- à un stade critique, dégâts progressifs ou incapacité.
+Conséquences potentielles, à équilibrer : récupération d'Endurance réduite, consommation d'Endurance augmentée, efficacité des déplacements réduite, faiblesse générale, récupération des blessures ralentie et, à un stade critique, dégâts progressifs ou incapacité.
 
 ### 2.3 Combinaison faim + déshydratation
 
@@ -85,9 +72,7 @@ Le système doit éviter une simple addition aveugle des pénalités : les effet
 
 ### 2.4 Récupération
 
-La récupération suit la consommation de ressources adaptées et le temps nécessaire au retour à l'équilibre.
-
-Une seule consommation ne doit pas forcément annuler immédiatement plusieurs niveaux d'état critique.
+La récupération suit la consommation de ressources adaptées et le temps nécessaire au retour à l'équilibre. Une seule consommation ne doit pas forcément annuler immédiatement plusieurs niveaux d'état critique.
 
 ## 3. Sommeil et fatigue
 
@@ -111,37 +96,19 @@ Fatigue importante
 
 ### 3.1 Effets du manque de sommeil
 
-Selon le niveau de fatigue, le personnage peut subir progressivement :
-- récupération d'Endurance réduite ;
-- régénération ou récupération physique diminuée ;
-- performances de mouvement légèrement réduites ;
-- concentration moins efficace ;
-- perception et temps de réaction affectés ;
-- efficacité en combat réduite ;
-- récupération des blessures ralentie ;
-- à un stade extrême, incapacité temporaire à maintenir certaines actions.
+Selon le niveau de fatigue, le personnage peut subir progressivement : récupération d'Endurance réduite, régénération ou récupération physique diminuée, performances de mouvement légèrement réduites, concentration moins efficace, perception et temps de réaction affectés, efficacité en combat réduite, récupération des blessures ralentie et, à un stade extrême, incapacité temporaire à maintenir certaines actions.
 
 Les effets précis restent à équilibrer et doivent éviter de rendre le jeu inutilement punitif.
 
 ### 3.2 Sommeil
 
-Le joueur doit pouvoir récupérer dans des contextes permettant réellement le repos, par exemple :
-- lit ;
-- campement ;
-- refuge ;
-- autres emplacements définis par le game design.
+Le joueur doit pouvoir récupérer dans des contextes permettant réellement le repos, par exemple : lit, campement, refuge ou autres emplacements définis par le game design.
 
 Les conditions de repos peuvent influencer la qualité du sommeil : sécurité, confort, environnement, perturbations, météo ou événements à proximité.
 
-Le sommeil peut restaurer progressivement :
-- fatigue ;
-- Endurance ;
-- certains états de récupération ;
-- éventuellement certaines blessures, selon leur nature.
+Le sommeil peut restaurer progressivement fatigue, Endurance, certains états de récupération et éventuellement certaines blessures, selon leur nature.
 
 ### 3.3 Sommeil et environnement
-
-Le monde peut affecter le repos :
 
 ```text
 Zone sûre + lit
@@ -162,13 +129,7 @@ Certaines montures peuvent posséder leurs propres besoins de repos ou de récup
 
 ## 4. Nourriture
 
-La nourriture peut :
-- restaurer progressivement l'énergie ou la condition physique ;
-- réduire la faim ;
-- fournir des effets temporaires ;
-- contribuer à la récupération naturelle ;
-- être transportée et stockée ;
-- avoir une durée de conservation selon le game design.
+La nourriture peut restaurer progressivement l'énergie ou la condition physique, réduire la faim, fournir des effets temporaires, contribuer à la récupération naturelle, être transportée et stockée et avoir une durée de conservation selon le game design.
 
 ```text
 FoodDefinition
@@ -182,9 +143,7 @@ FoodDefinition
 
 ## 5. Nourriture et monde vivant
 
-La nourriture doit être liée au monde : chasse, agriculture, récolte, pêche, élevage et ressources locales.
-
-Les catastrophes, destructions et variations écologiques peuvent influencer la disponibilité de nourriture.
+La nourriture doit être liée au monde : chasse, agriculture, récolte, pêche, élevage et ressources locales. Les catastrophes, destructions et variations écologiques peuvent influencer sa disponibilité.
 
 ## 6. Médecine
 
@@ -246,33 +205,11 @@ Region
 
 ### 9.1 Déclencheurs possibles
 
-Une zone peut augmenter le risque de certaines maladies selon :
-- eau contaminée ou de mauvaise qualité ;
-- climat chaud/humide ;
-- froid extrême ;
-- marécages ;
-- forte densité animale ;
-- parasites ;
-- insectes/vecteurs ;
-- mauvaises conditions sanitaires ;
-- cadavres ou décomposition ;
-- événements écologiques ou catastrophes ;
-- proximité d'une population infectée lorsque la transmission est prévue.
+Une zone peut augmenter le risque de certaines maladies selon : eau contaminée ou de mauvaise qualité, climat chaud/humide, froid extrême, marécages, forte densité animale, parasites, insectes/vecteurs, mauvaises conditions sanitaires, cadavres ou décomposition, événements écologiques ou catastrophes, proximité d'une population infectée lorsque la transmission est prévue.
 
 ### 9.2 Maladies liées aux régions
 
-Chaque région peut posséder un **pool de maladies** avec :
-
-- probabilité d'exposition ;
-- conditions d'apparition ;
-- délai d'incubation ;
-- contagiosité éventuelle ;
-- durée ;
-- symptômes / états ;
-- gravité ;
-- résistance ou immunité ;
-- traitements possibles ;
-- moyens de prévention.
+Chaque région peut posséder un **pool de maladies** avec probabilité d'exposition, conditions d'apparition, délai d'incubation, contagiosité éventuelle, durée, symptômes/états, gravité, résistance ou immunité, traitements possibles et moyens de prévention.
 
 ```text
 Zone A
@@ -316,29 +253,76 @@ Nouveaux vecteurs / nouvelles zones d'exposition
 
 Une catastrophe n'ajoute donc pas artificiellement une maladie : elle modifie les **conditions qui déterminent le risque**.
 
-### 9.4 Diagnostic et Médecine
+### 9.4 Diagnostic diégétique — aucune indication directe de la maladie
 
-La Médecine peut permettre :
-- reconnaître une maladie ;
-- réduire l'incertitude sur son origine ;
-- choisir un traitement adapté ;
-- stabiliser un malade ;
-- améliorer l'efficacité d'un traitement non magique.
+Le jeu ne doit **jamais afficher directement au joueur le nom de la maladie dont il souffre** dans une notification, une étiquette de HUD, une fenêtre automatique ou un texte système du type `Maladie : X`.
 
-Une maladie non diagnostiquée peut être plus difficile à traiter correctement.
+L'état réel existe dans les données du personnage, mais le joueur n'en connaît pas automatiquement l'identité exacte.
+
+Le joueur peut obtenir un diagnostic par deux voies :
+
+```text
+Symptômes observables
+        ↓
+      Joueur
+     ↙       ↘
+Médecine     Médecin
+   ↓             ↓
+Diagnostic     Diagnostic
+personnel      professionnel
+```
+
+#### Autodiagnostic
+
+Le joueur peut tenter de reconnaître lui-même la maladie grâce à la compétence **Médecine**.
+
+Plus la compétence est élevée :
+- plus les symptômes pertinents sont faciles à interpréter ;
+- plus le nombre de maladies possibles est réduit ;
+- plus le diagnostic est fiable ;
+- plus les maladies rares ou atypiques deviennent identifiables.
+
+Une compétence faible peut produire un diagnostic incertain ou erroné. Le système doit permettre un résultat du type « hypothèse » plutôt qu'une révélation certaine.
+
+#### Diagnostic par un médecin
+
+Un PNJ médecin peut examiner le personnage et fournir un diagnostic. La qualité du diagnostic peut dépendre de sa propre compétence, de son expérience, de ses connaissances disponibles et des informations observables.
+
+Un médecin peut donc être plus fiable que l'autodiagnostic d'un personnage peu compétent.
+
+#### Symptômes
+
+Les symptômes doivent être présentés **par le gameplay et le monde**, pas par une notification de diagnostic :
+- fièvre ou état de chaleur ;
+- faiblesse ;
+- toux ;
+- vomissements ;
+- douleurs ;
+- vertiges ;
+- fatigue inhabituelle ;
+- altérations de perception ;
+- autres symptômes spécifiques définis par chaque maladie.
+
+La présentation exacte peut combiner animation, comportement, effets visuels/sonores, restrictions d'action ou feedback contextuel, sans révéler automatiquement l'identité de la maladie.
+
+#### Traitement et incertitude
+
+Le traitement doit pouvoir être tenté avant diagnostic complet, mais un mauvais traitement peut être inefficace, perdre des ressources ou retarder la guérison selon le design final.
+
+Le joueur doit donc pouvoir choisir entre :
+
+```text
+Observer les symptômes
+→ tenter son propre diagnostic
+→ consulter un médecin
+→ choisir un traitement
+```
+
+Le système reste entièrement data-driven.
 
 ### 9.5 Prévention
 
-Le système peut prévoir des moyens de prévention :
-- eau potable ;
-- cuisson ;
-- hygiène ;
-- protection contre les vecteurs ;
-- vêtements adaptés ;
-- éviter certaines zones ;
-- traitements préventifs futurs.
-
-Ces mécanismes restent data-driven.
+Le système peut prévoir des moyens de prévention : eau potable, cuisson, hygiène, protection contre les vecteurs, vêtements adaptés, éviter certaines zones et traitements préventifs futurs.
 
 ## 10. Séparation avec la magie
 
@@ -421,7 +405,9 @@ DiseaseSystem
 ├── Transmission
 ├── SymptomState
 ├── Severity
-├── Diagnosis
+├── HiddenDiagnosisState
+├── SelfDiagnosis
+├── PhysicianDiagnosis
 ├── TreatmentResolver
 └── Prevention
 
@@ -455,13 +441,15 @@ FoodSystem
 - cumul faim + déshydratation + fatigue ;
 - soin avec Médecine faible ;
 - amélioration de Médecine ;
-- diagnostic d'une maladie ;
+- symptômes visibles sans révélation directe du nom ;
+- autodiagnostic avec Médecine faible ;
+- autodiagnostic avec Médecine élevée ;
+- diagnostic fiable par un médecin ;
 - maladie propre à une région ;
 - absence d'une maladie hors de ses conditions ;
 - incubation et transmission ;
 - impact d'une inondation sur le risque sanitaire ;
 - traitement correct vs incorrect ;
-- progression anti-farming ;
 - séparation Médecine / magie ;
 - besoins et maladies d'une monture si activés ;
 - pénurie alimentaire/hydrique régionale ;
@@ -470,6 +458,4 @@ FoodSystem
 
 ## 18. Ce qui reste ouvert
 
-Les règles exactes de faim, hydratation, sommeil, seuils, durées, maladies, symptômes, traitements, vecteurs, prévention, blessures détaillées, médicaments, effets nutritionnels, aliments, plantes et traitements restent des décisions de game design.
-
-La compétence **Médecine**, les besoins physiologiques, le sommeil, les maladies régionales et la séparation avec la magie sont désormais des contraintes d'architecture.
+Les règles exactes de faim, hydratation, sommeil, seuils, durées, maladies, symptômes, probabilités, méthodes de traitement, degré d'incertitude du diagnostic, qualité des médecins, blessures détaillées, médicaments, effets nutritionnels, aliments, plantes et traitements restent des décisions de game design. La compétence **Médecine**, les besoins physiologiques, le diagnostic diégétique et la séparation avec la magie sont des contraintes d'architecture.
