@@ -100,8 +100,6 @@ DodgeSystem
 └── FutureDodgeTypes[*]
 ```
 
-Le nom gameplay définitif entre « saut arrière », « backstep » ou une variante pourra être choisi pendant le prototype sans modifier l'architecture centrale.
-
 ## 5. Combat et dégâts
 
 Le combat physique utilise des définitions data-driven d'armes et de familles. Le système central doit gérer :
@@ -111,7 +109,9 @@ Le combat physique utilise des définitions data-driven d'armes et de familles. 
 - résistances ;
 - armure ;
 - blocage ;
-- parade si retenue ;
+- **parade active à timing précis** ;
+- riposte après parade réussie ;
+- attaques imparables/non parables définies par données ;
 - stagger / équilibre ;
 - hit reactions ;
 - attaques légères/lourdes ;
@@ -120,6 +120,25 @@ Le combat physique utilise des définitions data-driven d'armes et de familles. 
 - interruptions ;
 - mort ;
 - effets et états.
+
+### 5.1 Défense active
+
+Le système distingue trois réponses défensives :
+
+```text
+Blocage
+→ absorbe/réduit l'attaque selon les règles d'équipement.
+
+Parade
+→ timing précis avant impact, pouvant annuler/réduire le coup et ouvrir une riposte.
+
+Esquive
+→ évitement spatial via le DodgeSystem.
+```
+
+La parade doit être résolue par le même `CombatResolver` que les autres interactions et produire des événements comme `SuccessfulParry` ou `ParryFailed`.
+
+Une parade réussie ne doit pas être déclenchée automatiquement par le système de Réflexe.
 
 Le système d'esquive automatique du Réflexe utilise le même pipeline de résolution que les esquives manuelles et ne doit pas créer une seconde mécanique de combat incompatible.
 
@@ -283,6 +302,8 @@ PopulationCollapse
 Migration
 WorldDiscovery
 QuestCompleted
+SuccessfulParry
+ParryFailed
 ```
 
 Les événements importants peuvent alimenter un historique du monde pour les sauvegardes et futurs systèmes narratifs.
@@ -322,7 +343,10 @@ Les systèmes critiques doivent être conçus pour être testables indépendamme
 - événements mondiaux ;
 - conditions de quêtes ;
 - Réflexe et probabilité d'esquive automatique ;
-- variantes d'esquive dont le saut arrière.
+- variantes d'esquive dont le saut arrière ;
+- fenêtre et résolution de parade ;
+- attaques parables/non parables ;
+- ouverture de riposte après parade.
 
 Les tests de performance et de gameplay réels dans Unreal restent nécessaires après implémentation.
 
@@ -335,6 +359,7 @@ Ne pas figer dans cette architecture :
 - valeurs de dégâts ;
 - courbes de progression ;
 - courbe et probabilité exactes du Réflexe ;
+- fenêtre exacte de parade ;
 - nombre définitif de factions ;
 - bestiaire final ;
 - contenu des quêtes ;
@@ -352,15 +377,16 @@ Ces éléments sont des données de game design, pas des contraintes du cœur te
 4. Combat + Damage + Effects
 5. Weapons + Weapon Mastery
 6. Dodge / BackwardJump / Crouch / Stealth / Backstab
-7. Reflex System + automatic reaction prototype
-8. Inventory + Equipment
-9. AI + Perception
-10. Save/Load + World Persistence
-11. Time + World Events
-12. Ecology + Population Simulation
-13. Factions + Reputation
-14. Quests + Reactive Dialogue
-15. Streaming + Profiling + Optimization
+7. Parry / Block / Defense reactions
+8. Reflex System + automatic reaction prototype
+9. Inventory + Equipment
+10. AI + Perception
+11. Save/Load + World Persistence
+12. Time + World Events
+13. Ecology + Population Simulation
+14. Factions + Reputation
+15. Quests + Reactive Dialogue
+16. Streaming + Profiling + Optimization
 ```
 
 Chaque étape doit produire un prototype testable avant d'augmenter la complexité.
