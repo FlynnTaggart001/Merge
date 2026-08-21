@@ -8,7 +8,7 @@
 
 ## 1. Objectif
 
-Cette spécification formalise les nouvelles décisions de gameplay concernant le déplacement, la furtivité, le Backstab, l'écologie dynamique et la persistance irréversible du monde.
+Cette spécification formalise les décisions de gameplay concernant le déplacement, la progression par utilisation, la furtivité, le Backstab, l'écologie dynamique et la persistance irréversible du monde.
 
 Ces systèmes sont **spécifiés mais pas encore entièrement implémentés**. Leur architecture doit être prévue avant leur développement afin d'éviter une refonte ultérieure.
 
@@ -26,13 +26,14 @@ Les états de mouvement prévus comprennent :
 - Roulade / esquive
 - Saut
 
-La roulade est une mécanique de gameplay à part entière et non une simple animation. Elle devra pouvoir intégrer ultérieurement :
+La roulade est une mécanique de gameplay à part entière et non une simple animation. Elle devra intégrer :
 
 - direction basée sur l'input ;
 - coût d'endurance ;
-- fenêtre d'invulnérabilité ;
-- restrictions d'actions pendant la roulade ;
-- transitions cohérentes avec combat et furtivité.
+- fenêtre d'invulnérabilité à équilibrer ;
+- restrictions d'actions pendant l'esquive ;
+- transitions cohérentes avec combat et furtivité ;
+- progression de l'Agilité liée à son utilisation réussie.
 
 ---
 
@@ -79,7 +80,102 @@ L'architecture doit permettre différentes armes, animations, compétences et ef
 
 ---
 
-## 5. Bestiaire dynamique
+## 5. Progression par utilisation
+
+Merge utilise une progression organique pour plusieurs aptitudes fondamentales : les compétences progressent principalement parce que le joueur les utilise réellement.
+
+### Endurance
+
+L'Endurance progresse progressivement grâce aux activités physiques du joueur, notamment :
+
+- courir ;
+- se battre ;
+- sauter ;
+- effectuer des efforts physiques répétés.
+
+L'Endurance ne doit pas simplement augmenter parce que le joueur gagne un niveau abstrait. Son évolution doit être liée à l'activité physique réellement effectuée.
+
+### Agilité
+
+L'Agilité progresse progressivement grâce à l'utilisation de mouvements demandant de la mobilité et du timing, notamment :
+
+- esquiver / rouler ;
+- sauter ;
+- réussir des mouvements d'évitement.
+
+Le système d'esquive est donc une mécanique fondamentale et une source directe de progression de l'Agilité.
+
+### Défense
+
+La Défense progresse progressivement lorsque le joueur subit des dégâts.
+
+L'objectif est de créer une progression cohérente avec l'expérience réelle du personnage face au danger, sans permettre une montée artificielle par des actions sans risque.
+
+Le système devra éviter les abus évidents tels que l'auto-infligement contrôlé de dégâts ou les boucles de farming artificielles.
+
+### Magie
+
+La progression magique est séparée par domaine de magie.
+
+Chaque domaine disposera de sa propre progression et augmentera principalement à force d'utiliser effectivement les capacités appartenant à ce domaine.
+
+Exemple conceptuel :
+
+`Utilisation répétée d'un domaine → maîtrise progressive de ce domaine`
+
+Les domaines de magie sont **encore en cours de définition**. L'architecture doit donc être générique et ne doit pas figer une liste de domaines maintenant.
+
+La progression devra pouvoir supporter plusieurs domaines indépendants sans modifier le code central à chaque ajout d'un nouveau domaine.
+
+### Règle générale
+
+La progression par utilisation doit rester mesurable, équilibrable et persistante. Elle ne doit pas devenir une simple multiplication automatique de statistiques à chaque action.
+
+---
+
+## 6. Relations entre progression et gameplay
+
+Les aptitudes progressives doivent renforcer les comportements qu'elles récompensent.
+
+Exemples :
+
+```text
+Course / combat / saut répétés
+        ↓
+    progression Endurance
+        ↓
+    meilleure capacité physique
+```
+
+```text
+Esquives / sauts réussis
+        ↓
+    progression Agilité
+        ↓
+    mobilité accrue
+```
+
+```text
+Dégâts réellement subis
+        ↓
+    progression Défense
+        ↓
+    amélioration défensive
+```
+
+```text
+Utilisation d'un domaine magique
+        ↓
+    progression de CE domaine
+        ↓
+    maîtrise accrue
+```
+
+Le système doit empêcher une progression incohérente où une action sans rapport ferait progresser une aptitude.
+
+---
+
+## 7. Bestiaire dynamique
 
 Les espèces possèdent des populations simulées plutôt qu'un nombre fixe d'Actors permanents.
 
@@ -96,7 +192,7 @@ Chaque espèce peut définir notamment :
 
 ---
 
-## 6. Relations prédateur / proie
+## 8. Relations prédateur / proie
 
 Les populations s'influencent mutuellement.
 
@@ -121,7 +217,7 @@ Il doit prendre en compte autant que possible :
 
 ---
 
-## 7. Extinction locale
+## 9. Extinction locale
 
 Une espèce peut disparaître d'une région.
 
@@ -133,7 +229,7 @@ Si aucune population source n'existe, l'espèce reste absente.
 
 ---
 
-## 8. Monde non régénératif
+## 10. Monde non régénératif
 
 Règle fondamentale : **le monde ne se réinitialise pas spontanément**.
 
@@ -153,7 +249,7 @@ Exemple : un arbre coupé ne revient pas, mais des graines existantes peuvent pr
 
 ---
 
-## 9. Conséquences écologiques en chaîne
+## 11. Conséquences écologiques en chaîne
 
 Les actions du joueur peuvent produire des effets indirects.
 
@@ -165,7 +261,7 @@ Les systèmes doivent donc permettre des conséquences émergentes sans nécessi
 
 ---
 
-## 10. Simulation abstraite et Actors Unreal
+## 12. Simulation abstraite et Actors Unreal
 
 La population simulée est distincte des créatures matérialisées dans le monde.
 
@@ -198,7 +294,7 @@ EcologySystem
 
 ---
 
-## 11. Persistance du monde
+## 13. Persistance du monde
 
 La sauvegarde doit être centrée sur le monde et pas uniquement sur le joueur.
 
@@ -219,7 +315,7 @@ Le chargement doit restaurer les conséquences persistantes du monde.
 
 ---
 
-## 12. Plusieurs mondes
+## 14. Plusieurs mondes
 
 Une nouvelle partie ne détruit pas automatiquement les mondes existants.
 
@@ -244,7 +340,7 @@ Le joueur doit pouvoir revenir dans un ancien monde et retrouver son état anté
 
 ---
 
-## 13. Architecture logicielle cible
+## 15. Architecture logicielle cible
 
 La conception doit permettre une séparation claire :
 
@@ -255,6 +351,11 @@ MergeCharacter
 │   ├── Crouching
 │   ├── Rolling
 │   └── Jumping
+├── Progression
+│   ├── Endurance
+│   ├── Agility
+│   ├── Defense
+│   └── MagicDomains
 ├── Stealth
 │   ├── Visibility
 │   ├── Noise
@@ -262,6 +363,7 @@ MergeCharacter
 │   └── BackstabEligibility
 └── Combat
     ├── Attack
+    ├── Dodge / Roll
     ├── Backstab
     └── Damage
 
@@ -276,11 +378,25 @@ World Systems
 └── Destruction
 ```
 
+La progression doit être découplée des systèmes d'action afin que les événements de gameplay puissent enregistrer leur utilisation sans que chaque système connaisse les détails internes de progression.
+
+Exemple conceptuel :
+
+```text
+Action réussie
+    ↓
+Progression Event
+    ↓
+Progression System
+    ↓
+Aptitude concernée
+```
+
 Les systèmes fondamentaux devront être développés en C++ et rester suffisamment découplés pour permettre l'exposition de paramètres de gameplay aux outils éditables d'Unreal lorsque pertinent.
 
 ---
 
-## 14. Règles de conception
+## 16. Règles de conception
 
 1. Aucun respawn global artificiel ne doit restaurer l'ancien état du monde.
 2. Une population simulée n'est pas équivalente à un nombre d'Actors Unreal.
@@ -288,22 +404,29 @@ Les systèmes fondamentaux devront être développés en C++ et rester suffisamm
 4. Les conséquences du joueur doivent pouvoir modifier l'écosystème indirectement.
 5. Le Backstab doit dépendre de la furtivité et du positionnement.
 6. L'accroupissement doit être intégré au système de furtivité.
-7. La roulade doit être un état de gameplay.
-8. Les paramètres d'équilibrage ne doivent pas être figés avant le prototype.
-9. Aucun système complexe ne doit être implémenté prématurément simplement pour satisfaire cette spécification.
+7. La roulade / esquive doit être un état de gameplay et une source de progression de l'Agilité.
+8. L'Endurance doit progresser avec les efforts physiques réels : course, combat, saut et activités comparables.
+9. La Défense doit progresser avec les dégâts réellement subis, avec des protections contre le farming artificiel.
+10. La magie doit progresser indépendamment par domaine, sans figer les domaines avant leur validation.
+11. Les paramètres d'équilibrage ne doivent pas être figés avant le prototype.
+12. Aucun système complexe ne doit être implémenté prématurément simplement pour satisfaire cette spécification.
 
 ---
 
-## 15. État d'implémentation
+## 17. État d'implémentation
 
 | Système | État |
 |---|---|
 | Troisième personne | Fondation existante |
 | Accroupissement | À implémenter |
-| Roulade | À implémenter |
+| Roulade / esquive | À implémenter |
 | Furtivité | Spécifiée, à prototyper |
 | Détection progressive | Spécifiée, à prototyper |
 | Backstab | Spécifié, à prototyper |
+| Progression Endurance | Spécifiée, à architecturer |
+| Progression Agilité | Spécifiée, à architecturer |
+| Progression Défense | Spécifiée, à architecturer |
+| Progression par domaines magiques | Spécifiée, domaines à définir |
 | Reproduction des espèces | Spécifiée, à architecturer |
 | Prédateur / proie | Spécifié, à architecturer |
 | Extinction locale | Spécifiée |
@@ -311,4 +434,4 @@ Les systèmes fondamentaux devront être développés en C++ et rester suffisamm
 | Persistance du monde | Spécifiée, à architecturer |
 | Plusieurs mondes | Spécifié |
 
-**Ce document ne constitue pas une déclaration d'implémentation.**
+**Ce document ne constitue pas une déclaration d'implémentation complète.**
