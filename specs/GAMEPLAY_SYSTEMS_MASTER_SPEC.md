@@ -62,13 +62,47 @@ Principes :
 - l'automatisme doit respecter les mêmes règles de collision, animation et invulnérabilité que l'esquive manuelle ;
 - le système doit empêcher le farming artificiel de Réflexe sur des attaques répétées sans danger réel.
 
-Le calcul exact de la probabilité, des seuils et des exceptions sera équilibré pendant le prototype.
-
 Le Réflexe et l'Agilité sont volontairement séparés :
 
 ```text
 Agilité → capacité physique / qualité des mouvements et esquives du joueur
 Réflexe → expérience de combat / capacité à réagir automatiquement
+```
+
+### 3.2 Familiarité de combat et parade réflexe
+
+Le Réflexe influence également la **tolérance de timing des parades**, sans déclencher la parade à la place du joueur.
+
+Le joueur doit toujours effectuer l'input de parade. Le Réflexe permet au personnage expérimenté d'anticiper légèrement l'impact :
+
+```text
+Réflexe faible → fenêtre de parade très exigeante
+Réflexe moyen → fenêtre légèrement plus permissive
+Réflexe élevé → fenêtre nettement plus permissive
+```
+
+Cette assistance peut être modulée par une **familiarité de combat** acquise à force d'affronter réellement certaines familles d'attaques :
+
+```text
+Réflexe général
+      ↓
+Familiarité
+ ┌────┼───────────┐
+Épées  Griffes  Crocs  Magie  Attaques spéciales...
+```
+
+La familiarité doit rester data-driven et représenter une expérience réelle. Un personnage très expérimenté contre les épées peut mieux anticiper une attaque d'épée qu'une créature inconnue, sans pour autant connaître automatiquement ses attaques spéciales.
+
+La familiarité ne doit jamais rendre un type d'ennemi trivial ou supprimer le besoin de jouer.
+
+L'assistance de parade est donc différente de l'esquive automatique :
+
+```text
+Esquive automatique
+→ le système peut déclencher une esquive selon le Réflexe et les conditions.
+
+Parade réflexe
+→ le système ne déclenche rien ; il améliore uniquement la fenêtre de timing après l'input du joueur.
 ```
 
 ## 4. Mouvement et esquives
@@ -346,7 +380,9 @@ Les systèmes critiques doivent être conçus pour être testables indépendamme
 - variantes d'esquive dont le saut arrière ;
 - fenêtre et résolution de parade ;
 - attaques parables/non parables ;
-- ouverture de riposte après parade.
+- ouverture de riposte après parade ;
+- assistance de fenêtre de parade par Réflexe ;
+- familiarité de combat par famille d'attaque.
 
 Les tests de performance et de gameplay réels dans Unreal restent nécessaires après implémentation.
 
@@ -360,6 +396,7 @@ Ne pas figer dans cette architecture :
 - courbes de progression ;
 - courbe et probabilité exactes du Réflexe ;
 - fenêtre exacte de parade ;
+- courbe exacte de familiarité de combat ;
 - nombre définitif de factions ;
 - bestiaire final ;
 - contenu des quêtes ;
