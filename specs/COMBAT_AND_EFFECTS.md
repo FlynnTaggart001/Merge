@@ -14,9 +14,9 @@ CombatResolver
       ↓
 DamageContext
       ↓
-Resistance / Armor / Defense
+Defense / Block / Parry / Resistance / Armor
       ↓
-FinalDamage
+FinalDamage or Negation
       ↓
 EffectSystem + HitReaction
 ```
@@ -43,6 +43,82 @@ Le système doit être extensible : les types définitifs ne sont pas encore fig
 
 La Défense du personnage progresse par exposition réelle aux dégâts conformément à `PLAYER_PROGRESSION.md`, mais le calcul de dégâts et la progression restent deux responsabilités distinctes.
 
+## Parade
+
+Le combat physique doit intégrer un **système de parade actif** distinct du blocage et de l'esquive.
+
+La parade repose sur le timing : le joueur tente de faire entrer son arme ou son équipement défensif dans une fenêtre précise avant l'impact d'une attaque ennemie.
+
+Une parade réussie doit pouvoir :
+
+- annuler ou fortement réduire les dégâts ;
+- interrompre, dévier ou déséquilibrer l'attaquant selon l'attaque ;
+- ouvrir une fenêtre de riposte ;
+- générer une réaction d'impact appropriée ;
+- contribuer à l'expérience de combat et, si retenu, à une progression liée à la maîtrise défensive.
+
+Une parade ne doit pas être un simple `Block = true` : elle dépend d'une **fenêtre temporelle**, de l'orientation, de la compatibilité de l'arme/équipement et de l'état des combattants.
+
+### États conceptuels
+
+```text
+Normal
+   ↓
+ParryWindow
+   ├── Succès → Parried / RiposteWindow
+   └── Échec → attaque résolue normalement
+```
+
+### Conditions à prévoir
+
+Le système doit pouvoir prendre en compte :
+
+- timing de l'input ;
+- direction/orientation ;
+- portée de l'attaque ;
+- type d'attaque ;
+- arme ou équipement utilisé pour parer ;
+- état du joueur ;
+- attaques imparables ou non parables ;
+- coût éventuel en Endurance ;
+- récupération après tentative ;
+- différence entre parade parfaite et parade partielle si le game design la conserve.
+
+Les valeurs de fenêtre, coûts, pénalités et effets ne sont pas encore figés et seront équilibrés dans le prototype.
+
+### Parade et progression
+
+Une parade réussie peut produire un événement de gameplay `SuccessfulParry` destiné au `ProgressionSystem`.
+
+La progression exacte associée à cet événement reste à définir : elle ne doit pas automatiquement créer une nouvelle statistique si une maîtrise existante suffit.
+
+La parade doit pouvoir coexister avec :
+
+- esquive ;
+- saut arrière ;
+- blocage ;
+- Réflexe ;
+- attaques ;
+- Backstab ;
+- maîtrise des armes.
+
+L'esquive automatique du Réflexe **ne doit pas déclencher automatiquement une parade** : ce sont deux automatismes et compétences distincts.
+
+## Blocage vs parade vs esquive
+
+```text
+Blocage
+→ défense plus permissive, généralement réactive et moins exigeante en timing.
+
+Parade
+→ défense active fondée sur un timing précis, pouvant créer une ouverture.
+
+Esquive
+→ évitement spatial de l'attaque.
+```
+
+Ces trois mécaniques doivent partager le pipeline de combat sans être confondues.
+
 ## Effets
 
 Les armes, sorts, créatures et objets peuvent appliquer des effets génériques :
@@ -65,5 +141,8 @@ Les effets doivent pouvoir être définis comme données et composés sans modif
 1. Le combat ne doit pas contenir les règles de progression directement.
 2. Une arme ne doit pas implémenter elle-même tout le calcul de dégâts.
 3. Les résistances et effets doivent rester réutilisables.
-4. Le système doit être compatible avec furtivité, Backstab, esquive, défense, magie et IA.
-5. Les valeurs finales sont réservées à l'équilibrage du prototype.
+4. Le système doit être compatible avec furtivité, Backstab, esquive, saut arrière, parade, défense, magie et IA.
+5. La parade doit être une mécanique de timing, pas un simple blocage.
+6. Une parade réussie doit pouvoir créer une ouverture de riposte.
+7. Les attaques non parables doivent être définissables par données.
+8. Les valeurs finales sont réservées à l'équilibrage du prototype.
