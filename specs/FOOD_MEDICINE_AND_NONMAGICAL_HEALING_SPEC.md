@@ -1,4 +1,4 @@
-# Merge — Food, Medicine & Non-Magical Healing Specification
+# Merge — Food, Medicine, Sleep & Non-Magical Healing Specification
 
 **Statut** : APPROUVÉ — architecture de pré-implémentation
 **Engine** : Unreal Engine 5.8.1
@@ -6,22 +6,23 @@
 
 ## 1. Principe
 
-Merge doit distinguer trois grandes voies de récupération :
+Merge doit distinguer plusieurs voies de récupération et d'état physiologique :
 
 ```text
-Récupération
+Récupération / État physiologique
 ├── Nourriture / hydratation
+├── Sommeil / fatigue
 ├── Médecine / soins non magiques
 └── Magie de soin
 ```
 
-La magie ne doit pas remplacer les besoins physiques du personnage. Les soins non magiques restent importants même dans un monde où la magie existe.
+La magie ne doit pas remplacer les besoins physiques du personnage. Les soins non magiques et les besoins physiologiques restent importants même dans un monde où la magie existe.
 
 ## 2. Système de nourriture et besoins physiologiques
 
 Le personnage dispose d'un système de faim, d'alimentation et d'hydratation.
 
-La faim et l'hydratation ne sont pas seulement des jauges d'interface : leur niveau influence progressivement **l'état physiologique du personnage**.
+La faim et l'hydratation ne sont pas seulement des jauges d'interface : leur niveau influence progressivement l'état physiologique du personnage.
 
 ```text
 Besoin satisfait
@@ -66,8 +67,6 @@ Conséquences potentielles, à équilibrer :
 - récupération des blessures ralentie ;
 - à un stade critique, dégâts progressifs ou incapacité.
 
-La déshydratation doit être plus rapidement dangereuse que la faim lorsque le game design le confirme, mais les valeurs sont à équilibrer par le prototype.
-
 ### 2.3 Combinaison faim + déshydratation
 
 Les deux états peuvent se cumuler.
@@ -82,39 +81,93 @@ Récupération dégradée
 Risque critique augmenté
 ```
 
-Le système doit éviter une simple addition aveugle des pénalités : les effets combinés doivent être définis par un resolver d'états pour éviter des multiplicateurs incohérents.
+Le système doit éviter une simple addition aveugle des pénalités : les effets combinés passent par un resolver d'états.
 
 ### 2.4 Récupération
 
-La récupération d'un état physiologique suit la consommation de ressources adaptées et le temps nécessaire au retour à l'équilibre.
-
-```text
-Faim
- ↓ alimentation
- ↓
-Récupération progressive
- ↓
-État normal
-
-Déshydratation
- ↓ hydratation
- ↓
-Récupération progressive
- ↓
-État normal
-```
+La récupération suit la consommation de ressources adaptées et le temps nécessaire au retour à l'équilibre.
 
 Une seule consommation ne doit pas forcément annuler immédiatement plusieurs niveaux d'état critique.
 
-## 3. Nourriture
+## 3. Sommeil et fatigue
+
+Le personnage possède un **besoin de sommeil** distinct de la faim et de l'hydratation.
+
+Le sommeil se comporte comme un état physiologique progressif plutôt qu'un simple bouton « dormir » :
+
+```text
+Repos suffisant
+      ↓
+Éveillé / reposé
+      ↓
+Fatigue légère
+      ↓
+Fatigue importante
+      ↓
+Épuisement
+      ↓
+État critique / risque d'effondrement
+```
+
+### 3.1 Effets du manque de sommeil
+
+Selon le niveau de fatigue, le personnage peut subir progressivement :
+- récupération d'Endurance réduite ;
+- régénération ou récupération physique diminuée ;
+- performances de mouvement légèrement réduites ;
+- concentration moins efficace ;
+- perception et temps de réaction affectés ;
+- efficacité en combat réduite ;
+- récupération des blessures ralentie ;
+- à un stade extrême, incapacité temporaire à maintenir certaines actions.
+
+Les effets précis restent à équilibrer et doivent éviter de rendre le jeu inutilement punitif.
+
+### 3.2 Sommeil
+
+Le joueur doit pouvoir récupérer dans des contextes permettant réellement le repos, par exemple :
+- lit ;
+- campement ;
+- refuge ;
+- autres emplacements définis par le game design.
+
+Les conditions de repos peuvent influencer la qualité du sommeil : sécurité, confort, environnement, perturbations, météo ou événements à proximité.
+
+Le sommeil peut restaurer progressivement :
+- fatigue ;
+- Endurance ;
+- certains états de récupération ;
+- éventuellement certaines blessures, selon leur nature.
+
+### 3.3 Sommeil et environnement
+
+Le monde peut affecter le repos :
+
+```text
+Zone sûre + lit
+→ récupération optimale
+
+Zone exposée / météo défavorable
+→ sommeil perturbé
+
+Danger imminent / attaque
+→ sommeil interrompu
+```
+
+Les règles exactes de qualité de sommeil sont data-driven.
+
+### 3.4 Sommeil et montures
+
+Certaines montures peuvent posséder leurs propres besoins de repos ou de récupération. Leur comportement reste dépendant de l'espèce.
+
+## 4. Nourriture
 
 La nourriture peut :
-
 - restaurer progressivement l'énergie ou la condition physique ;
 - réduire la faim ;
 - fournir des effets temporaires ;
 - contribuer à la récupération naturelle ;
-- transporter et stocker ;
+- être transportée et stockée ;
 - avoir une durée de conservation selon le game design.
 
 ```text
@@ -127,22 +180,13 @@ FoodDefinition
 └── PreparationRequirements
 ```
 
-La nourriture ne doit pas être une obligation punitive permanente ; les paramètres de fréquence et de conséquences seront équilibrés dans le prototype.
-
-## 4. Nourriture et monde vivant
+## 5. Nourriture et monde vivant
 
 La nourriture doit être liée au monde : chasse, agriculture, récolte, pêche, élevage et ressources locales.
 
 Les catastrophes, destructions et variations écologiques peuvent influencer la disponibilité de nourriture.
 
-```text
-Feu de forêt
-→ récoltes / gibier réduits
-→ nourriture disponible ↓
-→ pression sur populations / villages
-```
-
-## 5. Médecine
+## 6. Médecine
 
 Le personnage possède une compétence indépendante appelée **Médecine**.
 
@@ -151,24 +195,24 @@ La Médecine progresse avec l'utilisation réelle de soins non magiques pertinen
 ```text
 Médecine
 ├── Premiers secours
+├── Diagnostic
 ├── Traitement des blessures
 ├── Pansements
-├── Potions non magiques / préparations
+├── Préparations médicales
+├── Antidotes
 ├── Stabilisation
 └── Soins avancés futurs
 ```
 
-Le contenu exact des techniques dépendra du game design et du monde.
-
-## 6. Soins non magiques
+## 7. Soins non magiques
 
 Les soins non magiques peuvent prendre différentes formes : bandages, pansements, médicaments/préparations, plantes médicinales, antidotes, soins de plaies, immobilisation et autres traitements futurs.
 
-Les soins sont data-driven et utilisent un système commun d'effets.
+Les soins utilisent un système commun d'effets et restent data-driven.
 
-## 7. Blessures et récupération
+## 8. Blessures et récupération
 
-Le système de soins peut distinguer la simple perte de santé des **blessures** plus persistantes.
+Le système peut distinguer la simple perte de santé des **blessures** plus persistantes.
 
 ```text
 Damage
@@ -176,38 +220,146 @@ Damage
 Condition / Injury
   ↓
 Recovery
-  ├── repos / nourriture
+  ├── repos / sommeil / nourriture
   ├── soins Médecine
   └── magie de soin
 ```
 
-Les blessures détaillées restent optionnelles et doivent être activées uniquement si elles apportent une vraie valeur de gameplay.
+Les blessures détaillées restent optionnelles tant qu'elles n'apportent pas une vraie valeur de gameplay.
 
-## 8. Médecine et progression
+## 9. Maladies régionales
 
-La progression de Médecine doit être organique : diagnostic pertinent, utilisation correcte de traitements, stabilisation, soins réussis et préparation/application de traitements selon le game design.
+Merge possède un système de **maladies dépendantes des zones**. Une maladie n'est pas nécessairement présente partout : sa probabilité d'apparition dépend de l'environnement et des conditions locales.
 
-Les mêmes règles anti-farming que les autres compétences s'appliquent.
+```text
+Region
+├── Climate
+├── WaterQuality
+├── Temperature
+├── Humidity
+├── Fauna
+├── Vegetation
+├── Sanitation
+├── RecentEvents
+└── DiseasePool
+```
 
-Un soin répété sans véritable besoin médical ne doit pas fournir une progression importante.
+### 9.1 Déclencheurs possibles
 
-## 9. Séparation avec la magie
+Une zone peut augmenter le risque de certaines maladies selon :
+- eau contaminée ou de mauvaise qualité ;
+- climat chaud/humide ;
+- froid extrême ;
+- marécages ;
+- forte densité animale ;
+- parasites ;
+- insectes/vecteurs ;
+- mauvaises conditions sanitaires ;
+- cadavres ou décomposition ;
+- événements écologiques ou catastrophes ;
+- proximité d'une population infectée lorsque la transmission est prévue.
+
+### 9.2 Maladies liées aux régions
+
+Chaque région peut posséder un **pool de maladies** avec :
+
+- probabilité d'exposition ;
+- conditions d'apparition ;
+- délai d'incubation ;
+- contagiosité éventuelle ;
+- durée ;
+- symptômes / états ;
+- gravité ;
+- résistance ou immunité ;
+- traitements possibles ;
+- moyens de prévention.
+
+```text
+Zone A
+→ maladie X fréquente
+→ maladie Y rare
+
+Zone B
+→ maladie X absente
+→ maladie Z fréquente
+```
+
+Une maladie peut également apparaître ou disparaître d'une région en fonction des changements du monde.
+
+### 9.3 Évolution dynamique
+
+Les maladies doivent pouvoir évoluer avec le monde :
+
+```text
+Inondation
+ ↓
+Eau contaminée
+ ↓
+Risque sanitaire ↑
+ ↓
+Maladie régionale
+ ↓
+Transmission possible
+```
+
+Ou :
+
+```text
+Feu de forêt
+ ↓
+Destruction d'habitat
+ ↓
+Migration de faune
+ ↓
+Nouveaux vecteurs / nouvelles zones d'exposition
+```
+
+Une catastrophe n'ajoute donc pas artificiellement une maladie : elle modifie les **conditions qui déterminent le risque**.
+
+### 9.4 Diagnostic et Médecine
+
+La Médecine peut permettre :
+- reconnaître une maladie ;
+- réduire l'incertitude sur son origine ;
+- choisir un traitement adapté ;
+- stabiliser un malade ;
+- améliorer l'efficacité d'un traitement non magique.
+
+Une maladie non diagnostiquée peut être plus difficile à traiter correctement.
+
+### 9.5 Prévention
+
+Le système peut prévoir des moyens de prévention :
+- eau potable ;
+- cuisson ;
+- hygiène ;
+- protection contre les vecteurs ;
+- vêtements adaptés ;
+- éviter certaines zones ;
+- traitements préventifs futurs.
+
+Ces mécanismes restent data-driven.
+
+## 10. Séparation avec la magie
 
 ```text
 Médecine
-→ soins physiques, traitements, stabilisation, préparations
+→ diagnostic, soins physiques, traitements, stabilisation, maladies
 
 Magie de soin
 → récupération magique et effets surnaturels
 ```
 
-Un sort de soin ne doit pas augmenter Médecine. Une action médicale ne doit pas augmenter une maîtrise magique. Les deux peuvent agir sur la même cible via l'EffectSystem commun.
+Un sort de soin ne doit pas augmenter directement Médecine. Une action médicale ne doit pas augmenter une maîtrise magique.
 
-## 10. Ressources et inventaire
+La magie peut toutefois traiter certaines maladies si un domaine ou un sort le permet ; cela reste un effet magique distinct de la compétence Médecine.
+
+## 11. Ressources et inventaire
 
 ```text
 Inventory
 ├── Food
+├── Water
 ├── MedicalSupplies
 ├── Ingredients
 ├── Weapons
@@ -215,49 +367,63 @@ Inventory
 └── OtherItems
 ```
 
-Les aliments et traitements sont des objets data-driven.
+Les aliments, l'eau et les traitements sont data-driven.
 
-## 11. PNJ et monde
+## 12. PNJ et monde
 
-Les PNJ et factions peuvent consommer ou produire nourriture et traitements selon le niveau de simulation.
+Les PNJ et factions peuvent consommer, produire nourriture et traitements et être exposés aux maladies selon leur niveau de simulation.
 
-Hors zone joueur : besoins alimentaires et hydriques agrégés, risques de pénurie et résultats probabilistes. À proximité, les PNJ pertinents peuvent être matérialisés avec une simulation détaillée.
+Hors zone joueur : besoins et propagation sont agrégés/probabilistes. À proximité, les PNJ pertinents peuvent être matérialisés avec une simulation détaillée.
 
-## 12. Montures
+Les maladies peuvent modifier les populations, les comportements, les déplacements, les demandes de soins et certains événements de faction/quête.
 
-Le système peut supporter les besoins alimentaires, hydriques et soins des montures si le game design les active.
+## 13. Montures
 
-Une monture peut avoir faim, nécessiter de l'eau, subir des blessures, recevoir des traitements et voir son état de confiance influencé par les soins.
+Le système peut supporter les besoins alimentaires, hydriques, de repos et de soins des montures si le game design les active. Des maladies spécifiques aux espèces peuvent également être définies.
 
-Les besoins restent data-driven selon l'espèce.
-
-## 13. Interaction avec les catastrophes
+## 14. Interaction avec les catastrophes
 
 ```text
-Incendie → brûlure
+Incendie → brûlure / fumées
 Chute → blessure
 Noyade → état critique
+Inondation → eau contaminée → maladie possible
+Froid extrême → risque physiologique accru
 Catastrophe → pénurie alimentaire / hydrique possible
 ```
 
-La disponibilité des ingrédients médicaux peut elle-même changer avec l'état du monde.
+La disponibilité des ingrédients médicaux et la fréquence des maladies peuvent elles-mêmes changer avec l'état du monde.
 
-## 14. Performance
+## 15. Performance
 
-La faim, l'hydratation, les besoins et la récupération hors zone suivent `PERFORMANCE_AND_SIMULATION_SPEC.md`.
+La faim, l'hydratation, le sommeil, les maladies et la récupération hors zone suivent `PERFORMANCE_AND_SIMULATION_SPEC.md`.
 
-Aucun PNJ lointain ne doit manger, boire ou se soigner individuellement à chaque frame.
+Aucun PNJ lointain ne doit manger, boire, dormir, tomber malade ou se soigner individuellement à chaque frame. Les états régionaux sont résolus probabilistiquement puis matérialisés localement lorsque nécessaire.
 
-## 15. Architecture
+## 16. Architecture
 
 ```text
 SurvivalNeedsSystem
 ├── Hunger
 ├── Hydration
+├── Sleep
+├── Fatigue
 ├── NutritionState
 ├── HydrationState
+├── SleepState
 ├── PhysiologicalCondition
 └── Recovery
+
+DiseaseSystem
+├── RegionalDiseasePool
+├── ExposureResolver
+├── Incubation
+├── Transmission
+├── SymptomState
+├── Severity
+├── Diagnosis
+├── TreatmentResolver
+└── Prevention
 
 MedicineSystem
 ├── MedicineSkill
@@ -274,37 +440,36 @@ FoodSystem
 ├── Hydration
 ├── Spoilage
 └── Preparation
-
-ConditionStateSystem
-├── WellNourished
-├── Hungry
-├── Malnourished
-├── Hydrated
-├── Thirsty
-├── Dehydrated
-└── CriticalCondition
 ```
 
-## 16. Tests prioritaires
+## 17. Tests prioritaires
 
 - faim et récupération ;
 - consommation de nourriture ;
 - hydratation ;
-- accumulation progressive d'un état de malnutrition ;
+- accumulation progressive de malnutrition ;
 - accumulation progressive de déshydratation ;
-- effets sur Endurance et récupération ;
-- cumul faim + déshydratation ;
-- retour progressif à l'état normal ;
+- sommeil insuffisant ;
+- récupération par sommeil ;
+- qualité de sommeil selon le contexte ;
+- cumul faim + déshydratation + fatigue ;
 - soin avec Médecine faible ;
 - amélioration de Médecine ;
-- traitement d'une blessure ;
+- diagnostic d'une maladie ;
+- maladie propre à une région ;
+- absence d'une maladie hors de ses conditions ;
+- incubation et transmission ;
+- impact d'une inondation sur le risque sanitaire ;
+- traitement correct vs incorrect ;
 - progression anti-farming ;
 - séparation Médecine / magie ;
-- soins d'une monture si activés ;
+- besoins et maladies d'une monture si activés ;
 - pénurie alimentaire/hydrique régionale ;
 - disponibilité des ingrédients après catastrophe ;
 - sauvegarde / chargement de l'état physiologique.
 
-## 17. Ce qui reste ouvert
+## 18. Ce qui reste ouvert
 
-Les règles exactes de faim, hydratation, seuils des états, durée des paliers, blessures détaillées, médicaments, effets nutritionnels, aliments, plantes et traitements restent des décisions de game design. La compétence **Médecine**, les besoins physiologiques et la séparation avec la magie sont des contraintes d'architecture.
+Les règles exactes de faim, hydratation, sommeil, seuils, durées, maladies, symptômes, traitements, vecteurs, prévention, blessures détaillées, médicaments, effets nutritionnels, aliments, plantes et traitements restent des décisions de game design.
+
+La compétence **Médecine**, les besoins physiologiques, le sommeil, les maladies régionales et la séparation avec la magie sont désormais des contraintes d'architecture.
