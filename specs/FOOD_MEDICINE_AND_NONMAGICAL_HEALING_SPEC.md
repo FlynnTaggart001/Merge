@@ -17,18 +17,105 @@ Récupération
 
 La magie ne doit pas remplacer les besoins physiques du personnage. Les soins non magiques restent importants même dans un monde où la magie existe.
 
-## 2. Système de nourriture
+## 2. Système de nourriture et besoins physiologiques
 
-Le personnage dispose d'un système de faim et d'alimentation. La nourriture peut :
+Le personnage dispose d'un système de faim, d'alimentation et d'hydratation.
+
+La faim et l'hydratation ne sont pas seulement des jauges d'interface : leur niveau influence progressivement **l'état physiologique du personnage**.
+
+```text
+Besoin satisfait
+      ↓
+État normal
+      ↓
+Besoin faible
+      ↓
+Mal nourri / déshydraté
+      ↓
+État sévère
+      ↓
+État critique
+```
+
+Les seuils, durées et effets exacts sont data-driven.
+
+### 2.1 Malnutrition / faim prolongée
+
+Lorsque le personnage reste trop longtemps sans alimentation suffisante, il peut entrer dans un état `Malnourished` ou dans des paliers équivalents.
+
+Conséquences potentielles, à équilibrer :
+- récupération physique réduite ;
+- Endurance maximale ou récupération diminuée ;
+- faiblesse générale ;
+- capacité d'effort réduite ;
+- résistance aux blessures éventuellement diminuée ;
+- progression physique temporairement moins efficace ;
+- à un stade critique, perte de santé ou incapacité prolongée.
+
+Les effets doivent progresser graduellement plutôt que passer brutalement de normal à critique.
+
+### 2.2 Déshydratation
+
+Lorsque le personnage reste trop longtemps sans boire, il peut entrer dans un état `Dehydrated` ou dans des paliers équivalents.
+
+Conséquences potentielles, à équilibrer :
+- récupération d'Endurance réduite ;
+- consommation d'Endurance augmentée ;
+- efficacité des déplacements réduite ;
+- faiblesse générale ;
+- récupération des blessures ralentie ;
+- à un stade critique, dégâts progressifs ou incapacité.
+
+La déshydratation doit être plus rapidement dangereuse que la faim lorsque le game design le confirme, mais les valeurs sont à équilibrer par le prototype.
+
+### 2.3 Combinaison faim + déshydratation
+
+Les deux états peuvent se cumuler.
+
+```text
+Mal nourri + déshydraté
+        ↓
+Fatigue / faiblesse accrue
+        ↓
+Récupération dégradée
+        ↓
+Risque critique augmenté
+```
+
+Le système doit éviter une simple addition aveugle des pénalités : les effets combinés doivent être définis par un resolver d'états pour éviter des multiplicateurs incohérents.
+
+### 2.4 Récupération
+
+La récupération d'un état physiologique suit la consommation de ressources adaptées et le temps nécessaire au retour à l'équilibre.
+
+```text
+Faim
+ ↓ alimentation
+ ↓
+Récupération progressive
+ ↓
+État normal
+
+Déshydratation
+ ↓ hydratation
+ ↓
+Récupération progressive
+ ↓
+État normal
+```
+
+Une seule consommation ne doit pas forcément annuler immédiatement plusieurs niveaux d'état critique.
+
+## 3. Nourriture
+
+La nourriture peut :
 
 - restaurer progressivement l'énergie ou la condition physique ;
 - réduire la faim ;
 - fournir des effets temporaires ;
 - contribuer à la récupération naturelle ;
-- être transportée et stockée ;
+- transporter et stocker ;
 - avoir une durée de conservation selon le game design.
-
-Les aliments peuvent être classés par données :
 
 ```text
 FoodDefinition
@@ -40,31 +127,22 @@ FoodDefinition
 └── PreparationRequirements
 ```
 
-Le système ne doit pas transformer la faim en obligation punitive permanente : les paramètres de fréquence et de conséquences seront équilibrés dans le prototype.
+La nourriture ne doit pas être une obligation punitive permanente ; les paramètres de fréquence et de conséquences seront équilibrés dans le prototype.
 
-## 3. Nourriture et monde vivant
+## 4. Nourriture et monde vivant
 
-La nourriture doit être liée au monde :
+La nourriture doit être liée au monde : chasse, agriculture, récolte, pêche, élevage et ressources locales.
 
-- chasse ;
-- agriculture ;
-- récolte ;
-- pêche ;
-- élevage ;
-- commerce indirect via ressources/établissements du monde.
-
-Les catastrophes, destructions et variations écologiques peuvent donc influencer la disponibilité de nourriture.
-
-Exemple :
+Les catastrophes, destructions et variations écologiques peuvent influencer la disponibilité de nourriture.
 
 ```text
 Feu de forêt
 → récoltes / gibier réduits
 → nourriture disponible ↓
-→ pression sur les populations / villages
+→ pression sur populations / villages
 ```
 
-## 4. Médecine
+## 5. Médecine
 
 Le personnage possède une compétence indépendante appelée **Médecine**.
 
@@ -82,23 +160,13 @@ Médecine
 
 Le contenu exact des techniques dépendra du game design et du monde.
 
-## 5. Soins non magiques
+## 6. Soins non magiques
 
-Les soins non magiques peuvent prendre différentes formes :
+Les soins non magiques peuvent prendre différentes formes : bandages, pansements, médicaments/préparations, plantes médicinales, antidotes, soins de plaies, immobilisation et autres traitements futurs.
 
-- bandages ;
-- pansements ;
-- médicaments / préparations ;
-- plantes médicinales ;
-- antidotes ;
-- soins de plaies ;
-- immobilisation ;
-- récupération assistée ;
-- autres traitements futurs.
+Les soins sont data-driven et utilisent un système commun d'effets.
 
-Les soins doivent être data-driven et utiliser un système commun d'effets afin de ne pas coder chaque objet comme une exception.
-
-## 6. Blessures et récupération
+## 7. Blessures et récupération
 
 Le système de soins peut distinguer la simple perte de santé des **blessures** plus persistantes.
 
@@ -113,45 +181,29 @@ Recovery
   └── magie de soin
 ```
 
-Le jeu pourra ainsi faire varier les conséquences d'une brûlure, d'une chute, d'une coupure ou d'une attaque sans faire de chaque événement un simple retrait de HP.
-
 Les blessures détaillées restent optionnelles et doivent être activées uniquement si elles apportent une vraie valeur de gameplay.
 
-## 7. Médecine et progression
+## 8. Médecine et progression
 
-La progression de Médecine doit être organique :
-
-- diagnostic / identification pertinente ;
-- utilisation correcte de traitements ;
-- stabilisation de blessures ;
-- soins réussis ;
-- préparation ou application de traitements selon le game design.
+La progression de Médecine doit être organique : diagnostic pertinent, utilisation correcte de traitements, stabilisation, soins réussis et préparation/application de traitements selon le game design.
 
 Les mêmes règles anti-farming que les autres compétences s'appliquent.
 
 Un soin répété sans véritable besoin médical ne doit pas fournir une progression importante.
 
-## 8. Séparation avec la magie
-
-Le système distingue :
+## 9. Séparation avec la magie
 
 ```text
 Médecine
 → soins physiques, traitements, stabilisation, préparations
 
 Magie de soin
-→ récupération magique et effets surnaturels selon le domaine choisi
+→ récupération magique et effets surnaturels
 ```
 
-Un sort de soin ne doit pas augmenter directement la compétence Médecine.
+Un sort de soin ne doit pas augmenter Médecine. Une action médicale ne doit pas augmenter une maîtrise magique. Les deux peuvent agir sur la même cible via l'EffectSystem commun.
 
-Une action médicale ne doit pas augmenter une maîtrise magique.
-
-Les deux systèmes peuvent toutefois agir sur la même cible et produire des effets compatibles dans le `EffectSystem` commun.
-
-## 9. Ressources et inventaire
-
-La nourriture et les traitements utilisent l'inventaire existant :
+## 10. Ressources et inventaire
 
 ```text
 Inventory
@@ -165,62 +217,46 @@ Inventory
 
 Les aliments et traitements sont des objets data-driven.
 
-## 10. PNJ et monde
+## 11. PNJ et monde
 
-Les PNJ et factions peuvent également consommer ou produire de la nourriture et des traitements selon le niveau de simulation.
+Les PNJ et factions peuvent consommer ou produire nourriture et traitements selon le niveau de simulation.
 
-Hors zone joueur :
+Hors zone joueur : besoins alimentaires et hydriques agrégés, risques de pénurie et résultats probabilistes. À proximité, les PNJ pertinents peuvent être matérialisés avec une simulation détaillée.
 
-```text
-Population / Village
-→ besoins alimentaires agrégés
-→ ressources disponibles
-→ risque de pénurie
-→ résultat probabiliste
-```
+## 12. Montures
 
-À proximité du joueur, les établissements et PNJ pertinents peuvent être matérialisés avec une simulation détaillée.
+Le système peut supporter les besoins alimentaires, hydriques et soins des montures si le game design les active.
 
-## 11. Montures
+Une monture peut avoir faim, nécessiter de l'eau, subir des blessures, recevoir des traitements et voir son état de confiance influencé par les soins.
 
-Le système doit pouvoir supporter les besoins alimentaires et les soins des montures si le game design les active.
+Les besoins restent data-driven selon l'espèce.
 
-Une monture peut avoir :
-
-- faim ;
-- besoins alimentaires spécifiques ;
-- blessures ;
-- traitements ;
-- récupération ;
-- état de confiance influencé par les soins et la qualité du traitement.
-
-Ces règles restent data-driven pour ne pas imposer les mêmes besoins à toutes les espèces.
-
-## 12. Interaction avec les catastrophes
-
-Les blessures, la nourriture et les traitements doivent pouvoir réagir aux événements environnementaux :
+## 13. Interaction avec les catastrophes
 
 ```text
 Incendie → brûlure
 Chute → blessure
 Noyade → état critique
-Catastrophe → pénurie alimentaire possible
+Catastrophe → pénurie alimentaire / hydrique possible
 ```
 
 La disponibilité des ingrédients médicaux peut elle-même changer avec l'état du monde.
 
-## 13. Performance
+## 14. Performance
 
-La faim, les besoins alimentaires et la récupération hors zone doivent suivre la simulation probabiliste déjà définie dans `PERFORMANCE_AND_SIMULATION_SPEC.md`.
+La faim, l'hydratation, les besoins et la récupération hors zone suivent `PERFORMANCE_AND_SIMULATION_SPEC.md`.
 
-Aucun PNJ lointain ne doit manger ou soigner un objet individuellement à chaque frame.
+Aucun PNJ lointain ne doit manger, boire ou se soigner individuellement à chaque frame.
 
-## 14. Architecture
+## 15. Architecture
 
 ```text
 SurvivalNeedsSystem
 ├── Hunger
 ├── Hydration
+├── NutritionState
+├── HydrationState
+├── PhysiologicalCondition
 └── Recovery
 
 MedicineSystem
@@ -235,27 +271,40 @@ FoodSystem
 ├── FoodDefinition
 ├── Consumption
 ├── Nutrition
+├── Hydration
 ├── Spoilage
 └── Preparation
+
+ConditionStateSystem
+├── WellNourished
+├── Hungry
+├── Malnourished
+├── Hydrated
+├── Thirsty
+├── Dehydrated
+└── CriticalCondition
 ```
 
-Les systèmes communiquent avec `InventorySystem`, `EffectSystem`, `ProgressionSystem`, `MountSystem`, `NPCSystem`, `EcologySystem` et `WorldPersistence`.
-
-## 15. Tests prioritaires
+## 16. Tests prioritaires
 
 - faim et récupération ;
 - consommation de nourriture ;
 - hydratation ;
+- accumulation progressive d'un état de malnutrition ;
+- accumulation progressive de déshydratation ;
+- effets sur Endurance et récupération ;
+- cumul faim + déshydratation ;
+- retour progressif à l'état normal ;
 - soin avec Médecine faible ;
 - amélioration de Médecine ;
 - traitement d'une blessure ;
 - progression anti-farming ;
 - séparation Médecine / magie ;
 - soins d'une monture si activés ;
-- pénurie alimentaire régionale ;
+- pénurie alimentaire/hydrique régionale ;
 - disponibilité des ingrédients après catastrophe ;
-- sauvegarde / chargement de l'état de récupération.
+- sauvegarde / chargement de l'état physiologique.
 
-## 16. Ce qui reste ouvert
+## 17. Ce qui reste ouvert
 
-Les règles exactes de faim, hydratation, blessures détaillées, types de médicaments, effets nutritionnels, aliments, plantes médicinales et traitements restent des décisions de game design. La compétence **Médecine** et la séparation avec la magie sont, elles, désormais des contraintes d'architecture.
+Les règles exactes de faim, hydratation, seuils des états, durée des paliers, blessures détaillées, médicaments, effets nutritionnels, aliments, plantes et traitements restent des décisions de game design. La compétence **Médecine**, les besoins physiologiques et la séparation avec la magie sont des contraintes d'architecture.
