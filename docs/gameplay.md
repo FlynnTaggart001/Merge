@@ -1,12 +1,31 @@
 # Gameplay — Merge
 
-Cette documentation synthétise les mécaniques de gameplay actuellement approuvées. La spécification détaillée et normative se trouve dans `specs/GAMEPLAY_AND_PERSISTENT_WORLD.md`.
+Cette documentation synthétise les mécaniques de gameplay actuellement approuvées. Les spécifications détaillées et normatives se trouvent dans `specs/GAMEPLAY_AND_PERSISTENT_WORLD.md`, `specs/PLAYER_PROGRESSION.md` et `specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md`.
 
 ## Mouvement
 
-Merge est un Action-RPG à la troisième personne. Le joueur dispose d'un déplacement direct, du saut, de l'accroupissement et d'une roulade/esquive.
+Merge est un Action-RPG à la troisième personne. Le joueur dispose d'un déplacement direct, du saut, de l'accroupissement, d'une roulade/esquive et d'un **saut arrière**.
 
-La roulade est un état de gameplay et pourra intégrer endurance, invulnérabilité et restrictions d'actions.
+La roulade et le saut arrière sont des variantes du même système d'esquive afin de partager les règles de coût d'Endurance, collision, récupération et invulnérabilité lorsqu'elles sont retenues.
+
+## Progression
+
+La progression est organique et liée à l'utilisation réelle :
+
+- Endurance : course, combat, sauts et efforts physiques ;
+- Agilité : esquives, roulades, sauts et mobilité ;
+- Défense : dégâts réellement subis ;
+- Réflexe : expérience de combat réelle ;
+- maîtrise d'arme : utilisation significative de la famille correspondante ;
+- magie : utilisation du domaine magique correspondant.
+
+## Réflexe
+
+Le Réflexe est différent de l'Agilité. Il représente les automatismes acquis par l'expérience du combat.
+
+À mesure que le Réflexe augmente, le personnage peut obtenir une chance de déclencher automatiquement une esquive lorsqu'une attaque ennemie est sur le point de le toucher et que les conditions sont réunies.
+
+Cette esquive automatique reste limitée : elle ne garantit pas l'évitement, ne remplace pas l'esquive manuelle et doit respecter l'espace disponible, l'état du personnage, l'Endurance et les règles normales du système d'esquive.
 
 ## Furtivité
 
@@ -34,4 +53,4 @@ Le monde ne se régénère pas artificiellement. Les morts, destructions et ress
 
 Une partie correspond à un monde persistant. Une nouvelle partie doit permettre de créer un nouveau monde sans supprimer les anciens. Le joueur pourra revenir à un monde précédemment sauvegardé et retrouver son état exact.
 
-Pour la conception technique détaillée, voir `specs/GAMEPLAY_AND_PERSISTENT_WORLD.md`.
+Pour la conception technique détaillée, voir `specs/GAMEPLAY_AND_PERSISTENT_WORLD.md`, `specs/PLAYER_PROGRESSION.md` et `specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md`.
