@@ -26,22 +26,26 @@ MountSystem
 
 ## 2. Acquisition et interaction
 
-Le joueur dispose de plusieurs voies d'acquisition, selon la monture et les règles du monde :
+Le joueur dispose de deux voies principales d'acquisition selon la monture et les règles du monde :
 
-### 2.1 Achat
+### 2.1 Achat auprès d'un éleveur
 
-Certaines montures peuvent être achetées auprès de vendeurs, éleveurs, factions ou autres sources prévues par le game design.
+L'achat de montures se fait **exclusivement auprès d'éleveurs**. Le jeu ne possède pas de catégorie générique de « marchand de bêtes ».
 
-L'achat peut dépendre de :
-- prix ;
+Un éleveur peut proposer des montures selon :
+- espèce / famille ;
 - disponibilité ;
-- réputation ;
+- qualité de l'animal ;
+- âge ou caractéristiques ;
+- prix ;
 - région ;
-- type de monture ;
-- conditions de faction ou de quête ;
-- qualité de l'animal.
+- réputation ;
+- relations avec la faction ou l'éleveur ;
+- éventuelles conditions de quête.
 
-L'achat doit créer une association persistante entre la monture et le joueur lorsqu'elle devient sa monture.
+L'éleveur doit être traité comme une source cohérente de créatures élevées ou préparées pour la monte, et non comme un vendeur générique d'animaux.
+
+L'achat crée une association persistante entre la monture et le joueur lorsqu'elle devient sa monture.
 
 ### 2.2 Domptage / capture
 
@@ -252,8 +256,9 @@ MountSystem
 
 ## 13. Tests prioritaires
 
-- achat d'une monture ;
-- conditions d'achat ;
+- achat auprès d'un éleveur ;
+- conditions d'achat chez un éleveur ;
+- absence de système générique de marchand de bêtes ;
 - tentative de domptage d'une monture facile ;
 - tentative sur une monture difficile ;
 - échec de domptage ;
@@ -274,6 +279,6 @@ MountSystem
 
 ## 14. Ce qui reste volontairement ouvert
 
-Les espèces de montures, leur nombre, leurs statistiques, leurs capacités spéciales, leurs prix, leurs méthodes exactes d'acquisition, leurs difficultés de domptage, leur reproduction éventuelle, leur mortalité et leurs systèmes de progression restent des décisions de game design.
+Les espèces de montures, leur nombre, leurs statistiques, leurs capacités spéciales, leurs prix, leurs méthodes exactes de domptage, leurs difficultés de domptage, leur reproduction éventuelle, leur mortalité et leurs systèmes de progression restent des décisions de game design.
 
 Le cœur technique doit être prêt à recevoir ces choix sans refonte majeure.
