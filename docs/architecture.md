@@ -13,6 +13,7 @@ Cette page décrit les implications architecturales des systèmes approuvés dan
 - Plusieurs mondes doivent être isolables dans le système de sauvegarde.
 - Les phénomènes naturels sont simulés à l'échelle régionale puis matérialisés localement lorsque nécessaire.
 - Les besoins hors zone sont résolus par probabilités/agrégats, pas par simulation individuelle à chaque frame.
+- Les saisons sont un état persistant du temps mondial et modifient les probabilités et conditions régionales sans forcer uniformément tous les événements.
 - Tout système majeur doit disposer d'une stratégie de simulation distante et de tests de charge avant son implémentation complète.
 
 ## Domaines
@@ -58,6 +59,11 @@ Social / Magic
 
 World
 ├── Persistence
+├── Time
+│   ├── Calendar
+│   ├── Seasons
+│   └── SeasonTransition
+├── Weather
 ├── Ecology
 ├── Species
 ├── Population
@@ -65,12 +71,39 @@ World
 ├── Resources
 ├── Migration
 ├── Destruction
-├── Time / Weather
 ├── NaturalEnvironment
 ├── Hydrology
 ├── RegionalDiseaseRisk
 └── DynamicHazards
 ```
+
+## Saison et environnement
+
+`SeasonSystem` est connecté à `TimeSystem` et fournit un profil saisonnier au climat, à la météo, à l'écologie, aux ressources, aux maladies et aux risques naturels.
+
+```text
+TimeSystem
+   ↓
+SeasonSystem
+   ├── Climate
+   ├── Weather probabilities
+   ├── Ecology
+   ├── Resources
+   ├── Wildlife behavior
+   ├── Disease risk
+   └── Hazard probability
+```
+
+Les saisons standards sont Printemps, Été, Automne et Hiver. Les durées exactes et les profils régionaux sont data-driven.
+
+Une saison n'impose pas automatiquement un événement : elle modifie les probabilités et les conditions.
+
+Exemples :
+- Été sec → risque de feu de forêt accru ;
+- Printemps / automne humides → ruissellement, inondations et glissements favorisés ;
+- Hiver → froid, neige et ressources modifiées ;
+- Printemps → croissance végétale et certaines périodes de reproduction ;
+- saison + pénurie de proies → excursions de prédateurs plus probables.
 
 ## Environnement dynamique
 
@@ -100,7 +133,7 @@ Symptômes observables
    └── Médecin PNJ       → diagnostic professionnel
 ```
 
-Les maladies sont dépendantes des conditions régionales et peuvent évoluer avec l'eau, le climat, la faune, l'hygiène et les catastrophes.
+Les maladies sont dépendantes des conditions régionales et peuvent évoluer avec l'eau, le climat, la faune, l'hygiène, la saison et les catastrophes.
 
 ## Montures
 
@@ -160,7 +193,7 @@ World Partition, streaming, culling, LOD/HLOD, timers/batches, IA à fréquence 
 9. Prototyper montures et Domptage.
 10. Prototyper groupe de PNJ et magie collective.
 11. Construire les données d'espèces, populations et ressources.
-12. Implémenter le temps, météo, hydrologie et catastrophes naturelles.
+12. Implémenter le temps, saisons, météo, hydrologie et catastrophes naturelles.
 13. Implémenter simulation écologique régionale et impacts de monde.
 14. Implémenter persistance multi-mondes et transformations environnementales.
 15. Profiling, tests de charge, streaming et optimisation continue.
