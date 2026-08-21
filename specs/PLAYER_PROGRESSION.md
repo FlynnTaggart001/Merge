@@ -14,20 +14,17 @@ Il ne s'agit pas d'un système où toutes les statistiques augmentent uniquement
 
 L'Endurance progresse progressivement avec les efforts physiques répétés :
 
-- course ;
+- course / sprint ;
 - combat ;
 - saut ;
-- esquive / roulade ;
-- autres activités physiques pertinentes à définir.
+- roulade / esquive ;
+- bond en arrière ;
+- franchissement d'obstacles ;
+- escalade et autres activités physiques pertinentes.
 
 Le système doit mesurer l'effort utile plutôt que compter aveuglément chaque input.
 
-Objectifs :
-
-- récompenser l'activité physique réelle ;
-- éviter le farming artificiel ;
-- permettre un équilibrage du gain selon l'intensité et la durée de l'effort ;
-- permettre une progression persistante par personnage.
+Objectifs : récompenser l'activité physique réelle, éviter le farming artificiel et permettre un équilibrage du gain selon l'intensité et la durée de l'effort.
 
 ## 3. Agilité
 
@@ -35,232 +32,137 @@ L'Agilité progresse avec les actions nécessitant mobilité, timing et éviteme
 
 - esquive / roulade réussie ;
 - saut ;
-- saut arrière ;
+- bond en arrière ;
+- pas de côté ;
+- franchissement d'obstacles ;
+- escalade / déplacement vertical ;
+- réception contrôlée après une chute ;
 - autres actions acrobatiques futures.
 
-Le système d'esquive doit être une véritable mécanique de gameplay :
+Le système de mouvement doit distinguer les actions de mobilité des simples inputs répétés. Une utilisation significative en situation réelle doit être davantage valorisée qu'un spam sans contexte.
 
-- direction selon l'input ;
-- coût d'Endurance ;
-- état d'esquive ;
-- fenêtre d'invulnérabilité à équilibrer ;
-- verrouillage ou interruption de certaines actions ;
-- intégration au combat et à la furtivité.
+### 3.1 Bond en arrière
 
-Une esquive ne doit pas automatiquement donner une progression maximale : la progression doit pouvoir distinguer une utilisation significative d'un spam sans danger.
+Le bond en arrière est une action de mouvement et d'esquive distincte de la roulade. Il peut contribuer à l'Agilité lorsqu'il est utilisé dans un contexte pertinent de mouvement ou de combat.
 
-### 3.1 Saut arrière
+Il est intégré au même système de Dodge que la roulade pour partager les règles communes de coût, collision et récupération lorsque celles-ci sont retenues, mais ses paramètres de déplacement et ses propriétés défensives restent distincts.
 
-Le saut arrière est une variante d'esquive/mobilité distincte de la roulade. Il peut contribuer à l'Agilité lorsqu'il est utilisé dans un contexte pertinent de mouvement ou de combat.
+### 3.2 Pas de côté
 
-Il doit être intégré au même système de Dodge que la roulade afin de partager les règles de coût, collision, invulnérabilité et récupération lorsque celles-ci sont retenues.
+Le pas de côté est une esquive/mobilité latérale rapide. Il doit permettre d'éviter une attaque ou de modifier rapidement la position du personnage sans utiliser la roulade.
+
+Il peut contribuer à l'Agilité lorsqu'il est utilisé de façon pertinente et doit respecter l'Endurance, les collisions, l'espace disponible et les règles de récupération.
+
+### 3.3 Réception de chute
+
+Une chute modérée peut être résolue par une réception contrôlée lorsque le personnage dispose de suffisamment de mobilité et que les conditions sont réunies.
+
+La qualité de la réception peut dépendre de l'Agilité et du contexte :
+
+```text
+Chute
+  ↓
+Évaluation de la hauteur / vitesse / état
+  ↓
+Réception possible ?
+  ├── Oui → réception contrôlée / dégâts réduits
+  └── Non → chute normale
+```
+
+Cette mécanique ne doit pas supprimer les conséquences d'une chute importante.
 
 ## 4. Défense
 
 La Défense progresse avec les dégâts réellement subis par le personnage.
 
-Le système devra comptabiliser l'exposition réelle au danger et empêcher les boucles artificielles de progression, par exemple :
-
-- dégâts auto-infligés volontairement ;
-- sources triviales répétées ;
-- dégâts sans risque ni contexte de combat ;
-- exploitation d'un événement répétable.
-
-Les règles exactes de validation et les paliers de progression seront déterminés lors du prototype.
+Le système devra comptabiliser l'exposition réelle au danger et empêcher les boucles artificielles de progression, par exemple dégâts auto-infligés volontairement, sources triviales répétées ou exploitation d'un événement répétable.
 
 ## 5. Réflexe de combat
 
 Le **Réflexe** est une compétence distincte de l'Agilité. Il représente l'expérience pratique accumulée lors de combats réels et la capacité du personnage à développer des automatismes défensifs.
 
-Le Réflexe progresse avec l'XP/expérience de combat pertinente, notamment :
-
-- combats réellement engagés ;
-- attaques ennemies rencontrées ;
-- situations de danger ;
-- survie et répétition de situations de combat variées.
-
-Le simple fait de répéter artificiellement une même séquence sans danger réel ne doit pas produire une progression normale.
+Le Réflexe progresse avec l'XP/expérience de combat pertinente : combats réellement engagés, attaques rencontrées, situations de danger, survie et répétition de situations variées.
 
 ### 5.1 Esquive réflexe automatique
 
 Lorsque le personnage est suffisamment expérimenté, le Réflexe lui donne une **probabilité passive d'effectuer automatiquement une esquive** lorsqu'une attaque ennemie va réellement le toucher.
 
-L'automatisme doit :
-
-- rester une chance et non une garantie ;
-- ne jamais supprimer l'intérêt de l'esquive manuelle ;
-- utiliser le même système de Dodge que l'esquive commandée par le joueur ;
-- respecter les collisions, l'espace disponible et les états du personnage ;
-- pouvoir consommer de l'Endurance ;
-- être impossible ou fortement réduit dans certaines situations ;
-- ne pas permettre d'éviter des attaques intrinsèquement inévitables ;
-- respecter les cooldowns, fenêtres d'action et règles d'animation ;
-- être clairement équilibrable par données.
-
-Conceptuellement :
-
-```text
-Attaque ennemie détectée
-        ↓
-Vérification du danger réel
-        ↓
-Vérification état / espace / endurance
-        ↓
-Test de Réflexe
-   ┌────┴────┐
-   ↓         ↓
- réussite   échec
-   ↓         ↓
-Dodge auto  attaque résolue normalement
-```
-
-La probabilité exacte ne doit pas être fixée maintenant. Elle sera déterminée par une courbe de progression et testée dans Unreal.
+L'automatisme utilise le même système de Dodge que l'esquive commandée par le joueur et respecte collisions, espace, Endurance, états, animation, cooldowns et attaques intrinsèquement inévitables.
 
 ### 5.2 Différence Agilité / Réflexe
 
 ```text
-Agilité
-→ améliore les capacités physiques et l'efficacité des mouvements/esquives.
-
-Réflexe
-→ représente l'expérience de combat et la capacité à réagir automatiquement.
+Agilité → capacités physiques et efficacité des mouvements/esquives.
+Réflexe → expérience de combat et capacité à réagir automatiquement.
 ```
-
-Un personnage très agile peut donc être excellent avec une esquive manuelle sans avoir un Réflexe élevé. À l'inverse, un vétéran peut posséder de bons automatismes défensifs sans disposer d'une Agilité exceptionnelle.
 
 ## 6. Magie
 
-La progression magique est **séparée par domaine de magie**.
-
-Chaque domaine possède sa propre maîtrise :
-
-```text
-Domaine A → maîtrise A
-Domaine B → maîtrise B
-Domaine C → maîtrise C
-```
-
-L'utilisation effective d'une capacité appartenant à un domaine fait progresser principalement ce domaine.
-
-Les domaines de magie sont actuellement en cours de définition. Aucun nom, nombre ou liste définitive ne doit être codé en dur dans l'architecture centrale.
-
-L'architecture doit permettre d'ajouter un nouveau domaine par données / configuration lorsque possible, sans réécrire le système de progression.
+La progression magique est séparée par domaine de magie. Chaque domaine possède sa propre maîtrise et progresse principalement avec son utilisation effective. Les domaines restent extensibles et ne sont pas figés dans l'architecture centrale.
 
 ## 7. Événements de progression
 
-Les systèmes de gameplay doivent pouvoir envoyer des événements de progression génériques au système de progression.
-
-Conceptuellement :
+Les systèmes de gameplay envoient des événements génériques au système de progression :
 
 ```text
-Course réussie
-    ↓
-ProgressionEvent(PhysicalEffort)
-    ↓
-ProgressionSystem
-    ↓
-Endurance
+PhysicalEffort      → Endurance
+SuccessfulDodge     → Agilité
+BackwardJump        → Agilité
+SideStep            → Agilité
+Jump                → Agilité / Endurance selon contexte
+ObstacleTraversal   → Agilité / Endurance selon contexte
+Climb               → Agilité / Endurance selon contexte
+ControlledLanding   → Agilité
+ReceivedDamage      → Défense
+CombatExperience    → Réflexe
+MagicUsage(Domain)  → Maîtrise du domaine
 ```
 
-```text
-Esquive réussie
-    ↓
-ProgressionEvent(SuccessfulDodge)
-    ↓
-ProgressionSystem
-    ↓
-Agilité
-```
-
-```text
-Dégâts réellement subis
-    ↓
-ProgressionEvent(ReceivedDamage)
-    ↓
-ProgressionSystem
-    ↓
-Défense
-```
-
-```text
-Combat réellement vécu
-    ↓
-ProgressionEvent(CombatExperience)
-    ↓
-ProgressionSystem
-    ↓
-Réflexe
-```
-
-```text
-Sort du domaine X utilisé
-    ↓
-ProgressionEvent(MagicUsage, DomainX)
-    ↓
-ProgressionSystem
-    ↓
-Maîtrise DomainX
-```
-
-Cette séparation évite de coupler le système de combat, de mouvement ou de magie aux détails internes des statistiques.
+Chaque événement doit pouvoir être validé par des règles anti-farming.
 
 ## 8. Anti-abus
 
-Chaque source de progression doit pouvoir définir des règles de validation :
-
-- contexte requis ;
-- fréquence maximale de contribution ;
-- intensité minimale ;
-- rendement décroissant ;
-- répétition détectée ;
-- récompense uniquement pour une action réellement pertinente.
-
-Ces mécanismes seront équilibrés pendant le prototype et ne doivent pas être surconçus maintenant.
+Chaque source de progression doit pouvoir définir : contexte requis, fréquence maximale, intensité minimale, rendement décroissant, répétition détectée et récompense uniquement pour une action réellement pertinente.
 
 ## 9. Architecture cible
 
 ```text
+PlayerMovementSystem
+├── Walk / Run / Sprint
+├── Jump
+├── Crouch
+├── Roll
+├── BackwardJump
+├── SideStep
+├── ObstacleTraversal
+├── ContextualClimb
+└── ControlledLanding
+
 ProgressionSystem
 ├── AttributeProgression
 │   ├── Endurance
 │   ├── Agility
 │   └── Defense
-│
 ├── CombatExperience
 │   └── Reflex
 │       └── AutomaticDodgeChance
-│
 ├── MagicProgression
 │   └── MagicDomainMastery[*]
-│
-├── ProgressionEvent
-│   ├── PhysicalEffort
-│   ├── SuccessfulDodge
-│   ├── BackwardJump
-│   ├── Jump
-│   ├── ReceivedDamage
-│   ├── CombatExperience
-│   └── MagicUsage(Domain)
-│
 └── ProgressionRules
     ├── Validation
     ├── AntiAbuse
     └── GainCalculation
 ```
 
-Les valeurs de gain, paliers, courbes et probabilités ne sont pas encore définitifs.
-
 ## 10. Règles
 
 1. La progression doit être principalement liée à l'utilisation réelle.
 2. Une action doit progresser l'aptitude à laquelle elle correspond.
 3. Les systèmes gameplay ne doivent pas modifier directement toutes les statistiques sans passer par une logique de progression cohérente.
-4. L'Esquive est une mécanique de gameplay obligatoire et une source d'Agilité.
-5. Le saut arrière est une variante d'esquive/mobilité intégrée au même système.
-6. Le Réflexe est distinct de l'Agilité.
-7. Le Réflexe peut déclencher une esquive automatique avec une probabilité limitée lorsque les conditions sont réunies.
-8. L'esquive automatique ne doit jamais rendre l'esquive manuelle inutile.
-9. Les domaines magiques restent extensibles et non figés.
-10. Les mécanismes anti-farming sont nécessaires, mais seront équilibrés au prototype.
-11. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
-12. Aucun système complet n'est considéré comme implémenté par cette spécification seule.
+4. La roulade, le bond en arrière et le pas de côté sont des mécaniques d'esquive distinctes.
+5. Le Réflexe est distinct de l'Agilité.
+6. Le Réflexe peut déclencher une esquive automatique avec une probabilité limitée lorsque les conditions sont réunies.
+7. L'esquive automatique ne doit jamais rendre l'esquive manuelle inutile.
+8. Les mouvements d'exploration doivent rester contextuels et ne pas transformer Merge en système de parkour intégral sans décision de game design ultérieure.
+9. Les mécanismes anti-farming sont nécessaires et seront équilibrés au prototype.
+10. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
