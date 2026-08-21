@@ -1,6 +1,6 @@
 # Gameplay — Merge
 
-Cette documentation synthétise les mécaniques de gameplay actuellement approuvées. Les spécifications détaillées et normatives se trouvent dans `specs/GAMEPLAY_AND_PERSISTENT_WORLD.md`, `specs/PLAYER_PROGRESSION.md` et `specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md`.
+Cette documentation synthétise les mécaniques de gameplay actuellement approuvées. Les spécifications détaillées et normatives se trouvent dans `specs/GAMEPLAY_AND_PERSISTENT_WORLD.md`, `specs/PLAYER_PROGRESSION.md`, `specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md` et `specs/MOUNT_SYSTEM_SPEC.md`.
 
 ## Mouvement du joueur
 
@@ -15,7 +15,8 @@ Merge est un Action-RPG à la troisième personne. Le joueur dispose de :
 - **pas de côté** ;
 - **franchissement contextuel d'obstacles** ;
 - **escalade contextuelle** ;
-- **réception contrôlée après une chute**.
+- **réception contrôlée après une chute** ;
+- **montée et déplacement à dos de monture**.
 
 ### Bond en arrière
 
@@ -27,13 +28,23 @@ Le pas de côté est une esquive latérale rapide permettant de sortir de la tra
 
 ### Franchissement et escalade contextuels
 
-Le personnage peut franchir certains obstacles adaptés à sa morphologie : petits murets, fenêtres basses, rochers, clôtures, troncs, tables et petites corniches lorsque la géométrie et le contexte l'autorisent.
+Le personnage peut franchir certains obstacles adaptés à sa morphologie : petits murets, fenêtres basses, rochers, clôtures, troncs et petites corniches lorsque la géométrie et le contexte l'autorisent.
 
 L'escalade reste **contextuelle** : Merge ne doit pas devenir un système de parkour où chaque surface est grimpable sans règle de gameplay. Les surfaces, hauteurs et conditions d'accès seront définies par les données du monde.
 
 ### Réception contrôlée
 
 Après une chute modérée, le personnage peut effectuer une réception contrôlée lorsque les conditions sont réunies. L'Agilité peut améliorer la qualité de cette réception, réduire les dégâts ou le déséquilibre dans les limites du système de chute. Les chutes importantes restent dangereuses.
+
+### Montures
+
+Le joueur peut monter sur des montures. Les espèces, types et capacités exacts sont volontairement laissés ouverts pour être choisis plus tard.
+
+Une monture est une entité de gameplay distincte avec ses propres mouvements, endurance, état, comportement, interactions avec le terrain et éventuellement capacités de combat. Le joueur peut monter, se déplacer à dos de monture et descendre selon les règles de la monture.
+
+Les montures doivent pouvoir interagir avec les environnements du monde : pentes, obstacles, eau, zones volcaniques, feu et catastrophes naturelles. Certaines pourront avoir des capacités ou résistances particulières.
+
+La monture suit également les règles de performance et de persistance du monde : elle doit pouvoir être simulée de façon abstraite hors zone et matérialisée avec une simulation complète lorsque le joueur la monte ou se trouve à proximité.
 
 La roulade et le bond en arrière sont des variantes du système d'esquive afin de partager les règles communes de défense, tout en conservant des comportements et animations distincts. Le pas de côté utilise également cette architecture commune sans être une simple copie de la roulade.
 
@@ -96,4 +107,4 @@ Le monde ne se régénère pas artificiellement. Les morts, destructions et ress
 
 Une partie correspond à un monde persistant. Une nouvelle partie doit permettre de créer un nouveau monde sans supprimer les anciens. Le joueur pourra revenir à un monde précédemment sauvegardé et retrouver son état exact.
 
-Pour la conception technique détaillée, voir `specs/GAMEPLAY_AND_PERSISTENT_WORLD.md`, `specs/PLAYER_PROGRESSION.md` et `specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md`.
+Pour la conception technique détaillée, voir `specs/GAMEPLAY_AND_PERSISTENT_WORLD.md`, `specs/PLAYER_PROGRESSION.md`, `specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md` et `specs/MOUNT_SYSTEM_SPEC.md`.
