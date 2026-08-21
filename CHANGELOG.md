@@ -14,7 +14,10 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Spécification d'un bestiaire à populations dynamiques avec reproduction, mortalité, prédation, ressources, migration et extinction locale.
 - Règle fondamentale de monde non régénératif : les morts, destructions et suppressions définitives persistent.
 - Architecture conceptuelle de persistance par monde et de plusieurs mondes indépendants.
-- Documentation `docs/gameplay.md` et `docs/world.md`.
+- **Saut arrière** intégré au système commun d'esquive/mobilité.
+- **Réflexe de combat** ajouté comme progression distincte de l'Agilité, basée sur l'expérience de combat réelle.
+- Le Réflexe peut déclencher une **esquive automatique probabiliste** lorsque les conditions de combat le permettent, sans remplacer l'esquive manuelle.
+- Documentation `docs/gameplay.md`, `docs/world.md` et spécifications de progression mises à jour.
 
 ### Updated
 - Roadmap enrichie avec les nouveaux systèmes de gameplay, d'écologie et de persistance.
