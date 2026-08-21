@@ -8,6 +8,16 @@ Merge est un Action-RPG à la troisième personne. Le joueur dispose d'un dépla
 
 La roulade et le saut arrière sont des variantes du même système d'esquive afin de partager les règles de coût d'Endurance, collision, récupération et invulnérabilité lorsqu'elles sont retenues.
 
+## Combat
+
+Le combat physique distingue trois réponses défensives :
+
+- **Blocage** : défense plus permissive qui réduit/absorbe une attaque selon l'équipement et les règles de défense.
+- **Parade** : défense active fondée sur une fenêtre de timing précise avant l'impact. Une réussite peut annuler/réduire le coup, déséquilibrer l'attaquant et ouvrir une fenêtre de riposte.
+- **Esquive** : évitement spatial via roulade, saut arrière ou autres variantes futures.
+
+La parade n'est pas un simple blocage et n'est pas déclenchée automatiquement par le Réflexe. Les attaques non parables et les paramètres de fenêtre seront définis dans le prototype.
+
 ## Progression
 
 La progression est organique et liée à l'utilisation réelle :
