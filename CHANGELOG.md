@@ -37,6 +37,7 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Coulées de lave capables de suivre le relief, remplir certaines dépressions/ravins, créer des zones de danger et déclencher des incendies.
 - Direction de world design à trois grandes régions : **Dark Fantasy**, **Light Fantasy** avec grande colline et lac d'altitude, et **Fantasy classique**.
 - Hydrologie régionale : le lac d'altitude peut générer des ruissellements, torrents, débordements et inondations en aval.
+- **Déplacements territoriaux des prédateurs** : territoire principal privilégié, excursions occasionnelles vers des zones voisines, retour probabiliste et distinction claire entre excursion et migration permanente.
 - `specs/PERFORMANCE_AND_SIMULATION_SPEC.md` imposant la simulation probabiliste hors zone et la simulation détaillée locale.
 - `specs/SYSTEM_INTEGRATION_MATRIX.md` pour contrôler les dépendances et éviter les contradictions entre systèmes.
 - `specs/WORLD_REGIONS_HYDROLOGY_AND_THREATS_SPEC.md` pour la direction de la carte et les risques régionaux.
@@ -45,6 +46,7 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `docs/gameplay.md` consolidé avec mouvement, combat, ciblage, groupes, magie collective, progression, survie, Médecine, maladies, montures, aquatique, catastrophes et structure du monde.
 - `docs/architecture.md` aligné sur les nouveaux systèmes et leur ordre d'implémentation.
 - `docs/world.md` maintient la règle de monde persistant/non régénératif et la simulation régionale hors zone.
+- `specs/REGIONAL_PROBABILISTIC_SIMULATION_SPEC.md` définit désormais les territoires principaux des prédateurs, leurs excursions occasionnelles et leur matérialisation locale cohérente.
 - Les spécifications spécialisées restent data-driven et n'enferment pas encore les domaines magiques, espèces de montures, chiffres d'équilibrage ou contenu définitif.
 - Les nouveaux systèmes sont spécifiés mais ne sont pas déclarés comme implémentés.
 - Engine version standardized to **Unreal Engine 5.8.1** across project configuration and documentation.
