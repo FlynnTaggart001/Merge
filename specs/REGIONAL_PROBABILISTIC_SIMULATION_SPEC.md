@@ -112,11 +112,86 @@ Résolution régionale des 25 jours
 - ressources consommées / produites
 - changements de faction
 - propagation abstraite des risques
+- excursions territoriales de prédateurs
 ```
 
 Le système ne doit pas nécessairement simuler chaque journée individuellement si une résolution statistique ou analytique donne un résultat cohérent.
 
-## 6. Entrée dans une zone
+## 6. Territoires et déplacements des prédateurs
+
+Les prédateurs possèdent un **territoire principal** dans lequel ils passent la majorité de leur temps. Le territoire est une zone écologique préférentielle, pas une frontière invisible impossible à franchir.
+
+```text
+Territoire principal
+├── déplacements quotidiens
+├── recherche de proies
+├── repos
+└── reproduction / interactions sociales selon l'espèce
+```
+
+Les prédateurs peuvent **quitter occasionnellement leur territoire** pour explorer les alentours. Une excursion peut être déclenchée ou favorisée par :
+
+- baisse locale des proies ;
+- recherche de nourriture ;
+- concurrence entre prédateurs ;
+- changement de saison ;
+- conditions météorologiques ;
+- perturbation du territoire ;
+- catastrophe naturelle ;
+- recherche d'un partenaire ou comportement social ;
+- qualité d'un habitat voisin ;
+- caractéristiques propres à l'espèce.
+
+L'excursion reste généralement limitée dans le temps ou la distance, avec une **probabilité de retour** vers le territoire principal. Certaines espèces peuvent toutefois effectuer des déplacements plus longs lorsque leurs données le permettent.
+
+### 6.1 Continuum de migration
+
+Il faut distinguer :
+
+```text
+Patrouille / déplacement local
+        ↓
+Excursion hors territoire
+        ↓
+Exploration prolongée
+        ↓
+Déplacement saisonnier
+        ↓
+Migration / changement de territoire
+```
+
+Une simple sortie temporaire ne doit donc pas transformer automatiquement un prédateur en migrant permanent.
+
+### 6.2 Gestion probabiliste hors zone
+
+Hors zone joueur, les excursions sont représentées par des événements agrégés :
+
+```text
+Prédateurs d'une région
+        ↓
+Probabilité d'excursion
+        ↓
+Région voisine candidate
+        ↓
+Probabilité d'établissement temporaire / retour
+        ↓
+Mise à jour des populations régionales
+```
+
+Le système peut enregistrer qu'une fraction de la population de prédateurs est momentanément hors territoire sans créer les individus correspondants comme Actors Unreal.
+
+### 6.3 Matérialisation locale
+
+Lorsque le joueur entre dans une zone :
+
+- les prédateurs dont le territoire ou l'excursion intersecte la zone peuvent être matérialisés ;
+- leur position de départ est cohérente avec la résolution régionale ;
+- leur comportement local reprend à partir de cet état ;
+- un prédateur en excursion peut donc être rencontré dans une zone où il n'est normalement pas résident.
+
+Cela permet de conserver des rencontres rares et naturelles sans sacrifier les performances.
+
+## 7. Entrée dans une zone
 
 Lorsque le joueur entre dans une région :
 
@@ -134,7 +209,7 @@ Enable local simulation
 
 La zone devient alors un espace de simulation détaillée.
 
-## 7. Simulation locale
+## 8. Simulation locale
 
 À proximité du joueur, les systèmes peuvent utiliser des simulations plus précises :
 
@@ -151,7 +226,7 @@ La zone devient alors un espace de simulation détaillée.
 
 La précision dépend de la distance au joueur et du besoin gameplay.
 
-## 8. Catastrophes naturelles
+## 9. Catastrophes naturelles
 
 Une catastrophe éloignée peut exister dans l'état abstrait :
 
@@ -173,7 +248,7 @@ Volcan en éruption
 
 Lorsque le joueur arrive, seuls les résultats nécessaires sont matérialisés.
 
-## 9. Écologie
+## 10. Écologie
 
 Les populations hors zone sont traitées comme des distributions ou compteurs :
 
@@ -188,12 +263,13 @@ Le modèle peut estimer :
 - mortalité ;
 - prédation ;
 - migration ;
+- excursions territoriales ;
 - ressources ;
 - capacité écologique.
 
 Il ne doit pas créer les 1 038 animaux comme Actors Unreal hors besoin.
 
-## 10. PNJ et factions
+## 11. PNJ et factions
 
 Les PNJ hors zone peuvent être représentés par des états abstraits :
 
@@ -207,13 +283,13 @@ Les PNJ hors zone peuvent être représentés par des états abstraits :
 
 Lorsqu'une zone devient active, les PNJ nécessaires sont matérialisés et reprennent leur comportement local.
 
-## 11. Cohérence et déterminisme
+## 12. Cohérence et déterminisme
 
 Chaque région doit pouvoir utiliser un état pseudo-aléatoire déterministe ou un seed persistant afin que la résolution ne produise pas des incohérences lors des sauvegardes/rechargements.
 
 Le système doit enregistrer les résultats des événements importants plutôt que de rejouer le hasard différemment à chaque chargement.
 
-## 12. Distances de simulation
+## 13. Distances de simulation
 
 Prévoir plusieurs niveaux :
 
@@ -236,7 +312,7 @@ Niveau 4 — Proximité immédiate
 
 Les seuils exacts seront déterminés par profiling.
 
-## 13. Persistance
+## 14. Persistance
 
 Les résultats d'une résolution hors zone sont enregistrés dans `WorldState`.
 
@@ -244,6 +320,7 @@ Exemples :
 
 ```text
 Population change
+PredatorExcursionResult
 FireSpreadResult
 VolcanoState
 LandslideState
@@ -255,13 +332,15 @@ TerrainChange
 
 Le joueur doit retrouver le même état du monde après sauvegarde/chargement.
 
-## 14. Règles
+## 15. Règles
 
 1. Ne jamais simuler chaque créature du monde en permanence.
 2. Ne jamais faire tourner les catastrophes détaillées hors des zones pertinentes.
 3. Utiliser des probabilités conditionnelles et des résolutions agrégées hors zone.
-4. Activer la simulation détaillée lorsque le joueur entre dans la zone.
-5. Conserver les résultats dans le WorldState.
-6. Utiliser des états/seed déterministes pour éviter les incohérences.
-7. La simulation locale peut devenir beaucoup plus précise sans changer l'état abstrait global.
-8. Les résultats doivent rester cohérents avec l'écologie, les factions, les quêtes et la persistance.
+4. Les prédateurs ont un territoire principal mais peuvent effectuer des excursions occasionnelles dans des zones voisines.
+5. Une excursion ne doit pas être confondue avec une migration permanente.
+6. Activer la simulation détaillée lorsque le joueur entre dans la zone.
+7. Conserver les résultats dans le WorldState.
+8. Utiliser des états/seed déterministes pour éviter les incohérences.
+9. La simulation locale peut devenir beaucoup plus précise sans changer l'état abstrait global.
+10. Les résultats doivent rester cohérents avec l'écologie, les factions, les quêtes et la persistance.
