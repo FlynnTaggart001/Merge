@@ -61,7 +61,30 @@ Le système devra comptabiliser l'exposition réelle au danger et empêcher les 
 
 Les règles exactes de validation et les paliers de progression seront déterminés lors du prototype.
 
-## 5. Magie
+## 5. Discrétion
+
+La Discrétion progresse avec les actions de furtivité réussies qui permettent d'éviter d'être repéré par les ennemis.
+
+Sources principales de progression :
+
+- déplacement en furtivité sans détection ;
+- passage à proximité d'ennemis sans déclencher Soupçon / Recherche / Alerte ;
+- backstab réussi ;
+- utilisation prolongée de l'accroupissement en zone hostile sans être vu ;
+- actions furtives significatives (vol, infiltration, etc. à définir).
+
+Effets attendus de la maîtrise :
+
+- réduction de la visibilité et du bruit générés ;
+- meilleure résistance à la détection progressive ;
+- fenêtre de backstab plus tolérante ;
+- réduction du rayon de détection ennemi contre le joueur.
+
+La progression doit récompenser l'utilisation réelle et réussie de la furtivité, pas le spam d'accroupissement en zone sûre. Les règles anti-abus (contexte, intensité, fréquence) s'appliquent comme pour les autres aptitudes.
+
+La Discrétion s'intègre au système de furtivité déjà spécifié (posture, vitesse, ligne de vue, luminosité, bruit, terrain, équipement, état de l'ennemi).
+
+## 6. Magie
 
 La progression magique est **séparée par domaine de magie**.
 
@@ -79,7 +102,7 @@ Les domaines de magie sont actuellement en cours de définition. Aucun nom, nomb
 
 L'architecture doit permettre d'ajouter un nouveau domaine par données / configuration lorsque possible, sans réécrire le système de progression.
 
-## 6. Événements de progression
+## 7. Événements de progression
 
 Les systèmes de gameplay doivent pouvoir envoyer des événements de progression génériques au système de progression.
 
@@ -116,6 +139,16 @@ Défense
 ```
 
 ```text
+Action furtive réussie / non-détection
+    ↓
+ProgressionEvent(SuccessfulStealth)
+    ↓
+ProgressionSystem
+    ↓
+Discrétion
+```
+
+```text
 Sort du domaine X utilisé
     ↓
 ProgressionEvent(MagicUsage, DomainX)
@@ -127,7 +160,7 @@ Maîtrise DomainX
 
 Cette séparation évite de coupler le système de combat, de mouvement ou de magie aux détails internes des statistiques.
 
-## 7. Anti-abus
+## 8. Anti-abus
 
 Chaque source de progression doit pouvoir définir des règles de validation :
 
@@ -140,14 +173,15 @@ Chaque source de progression doit pouvoir définir des règles de validation :
 
 Ces mécanismes seront équilibrés pendant le prototype et ne doivent pas être surconçus maintenant.
 
-## 8. Architecture cible
+## 9. Architecture cible
 
 ```text
 ProgressionSystem
 ├── AttributeProgression
 │   ├── Endurance
 │   ├── Agility
-│   └── Defense
+│   ├── Defense
+│   └── Discretion
 │
 ├── MagicProgression
 │   └── MagicDomainMastery[*]
@@ -157,6 +191,7 @@ ProgressionSystem
 │   ├── SuccessfulDodge
 │   ├── Jump
 │   ├── ReceivedDamage
+│   ├── SuccessfulStealth
 │   └── MagicUsage(Domain)
 │
 └── ProgressionRules
@@ -167,13 +202,14 @@ ProgressionSystem
 
 Les valeurs de gain, paliers et formules ne sont pas encore définitifs.
 
-## 9. Règles
+## 10. Règles
 
 1. La progression doit être principalement liée à l'utilisation réelle.
 2. Une action doit progresser l'aptitude à laquelle elle correspond.
 3. Les systèmes gameplay ne doivent pas modifier directement toutes les statistiques sans passer par une logique de progression cohérente.
 4. L'Esquive est une mécanique de gameplay obligatoire et une source d'Agilité.
-5. Les domaines magiques restent extensibles et non figés.
-6. Les mécanismes anti-farming sont nécessaires, mais seront équilibrés au prototype.
-7. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
-8. Aucun système complet n'est considéré comme implémenté par cette spécification seule.
+5. La Discrétion progresse uniquement via des actions de furtivité réussies et significatives.
+6. Les domaines magiques restent extensibles et non figés.
+7. Les mécanismes anti-farming sont nécessaires, mais seront équilibrés au prototype.
+8. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
+9. Aucun système complet n'est considéré comme implémenté par cette spécification seule.
