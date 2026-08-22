@@ -12,6 +12,8 @@ La roulade est un état de gameplay et pourra intégrer endurance, invulnérabil
 
 L'accroupissement améliore la furtivité. La détection est progressive et dépend de la posture, vitesse, distance, ligne de vue, luminosité, bruit, terrain, équipement et état de l'ennemi.
 
+La compétence **Discrétion** progresse avec les actions furtives réussies et réduit la visibilité / le bruit du joueur ainsi que la sensibilité à la détection.
+
 États conceptuels :
 
 `Calme → Soupçon → Recherche → Alerte → Combat`
@@ -19,6 +21,8 @@ L'accroupissement améliore la furtivité. La détection est progressive et dép
 ## Backstab
 
 Le Backstab est une action d'assassinat dépendant de la furtivité et du positionnement. Être simplement derrière un ennemi ne suffit pas : distance, angle, état de l'ennemi et détection doivent être compatibles.
+
+Un Backstab réussi contribue à la progression de la Discrétion.
 
 ## Monde vivant
 
