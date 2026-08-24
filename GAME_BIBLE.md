@@ -427,13 +427,26 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 ## 13. PNJ & IA
 
 ### Types de PNJ
-- Civils inoffensifs
+- Civils (pas « inoffensifs » par défaut — voir états mentaux)
 - Marchands
 - Maîtres de compétences
 - Prêtres/Mages
 - Gardes/soldats
 - Criminels
 - Ennemis
+
+### États mentaux
+- Les PNJ ont des **états mentaux** dynamiques
+- S’ils sont **énervés**, ils deviennent **enclins à la violence** (pas de civil permanentement inoffensif)
+- Liste complète des états et transitions : À COMPLÉTER
+
+### Propension à la violence (genre PNJ × genre joueur)
+S’applique surtout aux civils humains en situation de tension / colère.
+
+| Genre du joueur | PNJ hommes | PNJ femmes |
+|---|---|---|
+| Joueur **homme** | Légèrement plus enclins à la violence | Moins enclins |
+| Joueur **femme** | Moins enclins à la violence | Plus enclins à la violence |
 
 ### Routines
 - Horaires quotidiens (À COMPLÉTER)
