@@ -194,7 +194,13 @@ Noms des quartiers et localisation précise : À DÉCIDER.
 - Très hostiles aux humains
 - Localisation, culture détaillée, rapports aux autres espèces : À COMPLÉTER
 
-À COMPLÉTER pour les humains et les êtres de magie.
+#### Les Êtres de Magie (Light Fantaisie)
+- **Apparence** : silhouettes lumineuses
+- **Couleur du corps** : change selon leur pouvoir dans la société
+- **Aura** : glow autour d’eux, indique leur état mental
+- Individus indépendants (seule la conscience collective gouverne)
+
+À COMPLÉTER pour les humains.
 
 ### Faune notable
 
@@ -326,7 +332,7 @@ Noms des quartiers et localisation précise : À DÉCIDER.
 
 ## 10. Équipement
 
-### Slots d’Équipement
+### Sloots d’Équipement
 - Tête (casque, couronne, bandeau)
 - Torse (armure lourde, légère, robe)
 - Mains (gants, mitaines)
