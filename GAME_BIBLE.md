@@ -116,24 +116,35 @@ Détails géographiques, biomes et points d’intérêt majeurs : À COMPLÉTER 
 ### Les Trois Royaumes (base)
 
 **Royaume de la Fantaisie**  
-Territoire principal des humains. C’est le cœur « classique » du monde : villages, fermes, forêts, châteaux. La plupart des humains y vivent. Ambiance médiévale-fantastique standard, contrastée par l’esthétique gothique globale du jeu.
+Territoire principal des humains. Cœur « classique » du monde : villages, fermes, forêts, châteaux. La plupart des humains y vivent. Ambiance médiévale-fantastique standard, contrastée par l’esthétique gothique globale du jeu.
+
+**Gouvernement** : monarchie. Le roi est fainéant et ne pense qu’à ses intérêts personnels. L’élite dirigeante ressemble à celle de notre monde : des incapables qui se foutent du peuple. Le pouvoir sert d’abord ceux qui le détiennent.
 
 **Royaume de la Dark Fantaisie**  
-Domaine principalement peuplé de squelettes. Architecture d’ossements, nécropoles, cryptes. Ambiance plus sombre et macabre que le reste du monde. Les relations avec les humains (commerce, hostilité, coexistence) restent à définir.
+Domaine principalement peuplé de squelettes. Architecture d’ossements, nécropoles, cryptes. Ambiance plus sombre et macabre. Les relations avec les humains (commerce, hostilité, coexistence) restent à définir.
+
+**Gouvernement** : À COMPLÉTER.
 
 **Royaume de la Light Fantaisie**  
 Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, environnement saturé d’énergie magique. Ambiance plus étrange et lumineuse, en contraste avec le gothique dominant.
 
-**Gouvernement** : une conscience collective. Seul le gouvernement forme cette conscience unifiée. Le peuple appartient à la même espèce mais reste indépendant — chaque individu a sa propre volonté, ses propres décisions. La conscience collective gouverne, elle ne fusionne pas la population.
+**Gouvernement** : conscience collective. Seul le gouvernement forme cette conscience unifiée. Le peuple appartient à la même espèce mais reste indépendant — chaque individu a sa propre volonté. La conscience collective gouverne, elle ne fusionne pas la population.
 
 ### Factions et Pouvoirs
 
+#### Royaume de la Fantaisie (humains)
+- **Forme** : Monarchie
+- **Roi** : fainéant, intérêts personnels uniquement
+- **Élite** : incompétente, indifférente au peuple
+- **Conséquence** : le pouvoir sert d’abord ceux qui le détiennent
+
 #### Royaume de la Light Fantaisie
-- **Forme de pouvoir** : Conscience collective (gouvernement uniquement)
-- **Peuple** : même espèce, mais individus indépendants
+- **Forme** : Conscience collective (gouvernement uniquement)
+- **Peuple** : même espèce, individus indépendants
 - **Implication** : le gouvernement agit comme une entité unique, le peuple non
 
-Les gouvernements des deux autres royaumes : À COMPLÉTER.
+#### Royaume de la Dark Fantaisie
+- À COMPLÉTER
 
 ### Cultures et Civilisations
 À COMPLÉTER :
@@ -779,4 +790,4 @@ En cas de contradiction :
 
 **Dernière mise à jour** : 2026-08-24
 **Statut** : Phase de préproduction
-**Prochaine étape** : Gouvernements des deux autres royaumes + noms
+**Prochaine étape** : Gouvernement Dark Fantaisie + noms des royaumes
