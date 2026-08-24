@@ -39,103 +39,61 @@ class ScriptedProvider:
 
 def _cfg():
     return RuntimeConfig(
-        max_input_tokens=5000,
-        max_output_tokens=2000,
-        max_total_tokens_per_task=10000,
-        max_total_tokens_per_session=20000,
-        max_cost_per_call_usd=1.0,
-        max_cost_per_task_usd=5.0,
-        max_cost_per_session_usd=10.0,
-        max_cost_per_day_usd=20.0,
-        max_cost_per_month_usd=100.0,
-        warning_ratio=0.7,
-        max_calls_per_minute=30,
-        max_calls_per_hour=100,
-        request_timeout_seconds=5.0,
-        max_retries=0,
-        initial_backoff_seconds=0.01,
-        max_backoff_seconds=0.05,
-        backoff_multiplier=2.0,
-        backoff_jitter=0.0,
-        failure_threshold=5,
-        cooldown_seconds=60.0,
-        max_iterations=10,
-        max_handoffs=20,
-        mode="supervised",
+        max_input_tokens=5000, max_output_tokens=2000,
+        max_total_tokens_per_task=10000, max_total_tokens_per_session=20000,
+        max_cost_per_call_usd=1.0, max_cost_per_task_usd=5.0,
+        max_cost_per_session_usd=10.0, max_cost_per_day_usd=20.0,
+        max_cost_per_month_usd=100.0, warning_ratio=0.7,
+        max_calls_per_minute=30, max_calls_per_hour=100,
+        request_timeout_seconds=5.0, max_retries=0,
+        initial_backoff_seconds=0.01, max_backoff_seconds=0.05,
+        backoff_multiplier=2.0, backoff_jitter=0.0,
+        failure_threshold=5, cooldown_seconds=60.0,
+        max_iterations=10, max_handoffs=20, mode="supervised",
     )
 
 
 def _request():
     return OrchestratorRequest(
-        task_id="REC-001",
-        role="GAMEPLAY_DESIGNER",
+        task_id="REC-001", role="GAMEPLAY_DESIGNER",
         prompt="Propose an important gameplay change.",
-        estimated_input_tokens=100,
-        estimated_output_tokens=200,
+        estimated_input_tokens=100, estimated_output_tokens=200,
     )
 
 
 def test_critical_review_always_reaches_human():
-    proposer = Orchestrator(
-        ScriptedProvider(["Proposal: add adaptive reproduction."]),
-        config=_cfg(),
-        sleep_fn=lambda _: None,
-    )
-    reviewer = Orchestrator(
-        ScriptedProvider([
-            "VERDICT: NO_CONCERN\nOBSERVATION: none\nALTERNATIVES: one\n"
-        ]),
-        config=_cfg(),
-        sleep_fn=lambda _: None,
-    )
-
+    proposer = Orchestrator(ScriptedProvider(["Proposal: add adaptive reproduction."]), config=_cfg(), sleep_fn=lambda _: None)
+    reviewer = Orchestrator(ScriptedProvider(["VERDICT: NO_CONCERN\nOBSERVATION: none\nALTERNATIVES: one\nCONFIDENCE: 0.99\nREQUIRES_HUMAN_DECISION: NO"]), config=_cfg(), sleep_fn=lambda _: None)
     result = RecommendationEngine(proposer, reviewer).review(_request(), critical=True)
-
     assert result.verdict is RecommendationType.PENDING_HUMAN
     assert len(reviewer.provider.calls) == 1
     assert reviewer.provider.calls[0].role == "DEVIL_ADVOCATE"
 
 
 def test_non_critical_review_preserves_suggestion():
-    proposer = Orchestrator(
-        ScriptedProvider(["Proposal: improve loot readability."]),
-        config=_cfg(),
-        sleep_fn=lambda _: None,
-    )
-    reviewer = Orchestrator(
-        ScriptedProvider(["VERDICT: SUGGESTION\nOBSERVATION: readability can improve."]),
-        config=_cfg(),
-        sleep_fn=lambda _: None,
-    )
-
+    proposer = Orchestrator(ScriptedProvider(["Proposal: improve loot readability."]), config=_cfg(), sleep_fn=lambda _: None)
+    reviewer = Orchestrator(ScriptedProvider(["VERDICT: SUGGESTION\nOBSERVATION: readability can improve.\nCONFIDENCE: 0.95\nREQUIRES_HUMAN_DECISION: NO"]), config=_cfg(), sleep_fn=lambda _: None)
     result = RecommendationEngine(proposer, reviewer).review(_request(), critical=False)
-
     assert result.verdict is RecommendationType.SUGGESTION
 
 
-def test_missing_machine_verdict_is_safe_review():
-    proposer = Orchestrator(
-        ScriptedProvider(["Proposal: change a major system."]),
-        config=_cfg(),
-        sleep_fn=lambda _: None,
-    )
-    reviewer = Orchestrator(
-        ScriptedProvider(["This is not machine-readable."]),
-        config=_cfg(),
-        sleep_fn=lambda _: None,
-    )
-
+def test_low_confidence_escalates_to_human():
+    proposer = Orchestrator(ScriptedProvider(["Proposal: uncertain change."]), config=_cfg(), sleep_fn=lambda _: None)
+    reviewer = Orchestrator(ScriptedProvider(["VERDICT: SUGGESTION\nCONFIDENCE: 0.40\nREQUIRES_HUMAN_DECISION: NO"]), config=_cfg(), sleep_fn=lambda _: None)
     result = RecommendationEngine(proposer, reviewer).review(_request(), critical=False)
+    assert result.verdict is RecommendationType.PENDING_HUMAN
 
-    assert result.verdict is RecommendationType.REVIEW
+
+def test_missing_machine_verdict_is_safe_review():
+    proposer = Orchestrator(ScriptedProvider(["Proposal: change a major system."]), config=_cfg(), sleep_fn=lambda _: None)
+    reviewer = Orchestrator(ScriptedProvider(["This is not machine-readable."]), config=_cfg(), sleep_fn=lambda _: None)
+    result = RecommendationEngine(proposer, reviewer).review(_request(), critical=False)
+    assert result.verdict is RecommendationType.PENDING_HUMAN
 
 
 if __name__ == "__main__":
-    for test in (
-        test_critical_review_always_reaches_human,
-        test_non_critical_review_preserves_suggestion,
-        test_missing_machine_verdict_is_safe_review,
-    ):
+    tests = [test_critical_review_always_reaches_human, test_non_critical_review_preserves_suggestion, test_low_confidence_escalates_to_human, test_missing_machine_verdict_is_safe_review]
+    for test in tests:
         test()
         print(f"PASS {test.__name__}")
-    print("3/3 passed")
+    print(f"{len(tests)}/{len(tests)} passed")
