@@ -164,6 +164,14 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 
 À COMPLÉTER pour les humains et les êtres de magie.
 
+### Personnages Importants
+
+#### Sylva the Wise Tree
+- **Apparence** : un arbre comme les autres, à quelques exceptions près. Sur son tronc : une paire d’yeux de bois et une bouche de bois (il parle).
+- **Personnalité** : très intelligent, très sage — comme un philosophe.
+- **Rôle** : personnage important (conseiller, source de savoir, quêtes possibles — à préciser).
+- **Localisation** : À DÉCIDER.
+
 ---
 
 ## 07. Personnage Joueur
@@ -278,7 +286,7 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 
 ## 10. Équipement
 
-### Slots d’Équipement
+### Sloots d’Équipement
 - Tête (casque, couronne, bandeau)
 - Torse (armure lourde, légère, robe)
 - Mains (gants, mitaines)
@@ -801,4 +809,4 @@ En cas de contradiction :
 
 **Dernière mise à jour** : 2026-08-24
 **Statut** : Phase de préproduction
-**Prochaine étape** : Noms des trois royaumes + personnages importants
+**Prochaine étape** : Noms des trois royaumes + autres personnages importants
