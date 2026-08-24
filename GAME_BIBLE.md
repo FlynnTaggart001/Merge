@@ -162,6 +162,12 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 - Le roi est le premier d’entre eux
 - Culture encore à détailler (traditions, rapports aux humains, etc.)
 
+#### Les Gork
+- Équivalent des orcs, appelés **Gork** dans le jeu
+- Vivent en **tribus séparées**
+- Très hostiles aux humains
+- Localisation, culture détaillée, rapports aux autres espèces : À COMPLÉTER
+
 À COMPLÉTER pour les humains et les êtres de magie.
 
 ### Personnages Importants
@@ -810,4 +816,4 @@ En cas de contradiction :
 
 **Dernière mise à jour** : 2026-08-24
 **Statut** : Phase de préproduction
-**Prochaine étape** : Noms des trois royaumes + autres personnages importants
+**Prochaine étape** : Noms des trois royaumes + autres personnages / espèces
