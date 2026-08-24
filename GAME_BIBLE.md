@@ -124,12 +124,16 @@ Domaine principalement peuplé de squelettes. Architecture d’ossements, nécro
 **Royaume de la Light Fantaisie**  
 Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, environnement saturé d’énergie magique. Ambiance plus étrange et lumineuse, en contraste avec le gothique dominant.
 
+**Gouvernement** : une conscience collective. Seul le gouvernement forme cette conscience unifiée. Le peuple appartient à la même espèce mais reste indépendant — chaque individu a sa propre volonté, ses propres décisions. La conscience collective gouverne, elle ne fusionne pas la population.
+
 ### Factions et Pouvoirs
-À COMPLÉTER :
-- Liste des factions principales (possiblement liées aux trois royaumes)
-- Leurs idéologies
-- Leurs conflits
-- Leur influence sur le monde
+
+#### Royaume de la Light Fantaisie
+- **Forme de pouvoir** : Conscience collective (gouvernement uniquement)
+- **Peuple** : même espèce, mais individus indépendants
+- **Implication** : le gouvernement agit comme une entité unique, le peuple non
+
+Les gouvernements des deux autres royaumes : À COMPLÉTER.
 
 ### Cultures et Civilisations
 À COMPLÉTER :
@@ -252,7 +256,7 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 
 ## 10. Équipement
 
-### Slots d’Équipement
+### Sloots d’Équipement
 - Tête (casque, couronne, bandeau)
 - Torse (armure lourde, légère, robe)
 - Mains (gants, mitaines)
@@ -775,4 +779,4 @@ En cas de contradiction :
 
 **Dernière mise à jour** : 2026-08-24
 **Statut** : Phase de préproduction
-**Prochaine étape** : Noms des trois royaumes + personnages importants
+**Prochaine étape** : Gouvernements des deux autres royaumes + noms
