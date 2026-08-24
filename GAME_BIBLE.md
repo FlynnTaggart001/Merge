@@ -120,6 +120,8 @@ Territoire principal des humains. Cœur « classique » du monde : villages, fer
 
 **Gouvernement** : monarchie. Le roi est fainéant et ne pense qu’à ses intérêts personnels. L’élite dirigeante ressemble à celle de notre monde : des incapables qui se foutent du peuple. Le pouvoir sert d’abord ceux qui le détiennent.
 
+**Esclavage** : légal dans le monde des humains.
+
 **Royaume de la Dark Fantaisie**  
 Domaine principalement peuplé de squelettes. Architecture d’ossements, nécropoles, cryptes. Ambiance plus sombre et macabre.
 
@@ -142,6 +144,7 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 - **Roi** : fainéant, intérêts personnels uniquement
 - **Élite** : incompétente, indifférente au peuple
 - **Conséquence** : le pouvoir sert d’abord ceux qui le détiennent
+- **Esclavage** : légal
 
 #### Royaume de la Dark Fantaisie (squelettes)
 - **Forme** : Monarchie
@@ -154,6 +157,23 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 - **Forme** : Conscience collective (gouvernement uniquement)
 - **Peuple** : même espèce, individus indépendants
 - **Implication** : le gouvernement agit comme une entité unique, le peuple non
+
+### Quartiers sensibles (rivaux)
+
+Deux quartiers se détestent et se livrent souvent à des rixes.
+
+#### Quartier humain (Royaume de la Fantaisie)
+- Vend de la **poudre d’os** (drogue)
+- Vend des **squelettes esclaves**
+- L’esclavage est légal chez les humains
+
+#### Quartier squelette (Royaume de la Dark Fantaisie)
+- Vend des **goûts magiques** pour chicha magique
+- Organise des **jeux d’argent**
+
+**Relation** : rivalité ouverte, rixes fréquentes entre les deux quartiers.
+
+Noms des quartiers et localisation précise : À DÉCIDER.
 
 ### Cultures et Civilisations
 
