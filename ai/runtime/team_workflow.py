@@ -13,11 +13,12 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Callable, Iterable
 
-from .decision_manager import DecisionManager, HumanDecision
+from .decision_manager import DecisionManager, HumanDecision, Disagreement
 from .execution_gate import ExecutionRequest, execute_if_authorized
 from .handoff import Handoff, HandoffStore
 from .permissions import PermissionLevel, PermissionRequest, authorize
 from .project_state import ProjectStateStore
+from .proactive_recommendations import Recommendation, RecommendationStore
 from .recommendation_engine import RecommendationEngine, RecommendationType
 from .role_assignment import assign_role
 from .task_planner import DependencyGraph, Task, TaskStatus, validate_task_plan
@@ -49,6 +50,7 @@ class TeamWorkflow:
         state_store: ProjectStateStore | None = None,
         decision_manager: DecisionManager | None = None,
         handoff_store: HandoffStore | None = None,
+        recommendation_store: RecommendationStore | None = None,
     ) -> None:
         self.planner = planner
         self.proposer = proposer
@@ -61,6 +63,7 @@ class TeamWorkflow:
         self.state_store = state_store or ProjectStateStore()
         self.decision_manager = decision_manager or DecisionManager()
         self.handoff_store = handoff_store or HandoffStore()
+        self.recommendation_store = recommendation_store or RecommendationStore()
 
     def run(self, objective: str, *, max_iterations: int = 10, max_handoffs: int = 20) -> WorkflowResult:
         if not objective.strip():
@@ -109,6 +112,31 @@ class TeamWorkflow:
                 critical=self._is_critical(task),
             )
             result.trace.append(f"{task.task_id}:proposal+devil_advocate:{review.verdict.value}")
+
+            self.recommendation_store.add(Recommendation(
+                recommendation_id=f"REC-{task.task_id}",
+                category="AI_TEAM_REVIEW",
+                title=f"Review for {task.objective}",
+                rationale=review.review.text[:2000],
+                impact="HIGH" if self._is_critical(task) else "MEDIUM",
+                risk="HIGH" if review.verdict in {RecommendationType.REVIEW, RecommendationType.PENDING_HUMAN} else "LOW",
+                reversibility="UNKNOWN" if self._is_critical(task) else "HIGH",
+                confidence=0.8,
+                requires_human=review.verdict is RecommendationType.PENDING_HUMAN,
+                status=review.verdict.value,
+            ))
+            result.recommendations.append(f"REC-{task.task_id}")
+
+            if review.review.status == "ok":
+                self.decision_manager.add_disagreement(Disagreement(
+                    disagreement_id=f"DIS-{task.task_id}",
+                    subject=task.objective,
+                    opinions={
+                        "PROPOSER": review.proposal.text[:2000],
+                        "DEVIL_ADVOCATE": review.review.text[:2000],
+                    },
+                    minority_opinions=[review.review.text[:1000]],
+                ))
 
             if review.verdict in {RecommendationType.BLOCKED, RecommendationType.PENDING_HUMAN}:
                 decision_id = f"DEC-{task.task_id}"
