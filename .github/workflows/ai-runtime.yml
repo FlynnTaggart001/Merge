@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run unit tests (BudgetGuard, RateLimiter, CircuitBreaker)
+      - name: Run unit tests (guards + team workflow)
         run: |
           python -c "
           from ai.runtime.test_budget_guard import *
@@ -34,8 +34,10 @@ jobs:
           ]:
               t()
               print('PASS', t.__name__)
-          print('unit ok')
+          print('guard unit ok')
           "
+          python -m ai.tests.test_recommendation_engine
+          python -m ai.tests.test_team_workflow
 
       - name: Run integration tests (full orchestrator pipeline)
         run: python -m ai.tests.test_orchestrator_pipeline

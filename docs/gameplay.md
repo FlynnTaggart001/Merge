@@ -36,6 +36,9 @@ Le Réflexe peut également déclencher une esquive automatique probabiliste, ta
 ### Furtivité
 
 L'accroupissement et le déplacement discret influencent la furtivité. La détection est progressive selon posture, vitesse, distance, ligne de vue, luminosité, bruit, terrain, équipement et état de l'ennemi.
+La compétence **Discrétion** progresse avec les actions furtives réussies et réduit la visibilité / le bruit du joueur ainsi que la sensibilité à la détection.
+
+États conceptuels :
 
 `Calme → Soupçon → Recherche → Alerte → Combat`
 
@@ -208,6 +211,9 @@ Le monde ne se régénère pas artificiellement. Les morts, destructions, ressou
 Une nouvelle partie peut créer un nouveau monde indépendant sans détruire les anciens mondes sauvegardés.
 
 ## Règle de simulation
+Un Backstab réussi contribue à la progression de la Discrétion.
+
+## Monde vivant
 
 ```text
 Hors zone joueur

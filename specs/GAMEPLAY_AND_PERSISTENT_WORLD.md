@@ -50,7 +50,7 @@ La furtivité n'est pas un booléen. Elle résulte de plusieurs facteurs :
 - luminosité / environnement ;
 - bruit ;
 - terrain ;
-- équipement et compétences futures ;
+- équipement et compétences (notamment Discrétion) ;
 - état de l'ennemi.
 
 Le système de détection est progressif :
@@ -58,6 +58,8 @@ Le système de détection est progressif :
 `Calme → Soupçon → Recherche → Alerte → Combat`
 
 Les valeurs exactes seront équilibrées pendant le prototype gameplay.
+
+La compétence **Discrétion** module ces facteurs : plus elle est élevée, plus la visibilité et le bruit du joueur diminuent, et plus la détection progressive est retardée.
 
 ---
 
@@ -77,6 +79,8 @@ Les conditions prévues comprennent :
 - joueur non détecté ou dans un état permettant l'assassinat.
 
 L'architecture doit permettre différentes armes, animations, compétences et effets sans coupler le Backstab à un seul type d'ennemi.
+
+Un Backstab réussi contribue à la progression de la Discrétion.
 
 ---
 
@@ -112,6 +116,12 @@ La Défense progresse progressivement lorsque le joueur subit des dégâts.
 L'objectif est de créer une progression cohérente avec l'expérience réelle du personnage face au danger, sans permettre une montée artificielle par des actions sans risque.
 
 Le système devra éviter les abus évidents tels que l'auto-infligement contrôlé de dégâts ou les boucles de farming artificielles.
+
+### Discrétion
+
+La Discrétion progresse avec les actions de furtivité réussies (déplacement non détecté, backstab, infiltration, etc.).
+
+Elle réduit la visibilité, le bruit et la sensibilité à la détection progressive. Voir `specs/PLAYER_PROGRESSION.md` pour le détail.
 
 ### Magie
 
@@ -161,6 +171,14 @@ Dégâts réellement subis
     progression Défense
         ↓
     amélioration défensive
+```
+
+```text
+Actions furtives réussies / non-détection
+        ↓
+    progression Discrétion
+        ↓
+    furtivité accrue
 ```
 
 ```text
@@ -355,6 +373,7 @@ MergeCharacter
 │   ├── Endurance
 │   ├── Agility
 │   ├── Defense
+│   ├── Discretion
 │   └── MagicDomains
 ├── Stealth
 │   ├── Visibility
@@ -407,9 +426,10 @@ Les systèmes fondamentaux devront être développés en C++ et rester suffisamm
 7. La roulade / esquive doit être un état de gameplay et une source de progression de l'Agilité.
 8. L'Endurance doit progresser avec les efforts physiques réels : course, combat, saut et activités comparables.
 9. La Défense doit progresser avec les dégâts réellement subis, avec des protections contre le farming artificiel.
-10. La magie doit progresser indépendamment par domaine, sans figer les domaines avant leur validation.
-11. Les paramètres d'équilibrage ne doivent pas être figés avant le prototype.
-12. Aucun système complexe ne doit être implémenté prématurément simplement pour satisfaire cette spécification.
+10. La Discrétion progresse via les actions de furtivité réussies et module la détection.
+11. La magie doit progresser indépendamment par domaine, sans figer les domaines avant leur validation.
+12. Les paramètres d'équilibrage ne doivent pas être figés avant le prototype.
+13. Aucun système complexe ne doit être implémenté prématurément simplement pour satisfaire cette spécification.
 
 ---
 
@@ -426,6 +446,7 @@ Les systèmes fondamentaux devront être développés en C++ et rester suffisamm
 | Progression Endurance | Spécifiée, à architecturer |
 | Progression Agilité | Spécifiée, à architecturer |
 | Progression Défense | Spécifiée, à architecturer |
+| Progression Discrétion | Spécifiée, à architecturer |
 | Progression par domaines magiques | Spécifiée, domaines à définir |
 | Reproduction des espèces | Spécifiée, à architecturer |
 | Prédateur / proie | Spécifié, à architecturer |

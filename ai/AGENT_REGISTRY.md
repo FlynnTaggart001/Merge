@@ -10,6 +10,7 @@ Ce fichier décrit les rôles et capacités nécessaires à l'équipe multi-agen
 | WORLD_DESIGNER | monde, PNJ, quêtes, lore | Non |
 | RESEARCHER | recherche, comparaison, documentation | Non |
 | REVIEWER | critique, architecture, code review | Non |
+| DEVIL_ADVOCATE | contradiction constructive, edge cases, alternatives, risques systémiques | Non |
 | QA | tests, régressions, validation | Non |
 | DOCUMENTATION | docs, cohérence, changelog | Non |
 | RELEASE | build, packaging, release | Non |
@@ -20,8 +21,9 @@ Ce fichier décrit les rôles et capacités nécessaires à l'équipe multi-agen
 2. Plusieurs agents peuvent fournir le même rôle.
 3. Un agent peut fournir plusieurs rôles.
 4. L'orchestrateur sélectionne l'agent disponible selon la capacité requise.
-5. Les informations de connexion et secrets ne doivent jamais être stockés dans Git.
-6. Les agents indisponibles doivent être marqués comme tels plutôt que simulés.
+5. `DEVIL_ADVOCATE` est un rôle de revue indépendante et ne possède jamais l'autorité d'approuver une décision critique.
+6. Les informations de connexion et secrets ne doivent jamais être stockés dans Git.
+7. Les agents indisponibles doivent être marqués comme tels plutôt que simulés.
 
 ## Agents actuels
 

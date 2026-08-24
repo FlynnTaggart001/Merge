@@ -89,6 +89,30 @@ Le Réflexe progresse avec l'XP/expérience de combat pertinente : combats réel
 ### 5.1 Esquive réflexe automatique
 
 Lorsque le personnage est suffisamment expérimenté, le Réflexe lui donne une **probabilité passive d'effectuer automatiquement une esquive** lorsqu'une attaque ennemie va réellement le toucher.
+## 5. Discrétion
+
+La Discrétion progresse avec les actions de furtivité réussies qui permettent d'éviter d'être repéré par les ennemis.
+
+Sources principales de progression :
+
+- déplacement en furtivité sans détection ;
+- passage à proximité d'ennemis sans déclencher Soupçon / Recherche / Alerte ;
+- backstab réussi ;
+- utilisation prolongée de l'accroupissement en zone hostile sans être vu ;
+- actions furtives significatives (vol, infiltration, etc. à définir).
+
+Effets attendus de la maîtrise :
+
+- réduction de la visibilité et du bruit générés ;
+- meilleure résistance à la détection progressive ;
+- fenêtre de backstab plus tolérante ;
+- réduction du rayon de détection ennemi contre le joueur.
+
+La progression doit récompenser l'utilisation réelle et réussie de la furtivité, pas le spam d'accroupissement en zone sûre. Les règles anti-abus (contexte, intensité, fréquence) s'appliquent comme pour les autres aptitudes.
+
+La Discrétion s'intègre au système de furtivité déjà spécifié (posture, vitesse, ligne de vue, luminosité, bruit, terrain, équipement, état de l'ennemi).
+
+## 6. Magie
 
 L'automatisme utilise le même système de Dodge que l'esquive commandée par le joueur et respecte collisions, espace, Endurance, états, animation, cooldowns et attaques intrinsèquement inévitables.
 
@@ -115,6 +139,7 @@ Les i-frames ne couvrent jamais automatiquement toute l'animation. Certaines att
 La progression magique est séparée par domaine de magie. Chaque domaine possède sa propre maîtrise et progresse principalement avec son utilisation effective.
 
 Les domaines restent extensibles et ne sont pas figés dans l'architecture centrale.
+## 7. Événements de progression
 
 ## 7. Domptage
 
@@ -145,10 +170,30 @@ Elle progresse avec des actions médicales réellement pertinentes :
 - traitement de blessures ;
 - préparation ou application de traitements ;
 - reconnaissance et traitement de maladies.
+```text
+Action furtive réussie / non-détection
+    ↓
+ProgressionEvent(SuccessfulStealth)
+    ↓
+ProgressionSystem
+    ↓
+Discrétion
+```
+
+```text
+Sort du domaine X utilisé
+    ↓
+ProgressionEvent(MagicUsage, DomainX)
+    ↓
+ProgressionSystem
+    ↓
+Maîtrise DomainX
+```
 
 La progression doit favoriser les situations réelles et variées plutôt qu'un soin répété sans nécessité.
 
 ### 8.1 Diagnostic
+## 8. Anti-abus
 
 Le joueur peut tenter de diagnostiquer lui-même un problème de santé. Une meilleure compétence de Médecine améliore la précision et réduit l'incertitude.
 
@@ -187,6 +232,7 @@ Chaque événement doit être validé par des règles anti-farming.
 Chaque source de progression doit pouvoir définir : contexte requis, fréquence maximale, intensité minimale, rendement décroissant, répétition détectée et récompense uniquement pour une action réellement pertinente.
 
 ## 11. Architecture cible
+## 9. Architecture cible
 
 ```text
 PlayerMovementSystem
@@ -222,6 +268,20 @@ ProgressionSystem
 │   └── EnduranceCost[*]
 ├── MagicProgression
 │   └── MagicDomainMastery[*]
+│   ├── Defense
+│   └── Discretion
+│
+├── MagicProgression
+│   └── MagicDomainMastery[*]
+│
+├── ProgressionEvent
+│   ├── PhysicalEffort
+│   ├── SuccessfulDodge
+│   ├── Jump
+│   ├── ReceivedDamage
+│   ├── SuccessfulStealth
+│   └── MagicUsage(Domain)
+│
 └── ProgressionRules
     ├── Validation
     ├── AntiAbuse
@@ -229,6 +289,9 @@ ProgressionSystem
 ```
 
 ## 12. Règles
+Les valeurs de gain, paliers et formules ne sont pas encore définitifs.
+
+## 10. Règles
 
 1. La progression doit être principalement liée à l'utilisation réelle.
 2. Une action doit progresser l'aptitude à laquelle elle correspond.
@@ -244,3 +307,9 @@ ProgressionSystem
 12. Le diagnostic de maladie n'est pas révélé automatiquement avant une résolution de diagnostic.
 13. Les mécanismes anti-farming sont nécessaires et seront équilibrés au prototype.
 14. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
+4. L'Esquive est une mécanique de gameplay obligatoire et une source d'Agilité.
+5. La Discrétion progresse uniquement via des actions de furtivité réussies et significatives.
+6. Les domaines magiques restent extensibles et non figés.
+7. Les mécanismes anti-farming sont nécessaires, mais seront équilibrés au prototype.
+8. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
+9. Aucun système complet n'est considéré comme implémenté par cette spécification seule.

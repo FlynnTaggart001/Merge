@@ -6,6 +6,7 @@
 *.pem
 *.token
 secrets/
+state/
 
 # Local usage/budget logs
 logs/
