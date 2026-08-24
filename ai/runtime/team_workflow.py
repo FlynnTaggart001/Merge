@@ -1,12 +1,11 @@
 """End-to-end supervised team workflow for Merge.
 
 Pipeline:
-OBJECTIVE -> STATE -> PLAN -> DEPENDENCIES -> PERMISSIONS -> PROPOSAL ->
-DEVIL_ADVOCATE -> REVIEW -> QA -> DECISION -> EXECUTION -> HANDOFF -> STATE.
+OBJECTIVE -> STATE -> PLAN -> DEPENDENCIES -> ROLE -> PERMISSIONS ->
+PROPOSAL -> DEVIL_ADVOCATE -> REVIEW -> QA -> HUMAN GATE -> EXECUTION ->
+HANDOFF -> STATE -> NEXT TASKS.
 
-The implementation is deliberately conservative: this module can coordinate
-providers, but it does not silently grant permissions or approve human-only
-decisions.
+No critical action is executed without an explicit approved human decision.
 """
 
 from __future__ import annotations
@@ -14,11 +13,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Callable, Iterable
 
-from .decision_manager import DecisionManager, HumanDecision, DecisionStatus
+from .decision_manager import DecisionManager, HumanDecision
+from .execution_gate import ExecutionRequest, execute_if_authorized
 from .handoff import Handoff, HandoffStore
 from .permissions import PermissionLevel, PermissionRequest, authorize
 from .project_state import ProjectStateStore
 from .recommendation_engine import RecommendationEngine, RecommendationType
+from .role_assignment import assign_role
 from .task_planner import DependencyGraph, Task, TaskStatus, validate_task_plan
 
 
@@ -42,6 +43,9 @@ class TeamWorkflow:
         devil_advocate,
         reviewer=None,
         qa=None,
+        proposer_for_role: Callable[[str], object] | None = None,
+        executor: Callable[[Task, str], object] | None = None,
+        followup_planner: Callable[[Task, object], Iterable[Task]] | None = None,
         state_store: ProjectStateStore | None = None,
         decision_manager: DecisionManager | None = None,
         handoff_store: HandoffStore | None = None,
@@ -51,6 +55,9 @@ class TeamWorkflow:
         self.devil_advocate = devil_advocate
         self.reviewer = reviewer
         self.qa = qa
+        self.proposer_for_role = proposer_for_role
+        self.executor = executor
+        self.followup_planner = followup_planner
         self.state_store = state_store or ProjectStateStore()
         self.decision_manager = decision_manager or DecisionManager()
         self.handoff_store = handoff_store or HandoffStore()
@@ -68,18 +75,26 @@ class TeamWorkflow:
         graph = validate_task_plan(tasks)
         trace.append(f"plan:validated:{len(tasks)}")
         result = WorkflowResult(objective=objective, status="IN_PROGRESS", task_ids=[t.task_id for t in tasks], trace=trace)
+        handoff_count = 0
 
         for task in tasks:
             if task.iteration >= max_iterations:
                 task.status = TaskStatus.BLOCKED
                 result.blockers.append(f"{task.task_id}: iteration ceiling reached")
                 continue
+            if handoff_count >= max_handoffs:
+                task.status = TaskStatus.BLOCKED
+                result.blockers.append("handoff ceiling reached")
+                break
+
             unresolved = graph.unresolved(task)
             if unresolved:
                 task.status = TaskStatus.BLOCKED
                 result.blockers.append(f"{task.task_id}: unresolved dependencies {unresolved}")
                 continue
 
+            if not task.role:
+                task.role = assign_role(task.objective)
             permission_ok, permission_reason = authorize(PermissionRequest(task.role, PermissionLevel.L2_CODE))
             if not permission_ok:
                 task.status = TaskStatus.BLOCKED
@@ -87,8 +102,9 @@ class TeamWorkflow:
                 continue
 
             task.status = TaskStatus.IN_PROGRESS
+            proposer = self.proposer_for_role(task.role) if self.proposer_for_role else self.proposer
             proposal_request = self._request(task)
-            review = RecommendationEngine(self.proposer, self.devil_advocate).review(
+            review = RecommendationEngine(proposer, self.devil_advocate).review(
                 proposal_request,
                 critical=self._is_critical(task),
             )
@@ -126,17 +142,43 @@ class TeamWorkflow:
                     result.blockers.append(f"{task.task_id}: QA failed or unavailable")
                     continue
 
+            if self.executor is not None:
+                try:
+                    execute_if_authorized(ExecutionRequest(
+                        task_id=task.task_id,
+                        role=task.role,
+                        action=lambda t=task, p=review.proposal.text: self.executor(t, p),
+                        required_level=PermissionLevel.L2_CODE,
+                        critical=False,
+                    ), self.decision_manager)
+                    result.trace.append(f"{task.task_id}:execution:ok")
+                except Exception as exc:
+                    task.status = TaskStatus.FAILED
+                    result.blockers.append(f"{task.task_id}: execution failed: {exc}")
+                    continue
+            else:
+                result.trace.append(f"{task.task_id}:execution:deferred")
+
             task.status = TaskStatus.COMPLETED
             if task.task_id not in state.completed_tasks:
                 state.completed_tasks.append(task.task_id)
             if task.task_id in state.active_tasks:
                 state.active_tasks.remove(task.task_id)
+
+            followups: list[Task] = []
+            if self.followup_planner is not None:
+                followups = list(self.followup_planner(task, state))
+                result.task_ids.extend(t.task_id for t in followups)
+                result.recommendations.extend(t.objective for t in followups)
+                result.trace.append(f"{task.task_id}:followups:{len(followups)}")
+
+            handoff_count += 1
             self.handoff_store.append(Handoff(
                 task_id=task.task_id,
                 status=task.status.value,
                 summary=review.proposal.text,
                 decisions=[],
-                recommended_next_tasks=[],
+                recommended_next_tasks=[t.task_id for t in followups],
             ))
 
         state.active_tasks = [t.task_id for t in tasks if t.status in {TaskStatus.IN_PROGRESS, TaskStatus.REVIEW}]
