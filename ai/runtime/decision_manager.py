@@ -69,7 +69,7 @@ class DecisionManager:
                 raw["rationale"] = rationale
                 raw["decided_at"] = datetime.now(timezone.utc).isoformat()
                 self._save(data)
-                return HumanDecision(**raw, status=DecisionStatus(raw["status"]))
+                return HumanDecision(**raw)
         raise KeyError(f"Unknown decision: {decision_id}")
 
     def add_disagreement(self, disagreement: Disagreement) -> Disagreement:
