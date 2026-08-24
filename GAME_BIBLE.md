@@ -332,7 +332,7 @@ Noms des quartiers et localisation précise : À DÉCIDER.
 
 ## 10. Équipement
 
-### Sloots d’Équipement
+### Slots d’Équipement
 - Tête (casque, couronne, bandeau)
 - Torse (armure lourde, légère, robe)
 - Mains (gants, mitaines)
