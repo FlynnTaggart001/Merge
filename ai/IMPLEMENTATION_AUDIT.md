@@ -18,6 +18,7 @@
 | Automatic role fallback | IMPLEMENTED | `role_assignment.py` |
 | AI task decomposition | IMPLEMENTED | `ai_task_planner.py` |
 | Task contract validation | IMPLEMENTED | `task_planner.py` |
+| Persistent task queue | IMPLEMENTED | `task_store.py`, `team_workflow.py` |
 | Dependency resolution | IMPLEMENTED | `DependencyGraph` |
 | Cycle detection | IMPLEMENTED | `DependencyGraph.detect_cycles()` |
 | Least privilege | IMPLEMENTED | `permissions.py` |
@@ -32,7 +33,7 @@
 | Structured handoffs | IMPLEMENTED | `handoff.py` |
 | Resumable project state | IMPLEMENTED | `project_state.py` |
 | Proactive state recommendations | IMPLEMENTED | `proactive_recommendations.py` |
-| Follow-up task generation | IMPLEMENTED | `TeamWorkflow.followup_planner` |
+| Follow-up task generation | IMPLEMENTED | `TeamWorkflow.followup_planner` + `TaskStore` |
 | Role-specific provider execution | IMPLEMENTED | `team_factory.py` |
 | CI coverage for new runtime contracts | IMPLEMENTED | `.github/workflows/ai-runtime.yml` |
 | Automatic Git commit/merge authority | HUMAN CONTROLLED | no runtime auto-approval |
