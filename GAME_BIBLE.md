@@ -121,9 +121,14 @@ Territoire principal des humains. Cœur « classique » du monde : villages, fer
 **Gouvernement** : monarchie. Le roi est fainéant et ne pense qu’à ses intérêts personnels. L’élite dirigeante ressemble à celle de notre monde : des incapables qui se foutent du peuple. Le pouvoir sert d’abord ceux qui le détiennent.
 
 **Royaume de la Dark Fantaisie**  
-Domaine principalement peuplé de squelettes. Architecture d’ossements, nécropoles, cryptes. Ambiance plus sombre et macabre. Les relations avec les humains (commerce, hostilité, coexistence) restent à définir.
+Domaine principalement peuplé de squelettes. Architecture d’ossements, nécropoles, cryptes. Ambiance plus sombre et macabre.
 
-**Gouvernement** : À COMPLÉTER.
+**Gouvernement** : monarchie.  
+Le roi est un squelette humain de 2m20, coiffé d’une immense couronne d’or. Il est quasiment toujours assis sur son trône, dans une énorme salle du trône constamment emplie de fumée. Main gauche : un haltère (il fait des répétitions). Main droite : une chicha magique qu’il fume.  
+Il considère son peuple comme ses potes. Beaucoup moins égoïste que le roi des humains.
+
+**Origine des squelettes** :  
+Le roi est le premier des squelettes vivants et le premier des **Nécromentiens**. C’est lui qui a découvert le sort permettant de devenir squelette après la vie humaine. Les squelettes sont principalement d’anciens humains qui se sont transformés grâce à ce sort *avant* leur mort naturelle.
 
 **Royaume de la Light Fantaisie**  
 Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, environnement saturé d’énergie magique. Ambiance plus étrange et lumineuse, en contraste avec le gothique dominant.
@@ -138,20 +143,26 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 - **Élite** : incompétente, indifférente au peuple
 - **Conséquence** : le pouvoir sert d’abord ceux qui le détiennent
 
+#### Royaume de la Dark Fantaisie (squelettes)
+- **Forme** : Monarchie
+- **Roi** : squelette humain 2m20, couronne d’or, haltère + chicha magique, salle du trône enfumée
+- **Attitude** : considère son peuple comme ses potes, peu égoïste
+- **Statut** : premier des squelettes vivants, premier des Nécromentiens
+- **Lore clé** : a découvert le sort de transformation en squelette (avant mort naturelle)
+
 #### Royaume de la Light Fantaisie
 - **Forme** : Conscience collective (gouvernement uniquement)
 - **Peuple** : même espèce, individus indépendants
 - **Implication** : le gouvernement agit comme une entité unique, le peuple non
 
-#### Royaume de la Dark Fantaisie
-- À COMPLÉTER
-
 ### Cultures et Civilisations
-À COMPLÉTER :
-- Peuples et races (humains, squelettes, êtres de magie + éventuels autres)
-- Leurs histoires
-- Leurs traditions
-- Leurs rivalités
+
+#### Les Squelettes / Nécromentiens
+- Principalement d’anciens humains transformés par le sort du roi *avant* leur mort naturelle
+- Le roi est le premier d’entre eux
+- Culture encore à détailler (traditions, rapports aux humains, etc.)
+
+À COMPLÉTER pour les humains et les êtres de magie.
 
 ---
 
@@ -790,4 +801,4 @@ En cas de contradiction :
 
 **Dernière mise à jour** : 2026-08-24
 **Statut** : Phase de préproduction
-**Prochaine étape** : Gouvernement Dark Fantaisie + noms des royaumes
+**Prochaine étape** : Noms des trois royaumes + personnages importants
