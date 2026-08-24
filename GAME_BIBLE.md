@@ -256,7 +256,7 @@ Les gouvernements des deux autres royaumes : À COMPLÉTER.
 
 ## 10. Équipement
 
-### Sloots d’Équipement
+### Slots d’Équipement
 - Tête (casque, couronne, bandeau)
 - Torse (armure lourde, légère, robe)
 - Mains (gants, mitaines)
