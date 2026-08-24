@@ -28,6 +28,19 @@ ROLE_MAX_LEVEL = {
     "RELEASE": PermissionLevel.L4_MERGE,
 }
 
+ROLE_MIN_LEVEL = {
+    "RESEARCHER": PermissionLevel.L0_READ,
+    "REVIEWER": PermissionLevel.L0_READ,
+    "DEVIL_ADVOCATE": PermissionLevel.L0_READ,
+    "DOCUMENTATION": PermissionLevel.L1_DOCS,
+    "GAMEPLAY_DESIGNER": PermissionLevel.L1_DOCS,
+    "WORLD_DESIGNER": PermissionLevel.L1_DOCS,
+    "QA": PermissionLevel.L2_CODE,
+    "ARCHITECT": PermissionLevel.L2_CODE,
+    "PROGRAMMER": PermissionLevel.L2_CODE,
+    "RELEASE": PermissionLevel.L3_COMMIT,
+}
+
 
 @dataclass(frozen=True)
 class PermissionRequest:
@@ -37,14 +50,23 @@ class PermissionRequest:
     destructive: bool = False
 
 
+def minimum_level_for_role(role: str) -> PermissionLevel:
+    normalized = role.strip().upper()
+    try:
+        return ROLE_MIN_LEVEL[normalized]
+    except KeyError as exc:
+        raise ValueError(f"unknown role: {normalized}") from exc
+
+
 def authorize(request: PermissionRequest) -> tuple[bool, str]:
-    if request.role not in ROLE_MAX_LEVEL:
-        return False, f"unknown role: {request.role}"
+    role = request.role.strip().upper()
+    if role not in ROLE_MAX_LEVEL:
+        return False, f"unknown role: {role}"
     if request.critical or request.destructive:
         return False, "critical/destructive actions require explicit human authorization"
-    allowed = ROLE_MAX_LEVEL[request.role]
+    allowed = ROLE_MAX_LEVEL[role]
     if request.required_level > allowed:
-        return False, f"role {request.role} is limited to {allowed.name}"
+        return False, f"role {role} is limited to {allowed.name}"
     return True, "authorized"
 
 
