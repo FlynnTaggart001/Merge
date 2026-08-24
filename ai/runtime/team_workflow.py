@@ -14,6 +14,7 @@ from .proactive_recommendations import Recommendation, RecommendationStore
 from .recommendation_engine import RecommendationEngine, RecommendationType
 from .role_assignment import assign_role
 from .task_planner import Task, TaskStatus, validate_task_plan
+from .task_store import TaskStore
 
 
 @dataclass
@@ -34,6 +35,7 @@ class TeamWorkflow:
                  executor: Callable[[Task, str], object] | None = None,
                  followup_planner: Callable[[Task, object], Iterable[Task]] | None = None,
                  state_store: ProjectStateStore | None = None,
+                 task_store: TaskStore | None = None,
                  decision_manager: DecisionManager | None = None,
                  handoff_store: HandoffStore | None = None,
                  recommendation_store: RecommendationStore | None = None) -> None:
@@ -46,6 +48,7 @@ class TeamWorkflow:
         self.executor = executor
         self.followup_planner = followup_planner
         self.state_store = state_store or ProjectStateStore()
+        self.task_store = task_store or TaskStore()
         self.decision_manager = decision_manager or DecisionManager()
         self.handoff_store = handoff_store or HandoffStore()
         self.recommendation_store = recommendation_store or RecommendationStore()
@@ -59,6 +62,7 @@ class TeamWorkflow:
         if not tasks:
             return WorkflowResult(objective=objective, status="BLOCKED", blockers=["planner returned no tasks"], trace=trace)
         graph = validate_task_plan(tasks)
+        self.task_store.add_many(tasks)
         trace.append(f"plan:validated:{len(tasks)}")
         result = WorkflowResult(objective=objective, status="IN_PROGRESS", task_ids=[t.task_id for t in tasks], trace=trace)
         handoff_count = 0
@@ -66,15 +70,18 @@ class TeamWorkflow:
         for task in tasks:
             if task.iteration >= max_iterations:
                 task.status = TaskStatus.BLOCKED
+                self.task_store.save(task)
                 result.blockers.append(f"{task.task_id}: iteration ceiling reached")
                 continue
             if handoff_count >= max_handoffs:
                 task.status = TaskStatus.BLOCKED
+                self.task_store.save(task)
                 result.blockers.append("handoff ceiling reached")
                 break
             unresolved = graph.unresolved(task)
             if unresolved:
                 task.status = TaskStatus.BLOCKED
+                self.task_store.save(task)
                 result.blockers.append(f"{task.task_id}: unresolved dependencies {unresolved}")
                 continue
             if not task.role:
@@ -83,27 +90,28 @@ class TeamWorkflow:
                 required_level = minimum_level_for_role(task.role)
             except ValueError as exc:
                 task.status = TaskStatus.BLOCKED
+                self.task_store.save(task)
                 result.blockers.append(f"{task.task_id}: {exc}")
                 continue
             permission_ok, permission_reason = authorize(PermissionRequest(task.role, required_level))
             if not permission_ok:
                 task.status = TaskStatus.BLOCKED
+                self.task_store.save(task)
                 result.blockers.append(f"{task.task_id}: permission denied: {permission_reason}")
                 continue
 
             task.status = TaskStatus.IN_PROGRESS
+            self.task_store.save(task)
             proposer = self.proposer_for_role(task.role) if self.proposer_for_role else self.proposer
-            review = RecommendationEngine(proposer, self.devil_advocate).review(
-                self._request(task), critical=self._is_critical(task)
-            )
+            review = RecommendationEngine(proposer, self.devil_advocate).review(self._request(task), critical=self._is_critical(task))
             result.trace.append(f"{task.task_id}:proposal+devil_advocate:{review.verdict.value}")
             self.recommendation_store.add(Recommendation(
                 recommendation_id=f"REC-{task.task_id}", category="AI_TEAM_REVIEW",
                 title=f"Review for {task.objective}", rationale=review.review.text[:2000],
                 impact="HIGH" if self._is_critical(task) else "MEDIUM",
                 risk="HIGH" if review.verdict in {RecommendationType.REVIEW, RecommendationType.PENDING_HUMAN} else "LOW",
-                reversibility="UNKNOWN" if self._is_critical(task) else "HIGH", confidence=0.8,
-                requires_human=review.verdict is RecommendationType.PENDING_HUMAN, status=review.verdict.value,
+                reversibility="UNKNOWN" if self._is_critical(task) else "HIGH", confidence=review.confidence,
+                requires_human=review.requires_human or review.verdict is RecommendationType.PENDING_HUMAN, status=review.verdict.value,
             ))
             result.recommendations.append(f"REC-{task.task_id}")
 
@@ -116,15 +124,13 @@ class TeamWorkflow:
             if review.verdict in {RecommendationType.BLOCKED, RecommendationType.PENDING_HUMAN}:
                 decision_id = f"DEC-{task.task_id}"
                 self.decision_manager.create(HumanDecision(
-                    decision_id=decision_id,
-                    problem=f"Human authorization required for task {task.task_id}",
-                    context=review.review.text,
-                    options=["APPROVE", "REJECT", "REQUEST ALTERNATIVE"],
-                    recommendation=review.review.text,
-                    blocked_tasks=[task.task_id],
+                    decision_id=decision_id, problem=f"Human authorization required for task {task.task_id}",
+                    context=review.review.text, options=["APPROVE", "REJECT", "REQUEST ALTERNATIVE"],
+                    recommendation=review.review.text, blocked_tasks=[task.task_id],
                 ))
                 state.pending_decisions.append(decision_id)
                 task.status = TaskStatus.REVIEW
+                self.task_store.save(task)
                 result.pending_decisions.append(decision_id)
                 continue
 
@@ -133,6 +139,7 @@ class TeamWorkflow:
                 result.trace.append(f"{task.task_id}:independent_review:{response.status}")
                 if response.status != "ok":
                     task.status = TaskStatus.REVIEW
+                    self.task_store.save(task)
                     result.blockers.append(f"{task.task_id}: independent review unavailable")
                     continue
             if self.qa is not None:
@@ -140,6 +147,7 @@ class TeamWorkflow:
                 result.trace.append(f"{task.task_id}:qa:{response.status}")
                 if response.status != "ok":
                     task.status = TaskStatus.REVIEW
+                    self.task_store.save(task)
                     result.blockers.append(f"{task.task_id}: QA failed or unavailable")
                     continue
 
@@ -153,17 +161,20 @@ class TeamWorkflow:
                     result.trace.append(f"{task.task_id}:execution:ok")
                 except Exception as exc:
                     task.status = TaskStatus.FAILED
+                    self.task_store.save(task)
                     result.blockers.append(f"{task.task_id}: execution failed: {exc}")
                     continue
             else:
                 result.trace.append(f"{task.task_id}:execution:deferred")
 
             task.status = TaskStatus.COMPLETED
+            self.task_store.save(task)
             if task.task_id not in state.completed_tasks:
                 state.completed_tasks.append(task.task_id)
             followups: list[Task] = []
             if self.followup_planner is not None:
                 followups = list(self.followup_planner(task, state))
+                self.task_store.add_many(followups)
                 result.task_ids.extend(t.task_id for t in followups)
                 result.recommendations.extend(t.objective for t in followups)
                 result.trace.append(f"{task.task_id}:followups:{len(followups)}")
@@ -189,7 +200,6 @@ class TeamWorkflow:
         from .orchestrator import OrchestratorRequest
         return OrchestratorRequest(
             task_id=task.task_id, role=role or task.role, prompt=prompt or task.objective,
-            estimated_input_tokens=max(1, len((prompt or task.objective).split())),
-            estimated_output_tokens=500,
+            estimated_input_tokens=max(1, len((prompt or task.objective).split())), estimated_output_tokens=500,
             metadata={"workflow": "TEAM_WORKFLOW", "task_role": task.role},
         )
