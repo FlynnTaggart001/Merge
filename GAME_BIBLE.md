@@ -170,6 +170,13 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 
 À COMPLÉTER pour les humains et les êtres de magie.
 
+### Faune notable
+
+#### Sangliers laineux
+- Élevés en agriculture par les humains (nourriture, vêtements, etc.)
+- Peu de troupeaux sauvages en dehors du Royaume de la Fantaisie
+- Ont peur des hommes, des squelettes et des Gork (leurs prédateurs)
+
 ### Personnages Importants
 
 #### Sylva the Wise Tree
