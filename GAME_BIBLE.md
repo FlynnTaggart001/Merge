@@ -169,6 +169,7 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 #### Sylva the Wise Tree
 - **Apparence** : un arbre comme les autres, à quelques exceptions près. Sur son tronc : une paire d’yeux de bois et une bouche de bois (il parle).
 - **Personnalité** : très intelligent, très sage — comme un philosophe.
+- **Capacités** : utilise la magie.
 - **Rôle** : personnage important (conseiller, source de savoir, quêtes possibles — à préciser).
 - **Localisation** : À DÉCIDER.
 
@@ -286,7 +287,7 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 
 ## 10. Équipement
 
-### Slots d’Équipement
+### Sloots d’Équipement
 - Tête (casque, couronne, bandeau)
 - Torse (armure lourde, légère, robe)
 - Mains (gants, mitaines)
