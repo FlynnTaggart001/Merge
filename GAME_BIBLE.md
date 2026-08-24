@@ -177,9 +177,10 @@ Noms des quartiers et localisation précise : À DÉCIDER.
 
 ### Squelettes des égouts (Royaume de la Fantaisie)
 - Présents dans les égouts du royaume des humains
-- Tiennent un **casino illégal**
-- Bande de **voleurs compétents**
-- Lien éventuel avec le quartier squelette de Dark Fantaisie : À DÉCIDER
+- Tous sont d’**anciens esclaves en fuite**, partis chercher une vie meilleure
+- Incapables de sortir de la ville pour l’instant → ils survivent en **volant** et en gagnant de l’argent comme ils peuvent en attendant une solution
+- Tiennent un **casino illégal** et forment une **bande de voleurs compétents**
+- Lien avec le quartier squelette de Dark Fantaisie : **pas automatique** — ça dépend de chaque individu
 
 ### Cultures et Civilisations
 
