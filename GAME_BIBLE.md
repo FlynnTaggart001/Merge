@@ -182,6 +182,24 @@ Noms des quartiers et localisation précise : À DÉCIDER.
 - Tiennent un **casino illégal** et forment une **bande de voleurs compétents**
 - Lien avec le quartier squelette de Dark Fantaisie : **pas automatique** — ça dépend de chaque individu
 
+### Religions
+
+Chaque peuple a sa propre religion. Détails encore à développer.
+
+#### Religion des humains (Royaume de la Fantaisie)
+- Structure centrée sur des **prophètes**
+- **Prophète actuel** : **Hessad**
+- Nom de la religion, dogmes, rites, temples : À COMPLÉTER
+
+#### Religion des squelettes / Nécromentiens
+À COMPLÉTER
+
+#### Religion des êtres de magie (Light Fantaisie)
+À COMPLÉTER
+
+#### Religion des Gork (si distincte)
+À COMPLÉTER
+
 ### Cultures et Civilisations
 
 #### Les Squelettes / Nécromentiens
@@ -218,6 +236,10 @@ Noms des quartiers et localisation précise : À DÉCIDER.
 - **Capacités** : utilise la magie.
 - **Rôle** : personnage important (conseiller, source de savoir, quêtes possibles — à préciser).
 - **Localisation** : À DÉCIDER.
+
+#### Hessad
+- **Rôle** : prophète actuel de la religion des humains
+- Détails (personnalité, pouvoir, influence politique) : À COMPLÉTER
 
 ---
 
@@ -856,4 +878,4 @@ En cas de contradiction :
 
 **Dernière mise à jour** : 2026-08-24
 **Statut** : Phase de préproduction
-**Prochaine étape** : Noms des trois royaumes + autres personnages / espèces
+**Prochaine étape** : Noms des trois royaumes + religions des autres peuples
