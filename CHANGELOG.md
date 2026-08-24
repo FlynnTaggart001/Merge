@@ -9,6 +9,20 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added — AI Team Orchestration
+- End-to-end supervised workflow: objective → state → planning → dependencies → role → permissions → proposal → Devil's Advocate → review → QA → human gate → execution → handoff → state → follow-up tasks.
+- AI-assisted task decomposition with strict JSON contract and safe fallback.
+- Dependency graph validation and cycle detection.
+- Deterministic role assignment and expanded provider routing.
+- Least-privilege role permissions.
+- Recommendation engine with `NO_CONCERN`, `SUGGESTION`, `REVIEW`, `PENDING_HUMAN`, `BLOCKED`.
+- Confidence-based escalation and explicit human-decision escalation.
+- Persistent recommendations, disagreements and structured handoffs.
+- Human decision manager and explicit approval gate for critical/destructive/merge-level actions.
+- Resumable machine-readable project state.
+- Proactive project-health recommendations.
+- CI coverage for recommendation and team-workflow contracts.
+
 ### Added — Gameplay & World Design
 - Spécification `specs/GAMEPLAY_AND_PERSISTENT_WORLD.md` couvrant mouvement, accroupissement, roulade, furtivité, détection progressive et Backstab.
 - Spécification d'un bestiaire à populations dynamiques avec reproduction, mortalité, prédation, ressources, migration et extinction locale.
@@ -20,6 +34,7 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Roadmap enrichie avec les nouveaux systèmes de gameplay, d'écologie et de persistance.
 - Les nouveaux systèmes sont spécifiés mais ne sont pas déclarés comme implémentés.
 - Engine version standardized to **Unreal Engine 5.8.1** across project configuration and documentation.
+- AI collaboration rules are now backed by runtime enforcement rather than documentation alone.
 
 ### Phase 1 (in progress on local machines)
 - UE5 scaffold created; compile/PIE must be validated with Unreal Editor.
@@ -74,9 +89,7 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Tests
 - Deterministic tests for rate limiter and circuit breaker.
 
----
-
-## [0.0.4] - 2026-08-20
+### [0.0.4] - 2026-08-20
 
 ### Security
 - Secrets policy, `.gitignore`, `.env.example`.
@@ -104,4 +117,4 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-**Dernière mise à jour** : 2026-08-21
+**Dernière mise à jour** : 2026-08-24
