@@ -175,6 +175,12 @@ Deux quartiers se détestent et se livrent souvent à des rixes.
 
 Noms des quartiers et localisation précise : À DÉCIDER.
 
+### Squelettes des égouts (Royaume de la Fantaisie)
+- Présents dans les égouts du royaume des humains
+- Tiennent un **casino illégal**
+- Bande de **voleurs compétents**
+- Lien éventuel avec le quartier squelette de Dark Fantaisie : À DÉCIDER
+
 ### Cultures et Civilisations
 
 #### Les Squelettes / Nécromentiens
