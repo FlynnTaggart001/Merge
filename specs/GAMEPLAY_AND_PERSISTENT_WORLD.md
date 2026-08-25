@@ -50,7 +50,7 @@ La furtivité n'est pas un booléen. Elle résulte de plusieurs facteurs :
 - luminosité / environnement ;
 - bruit ;
 - terrain ;
-- équipement et compétences futures ;
+- équipement et compétences (notamment Discrétion) ;
 - état de l'ennemi.
 
 Le système de détection est progressif :
@@ -58,6 +58,8 @@ Le système de détection est progressif :
 `Calme → Soupçon → Recherche → Alerte → Combat`
 
 Les valeurs exactes seront équilibrées pendant le prototype gameplay.
+
+La compétence **Discrétion** module ces facteurs : plus elle est élevée, plus la visibilité et le bruit du joueur diminuent, et plus la détection progressive est retardée.
 
 ---
 
@@ -77,6 +79,117 @@ Les conditions prévues comprennent :
 - joueur non détecté ou dans un état permettant l'assassinat.
 
 L'architecture doit permettre différentes armes, animations, compétences et effets sans coupler le Backstab à un seul type d'ennemi.
+
+Un Backstab réussi contribue à la progression de la Discrétion.
+
+---
+
+## 5. Progression par utilisation
+
+Merge utilise une progression organique pour plusieurs aptitudes fondamentales : les compétences progressent principalement parce que le joueur les utilise réellement.
+
+### Endurance
+
+L'Endurance progresse progressivement grâce aux activités physiques du joueur, notamment :
+
+- courir ;
+- se battre ;
+- sauter ;
+- effectuer des efforts physiques répétés.
+
+L'Endurance ne doit pas simplement augmenter parce que le joueur gagne un niveau abstrait. Son évolution doit être liée à l'activité physique réellement effectuée.
+
+### Agilité
+
+L'Agilité progresse progressivement grâce à l'utilisation de mouvements demandant de la mobilité et du timing, notamment :
+
+- esquiver / rouler ;
+- sauter ;
+- réussir des mouvements d'évitement.
+
+Le système d'esquive est donc une mécanique fondamentale et une source directe de progression de l'Agilité.
+
+### Défense
+
+La Défense progresse progressivement lorsque le joueur subit des dégâts.
+
+L'objectif est de créer une progression cohérente avec l'expérience réelle du personnage face au danger, sans permettre une montée artificielle par des actions sans risque.
+
+Le système devra éviter les abus évidents tels que l'auto-infligement contrôlé de dégâts ou les boucles de farming artificielles.
+
+### Discrétion
+
+La Discrétion progresse avec les actions de furtivité réussies (déplacement non détecté, backstab, infiltration, etc.).
+
+Elle réduit la visibilité, le bruit et la sensibilité à la détection progressive. Voir `specs/PLAYER_PROGRESSION.md` pour le détail.
+
+### Magie
+
+La progression magique est séparée par domaine de magie.
+
+Chaque domaine disposera de sa propre progression et augmentera principalement à force d'utiliser effectivement les capacités appartenant à ce domaine.
+
+Exemple conceptuel :
+
+`Utilisation répétée d'un domaine → maîtrise progressive de ce domaine`
+
+Les domaines de magie sont **encore en cours de définition**. L'architecture doit donc être générique et ne doit pas figer une liste de domaines maintenant.
+
+La progression devra pouvoir supporter plusieurs domaines indépendants sans modifier le code central à chaque ajout d'un nouveau domaine.
+
+### Règle générale
+
+La progression par utilisation doit rester mesurable, équilibrable et persistante. Elle ne doit pas devenir une simple multiplication automatique de statistiques à chaque action.
+
+---
+
+## 6. Relations entre progression et gameplay
+
+Les aptitudes progressives doivent renforcer les comportements qu'elles récompensent.
+
+Exemples :
+
+```text
+Course / combat / saut répétés
+        ↓
+    progression Endurance
+        ↓
+    meilleure capacité physique
+```
+
+```text
+Esquives / sauts réussis
+        ↓
+    progression Agilité
+        ↓
+    mobilité accrue
+```
+
+```text
+Dégâts réellement subis
+        ↓
+    progression Défense
+        ↓
+    amélioration défensive
+```
+
+```text
+Actions furtives réussies / non-détection
+        ↓
+    progression Discrétion
+        ↓
+    furtivité accrue
+```
+
+```text
+Utilisation d'un domaine magique
+        ↓
+    progression de CE domaine
+        ↓
+    maîtrise accrue
+```
+
+Le système doit empêcher une progression incohérente où une action sans rapport ferait progresser une aptitude.
 
 ---
 
@@ -355,6 +468,7 @@ MergeCharacter
 │   ├── Endurance
 │   ├── Agility
 │   ├── Defense
+│   ├── Discretion
 │   └── MagicDomains
 ├── Stealth
 │   ├── Visibility
@@ -410,6 +524,10 @@ Les systèmes fondamentaux devront être développés en C++ et rester suffisamm
 10. La magie doit progresser indépendamment par domaine, sans figer les domaines avant leur validation.
 11. Les paramètres d'équilibrage ne doivent pas être figés avant le prototype.
 12. Aucun système complexe ne doit être implémenté prématurément simplement pour satisfaire cette spécification.
+10. La Discrétion progresse via les actions de furtivité réussies et module la détection.
+11. La magie doit progresser indépendamment par domaine, sans figer les domaines avant leur validation.
+12. Les paramètres d'équilibrage ne doivent pas être figés avant le prototype.
+13. Aucun système complexe ne doit être implémenté prématurément simplement pour satisfaire cette spécification.
 
 ---
 
@@ -426,6 +544,7 @@ Les systèmes fondamentaux devront être développés en C++ et rester suffisamm
 | Progression Endurance | Spécifiée, à architecturer |
 | Progression Agilité | Spécifiée, à architecturer |
 | Progression Défense | Spécifiée, à architecturer |
+| Progression Discrétion | Spécifiée, à architecturer |
 | Progression par domaines magiques | Spécifiée, domaines à définir |
 | Reproduction des espèces | Spécifiée, à architecturer |
 | Prédateur / proie | Spécifié, à architecturer |
