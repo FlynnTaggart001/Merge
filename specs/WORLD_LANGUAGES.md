@@ -72,7 +72,70 @@ Chaque langue possède une progression indépendante. Les cours permettent de fr
 
 La progression ne doit pas être purement abstraite : le niveau de langue doit modifier concrètement ce que le joueur comprend et peut faire dans le monde.
 
-### Autres moyens de progresser
+## Traduction dynamique selon le niveau de linguistique
+
+Le jeu ne doit pas simplement afficher une langue étrangère sous forme de texte incompréhensible. **Les mots et informations doivent être traduits dynamiquement dans la langue du joueur selon son niveau de maîtrise linguistique.**
+
+La phrase originale existe toujours dans la langue parlée par le PNJ. Le système de traduction détermine ensuite quelle partie du message le joueur est capable de comprendre.
+
+### Exemple de progression
+
+Phrase originale dans une langue Gork :
+
+> « Le clan de la Lune Rouge refuse de traverser la rivière après le troisième coucher de soleil. »
+
+Avec une maîtrise très faible :
+
+> « Clan… Lune… rivière… coucher de soleil… »
+
+Avec une maîtrise intermédiaire :
+
+> « Le clan de la Lune Rouge… refuse de traverser la rivière… »
+
+Avec une bonne maîtrise :
+
+> « Le clan de la Lune Rouge refuse de traverser la rivière après le troisième coucher de soleil. »
+
+Avec une maîtrise avancée :
+
+> Le joueur comprend également les expressions idiomatiques, les nuances culturelles, les insultes, les jeux de mots, les références historiques et les subtilités du dialecte.
+
+### Compréhension imparfaite
+
+Une compréhension partielle ne doit pas toujours être représentée par des mots manquants. Le système peut également produire :
+
+- des phrases partiellement traduites ;
+- des termes remplacés par des approximations ;
+- des expressions mal interprétées ;
+- des concepts culturels simplifiés ;
+- des ambiguïtés ;
+- des erreurs de traduction ;
+- des informations volontairement incertaines lorsque le joueur n'a pas assez de connaissances.
+
+Le joueur peut donc **croire avoir compris quelque chose alors que son interprétation est incorrecte**.
+
+### Influence du niveau de linguistique
+
+Le niveau de linguistique détermine notamment :
+
+- le nombre de mots reconnus ;
+- la compréhension de la grammaire ;
+- la capacité à reconstruire une phrase ;
+- la précision de la traduction ;
+- la compréhension du contexte ;
+- la compréhension des expressions idiomatiques ;
+- la reconnaissance des insultes et nuances sociales ;
+- la compréhension des références culturelles ;
+- la capacité à distinguer les dialectes ;
+- la fiabilité globale de l'information reçue.
+
+### Langue du joueur
+
+Les informations comprises sont **traduites dans la langue maîtrisée par le joueur**, et non simplement affichées dans la langue originale du PNJ.
+
+Cela signifie que le même dialogue peut produire un résultat différent selon le niveau linguistique du personnage.
+
+## Autres moyens de progresser
 
 Les cours sont le moyen principal, mais l'apprentissage peut être renforcé par :
 
@@ -123,14 +186,16 @@ Chaque langue devra pouvoir définir notamment :
 - dialectes ;
 - niveau de maîtrise du personnage ;
 - textes/dialogues associés ;
+- représentation de la langue originale ;
 - règles de compréhension partielle ;
+- règles de traduction dynamique ;
 - relations avec les autres langues ;
 - données nécessaires à l'apprentissage ;
 - professeurs et lieux où la langue peut être étudiée ;
 - coûts et prérequis des cours ;
 - progression associée aux cours et à la pratique.
 
-Le système de dialogue devra pouvoir vérifier la capacité du personnage à comprendre une langue avant de déterminer le texte ou l'option de dialogue présentée.
+Le système de dialogue devra pouvoir vérifier la capacité du personnage à comprendre une langue avant de déterminer le texte, la traduction ou l'option de dialogue présentée.
 
 ## À définir ultérieurement
 
@@ -141,6 +206,7 @@ Le système de dialogue devra pouvoir vérifier la capacité du personnage à co
 - Liste des professeurs de linguistique.
 - Prix, durée et prérequis des cours.
 - Effets précis de chaque niveau de maîtrise.
+- Règles exactes de génération des traductions partielles.
 - Langues anciennes ou mortes.
 - Langue commune éventuelle utilisée pour faciliter les échanges entre peuples.
 - Traitement audio : vrais doublages, sons incompréhensibles, sous-titres, ou combinaison de plusieurs systèmes.
