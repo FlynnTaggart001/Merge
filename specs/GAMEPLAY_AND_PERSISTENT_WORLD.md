@@ -193,6 +193,101 @@ Le système doit empêcher une progression incohérente où une action sans rapp
 
 ---
 
+## 5. Progression par utilisation
+
+Merge utilise une progression organique pour plusieurs aptitudes fondamentales : les compétences progressent principalement parce que le joueur les utilise réellement.
+
+### Endurance
+
+L'Endurance progresse progressivement grâce aux activités physiques du joueur, notamment :
+
+- courir ;
+- se battre ;
+- sauter ;
+- effectuer des efforts physiques répétés.
+
+L'Endurance ne doit pas simplement augmenter parce que le joueur gagne un niveau abstrait. Son évolution doit être liée à l'activité physique réellement effectuée.
+
+### Agilité
+
+L'Agilité progresse progressivement grâce à l'utilisation de mouvements demandant de la mobilité et du timing, notamment :
+
+- esquiver / rouler ;
+- sauter ;
+- réussir des mouvements d'évitement.
+
+Le système d'esquive est donc une mécanique fondamentale et une source directe de progression de l'Agilité.
+
+### Défense
+
+La Défense progresse progressivement lorsque le joueur subit des dégâts.
+
+L'objectif est de créer une progression cohérente avec l'expérience réelle du personnage face au danger, sans permettre une montée artificielle par des actions sans risque.
+
+Le système devra éviter les abus évidents tels que l'auto-infligement contrôlé de dégâts ou les boucles de farming artificielles.
+
+### Magie
+
+La progression magique est séparée par domaine de magie.
+
+Chaque domaine disposera de sa propre progression et augmentera principalement à force d'utiliser effectivement les capacités appartenant à ce domaine.
+
+Exemple conceptuel :
+
+`Utilisation répétée d'un domaine → maîtrise progressive de ce domaine`
+
+Les domaines de magie sont **encore en cours de définition**. L'architecture doit donc être générique et ne doit pas figer une liste de domaines maintenant.
+
+La progression devra pouvoir supporter plusieurs domaines indépendants sans modifier le code central à chaque ajout d'un nouveau domaine.
+
+### Règle générale
+
+La progression par utilisation doit rester mesurable, équilibrable et persistante. Elle ne doit pas devenir une simple multiplication automatique de statistiques à chaque action.
+
+---
+
+## 6. Relations entre progression et gameplay
+
+Les aptitudes progressives doivent renforcer les comportements qu'elles récompensent.
+
+Exemples :
+
+```text
+Course / combat / saut répétés
+        ↓
+    progression Endurance
+        ↓
+    meilleure capacité physique
+```
+
+```text
+Esquives / sauts réussis
+        ↓
+    progression Agilité
+        ↓
+    mobilité accrue
+```
+
+```text
+Dégâts réellement subis
+        ↓
+    progression Défense
+        ↓
+    amélioration défensive
+```
+
+```text
+Utilisation d'un domaine magique
+        ↓
+    progression de CE domaine
+        ↓
+    maîtrise accrue
+```
+
+Le système doit empêcher une progression incohérente où une action sans rapport ferait progresser une aptitude.
+
+---
+
 ## 7. Bestiaire dynamique
 
 Les espèces possèdent des populations simulées plutôt qu'un nombre fixe d'Actors permanents.
@@ -426,6 +521,9 @@ Les systèmes fondamentaux devront être développés en C++ et rester suffisamm
 7. La roulade / esquive doit être un état de gameplay et une source de progression de l'Agilité.
 8. L'Endurance doit progresser avec les efforts physiques réels : course, combat, saut et activités comparables.
 9. La Défense doit progresser avec les dégâts réellement subis, avec des protections contre le farming artificiel.
+10. La magie doit progresser indépendamment par domaine, sans figer les domaines avant leur validation.
+11. Les paramètres d'équilibrage ne doivent pas être figés avant le prototype.
+12. Aucun système complexe ne doit être implémenté prématurément simplement pour satisfaire cette spécification.
 10. La Discrétion progresse via les actions de furtivité réussies et module la détection.
 11. La magie doit progresser indépendamment par domaine, sans figer les domaines avant leur validation.
 12. Les paramètres d'équilibrage ne doivent pas être figés avant le prototype.

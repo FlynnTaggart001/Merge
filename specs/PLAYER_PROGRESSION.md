@@ -14,6 +14,20 @@ Il ne s'agit pas d'un système où toutes les statistiques augmentent uniquement
 
 L'Endurance progresse progressivement avec les efforts physiques répétés :
 
+- course ;
+- combat ;
+- saut ;
+- esquive / roulade ;
+- autres activités physiques pertinentes à définir.
+
+Le système doit mesurer l'effort utile plutôt que compter aveuglément chaque input.
+
+Objectifs :
+
+- récompenser l'activité physique réelle ;
+- éviter le farming artificiel ;
+- permettre un équilibrage du gain selon l'intensité et la durée de l'effort ;
+- permettre une progression persistante par personnage.
 - course / sprint ;
 - combat ;
 - saut ;
@@ -50,6 +64,18 @@ L'Agilité progresse avec les actions nécessitant mobilité, timing et éviteme
 
 - esquive / roulade réussie ;
 - saut ;
+- autres actions acrobatiques futures.
+
+Le système d'esquive doit être une véritable mécanique de gameplay :
+
+- direction selon l'input ;
+- coût d'Endurance ;
+- état d'esquive ;
+- fenêtre d'invulnérabilité à équilibrer ;
+- verrouillage ou interruption de certaines actions ;
+- intégration au combat et à la furtivité.
+
+Une esquive ne doit pas automatiquement donner une progression maximale : la progression doit pouvoir distinguer une utilisation significative d'un spam sans danger.
 - bond en arrière ;
 - pas de côté ;
 - franchissement d'obstacles ;
@@ -78,6 +104,67 @@ Une chute importante ne doit pas être annulée simplement par une statistique �
 
 La Défense progresse avec les dégâts réellement subis par le personnage.
 
+Le système devra comptabiliser l'exposition réelle au danger et empêcher les boucles artificielles de progression, par exemple :
+
+- dégâts auto-infligés volontairement ;
+- sources triviales répétées ;
+- dégâts sans risque ni contexte de combat ;
+- exploitation d'un événement répétable.
+
+Les règles exactes de validation et les paliers de progression seront déterminés lors du prototype.
+
+## 5. Magie
+
+La progression magique est **séparée par domaine de magie**.
+
+Chaque domaine possède sa propre maîtrise :
+
+```text
+Domaine A → maîtrise A
+Domaine B → maîtrise B
+Domaine C → maîtrise C
+```
+
+L'utilisation effective d'une capacité appartenant à un domaine fait progresser principalement ce domaine.
+
+Les domaines de magie sont actuellement en cours de définition. Aucun nom, nombre ou liste définitive ne doit être codé en dur dans l'architecture centrale.
+
+L'architecture doit permettre d'ajouter un nouveau domaine par données / configuration lorsque possible, sans réécrire le système de progression.
+
+## 6. Événements de progression
+
+Les systèmes de gameplay doivent pouvoir envoyer des événements de progression génériques au système de progression.
+
+Conceptuellement :
+
+```text
+Course réussie
+    ↓
+ProgressionEvent(PhysicalEffort)
+    ↓
+ProgressionSystem
+    ↓
+Endurance
+```
+
+```text
+Esquive réussie
+    ↓
+ProgressionEvent(SuccessfulDodge)
+    ↓
+ProgressionSystem
+    ↓
+Agilité
+```
+
+```text
+Dégâts réellement subis
+    ↓
+ProgressionEvent(ReceivedDamage)
+    ↓
+ProgressionSystem
+    ↓
+Défense
 Le système comptabilise l'exposition réelle au danger et empêche les boucles artificielles de progression : dégâts auto-infligés volontairement, sources triviales répétées et événements sans risque réel.
 
 ## 5. Réflexe de combat
@@ -190,6 +277,24 @@ ProgressionSystem
 Maîtrise DomainX
 ```
 
+Cette séparation évite de coupler le système de combat, de mouvement ou de magie aux détails internes des statistiques.
+
+## 7. Anti-abus
+
+Chaque source de progression doit pouvoir définir des règles de validation :
+
+- contexte requis ;
+- fréquence maximale de contribution ;
+- intensité minimale ;
+- rendement décroissant ;
+- répétition détectée ;
+- récompense uniquement pour une action réellement pertinente.
+
+Ces mécanismes seront équilibrés pendant le prototype et ne doivent pas être surconçus maintenant.
+
+## 8. Architecture cible
+
+```text
 La progression doit favoriser les situations réelles et variées plutôt qu'un soin répété sans nécessité.
 
 ### 8.1 Diagnostic
@@ -288,6 +393,9 @@ ProgressionSystem
     └── GainCalculation
 ```
 
+Les valeurs de gain, paliers et formules ne sont pas encore définitifs.
+
+## 9. Règles
 ## 12. Règles
 Les valeurs de gain, paliers et formules ne sont pas encore définitifs.
 
@@ -296,6 +404,11 @@ Les valeurs de gain, paliers et formules ne sont pas encore définitifs.
 1. La progression doit être principalement liée à l'utilisation réelle.
 2. Une action doit progresser l'aptitude à laquelle elle correspond.
 3. Les systèmes gameplay ne doivent pas modifier directement toutes les statistiques sans passer par une logique de progression cohérente.
+4. L'Esquive est une mécanique de gameplay obligatoire et une source d'Agilité.
+5. Les domaines magiques restent extensibles et non figés.
+6. Les mécanismes anti-farming sont nécessaires, mais seront équilibrés au prototype.
+7. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
+8. Aucun système complet n'est considéré comme implémenté par cette spécification seule.
 4. La roulade, le bond en arrière et le pas de côté sont des mécaniques d'esquive distinctes.
 5. Les actions physiques significatives — course, saut, roulade, bond en arrière, pas de côté, franchissement, escalade, nage et plongée — ont un coût d'Endurance data-driven.
 6. Une action nécessitant de l'Endurance ne doit normalement pas être exécutée lorsque le coût ne peut pas être payé.
