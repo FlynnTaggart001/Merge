@@ -72,7 +72,6 @@ class DecisionManager:
                 data_for_model = dict(raw)
                 data_for_model["status"] = DecisionStatus(data_for_model["status"])
                 return HumanDecision(**data_for_model)
-                return HumanDecision(**raw)
         raise KeyError(f"Unknown decision: {decision_id}")
 
     def add_disagreement(self, disagreement: Disagreement) -> Disagreement:
