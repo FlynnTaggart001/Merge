@@ -45,24 +45,45 @@ La langue doit être un véritable élément du monde et non simplement un chang
 
 ## Apprentissage des langues
 
-Le joueur et les PNJ peuvent apprendre plusieurs langues grâce à :
+L'apprentissage d'une langue ne se fait pas instantanément. Le joueur doit **prendre des cours de linguistique** auprès de personnes capables d'enseigner la langue concernée.
+
+### Cours de linguistique
+
+Les cours constituent le moyen principal et structuré d'apprendre une nouvelle langue.
+
+- Des **professeurs de linguistique** peuvent être trouvés dans différentes villes, royaumes et communautés.
+- Un professeur doit lui-même maîtriser la langue qu'il enseigne.
+- Les cours peuvent avoir un coût en argent, en ressources ou en temps selon le professeur.
+- Certains enseignants peuvent exiger une réputation minimale, une quête préalable ou une relation particulière avec le joueur.
+- Les langues rares ou difficiles peuvent nécessiter plusieurs enseignants ou plusieurs étapes d'apprentissage.
+- Le joueur peut interrompre une formation puis la reprendre plus tard.
+- Les cours ne donnent pas nécessairement une maîtrise parfaite : ils font progresser le niveau de connaissance de la langue.
+
+### Progression linguistique
+
+Chaque langue possède une progression indépendante. Les cours permettent de franchir progressivement plusieurs niveaux :
+
+1. **Incompréhension totale** — aucun mot compris.
+2. **Initiation** — mots et expressions très simples compris.
+3. **Compréhension partielle** — phrases simples et conversations courtes comprises.
+4. **Conversation basique** — possibilité de communiquer dans des situations courantes.
+5. **Maîtrise courante** — compréhension et expression normales.
+6. **Maîtrise avancée** — compréhension des nuances, expressions, dialectes et concepts complexes.
+
+La progression ne doit pas être purement abstraite : le niveau de langue doit modifier concrètement ce que le joueur comprend et peut faire dans le monde.
+
+### Autres moyens de progresser
+
+Les cours sont le moyen principal, mais l'apprentissage peut être renforcé par :
 
 - conversations répétées avec des locuteurs ;
-- enseignants ;
-- livres et documents ;
 - immersion dans une communauté ;
-- quêtes et événements ;
-- compétences ou aptitudes spécifiques ;
-- expérience du personnage.
+- lecture de livres et documents ;
+- quêtes et événements impliquant la langue ;
+- observation et écoute de conversations ;
+- pratique régulière de la langue après les cours.
 
-La progression doit pouvoir aller de :
-
-1. **Incompréhension totale**
-2. **Compréhension de mots simples**
-3. **Compréhension partielle**
-4. **Conversation basique**
-5. **Maîtrise courante**
-6. **Maîtrise avancée**
+Ces méthodes peuvent compléter les cours sans les remplacer totalement pour les langues complexes.
 
 ## Conséquences gameplay
 
@@ -104,7 +125,10 @@ Chaque langue devra pouvoir définir notamment :
 - textes/dialogues associés ;
 - règles de compréhension partielle ;
 - relations avec les autres langues ;
-- données nécessaires à l'apprentissage.
+- données nécessaires à l'apprentissage ;
+- professeurs et lieux où la langue peut être étudiée ;
+- coûts et prérequis des cours ;
+- progression associée aux cours et à la pratique.
 
 Le système de dialogue devra pouvoir vérifier la capacité du personnage à comprendre une langue avant de déterminer le texte ou l'option de dialogue présentée.
 
@@ -114,7 +138,8 @@ Le système de dialogue devra pouvoir vérifier la capacité du personnage à co
 - Alphabet et systèmes d'écriture.
 - Dialectes régionaux et tribaux.
 - Niveau de différence entre les langues.
-- Méthode exacte d'apprentissage.
+- Liste des professeurs de linguistique.
+- Prix, durée et prérequis des cours.
 - Effets précis de chaque niveau de maîtrise.
 - Langues anciennes ou mortes.
 - Langue commune éventuelle utilisée pour faciliter les échanges entre peuples.
