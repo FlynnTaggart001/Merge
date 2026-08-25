@@ -69,6 +69,9 @@ class DecisionManager:
                 raw["rationale"] = rationale
                 raw["decided_at"] = datetime.now(timezone.utc).isoformat()
                 self._save(data)
+                data_for_model = dict(raw)
+                data_for_model["status"] = DecisionStatus(data_for_model["status"])
+                return HumanDecision(**data_for_model)
                 return HumanDecision(**raw)
         raise KeyError(f"Unknown decision: {decision_id}")
 

@@ -28,10 +28,44 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Spécification d'un bestiaire à populations dynamiques avec reproduction, mortalité, prédation, ressources, migration et extinction locale.
 - Règle fondamentale de monde non régénératif : les morts, destructions et suppressions définitives persistent.
 - Architecture conceptuelle de persistance par monde et de plusieurs mondes indépendants.
-- Documentation `docs/gameplay.md` et `docs/world.md`.
+- **Saut arrière**, **pas de côté**, franchissement contextuel, escalade contextuelle et réception contrôlée.
+- Coûts d'**Endurance** data-driven pour les principaux efforts physiques : course/sprint, saut, roulade, bond arrière, pas de côté, franchissement et escalade.
+- **Agilité** reliée aux actions de mobilité et **Réflexe** ajouté comme progression distincte de l'Agilité.
+- Réflexe : esquive automatique probabiliste, assistance du timing de parade, i-frames de roulade plus tolérantes et familiarité de combat.
+- **Parade active** : timing précis, `CombatResolver`, attaques parables/non parables et fenêtre de riposte.
+- Système de ciblage intelligent : priorité aux cibles proches, parcours des cibles valides et lock-on compatible mêlée/magie.
+- Système de **groupe de PNJ** et de **magie collective** avec positionnement, synchronisation, mana, compatibilité et interruption.
+- Système de **montures** avec deux voies d'acquisition : achat **exclusivement auprès d'éleveurs** ou **domptage** lorsque l'espèce est compatible.
+- Nouvelle compétence **Domptage**, distincte du Réflexe, de l'Agilité, des maîtrises d'armes et de Médecine.
+- Système de confiance/lien avec la monture et persistance de son état.
+- Système aquatique : eau peu profonde, flottaison, nage, plongée, respiration et noyade.
+- Flottabilité influencée par l'équipement : une armure lourde peut faire couler le personnage ou rendre la remontée difficile.
+- Dégâts environnementaux : brûlure, chute, noyade, chaleur et dangers futurs.
+- Système de faim, hydratation et **sommeil/fatigue** avec altérations physiologiques progressives.
+- Nouvelle compétence **Médecine** pour diagnostic et soins non magiques.
+- Système de **maladies régionales** dépendant du climat, de l'eau, de la faune, de l'hygiène et des événements du monde.
+- Diagnostic diégétique : aucune maladie n'est révélée automatiquement par un texte ; diagnostic via médecin PNJ ou autodiagnostic selon la compétence Médecine.
+- Maladies, besoins et récupération intégrés à la simulation probabiliste hors zone.
+- **Système de saisons** : printemps, été, automne, hiver, transitions persistantes et profils saisonniers régionaux.
+- Effets saisonniers sur climat, météo, écologie, reproduction, migrations, ressources, maladies et risques naturels.
+- Excursions saisonnières des prédateurs influencées par disponibilité des proies, météo et pression écologique.
+- Catastrophes naturelles : séismes, tornades, feux de forêt, foudre, pluies torrentielles, inondations, glissements de terrain, activité volcanique et coulées de lave.
+- Interaction séisme → réveil volcanique probabiliste.
+- Coulées de lave capables de suivre le relief, remplir certaines dépressions/ravins, créer des zones de danger et déclencher des incendies.
+- Direction de world design à trois grandes régions : **Dark Fantasy**, **Light Fantasy** avec grande colline et lac d'altitude, et **Fantasy classique**.
+- Hydrologie régionale : le lac d'altitude peut générer des ruissellements, torrents, débordements et inondations en aval.
+- **Déplacements territoriaux des prédateurs** : territoire principal privilégié, excursions occasionnelles vers des zones voisines, retour probabiliste et distinction claire entre excursion et migration permanente.
+- `specs/PERFORMANCE_AND_SIMULATION_SPEC.md` imposant la simulation probabiliste hors zone et la simulation détaillée locale.
+- `specs/SYSTEM_INTEGRATION_MATRIX.md` pour contrôler les dépendances et éviter les contradictions entre systèmes.
+- `specs/WORLD_REGIONS_HYDROLOGY_AND_THREATS_SPEC.md` pour la direction de la carte et les risques régionaux.
+- `specs/SEASONALITY_AND_CYCLE_SPEC.md` pour le système de saisons et ses interactions avec le monde.
 
 ### Updated
-- Roadmap enrichie avec les nouveaux systèmes de gameplay, d'écologie et de persistance.
+- `docs/gameplay.md` consolidé avec mouvement, combat, ciblage, groupes, magie collective, progression, survie, Médecine, maladies, montures, aquatique, catastrophes et structure du monde.
+- `docs/architecture.md` aligné sur les nouveaux systèmes, les saisons et leur ordre d'implémentation.
+- `docs/world.md` maintient la règle de monde persistant/non régénératif, les territoires de prédateurs, les excursions et la simulation régionale hors zone.
+- `specs/REGIONAL_PROBABILISTIC_SIMULATION_SPEC.md` définit les territoires principaux des prédateurs, leurs excursions occasionnelles, leur influence saisonnière et leur matérialisation locale cohérente.
+- Les spécifications spécialisées restent data-driven et n'enferment pas encore les domaines magiques, espèces de montures, chiffres d'équilibrage ou contenu définitif.
 - Les nouveaux systèmes sont spécifiés mais ne sont pas déclarés comme implémentés.
 - Engine version standardized to **Unreal Engine 5.8.1** across project configuration and documentation.
 - AI collaboration rules are now backed by runtime enforcement rather than documentation alone.
