@@ -24,10 +24,10 @@ Plusieurs pistes indépendantes peuvent permettre au joueur de remonter jusqu'à
 
 1. **Piste du quartier :** suivre les disparitions de SDF, les témoignages, les derniers lieux où ils ont été vus et les intermédiaires liés au trafic.
 2. **Piste de la poudre d'os :** suivre les acheteurs, intermédiaires et fournisseurs de poudre d'os jusqu'au réseau du fossoyeur.
-3. **Piste du cimetière :** remarquer les incohérences dans les registres, les horaires et les enterrements.
+3. **Piste du cimetière :** observer les activités de Charon et les éléments liés aux enterrements.
 4. **Piste des squelettes esclaves :** identifier des objets appartenant aux disparus sur des squelettes vendus dans la cité.
 5. **Observation directe :** surveiller Charon et le surprendre en train de pratiquer son rituel sur une victime encore vivante.
-6. **Piste de l'épidémie :** comparer les décès officiels, les disparitions et les personnes déclarées mortes sans que leur décès ait été réellement constaté.
+6. **Piste de l'épidémie :** comparer les décès connus, les disparitions et les témoignages pendant l'épidémie.
 7. **Piste du dénonciateur :** un informateur vivant dans les égouts affirme connaître un élément du trafic. Il indique qu'un squelette provenant des victimes de Charon porte de manière étrange le nom d'un ancien SDF disparu. Cette information peut permettre au joueur d'identifier une victime et de remonter progressivement jusqu'à Charon.
 
 **Note de conception :** la présence du trafic de squelettes dans les égouts n'est pas établie. L'endroit où le trafic est organisé, stocké ou transporté reste à définir ultérieurement. Les égouts servent uniquement de lieu pour le dénonciateur dans cette piste.
@@ -63,10 +63,12 @@ Le lieu et les circonstances du combat peuvent varier selon la piste suivie : ci
 ### Résolutions possibles
 
 - Affronter Charon et révéler publiquement son identité.
-- Le tuer sans parvenir à révéler toute l'étendue de son réseau.
-- Le faire tomber avec suffisamment de preuves pour permettre au royaume de poursuivre ses complices.
+- Le tuer sans parvenir à révéler toute l'étendue de ses crimes.
+- Le faire tomber avec suffisamment de preuves pour permettre au royaume de poursuivre les responsables directement impliqués dans ses activités.
 - Remonter le trafic de poudre d'os et le commerce de squelettes avant ou après le combat.
 - Identifier et libérer les victimes transformées en squelettes lorsque cela reste possible.
+
+**Après la mort de Charon, son activité criminelle cesse définitivement. Son réseau personnel ne poursuit pas automatiquement ses activités.**
 
 ### Conséquences
 
@@ -96,8 +98,6 @@ Il peut également profiter de l'augmentation du nombre de corps et de l'affaibl
 
 ### Indices
 
-- Le nombre de morts officiellement déclaré ne correspond pas toujours aux témoignages des familles.
-- Certaines personnes déclarées mortes n'ont jamais été vues après leur mise en quarantaine.
 - Les disparitions de SDF augmentent fortement pendant l'épidémie.
 - Charon devient beaucoup plus actif pendant la période de crise.
 - Certains squelettes esclaves apparaissant sur le marché possèdent des objets appartenant à des personnes officiellement mortes de la maladie.
@@ -113,42 +113,7 @@ Le nombre de victimes de Charon dépend de la situation de l'épidémie.
 
 ---
 
-## Q-003 — Le registre des morts
-
-**Type :** Enquête / collecte d'indices  
-**Prérequis :** découverte de plusieurs disparitions ou incohérences funéraires  
-**Statut :** Conception validée
-
-### Objectif
-
-Comparer les registres du cimetière avec les témoignages des habitants et les personnes officiellement mortes pendant l'épidémie.
-
-### Gameplay
-
-Le joueur doit reconstituer les identités de plusieurs personnes disparues à partir de :
-
-- registres funéraires ;
-- témoignages ;
-- objets personnels ;
-- lieux de disparition ;
-- informations obtenues auprès des SDF ;
-- observation du marché des squelettes esclaves ;
-- traces du commerce de poudre d'os.
-
-### Compétences utiles
-
-- **Linguistique :** compréhension des inscriptions du rituel ou de documents anciens.
-- **Perception :** détection de traces et d'anomalies.
-- **Compétences sociales :** obtention de témoignages.
-- **Connaissances / médecine :** détection d'incohérences concernant certaines morts attribuées à l'épidémie.
-
-### Résultat
-
-Cette quête permet au joueur de comprendre que plusieurs victimes n'ont probablement jamais été mortes au sens normal du terme.
-
----
-
-## Q-004 — Les esclaves qui étaient vivants
+## Q-003 — Les esclaves qui étaient vivants
 
 **Type :** Révélation / infiltration / choix moral  
 **Prérequis :** découverte du rituel et du trafic  
@@ -174,41 +139,9 @@ La poudre d'os constitue un **second commerce clandestin**, permettant à Charon
 
 **Trafic de poudre d'os :** le joueur peut remonter les fournisseurs et acheteurs de poudre afin d'élargir l'enquête au réseau criminel.
 
-**Enquête approfondie :** le joueur peut découvrir que Charon n'est peut-être pas le seul responsable du trafic.
-
 ### Conséquences persistantes
 
-Les conséquences doivent rester dans le monde : personnages morts ou libérés, commerce modifié, factions affectées, réputation modifiée et éventuelles nouvelles quêtes liées au réseau de trafic.
-
----
-
-## Q-005 — Le tueur n'est pas mort
-
-**Type :** Suite potentielle / mystère  
-**Prérequis :** Charon est tué avant que toute la vérité soit découverte  
-**Statut :** Conception validée
-
-### Déclenchement
-
-Le joueur tue Charon ou provoque sa mort sans révéler publiquement son identité de tueur en série.
-
-Quelques semaines plus tard, une nouvelle disparition se produit.
-
-Une nouvelle victime est retrouvée liée au même type de rituel.
-
-### Objectif
-
-Déterminer comment le rituel a continué malgré la mort de Charon.
-
-### Possibilités narratives
-
-- Charon avait un apprenti.
-- Le rituel a été transmis à plusieurs personnes.
-- Le trafic est organisé par un réseau criminel plus vaste.
-- Un acheteur important connaît le procédé et cherche à poursuivre la production.
-- Le réseau de poudre d'os continue à fonctionner malgré la mort de Charon.
-
-Cette quête ne doit être déclenchée que si les conditions du monde la rendent cohérente.
+Les conséquences doivent rester dans le monde : personnages morts ou libérés, commerce modifié, factions affectées et réputation modifiée.
 
 ---
 
@@ -225,5 +158,6 @@ Cette quête ne doit être déclenchée que si les conditions du monde la renden
 - **Les victimes de Charon ne reçoivent aucune pièce, puisqu'elles ne sont pas enterrées.**
 - La poudre d'os doit être un commerce clandestin distinct du trafic de squelettes, tout en pouvant servir d'indice reliant Charon à différents réseaux criminels.
 - **La piste du dénonciateur dans les égouts est indépendante de la localisation du trafic de squelettes : aucun lieu de stockage, de transport ou de vente souterrain n'est actuellement établi.**
+- **La mort de Charon met définitivement fin à son activité criminelle. Son réseau personnel ne continue pas après sa mort.**
 - Les conséquences des décisions doivent être persistantes et compatibles avec le système de monde non régénératif de Merge.
 - Les squelettes vendus par Charon doivent pouvoir être reliés à leurs anciennes identités par des indices, objets ou souvenirs selon les mécaniques retenues.
