@@ -39,7 +39,7 @@ Cette pratique est parfaitement normale dans le lore du royaume et n'est donc **
 
 La pièce sert traditionnellement de symbole du passage du défunt vers l'au-delà. Elle ne doit pas, à elle seule, permettre au joueur d'identifier Charon comme le tueur.
 
-Le fait que Charon applique cette tradition devient néanmoins un élément de caractérisation du personnage et peut contribuer à certaines scènes ou observations pendant l'enquête.
+**Les victimes de Charon ne reçoivent aucune pièce.** Elles ne sont pas enterrées : elles sont transformées par le rituel puis vendues comme squelettes esclaves. La tradition de la pièce ne s'applique donc jamais à elles.
 
 ### Fonctionnement secret de Charon
 
@@ -219,6 +219,7 @@ Cette quête ne doit être déclenchée que si les conditions du monde la renden
 - L'épidémie constitue un accélérateur narratif et systémique, pas nécessairement un événement provoqué par Charon.
 - Charon doit rester crédible et apprécié par une partie de la population tant que son identité n'est pas découverte.
 - La pièce dans les cercueils est une ancienne tradition des fossoyeurs du royaume, pas un indice exclusif permettant d'identifier Charon.
+- **Les victimes de Charon ne reçoivent aucune pièce, puisqu'elles ne sont pas enterrées.**
 - La poudre d'os doit être un commerce clandestin distinct du trafic de squelettes, tout en pouvant servir d'indice reliant Charon à différents réseaux criminels.
 - Les conséquences des décisions doivent être persistantes et compatibles avec le système de monde non régénératif de Merge.
 - Les squelettes vendus par Charon doivent pouvoir être reliés à leurs anciennes identités par des indices, objets ou souvenirs selon les mécaniques retenues.
