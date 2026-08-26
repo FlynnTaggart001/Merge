@@ -28,6 +28,9 @@ Plusieurs pistes indépendantes peuvent permettre au joueur de remonter jusqu'à
 4. **Piste des squelettes esclaves :** identifier des objets appartenant aux disparus sur des squelettes vendus dans la cité.
 5. **Observation directe :** surveiller Charon et le surprendre en train de pratiquer son rituel sur une victime encore vivante.
 6. **Piste de l'épidémie :** comparer les décès officiels, les disparitions et les personnes déclarées mortes sans que leur décès ait été réellement constaté.
+7. **Piste du dénonciateur :** un informateur vivant dans les égouts affirme connaître un élément du trafic. Il indique qu'un squelette provenant des victimes de Charon porte de manière étrange le nom d'un ancien SDF disparu. Cette information peut permettre au joueur d'identifier une victime et de remonter progressivement jusqu'à Charon.
+
+**Note de conception :** la présence du trafic de squelettes dans les égouts n'est pas établie. L'endroit où le trafic est organisé, stocké ou transporté reste à définir ultérieurement. Les égouts servent uniquement de lieu pour le dénonciateur dans cette piste.
 
 Les différentes pistes peuvent être suivies dans un ordre variable et certaines peuvent être découvertes sans que le joueur sache encore qu'elles convergent vers Charon.
 
@@ -221,5 +224,6 @@ Cette quête ne doit être déclenchée que si les conditions du monde la renden
 - La pièce dans les cercueils est une ancienne tradition des fossoyeurs du royaume, pas un indice exclusif permettant d'identifier Charon.
 - **Les victimes de Charon ne reçoivent aucune pièce, puisqu'elles ne sont pas enterrées.**
 - La poudre d'os doit être un commerce clandestin distinct du trafic de squelettes, tout en pouvant servir d'indice reliant Charon à différents réseaux criminels.
+- **La piste du dénonciateur dans les égouts est indépendante de la localisation du trafic de squelettes : aucun lieu de stockage, de transport ou de vente souterrain n'est actuellement établi.**
 - Les conséquences des décisions doivent être persistantes et compatibles avec le système de monde non régénératif de Merge.
 - Les squelettes vendus par Charon doivent pouvoir être reliés à leurs anciennes identités par des indices, objets ou souvenirs selon les mécaniques retenues.
