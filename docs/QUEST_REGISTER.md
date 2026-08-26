@@ -33,6 +33,10 @@ Un SDF affirme que plusieurs personnes ont disparu après avoir été approchée
 
 Le fossoyeur capture des personnes vivantes et pratique sur elles un rituel qui les transforme en squelettes serviles. Il revend ensuite ces squelettes à la cité humaine, où l'esclavage est légal.
 
+En parallèle, il produit et revend clandestinement de la **poudre d'os**, obtenue à partir de restes et de matière osseuse issus de son activité. Cette poudre alimente un marché clandestin et peut être utilisée comme composant dans certaines pratiques, recettes ou rituels selon les systèmes retenus.
+
+Le trafic de poudre d'os constitue un second indice potentiel : le joueur peut découvrir des sacs, commandes, acheteurs ou traces comptables reliant progressivement le fossoyeur à un réseau criminel sans révéler immédiatement son identité de tueur.
+
 Le royaume recherche depuis longtemps un tueur en série responsable de disparitions, mais personne ne soupçonne le fossoyeur.
 
 ### Résolutions possibles
@@ -42,10 +46,11 @@ Le royaume recherche depuis longtemps un tueur en série responsable de disparit
 - Le faire chanter et exploiter son trafic.
 - Enquêter davantage afin de découvrir l'ensemble du réseau.
 - Libérer ou identifier les victimes transformées en squelettes.
+- Remonter le réseau de distribution de poudre d'os.
 
 ### Conséquences
 
-La résolution modifie durablement les relations entre le cimetière, les autorités, les esclavagistes, les SDF et le marché des squelettes esclaves.
+La résolution modifie durablement les relations entre le cimetière, les autorités, les esclavagistes, les SDF, les trafiquants, les acheteurs de poudre d'os et le marché des squelettes esclaves.
 
 ---
 
@@ -67,6 +72,8 @@ Le fossoyeur profite de la confusion créée par l'épidémie pour augmenter for
 
 Certaines personnes sont officiellement considérées comme mortes de la maladie alors qu'elles ont en réalité été capturées vivantes et transformées par le rituel.
 
+Il peut également profiter de l'augmentation du nombre de corps et de l'affaiblissement des contrôles pour développer temporairement son trafic de poudre d'os.
+
 ### Indices
 
 - Le nombre de morts officiellement déclaré ne correspond pas toujours aux témoignages des familles.
@@ -74,13 +81,14 @@ Certaines personnes sont officiellement considérées comme mortes de la maladie
 - Les disparitions de SDF augmentent fortement pendant l'épidémie.
 - Le fossoyeur devient beaucoup plus actif pendant la période de crise.
 - Certains squelettes esclaves apparaissant sur le marché possèdent des objets appartenant à des personnes officiellement mortes de la maladie.
+- Des commandes inhabituelles de poudre d'os apparaissent chez certains acheteurs clandestins.
 
 ### Conséquences systémiques
 
 Le nombre de victimes du fossoyeur dépend de la situation de l'épidémie.
 
 - **Épidémie contenue rapidement :** le fossoyeur manque de victimes et peut reprendre les enlèvements directs.
-- **Épidémie fortement meurtrière :** il peut augmenter considérablement sa production de squelettes.
+- **Épidémie fortement meurtrière :** il peut augmenter considérablement sa production de squelettes et son approvisionnement en poudre d'os.
 - **Joueur absent de la région :** l'événement évolue selon les systèmes du monde et les actions des PNJ.
 
 ---
@@ -104,7 +112,8 @@ Le joueur doit reconstituer les identités de plusieurs personnes disparues à p
 - objets personnels ;
 - lieux de disparition ;
 - informations obtenues auprès des SDF ;
-- observation du marché des squelettes esclaves.
+- observation du marché des squelettes esclaves ;
+- traces du commerce de poudre d'os.
 
 ### Compétences utiles
 
@@ -133,6 +142,8 @@ Identifier les squelettes esclaves issus des victimes du fossoyeur et découvrir
 
 Le joueur comprend que le trafic n'est pas limité à quelques disparitions : le fossoyeur fournit régulièrement des squelettes esclaves à des acheteurs humains.
 
+La poudre d'os constitue un **second commerce clandestin**, permettant au fossoyeur de diversifier ses revenus et de maintenir des contacts avec plusieurs réseaux criminels.
+
 ### Branches
 
 **Dénonciation :** les autorités peuvent arrêter le fossoyeur et enquêter sur les acheteurs.
@@ -140,6 +151,8 @@ Le joueur comprend que le trafic n'est pas limité à quelques disparitions : le
 **Libération :** le joueur tente de libérer les squelettes concernés, avec risque de révolte dans la cité.
 
 **Complicité :** le joueur peut choisir de profiter du trafic, ce qui augmente sa réputation auprès de certains criminels mais dégrade sa réputation auprès d'autres factions.
+
+**Trafic de poudre d'os :** le joueur peut remonter les fournisseurs et acheteurs de poudre afin d'élargir l'enquête au réseau criminel.
 
 **Enquête approfondie :** le joueur peut découvrir que le fossoyeur n'est peut-être pas le seul responsable du trafic.
 
@@ -173,6 +186,7 @@ Déterminer comment le rituel a continué malgré la mort du fossoyeur.
 - Le rituel a été transmis à plusieurs personnes.
 - Le trafic est organisé par un réseau criminel plus vaste.
 - Un acheteur important connaît le procédé et cherche à poursuivre la production.
+- Le réseau de poudre d'os continue à fonctionner malgré la mort du fossoyeur.
 
 Cette quête ne doit être déclenchée que si les conditions du monde la rendent cohérente.
 
@@ -186,5 +200,6 @@ Cette quête ne doit être déclenchée que si les conditions du monde la renden
 - Les SDF constituent le premier signal discret de l'intrigue.
 - L'épidémie constitue un accélérateur narratif et systémique, pas nécessairement un événement provoqué par le fossoyeur.
 - Le fossoyeur doit rester crédible et apprécié par une partie de la population tant que son identité n'est pas découverte.
+- La poudre d'os doit être un commerce clandestin distinct du trafic de squelettes, tout en pouvant servir d'indice reliant le fossoyeur à différents réseaux criminels.
 - Les conséquences des décisions doivent être persistantes et compatibles avec le système de monde non régénératif de Merge.
 - Les squelettes vendus par le fossoyeur doivent pouvoir être reliés à leurs anciennes identités par des indices, objets ou souvenirs selon les mécaniques retenues.
