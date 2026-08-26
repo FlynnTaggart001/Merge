@@ -60,6 +60,29 @@ Quelle que soit la piste utilisée, une fois l'identité de Charon suffisamment 
 
 Le lieu et les circonstances du combat peuvent varier selon la piste suivie : cimetière, lieu du rituel, atelier clandestin ou infrastructure liée au trafic.
 
+### Style de combat de Charon
+
+Charon utilise exclusivement des outils associés à son métier de fossoyeur, détournés en armes.
+
+**Corps à corps — pelle de fossoyeur :**
+- Arme principale de Charon au corps à corps.
+- Utilisée aussi bien pour attaquer que pour parer.
+- Sert à maintenir le joueur à distance courte et à contrer ses attaques.
+- Son style de combat doit donner l'impression d'un outil de travail devenu une arme maîtrisée.
+
+**Attaques à distance — barres à mine :**
+- Charon lance des barres à mine sur le joueur.
+- Elles constituent son attaque à distance principale.
+- Elles permettent de maintenir la pression lorsque le joueur reste loin de lui.
+
+**Arme spéciale — crochet attaché à une corde :**
+- Charon lance un crochet relié à une corde.
+- Le crochet peut atteindre le joueur à distance.
+- Il peut servir à perturber ses déplacements et à créer des ouvertures pour les attaques à la pelle.
+- Le fonctionnement précis de la corde et des interactions avec l'environnement reste à définir lors de la conception du boss.
+
+**Principe général :** le combat doit exploiter la distance. Charon utilise les barres à mine à longue portée, le crochet et sa corde pour contrôler les déplacements du joueur, puis sa pelle lorsqu'il arrive au corps à corps.
+
 ### Résolutions possibles
 
 - Affronter Charon et révéler publiquement son identité.
