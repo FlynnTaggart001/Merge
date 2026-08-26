@@ -2,6 +2,49 @@
 
 Cette documentation synthétise les mécaniques actuellement approuvées. Les règles spécialisées se trouvent dans les specs référencées à la fin.
 
+## Navigation diégétique et cartes
+
+Merge n'utilise pas de système de navigation avec marqueurs de quête permanents ou GPS indiquant automatiquement la destination.
+
+La découverte et l'orientation reposent sur :
+
+- cartes physiques achetées auprès de marchands ;
+- cartes trouvées, volées, obtenues en récompense ou récupérées sur des PNJ ;
+- panneaux, enseignes et indications dans le monde ;
+- descriptions et directions données oralement par les PNJ ;
+- points de repère visibles et connaissance progressive du monde ;
+- exploration et mémoire du joueur ;
+- compétences pertinentes, notamment la cartographie lorsqu'elle sera définie.
+
+Les quêtes doivent fournir des indications diégétiques suffisantes pour permettre au joueur de progresser sans coordonnées ou marqueur obligatoire. Une quête peut être résolue uniquement par l'observation du monde, les conversations et la connaissance géographique acquise.
+
+## Économie et monnaies par peuple
+
+Chaque peuple possède sa propre monnaie. La monnaie n'est donc pas universelle dans Merge.
+
+Monnaies actuellement prévues, noms définitifs à confirmer :
+
+| Peuple | Monnaie provisoire |
+|---|---|
+| Humains | Couronne |
+| Squelettes / Nécromentiens | Osselet |
+| Êtres de magie | Éclat |
+| Gork | Dent |
+
+Les monnaies possèdent des valeurs et une acceptation propres à chaque économie. Un marchand peut refuser une monnaie étrangère.
+
+Le joueur peut convertir ses richesses par :
+
+- changeurs de monnaie ;
+- commerce direct ;
+- vente d'objets ;
+- travail ou récompenses dans la monnaie locale ;
+- troc lorsque celui-ci est accepté.
+
+Les taux de change peuvent varier selon les royaumes, les relations politiques, la rareté, les événements et l'état économique local.
+
+La compréhension des prix, contrats et conversations commerciales peut être influencée par la maîtrise linguistique du joueur lorsqu'il ne parle pas la langue locale.
+
 ## Mouvement du joueur
 
 Merge est un Action-RPG à la troisième personne. Le joueur dispose de :
@@ -11,13 +54,13 @@ Merge est un Action-RPG à la troisième personne. Le joueur dispose de :
 - saut ;
 - accroupissement ;
 - roulade/esquive ;
-- **bond en arrière** ;
-- **pas de côté** ;
-- **franchissement contextuel d'obstacles** ;
-- **escalade contextuelle** ;
-- **réception contrôlée après une chute** ;
-- **nage / plongée** lorsque le contexte aquatique le permet ;
-- **montée et déplacement à dos de monture**.
+- bond en arrière ;
+- pas de côté ;
+- franchissement contextuel d'obstacles ;
+- escalade contextuelle ;
+- réception contrôlée après une chute ;
+- nage / plongée lorsque le contexte aquatique le permet ;
+- montée et déplacement à dos de monture.
 
 Toutes les actions physiques significatives possèdent des coûts d'Endurance data-driven. Le saut, la roulade, le bond arrière, le pas de côté, le franchissement et l'escalade ne sont donc pas gratuits.
 
