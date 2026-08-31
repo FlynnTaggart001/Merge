@@ -83,17 +83,27 @@ Le monde est divisé en **trois grands royaumes** distincts mais interconnectés
 | Royaume de la Light Fantaisie | Êtres de magie (principalement) | Magie pure, lumières, créatures éthérées |
 
 ### Échelle et Géographie
-À DÉCIDER :
-- Taille totale du monde
-- Étendue de chaque royaume
-- Étendue de la première région jouable
+- **Surface totale de la carte : 40 km²**
+- **Dimension de référence : environ 6,32 × 6,32 km** pour une carte carrée
+- Les **40 km² comprennent l'ensemble des trois royaumes** et de leurs zones naturelles.
+- La répartition précise de la surface entre les trois royaumes reste à définir.
+- La taille de la première région jouable reste à définir.
+
+### Limites naturelles du monde
+Les limites extérieures du monde ne sont pas matérialisées par des barrières invisibles ou des murs artificiels.
+
+- **Océan** : une partie des limites extérieures est constituée par un océan vaste et infranchissable dans le cadre du jeu.
+- **Montagnes** : les autres limites sont formées par de hautes chaînes de montagnes escarpées et infranchissables.
+- Les limites naturelles doivent être intégrées à la géographie et ne doivent pas donner au joueur l'impression d'une limite technique.
+- Le joueur peut explorer librement les **40 km² accessibles**.
+- Les limites naturelles donnent l'impression que le monde se poursuit au-delà de la zone jouable.
 
 ### Régions Principales
 - **Royaume de la Fantaisie** : zone de départ probable, majorité humaine, architecture médiévale-fantastique classique.
 - **Royaume de la Dark Fantaisie** : peuplé principalement de squelettes, ambiance nécropolitaine, cryptes, ossuaires.
-- **Royaume de la Light Fantaisie** : peuplé principalement d’êtres de magie, architecture et environnement saturés de magie pure.
+- **Royaume de la Light Fantaisie** : peuplé principalement d'êtres de magie, architecture et environnement saturés de magie pure.
 
-Détails géographiques, biomes et points d’intérêt majeurs : À COMPLÉTER une fois les noms et frontières stabilisés.
+Détails géographiques, biomes et points d'intérêt majeurs : À COMPLÉTER une fois les noms et frontières stabilisés.
 
 ### Connexions et Navigation
 - Monde ouvert interconnecté
@@ -116,24 +126,24 @@ Détails géographiques, biomes et points d’intérêt majeurs : À COMPLÉTER 
 ### Les Trois Royaumes (base)
 
 **Royaume de la Fantaisie**  
-Territoire principal des humains. Cœur « classique » du monde : villages, fermes, forêts, châteaux. La plupart des humains y vivent. Ambiance médiévale-fantastique standard, contrastée par l’esthétique gothique globale du jeu.
+Territoire principal des humains. Cœur « classique » du monde : villages, fermes, forêts, châteaux. La plupart des humains y vivent. Ambiance médiévale-fantastique standard, contrastée par l'esthétique gothique globale du jeu.
 
-**Gouvernement** : monarchie. Le roi est fainéant et ne pense qu’à ses intérêts personnels. L’élite dirigeante ressemble à celle de notre monde : des incapables qui se foutent du peuple. Le pouvoir sert d’abord ceux qui le détiennent.
+**Gouvernement** : monarchie. Le roi est fainéant et ne pense qu'à ses intérêts personnels. L'élite dirigeante ressemble à celle de notre monde : des incapables qui se foutent du peuple. Le pouvoir sert d'abord ceux qui le détiennent.
 
 **Esclavage** : légal dans le monde des humains.
 
 **Royaume de la Dark Fantaisie**  
-Domaine principalement peuplé de squelettes. Architecture d’ossements, nécropoles, cryptes. Ambiance plus sombre et macabre.
+Domaine principalement peuplé de squelettes. Architecture d'ossements, nécropoles, cryptes. Ambiance plus sombre et macabre.
 
 **Gouvernement** : monarchie.  
-Le roi est un squelette humain de 2m20, coiffé d’une immense couronne d’or. Il est quasiment toujours assis sur son trône, dans une énorme salle du trône constamment emplie de fumée. Main gauche : un haltère (il fait des répétitions). Main droite : une chicha magique qu’il fume.  
+Le roi est un squelette humain de 2m20, coiffé d'une immense couronne d'or. Il est quasiment toujours assis sur son trône, dans une énorme salle du trône constamment emplie de fumée. Main gauche : un haltère (il fait des répétitions). Main droite : une chicha magique qu'il fume.  
 Il considère son peuple comme ses potes. Beaucoup moins égoïste que le roi des humains.
 
 **Origine des squelettes** :  
-Le roi est le premier des squelettes vivants et le premier des **Nécromentiens**. C’est lui qui a découvert le sort permettant de devenir squelette après la vie humaine. Les squelettes sont principalement d’anciens humains qui se sont transformés grâce à ce sort *avant* leur mort naturelle.
+Le roi est le premier des squelettes vivants et le premier des **Nécromentiens**. C'est lui qui a découvert le sort permettant de devenir squelette après la vie humaine. Les squelettes sont principalement d'anciens humains qui se sont transformés grâce à ce sort *avant* leur mort naturelle.
 
 **Royaume de la Light Fantaisie**  
-Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, environnement saturé d’énergie magique. Ambiance plus étrange et lumineuse, en contraste avec le gothique dominant.
+Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, environnement saturé d'énergie magique. Ambiance plus étrange et lumineuse, en contraste avec le gothique dominant.
 
 **Gouvernement** : conscience collective. Seul le gouvernement forme cette conscience unifiée. Le peuple appartient à la même espèce mais reste indépendant — chaque individu a sa propre volonté. La conscience collective gouverne, elle ne fusionne pas la population.
 
@@ -143,12 +153,12 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 - **Forme** : Monarchie
 - **Roi** : fainéant, intérêts personnels uniquement
 - **Élite** : incompétente, indifférente au peuple
-- **Conséquence** : le pouvoir sert d’abord ceux qui le détiennent
+- **Conséquence** : le pouvoir sert d'abord ceux qui le détiennent
 - **Esclavage** : légal
 
 #### Royaume de la Dark Fantaisie (squelettes)
 - **Forme** : Monarchie
-- **Roi** : squelette humain 2m20, couronne d’or, haltère + chicha magique, salle du trône enfumée
+- **Roi** : squelette humain 2m20, couronne d'or, haltère + chicha magique, salle du trône enfumée
 - **Attitude** : considère son peuple comme ses potes, peu égoïste
 - **Statut** : premier des squelettes vivants, premier des Nécromentiens
 - **Lore clé** : a découvert le sort de transformation en squelette (avant mort naturelle)
@@ -163,13 +173,13 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 Deux quartiers se détestent et se livrent souvent à des rixes.
 
 #### Quartier humain (Royaume de la Fantaisie)
-- Vend de la **poudre d’os** (drogue)
+- Vend de la **poudre d'os** (drogue)
 - Vend des **squelettes esclaves**
-- L’esclavage est légal chez les humains
+- L'esclavage est légal chez les humains
 
 #### Quartier squelette (Royaume de la Dark Fantaisie)
 - Vend des **goûts magiques** pour chicha magique
-- Organise des **jeux d’argent**
+- Organise des **jeux d'argent**
 
 **Relation** : rivalité ouverte, rixes fréquentes entre les deux quartiers.
 
@@ -177,8 +187,8 @@ Noms des quartiers et localisation précise : À DÉCIDER.
 
 ### Squelettes des égouts (Royaume de la Fantaisie)
 - Présents dans les égouts du royaume des humains
-- Tous sont d’**anciens esclaves en fuite**, partis chercher une vie meilleure
-- Incapables de sortir de la ville pour l’instant → ils survivent en **volant** et en gagnant de l’argent comme ils peuvent en attendant une solution
+- Tous sont d'**anciens esclaves en fuite**, partis chercher une vie meilleure
+- Incapables de sortir de la ville pour l'instant → ils survivent en **volant** et en gagnant de l'argent comme ils peuvent en attendant une solution
 - Tiennent un **casino illégal** et forment une **bande de voleurs compétents**
 - Lien avec le quartier squelette de Dark Fantaisie : **pas automatique** — ça dépend de chaque individu
 
@@ -203,8 +213,8 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 ### Cultures et Civilisations
 
 #### Les Squelettes / Nécromentiens
-- Principalement d’anciens humains transformés par le sort du roi *avant* leur mort naturelle
-- Le roi est le premier d’entre eux
+- Principalement d'anciens humains transformés par le sort du roi *avant* leur mort naturelle
+- Le roi est le premier d'entre eux
 - Culture encore à détailler (traditions, rapports aux humains, etc.)
 
 #### Les Gork
@@ -216,7 +226,7 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 #### Les Êtres de Magie (Light Fantaisie)
 - **Apparence** : silhouettes lumineuses
 - **Couleur du corps** : change selon leur pouvoir dans la société
-- **Aura** : glow autour d’eux, indique leur état mental
+- **Aura** : glow autour d'eux, indique leur état mental
 - Individus indépendants (seule la conscience collective gouverne)
 
 À COMPLÉTER pour les humains.
@@ -231,7 +241,7 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 ### Personnages Importants
 
 #### Sylva the Wise Tree
-- **Apparence** : un arbre comme les autres, à quelques exceptions près. Sur son tronc : une paire d’yeux de bois et une bouche de bois (il parle).
+- **Apparence** : un arbre comme les autres, à quelques exceptions près. Sur son tronc : une paire d'yeux de bois et une bouche de bois (il parle).
 - **Personnalité** : très intelligent, très sage — comme un philosophe.
 - **Capacités** : utilise la magie.
 - **Rôle** : personnage important (conseiller, source de savoir, quêtes possibles — à préciser).
@@ -264,7 +274,7 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 ### 07.3 Progression
 
 - **Système** : Learning by doing (pas de niveaux fixes)
-- **Mécanique** : Utilisation d’une compétence → progression de cette compétence
+- **Mécanique** : Utilisation d'une compétence → progression de cette compétence
 - **Plafonné** : Oui, chaque compétence a un maximum
 - **Réinitialisation** : À DÉCIDER (possible ou pas)
 
@@ -287,29 +297,29 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 
 ### Méchaniques Offensives
 - Attaques légères
-- Attaques lourdes (coûtent plus d’endurance)
-- Combinaisons d’attaques
+- Attaques lourdes (coûtent plus d'endurance)
+- Combinaisons d'attaques
 - Visée libre possible
 - Différents types de dégâts (tranchant, contondant, perçant, magie)
 
 ### Méchaniques Défensives
 - Esquive (dodge) avec timing
 - Parade (block) avec arme/bouclier
-- Roulement d’esquive
+- Roulement d'esquive
 - Durabilité du blocage
 
 ### Calcul des Dégâts
 À DÉCIDER :
 - Formule exacte
 - Rôle des attributs
-- Rôle de l’arme
-- Rôle de l’armure
+- Rôle de l'arme
+- Rôle de l'armure
 - Critique et précision
 
 ### Statut de Combat
 - Détection des ennemis
 - Aggression et fuite
-- Regroupement d’ennemis
+- Regroupement d'ennemis
 - IA basique (À COMPLÉTER en détail)
 
 ---
@@ -318,7 +328,7 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 
 ### Écoles de Magie
 À COMPLÉTER :
-- Nombre d’écoles
+- Nombre d'écoles
 - Noms et thèmes
 - Sorts de chaque école
 
@@ -332,563 +342,198 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 ### Apprentissage des Sorts
 - Livres de sorts trouvables
 - Entraînement auprès de maîtres
-- Découverte par expérimentation
-- Progression : maîtrise → sort plus puissant ou moins coûteux
+- Pratique et progression par utilisation
 
-### Lancer de Sorts
-À COMPLÉTER :
-- Temps de lancer
+### Magie Collective
+- Rituels à plusieurs lanceurs
+- Formation d'un groupe nécessaire
+- Puissance dépendante du nombre de participants
+- Synchronisation des lanceurs
 - Interruption possible
-- Portée
-- Rayon d’effet
-- Effets spéciaux (knockback, stun, etc.)
 
-### Effets Magiques
+---
+
+## 10. Furtivité
+
+- Détection basée sur bruit, visibilité et contexte
+- Détection progressive
+- Indicateurs non intrusifs
+- Backstab conditionnel
+
+---
+
+## 11. IA & PNJ
+
+- PNJ avec routines quotidiennes
+- Cycle jour/nuit
+- Réactions aux événements
+- Fuite / combat / recherche
+- Mémoire simplifiée
+- Réputation
+
+---
+
+## 12. Monde Vivant
+
+- Météo dynamique
+- Événements aléatoires
+- Factions réactives
+- Écosystème prédateur/proie
+- Populations dynamiques
+- Migration
+- Ressources régionales
+
+---
+
+## 13. Écologie
+
+- Reproduction des créatures
+- Population dépendante des ressources et des prédateurs
+- Extinction locale possible
+- Actions du joueur ayant des conséquences durables
+- Simulation probabiliste hors zone pour limiter le coût CPU
+
+---
+
+## 14. Monde Persistant
+
+- Destruction persistante
+- PNJ morts définitivement
+- Ressources consommées non régénérées artificiellement
+- État écologique sauvegardé
+- Création de nouveaux mondes indépendants
+- Possibilité de continuer dans un monde fortement détruit
+
+---
+
+## 15. Survie
+
+- Faim
+- Hydratation
+- Fatigue
+- Sommeil
+- Maladies
+- Médecine
+- Effets environnementaux
+
+---
+
+## 16. Système Aquatique
+
+- Eau peu profonde
+- Nage
+- Plongée
+- Respiration
+- Noyade
+
+---
+
+## 17. Catastrophes Naturelles
+
+- Tremblements de terre
+- Tornades
+- Feux de forêt
+- Foudre
+- Pluies torrentielles
+- Inondations
+- Glissements de terrain
+- Volcan
+- Coulées de lave
+
+---
+
+## 18. Montures
+
+- Acquisition
+- Domptage
+- Confiance
+- Endurance
+- Déplacement
+- Interactions avec le terrain
+
+---
+
+## 19. Économie
+
 À COMPLÉTER :
-- Dégâts élémentaires
-- Buffs et débuffs
-- Transmutation
-- Restauration
-- Autres effets
+- Monnaies par peuple
+- Commerce
+- Prix
+- Ressources
+- Contrebande
+- Commerce inter-royaumes
 
 ---
 
-## 10. Équipement
+## 20. Quêtes
 
-### Slots d’Équipement
-- Tête (casque, couronne, bandeau)
-- Torse (armure lourde, légère, robe)
-- Mains (gants, mitaines)
-- Jambes (chausses, armure de jambes)
-- Pieds (bottes, sabots)
-- Mains droite/gauche (armes, baguettes, boucliers)
-- Accessoires (anneaux, amulettes)
-
-### Armes
-À COMPLÉTER :
-- Types d’armes (épées, haches, bâtons, arcs, etc.)
-- Statistiques (dégâts, poids, portée, vitesse)
-- Effets spéciaux (enchantements)
-- Durabilité et réparation
-
-### Armures
-À COMPLÉTER :
-- Types d’armures (plate, cuir, tissu, etc.)
-- Statistiques (protection, poids, mobilité)
-- Ensemble d’armures cohérents
-- Effets visuels distinctifs
-
-### Durabilité
-À DÉCIDER :
-- Système de durabilité activé
-- Réparation possible
-- Coût de réparation
-- Dégradation progressive
+- Quêtes à embranchements
+- Solutions multiples
+- Conséquences persistantes
+- Indices environnementaux
+- Absence de marqueurs obligatoires
+- Cartes achetables pour faciliter la navigation
 
 ---
 
-## 11. Inventaire
-
-### Système de Poids
-- **Actif** : Oui
-- **Limite de poids** : À DÉCIDER
-- **Impact surcharge** : Mobilité réduite, fatigue accrue
-- **Conséquences** : Limitation stratégique des ressources portées
-
-### Gestion des Objets
-- Tri par catégorie
-- Recherche et filtrage
-- Droppable/vendable
-- Limite de nombre de certains objets (potions, etc.) : À DÉCIDER
-
-### Types d’Objets
-- Armes
-- Armures
-- Consommables (potions, nourriture)
-- Matériaux de craft
-- Livres et parchemins
-- Clés et objets spéciaux
-- Trésors et objets de quête
-
----
-
-## 12. Alchimie
+## 21. Direction du Monde
 
 À COMPLÉTER :
-- Système de création de potions
-- Ingrédients disponibles
-- Recettes
-- Effets des potions
-- Durée des effets
-- Complications possibles (explosion, poison accidentel, etc.)
+- Noms définitifs des trois royaumes
+- Répartition géographique des royaumes dans les 40 km²
+- Biomes détaillés
+- Villes et villages
+- Donjons
+- Routes
+- Points d'intérêt
+- Frontières internes
 
 ---
 
-## 13. PNJ & IA
+## 22. Audio
 
-### Types de PNJ
-- Civils (pas « inoffensifs » par défaut — voir états mentaux)
-- Marchands
-- Maîtres de compétences
-- Prêtres/Mages
-- Gardes/soldats
-- Criminels
-- Ennemis
-
-### États mentaux
-- Les PNJ ont des **états mentaux** dynamiques
-- S’ils sont **énervés**, ils deviennent **enclins à la violence** (pas de civil permanentement inoffensif)
-- Liste complète des états et transitions : À COMPLÉTER
-
-### Propension à la violence (genre PNJ × genre joueur)
-S’applique surtout aux civils humains en situation de tension / colère.
-
-| Genre du joueur | PNJ hommes | PNJ femmes |
-|---|---|---|
-| Joueur **homme** | Légèrement plus enclins à la violence | Moins enclins |
-| Joueur **femme** | Moins enclins à la violence | Plus enclins à la violence |
-
-### Routines
-- Horaires quotidiens (À COMPLÉTER)
-- Lieux fréquentés
-- Activités typiques
-- Variation selon cycle jour/nuit
-
-### Interaction
-- Dialogue simple ou arborescent
-- Services (achat, vente, entraînement)
-- Quêtes
-- Réaction aux actions du joueur
-
-### IA Ennemis
 À COMPLÉTER :
-- Comportement basique (patrouille, attaque)
-- Tactiques en combat
-- Fuite / poursuite
-- Regroupement et communication
+- Musique
+- Ambiances
+- Bruitages
+- Voix
+- Sons de créatures
+- Sons environnementaux
 
 ---
 
-## 14. Factions
+## 23. Technique
 
-### Nombre de Factions
-À DÉCIDER
-
-### Structure des Factions
-À COMPLÉTER :
-- Noms des factions
-- Idéologies
-- Zones de contrôle
-- Chefs de faction
-- Membres notables
-- Quartiers généraux
-
-### Relations Inter-Factions
-À COMPLÉTER :
-- Alliances
-- Rivalités
-- Guerres
-- Négociations
+- Unreal Engine 5.8.1
+- C++20
+- Blueprint complémentaire
+- World Partition
+- Mass Framework selon besoin
+- Niagara
+- Sauvegarde persistante
 
 ---
 
-## 15. Réputation
+## 24. Performance
 
-### Système de Réputation
-- **Type** : Par faction
-- **Plage** : À DÉCIDER (0-100, -100 à +100, etc.)
-- **Influences** : Accès aux quêtes, prix commerciaux, réactions PNJ, lieux accessibles
-
-### Gain/Perte de Réputation
-À COMPLÉTER :
-- Actions générant de la réputation
-- Quêtes de faction
-- Crimes et conséquences
-- Rédemption possible
-
-### Seuils de Réputation
-À DÉCIDER :
-- Points de basculement majeurs
-- Conséquences à chaque seuil
-- Ennemis / Alliés permanents
+- Streaming World Partition
+- Simulation hors zone probabiliste
+- Budget CPU/GPU/mémoire
+- LOD
+- Optimisation IA
+- Optimisation VFX
 
 ---
 
-## 16. Quêtes
+## 25. Principes de Design
 
-### Types de Quêtes
-- Quêtes principales (storyline)
-- Quêtes de faction
-- Quêtes secondaires (side quests)
-- Quêtes dynamiques (générées ou contextuelles)
-- Quêtes cachées / optionnelles
-
-### Structure des Quêtes
-À COMPLÉTER :
-- Objectifs clairs
-- Marqueurs et tracking
-- Récompenses variables
-- Conséquences narratives
-- Branches et choix alternatifs
-
-### Journal de Quêtes
-- Enregistrement automatique
-- Notes manuscrites du joueur : À DÉCIDER
-- Historique complet
-- Quêtes échouées/abandonnées
+- Liberté du joueur
+- Conséquences durables
+- Monde cohérent
+- Pas de barrières invisibles
+- Navigation naturelle
+- Systèmes interconnectés
 
 ---
 
-## 17. Dialogue
-
-### Système de Dialogue
-- **Type** : Arborescent (branches multiples)
-- **Perspective** : Texte ou voix : À DÉCIDER
-- **Longueur** : Variable, du court au long
-
-### Options de Dialogue
-À COMPLÉTER :
-- Ton neutre / agressif / charmant
-- Choix basés sur les attributs
-- Choix basés sur la réputation
-- Choix basés sur les compétences
-- Bluff et persuasion
-
-### Conséquences
-- Dialogue affecte quêtes
-- Dialogue affecte réputation
-- Dialogue affecte relations PNJ
-- Dialogue affecte fin du jeu : À DÉCIDER
-
----
-
-## 18. Monde Vivant
-
-### Cycle Jour/Nuit
-- **Longueur** : À DÉCIDER (temps de jeu)
-- **Jour** : Luminosité normale, activité PNJ maximale
-- **Nuit** : Luminosité réduite (brouillard, shadows), PNJ dorment
-- **Transitions** : Aube et crépuscule
-- **Impact** : Ennemi différents, quêtes disponibles, dangerosité
-
-### Météo
-À COMPLÉTER :
-- Types de météo
-- Durée des changements
-- Impact visuel
-- Impact gameplay (glissade, visibilité, etc.)
-- Impact sur PNJ
-
-### Événements Dynamiques
-À COMPLÉTER :
-- Apparition d’ennemis
-- Catastrophes naturelles
-- Événements de faction
-- Événements contextuels
-- Festivals ou célébrations
-
-### Cycles Saisonniers
-À DÉCIDER :
-- Variation saisonnière
-- Changement visuel
-- Changement de contenu
-- Durée des saisons
-
----
-
-## 19. Exploration
-
-### Récompenses d’Exploration
-- Trésors cachés
-- Raccourcis secrets
-- Ennemis redoutables isolés
-- Lore découvert
-- Zones cachées
-
-### Marqueurs et Indices
-À DÉCIDER :
-- Système de marqueur (pins, notes)
-- Indices contextuels
-- Journal d’exploration
-- Cartes trouvables
-
-### Danger et Progression
-- Zones dangereuses accessibles tôt (avec risque)
-- Progression organique en difficulté
-- Pas de barrière invisible arbitraire
-- Challenge scaling optionnel : À DÉCIDER
-
----
-
-## 20. Économie
-
-### Monnaie
-À DÉCIDER :
-- Nom de la devise
-- Sources de revenus
-- Coûts typiques
-
-### Commerce
-- Achat/Vente auprès des marchands
-- Prix dynamiques selon réputation : À DÉCIDER
-- Négociation possible : À DÉCIDER
-- Vol possible : À DÉCIDER
-
-### Économie du Monde
-À COMPLÉTER :
-- Coûts de base (nourriture, auberge, équipement)
-- Salaires des PNJ
-- Coûts de services
-- Économie dynamique ou statique
-
----
-
-## 21. Mort & Sauvegarde
-
-### Mort du Joueur
-À DÉCIDER :
-- Mode : Respawn simple ou conséquences
-- Lieu de respawn : À domicile ou dernière auberge
-- Perte d’équipement : Oui/Non/Partiel
-- Perte d’argent : Oui/Non/Partiel
-- Conséquences narratives : À DÉCIDER
-
-### Sauvegarde
-- **Type** : Sauvegarde manuelle / auto-save / hybride : À DÉCIDER
-- **Slots** : Nombre de sauvegardes : À DÉCIDER
-- **Quicksave** : Oui/Non : À DÉCIDER
-- **Permadeath** : Mode optionnel : À DÉCIDER
-
----
-
-## 22. Interface
-
-### Menus Principaux
-À COMPLÉTER :
-- Menu de démarrage
-- Paramètres
-- Galerie / Cinématiques
-
-### HUD en Jeu
-À COMPLÉTER :
-- Barre de vie
-- Ressource magique
-- Objective tracker
-- Minimap ou compas
-- Interactifs contextuels
-
-### Sous-Menus
-- Inventaire
-- Équipement
-- Quêtes
-- Carte
-- Journal
-- Compétences/Attributs
-- Magie
-
-### Accessibilité
-À DÉCIDER :
-- Taille du texte adjustable
-- Couleurs contrastées
-- Sous-titres
-- Options de difficulté
-
----
-
-## 23. Audio
-
-### Musique
-À COMPLÉTER :
-- Thèmes régionaux
-- Musiques de combat
-- Musiques d’exploration
-- Musiques ambiantes
-- Thèmes de faction
-
-### Effets Sonores
-À COMPLÉTER :
-- Bruits d’ambiance (vent, animaux, eau)
-- Bruits d’action (armes, pas, armure)
-- Bruits de magie
-- Bruits d’interface
-
-### Voix
-À DÉCIDER :
-- Voix complète ou partielle
-- Langues supportées
-- Accents régionaux : À DÉCIDER
-
----
-
-## 24. Caméra
-
-### Perspective
-- Vue à la troisième personne
-- Position basse et rapprochée du personnage
-- Dynamique et réactive
-
-### Comportement
-- Suit le personnage naturellement
-- Collision simple (évite les murs)
-- Zoom avant dans les espacements étroits
-- Permet la vue panoramique : À DÉCIDER
-
-### Inspiration
-- Caméra PS1 / MediEvil
-- Système simple mais efficace
-- Pas de complexité inutile moderne
-- Priorité à la clarté et à la lisibilité
-
----
-
-## 25. Architecture Technique
-
-### Moteur
-CHOISI : Unreal Engine 5.8.1
-
-### Langage de Programmation
-À DÉCIDER (dépend du moteur)
-
-### Infrastructure
-À COMPLÉTER :
-- Structure du code
-- Systèmes modulaires
-- Dépendances
-- Pipeline de développement
-
-### Streaming et Chargement
-À DÉCIDER :
-- Chargement de zones
-- Streaming en temps réel
-- Écrans de chargement
-
----
-
-## 26. Performance
-
-### Cibles de Performance
-À DÉCIDER :
-- Résolution cible
-- FPS cible (30, 60, 120+)
-- Plateforme cible
-- Limitations matérielles
-
-### Optimisation
-À COMPLÉTER :
-- LOD (Level of Detail)
-- Culling et frustum
-- Texture compression
-- Polygon budgets
-
-### Tests de Performance
-À DÉCIDER :
-- Profiling régulier
-- Seuils acceptables
-- Gestion des pics
-
----
-
-## 27. Contraintes PS1
-
-### Limitations Volontaires
-
-**Visuellement** :
-- Résolution basse de texture
-- Nombre de polygones limité par scène
-- Pas de shaders avancés
-- Éclairage vertex-lit uniquement
-- Brouillard de distance court
-- Pas de ray-tracing ou technique moderne
-
-**Techniquement** :
-- Pas de physique ultra-réaliste
-- IA simple et prévisible
-- Pas de streaming infini
-- Mémoire limitée simulée
-
-**Narrativement** :
-- Aucune limitation (histoire riche et profonde acceptée)
-
-**Ludiquement** :
-- Aucune limitation (gameplay peut être complexe)
-
-### Justification
-Ces contraintes sont des **choix artistiques** qui créent l’ambiance rétro intentionnelle du jeu.
-
----
-
-## 28. MVP (Minimum Viable Product)
-
-### Objectif du MVP
-Créer un **Vertical Slice** jouable démontrant tous les systèmes essentiels.
-
-### Éléments Requis
-- [x] Déplacement du personnage en temps réel
-- [ ] Caméra dynamique troisième personne
-- [ ] Combat de base (attaque, défense, esquive)
-- [ ] Ennemi avec IA simple
-- [ ] Armes fonctionnelles
-- [ ] Magie basique (2-3 sorts)
-- [ ] Inventaire et équipement
-- [ ] Compétences et progression
-- [ ] PNJ et routines
-- [ ] Dialogues simples
-- [ ] Une quête du début à la fin
-- [ ] Une petite zone explorée (village + forêt)
-- [ ] Esthétique PS1 validée
-- [ ] Cycle jour/nuit (optionnel mais préféré)
-
-### Durée Estimée
-À DÉCIDER
-
----
-
-## 29. Roadmap
-
-Voir `ROADMAP.md` pour le plan détaillé de développement.
-
-### Phases Majeures
-1. **Préproduction** : Vision et planning (EN COURS)
-2. **Choix du moteur** : Sélection tech
-3. **Prototype technique** : Infra de base
-4. **Prototype gameplay** : Mécaniques essentielles
-5. **Vertical Slice** : MVP jouable
-6. **Première région** : Contenu complet
-7. **Expansion du monde** : Régions additionnelles
-8. **Contenu** : Quêtes, lore, secrets
-9. **Polish** : Affinage et raffinement
-10. **Optimisation** : Performance et stabilité
-11. **Release** : Lancement final
-
----
-
-## 30. Règles de Développement
-
-### Principes Généraux
-1. **L’esthétique d’abord** : Toute décision technique serve l’esthétique PS1
-2. **Cohérence narrative** : Le monde doit être logique et cohérent
-3. **Liberté du joueur** : Minimiser les limites invisibles
-4. **Ambiance prioritaire** : L’atmosphère dépasse les polygones
-5. **Contenu over bling** : Plus de contenu que d’effets visuels modernes
-
-### Collaboration Multi-IA
-Voir `AI_RULES.md` pour les responsabilités détaillées.
-
-### Documentation
-- Tous les systèmes doivent être documentés
-- Changements importants dans CHANGELOG.md
-- Décisions justifiées dans le repo
-
-### Source de Vérité
-En cas de contradiction :
-1. Décision explicite du Game Director
-2. GAME_BIBLE.md (ce fichier)
-3. specs/ (spécifications détaillées)
-4. docs/ (documentation générale)
-5. Propositions individuelles des IA
-
----
-
-**Dernière mise à jour** : 2026-08-24
-**Statut** : Phase de préproduction
-**Prochaine étape** : Noms des trois royaumes + religions des autres peuples
+**Dernière mise à jour : 2026-08-31**
