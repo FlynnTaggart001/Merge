@@ -23,6 +23,7 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [x] Simulation probabiliste hors zone et contraintes de performance spécifiées
 - [x] Matrice d'intégration inter-systèmes créée
 - [x] Direction de world design en trois grandes régions cadrée
+- [x] Taille cible du monde fixée à 625 km² (référence 25 × 25 km)
 
 ---
 
@@ -213,6 +214,6 @@ Prototype technique → contenu → expansion du monde → quêtes/factions → 
 
 ---
 
-**Dernière mise à jour** : 2026-08-21  
+**Dernière mise à jour** : 2026-08-31  
 **Moteur** : Unreal Engine 5.8.1  
 **Langage principal** : C++
