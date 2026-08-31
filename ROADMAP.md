@@ -23,7 +23,7 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [x] Simulation probabiliste hors zone et contraintes de performance spécifiées
 - [x] Matrice d'intégration inter-systèmes créée
 - [x] Direction de world design en trois grandes régions cadrée
-- [x] Taille cible du monde fixée à 625 km² (référence 25 × 25 km)
+- [x] Taille cible du monde fixée à 40 km² (référence 6,32 × 6,32 km)
 
 ---
 
