@@ -19,6 +19,7 @@ Les systèmes gameplay détaillés ci-dessous sont **spécifiés mais non décla
 - [GAME_BIBLE.md](GAME_BIBLE.md) — vision
 - [specs/TECHNICAL_ARCHITECTURE.md](specs/TECHNICAL_ARCHITECTURE.md) — architecture technique
 - [specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md](specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md) — systèmes de gameplay
+- [specs/SKILL_PROGRESSION.md](specs/SKILL_PROGRESSION.md) — formule de progression des compétences
 - [specs/SYSTEM_INTEGRATION_MATRIX.md](specs/SYSTEM_INTEGRATION_MATRIX.md) — cohérence entre systèmes
 - [specs/PERFORMANCE_AND_SIMULATION_SPEC.md](specs/PERFORMANCE_AND_SIMULATION_SPEC.md) — performance et simulation distante
 - [specs/WORLD_REGIONS_HYDROLOGY_AND_THREATS_SPEC.md](specs/WORLD_REGIONS_HYDROLOGY_AND_THREATS_SPEC.md) — direction de la carte
