@@ -11,35 +11,162 @@ Une action peut développer une compétence ainsi qu'une ou plusieurs caractéri
 ## 2. Principes généraux
 
 - Les compétences sont spécialisées et indépendantes les unes des autres.
+- Les compétences utilisent une échelle de **0 à 100**.
 - Le personnage progresse en pratiquant réellement la compétence concernée.
-- Une action triviale ou répétée artificiellement ne doit pas permettre une progression rapide.
+- **Seules les réussites accordent une progression de compétence.** Une tentative échouée accorde 0 progression.
+- Il n'existe **aucune pénalité artificielle anti-répétition** : si le joueur réussit réellement plusieurs actions difficiles, chacune peut faire progresser la compétence.
 - La difficulté et la complexité de l'action influencent la progression.
+- La difficulté d'une action est **prédéfinie pour cette action ou cet objet**. Elle n'est pas automatiquement augmentée ou diminuée selon le niveau du personnage.
+- Une action devenue trop facile par rapport au niveau actuel peut donner **0 progression**.
 - La progression devient progressivement plus lente lorsque le niveau de compétence augmente.
-- **Une action dont la difficulté est devenue trop faible par rapport au niveau de la compétence ne rapporte plus de progression.**
-- Le personnage doit donc progressivement affronter des situations plus complexes pour continuer à développer une compétence élevée.
+- L'Intelligence accélère l'apprentissage, mais ne donne pas de progression sans pratique et ne garantit pas la réussite.
+- Les compétences sont **permanentes** : elles ne diminuent pas simplement parce qu'elles ne sont pas utilisées.
+- La valeur réelle d'une compétence est conservée avec des **décimales** en interne. L'interface peut afficher une valeur arrondie.
 - Les compétences ne sont pas limitées par la classe actuelle du personnage.
 - Les classes représentent une orientation et non une restriction définitive des savoir-faire.
 - Les caractéristiques peuvent soutenir une compétence, mais ne la remplacent pas.
 
-### 2.1 Difficulté de l'action et progression
+### 2.1 Échelle de difficulté
 
-La progression dépend de l'écart entre le niveau actuel de la compétence et la difficulté réelle de l'action effectuée.
+Chaque action pouvant faire progresser une compétence reçoit une difficulté prédéfinie sur une échelle de 0 à 100 :
 
-- **Action beaucoup trop facile** par rapport au niveau de compétence : **0 progression**.
-- **Action légèrement trop facile** : progression très faible.
-- **Action adaptée au niveau** : progression normale.
-- **Action difficile** : progression importante.
-- **Action exceptionnellement difficile** : progression potentiellement très importante, dans les limites du système de progression.
+| Niveau de difficulté | Valeur de référence |
+|---|---:|
+| Très facile | 10 |
+| Facile | 25 |
+| Moyenne | 50 |
+| Difficile | 70 |
+| Très difficile | 85 |
+| Exceptionnelle | 100 |
 
-Cette règle empêche notamment l'exploitation d'actions simples répétées pour faire monter artificiellement une compétence élevée.
+Cette échelle constitue une base commune à toutes les compétences. Des valeurs intermédiaires peuvent être utilisées lorsqu'une action se situe entre deux catégories.
 
-**Exemple — Crochetage :** un personnage avec Crochetage 80 n'apprend plus rien d'une serrure basique qu'il maîtrise depuis longtemps. Pour continuer à progresser, il doit trouver des serrures réellement plus complexes.
+Une difficulté supérieure à 100 peut être utilisée pour des situations **exceptionnelles** qui dépassent le niveau normal de la compétence, mais la progression de la compétence reste plafonnée à 100.
 
-Le même principe s'applique à toutes les compétences : un combattant très expérimenté ne progresse plus significativement en affrontant constamment des adversaires insignifiants, un alchimiste très avancé ne progresse plus en fabriquant uniquement des préparations élémentaires, etc.
+### 2.2 Progression selon la difficulté
 
-Les seuils numériques exacts entre niveau de compétence, difficulté et progression restent à définir.
+La progression dépend de l'écart entre la difficulté de l'action et le niveau actuel de la compétence.
 
-## 3. Compétences de combat
+- Une action **beaucoup trop facile** par rapport au niveau actuel : 0 progression.
+- Une action légèrement plus facile que le niveau actuel : progression faible.
+- Une action adaptée au niveau : progression normale.
+- Une action nettement plus difficile : progression importante.
+- Une action exceptionnellement difficile : progression très importante, dans les limites du système.
+
+Le jeu ne pénalise donc pas artificiellement le joueur pour avoir trouvé plusieurs actions difficiles du même type. Une réussite réelle reste une expérience d'apprentissage valide.
+
+### 2.3 Exemple — Crochetage
+
+Un personnage possède **Crochetage 80** :
+
+- serrure difficulté 25 → **0 progression** ;
+- serrure difficulté 50 → **0 progression** ;
+- serrure difficulté 70 → **0 progression** ;
+- serrure difficulté 85 → progression ;
+- serrure difficulté 100 → progression plus importante.
+
+Le personnage doit donc progressivement rencontrer des serrures réellement plus complexes pour continuer à développer un niveau élevé de Crochetage.
+
+## 3. Formule universelle de progression
+
+La même formule est utilisée pour **toutes les compétences**. Elle ne dépend pas du nom de la compétence : seules les valeurs de niveau, de difficulté et d'Intelligence changent.
+
+On définit :
+
+- `S` = niveau actuel de la compétence, compris entre 0 et 100 ;
+- `D` = difficulté prédéfinie de l'action ;
+- `I` = Intelligence du personnage, comprise entre 0 et 100 ;
+- `P` = progression accordée par une réussite.
+
+Pour une action réussie :
+
+```text
+P = 0.9 × max(0, (D − S + 15) / 50) × 1 / (1 + 0.012 × S) × (0.75 + 0.005 × I)
+```
+
+La nouvelle valeur de la compétence est ensuite :
+
+```text
+S_nouveau = min(100, S + P)
+```
+
+Une tentative échouée applique directement :
+
+```text
+P = 0
+```
+
+### 3.1 Interprétation de la formule
+
+#### A. Écart entre difficulté et compétence
+
+```text
+max(0, (D − S + 15) / 50)
+```
+
+Cette partie mesure à quel point l'action représente un défi pour le personnage.
+
+Si l'action est au moins **15 points plus facile** que la compétence actuelle (`D ≤ S − 15`), cette partie devient 0 et l'action ne donne aucune progression.
+
+#### B. Ralentissement avec le niveau
+
+```text
+1 / (1 + 0.012 × S)
+```
+
+Plus la compétence est élevée, moins une réussite individuelle apporte de progression. Le ralentissement est continu et ne repose pas sur des paliers artificiels.
+
+#### C. Influence de l'Intelligence
+
+```text
+0.75 + 0.005 × I
+```
+
+L'effet de l'Intelligence est volontairement modéré :
+
+| Intelligence | Multiplicateur d'apprentissage |
+|---:|---:|
+| 0 | ×0,75 |
+| 25 | ×0,875 |
+| 50 | ×1,00 |
+| 75 | ×1,125 |
+| 100 | ×1,25 |
+
+L'Intelligence permet donc d'apprendre plus rapidement, sans permettre de progresser sans pratiquer.
+
+### 3.2 Progression interne avec décimales
+
+La compétence est stockée avec sa précision réelle en interne.
+
+Exemple :
+
+```text
+Crochetage = 47.35
+Réussite → +0.42
+Crochetage = 47.77
+```
+
+L'interface peut afficher simplement `47`, tandis que le système conserve `47.77`.
+
+### 3.3 Exemples de progression
+
+Avec Intelligence = 50 :
+
+| Compétence actuelle | Difficulté | Progression approximative |
+|---:|---:|---:|
+| 20 | 25 | +0,29 |
+| 20 | 70 | +0,94 |
+| 40 | 50 | +0,30 |
+| 40 | 70 | +0,55 |
+| 60 | 70 | +0,26 |
+| 60 | 85 | +0,42 |
+| 80 | 85 | +0,18 |
+| 80 | 100 | +0,32 |
+| 90 | 100 | +0,22 |
+
+Ces valeurs sont des exemples de comportement de la formule ; le moteur doit calculer la valeur exacte sans arrondir la progression interne.
+
+## 4. Compétences de combat
 
 - **Épée** — Force + Agilité
 - **Hache** — Force + Agilité
@@ -52,7 +179,7 @@ Les seuils numériques exacts entre niveau de compétence, difficulté et progre
 - **Combat à mains nues** — Force + Agilité
 - **Parade** — Agilité + Perception
 
-## 4. Compétences de défense et mouvement
+## 5. Compétences de défense et mouvement
 
 - **Esquive** — Agilité + Perception
 - **Parade** — Agilité + Perception
@@ -63,7 +190,7 @@ Les seuils numériques exacts entre niveau de compétence, difficulté et progre
 
 La **Parade** représente la capacité à dévier une attaque avec un timing précis. Le **Blocage** représente l'arrêt ou l'absorption d'une attaque, notamment avec un bouclier ou une arme. L'**Esquive** repose sur le déplacement et le timing pour éviter l'attaque.
 
-## 5. Compétences de furtivité
+## 6. Compétences de furtivité
 
 - **Discrétion** — Agilité + Perception
 - **Élimination furtive** — Agilité + Perception
@@ -73,7 +200,7 @@ La **Parade** représente la capacité à dévier une attaque avec un timing pr�
 
 La **Discrétion** inclut également la capacité à suivre une personne sans être repéré. La **Filature** n'est donc pas une compétence distincte.
 
-## 6. Compétences de magie
+## 7. Compétences de magie
 
 - **Invocation** — Intelligence + Volonté
 - **Nécromancie** — Intelligence + Volonté
@@ -83,7 +210,7 @@ La **Discrétion** inclut également la capacité à suivre une personne sans ê
 - **Magie de groupe** — Intelligence + Volonté
 - **Magie de pacte** — Intelligence + Volonté
 
-### 6.1 Magie physique
+### 7.1 Magie physique
 
 La Magie physique comprend notamment :
 
@@ -91,7 +218,7 @@ La Magie physique comprend notamment :
 - les soins ;
 - la modification des capacités physiques.
 
-### 6.2 Magie de groupe
+### 7.2 Magie de groupe
 
 La Magie de groupe ne désigne pas simplement une magie affectant plusieurs cibles. Elle représente une **forme de magie à très grande échelle et d'une puissance exceptionnelle**.
 
@@ -104,11 +231,11 @@ Elle peut notamment permettre :
 
 La Magie de groupe constitue donc un niveau de puissance supérieur pouvant avoir des conséquences importantes sur le monde.
 
-### 6.3 Magie de pacte
+### 7.3 Magie de pacte
 
 La Magie de pacte repose sur des pactes, contrats ou liens magiques avec des entités. Ses règles détaillées, conditions et contreparties restent à définir.
 
-## 7. Compétences de connaissances
+## 8. Compétences de connaissances
 
 - **Alchimie** — Intelligence + Perception
 - **Botanique** — Intelligence + Perception
@@ -122,7 +249,7 @@ La **Médecine** inclut l'Anatomie. Il n'existe pas de compétence séparée d'A
 
 La **Linguistique** couvre l'apprentissage et la compréhension des langues. Elle reste une compétence de Connaissances et n'est pas dupliquée dans le domaine social.
 
-## 8. Compétences d'artisanat
+## 9. Compétences d'artisanat
 
 - **Forge** — Force + Intelligence
 - **Travail de la matière** — Intelligence + Agilité
@@ -135,7 +262,7 @@ Le **Travail de la matière** regroupe notamment le travail du bois, du cuir et 
 
 La Forge, la Fabrication d'armes et la Fabrication d'armures restent des compétences distinctes.
 
-## 9. Compétences sociales et communication
+## 10. Compétences sociales et communication
 
 - **Persuasion** — Charisme + Intelligence
 - **Intimidation** — Charisme + Force
@@ -144,7 +271,7 @@ La Forge, la Fabrication d'armes et la Fabrication d'armures restent des compét
 
 Il n'existe pas de compétence d'**Étiquette**. Les comportements sociaux et la manière dont les PNJ réagissent au personnage sont notamment gérés par le système de réputation et les autres systèmes sociaux du jeu.
 
-## 10. Caractéristiques et compétences
+## 11. Caractéristiques et compétences
 
 Les caractéristiques associées à chaque compétence indiquent les capacités générales principalement sollicitées par cette pratique. Elles ne remplacent pas la compétence elle-même.
 
@@ -157,7 +284,7 @@ Par exemple :
 
 Une même action peut donc développer plusieurs éléments du système lorsqu'elle exerce réellement plusieurs capacités.
 
-## 11. Structure actuelle
+## 12. Structure actuelle
 
 Le système contient actuellement **45 compétences** réparties en 7 domaines :
 
@@ -172,12 +299,9 @@ Le système contient actuellement **45 compétences** réparties en 7 domaines :
 | Social / communication | 4 |
 | **Total** | **45** |
 
-## 12. Éléments restant à définir
+## 13. Éléments restant à définir
 
 - valeur initiale des compétences ;
-- maximum exact des compétences ;
-- formule exacte de progression ;
-- vitesse de progression ;
 - effets précis des différents niveaux ;
 - influence numérique exacte des caractéristiques sur chaque compétence ;
 - éventuels prérequis ;
@@ -185,4 +309,4 @@ Le système contient actuellement **45 compétences** réparties en 7 domaines :
 - interactions détaillées avec les classes ;
 - fonctionnement précis des compétences magiques ;
 - règles détaillées de chaque compétence ;
-- seuils numériques précis reliant la difficulté d'une action au niveau de compétence et à la progression obtenue.
+- paramètres d'équilibrage de la formule si les tests en jeu montrent qu'un ajustement est nécessaire.
