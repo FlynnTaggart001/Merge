@@ -15,9 +15,29 @@ Une action peut développer une compétence ainsi qu'une ou plusieurs caractéri
 - Une action triviale ou répétée artificiellement ne doit pas permettre une progression rapide.
 - La difficulté et la complexité de l'action influencent la progression.
 - La progression devient progressivement plus lente lorsque le niveau de compétence augmente.
+- **Une action dont la difficulté est devenue trop faible par rapport au niveau de la compétence ne rapporte plus de progression.**
+- Le personnage doit donc progressivement affronter des situations plus complexes pour continuer à développer une compétence élevée.
 - Les compétences ne sont pas limitées par la classe actuelle du personnage.
 - Les classes représentent une orientation et non une restriction définitive des savoir-faire.
 - Les caractéristiques peuvent soutenir une compétence, mais ne la remplacent pas.
+
+### 2.1 Difficulté de l'action et progression
+
+La progression dépend de l'écart entre le niveau actuel de la compétence et la difficulté réelle de l'action effectuée.
+
+- **Action beaucoup trop facile** par rapport au niveau de compétence : **0 progression**.
+- **Action légèrement trop facile** : progression très faible.
+- **Action adaptée au niveau** : progression normale.
+- **Action difficile** : progression importante.
+- **Action exceptionnellement difficile** : progression potentiellement très importante, dans les limites du système de progression.
+
+Cette règle empêche notamment l'exploitation d'actions simples répétées pour faire monter artificiellement une compétence élevée.
+
+**Exemple — Crochetage :** un personnage avec Crochetage 80 n'apprend plus rien d'une serrure basique qu'il maîtrise depuis longtemps. Pour continuer à progresser, il doit trouver des serrures réellement plus complexes.
+
+Le même principe s'applique à toutes les compétences : un combattant très expérimenté ne progresse plus significativement en affrontant constamment des adversaires insignifiants, un alchimiste très avancé ne progresse plus en fabriquant uniquement des préparations élémentaires, etc.
+
+Les seuils numériques exacts entre niveau de compétence, difficulté et progression restent à définir.
 
 ## 3. Compétences de combat
 
@@ -164,4 +184,5 @@ Le système contient actuellement **45 compétences** réparties en 7 domaines :
 - interactions détaillées avec les races ;
 - interactions détaillées avec les classes ;
 - fonctionnement précis des compétences magiques ;
-- règles détaillées de chaque compétence.
+- règles détaillées de chaque compétence ;
+- seuils numériques précis reliant la difficulté d'une action au niveau de compétence et à la progression obtenue.
