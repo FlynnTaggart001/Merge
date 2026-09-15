@@ -33,21 +33,103 @@ Le nombre exact de points de départ et les valeurs minimales restent à défini
 
 ## 4. Progression par utilisation directe
 
-Les caractéristiques ne progressent pas uniquement grâce à des niveaux abstraits. Elles progressent lorsque le joueur réalise réellement des actions qui sollicitent la capacité correspondante.
+Les caractéristiques progressent lorsque le joueur réalise réellement des actions qui sollicitent la capacité correspondante.
 
-Une même action peut faire progresser plusieurs caractéristiques si elle sollicite réellement plusieurs capacités, mais chaque progression doit correspondre à ce que le personnage est effectivement en train de faire.
+Une même action peut faire progresser plusieurs caractéristiques si elle sollicite réellement plusieurs capacités. Chaque progression doit cependant correspondre à ce que le personnage est effectivement en train de faire.
 
-### Principes de progression
+Principes :
 
 - Une action doit réellement solliciter la caractéristique pour pouvoir la faire progresser.
 - La difficulté et l'intensité de l'action influencent la progression.
-- Les actions triviales produisent une progression faible ou nulle.
-- La répétition artificielle d'une action facile ne doit pas permettre de monter rapidement une caractéristique.
-- Plus la caractéristique est élevée, plus la progression vers le point suivant devient lente.
-- La sensation générale de vitesse de progression recherchée est comparable à celle de **Skyrim**, sans reprendre nécessairement ses formules exactes.
+- Une action insignifiante ou beaucoup trop facile par rapport au niveau actuel peut donner **0 progression**.
+- Plus la caractéristique est élevée, plus la progression ralentit naturellement.
+- Il n'existe pas de pénalité artificielle destinée à empêcher la répétition d'une activité réellement difficile : une réussite légitime peut toujours faire progresser la caractéristique si l'action reste suffisamment exigeante.
 - La progression est plafonnée à **100**.
+- Les valeurs sont stockées avec des décimales en interne afin de permettre une progression fine.
+- Les caractéristiques ne diminuent pas avec le temps ou l'absence d'utilisation.
 
-## 5. Force
+La sensation générale recherchée reste comparable à celle de **Skyrim** sur le plan de la progression par utilisation, sans reprendre ses formules exactes.
+
+## 5. Formule universelle de progression
+
+La progression d'une caractéristique utilise une formule unique pour toutes les caractéristiques et toutes les actions.
+
+### Variables
+
+- `C` = valeur actuelle de la caractéristique, de 0 à 100.
+- `D_c` = difficulté ou intensité de l'action pour cette caractéristique, sur une échelle de 0 à 100.
+- `M` = multiplicateur de sollicitation propre à l'action.
+- `P_c` = progression obtenue après l'action.
+
+### Formule
+
+```text
+P_c = 0.35 × max(0, (D_c - C + 15) / 50) × 1 / (1 + 0.012 × C) × M
+```
+
+La valeur finale est limitée à un minimum de 0 et ne peut jamais faire dépasser la caractéristique au-delà de 100.
+
+### Interprétation
+
+**Écart de difficulté :**
+
+```text
+max(0, (D_c - C + 15) / 50)
+```
+
+Plus l'action est difficile par rapport au niveau actuel, plus elle apporte de progression. Si l'action est suffisamment en dessous du niveau actuel, le résultat devient nul.
+
+**Ralentissement avec le niveau :**
+
+```text
+1 / (1 + 0.012 × C)
+```
+
+La progression ralentit continuellement lorsque la caractéristique augmente. Il n'existe donc pas de paliers artificiels entre les niveaux.
+
+**Sollicitation de l'action :**
+
+`M` permet de représenter la part réelle de la caractéristique sollicitée par l'action. Une caractéristique fortement sollicitée peut recevoir une progression plus importante qu'une caractéristique seulement secondairement sollicitée.
+
+Le multiplicateur `M` doit être défini par le système de gameplay en fonction de l'action et ne doit pas servir à contourner les règles générales de progression.
+
+## 6. Exemple — Escalade
+
+Un personnage possède :
+
+- Force = 40
+- Agilité = 55
+
+Il escalade une paroi dont l'intensité physique est élevée, avec une difficulté de 70.
+
+L'action peut solliciter :
+
+- fortement la Force ;
+- l'Agilité de manière secondaire.
+
+Le jeu calcule alors séparément la progression de chaque caractéristique avec sa difficulté et son multiplicateur propres.
+
+La Force et l'Agilité peuvent donc progresser simultanément, mais pas automatiquement les quatre autres caractéristiques.
+
+## 7. Exemple — Mécanisme complexe
+
+Un mécanisme difficile peut avoir par exemple :
+
+- difficulté Crochetage = 70 ;
+- sollicitation Perception = 30 ;
+- sollicitation Intelligence = 50 ;
+- sollicitation Agilité = 45.
+
+Le système peut alors faire progresser séparément :
+
+- **Crochetage** ;
+- **Perception** ;
+- **Intelligence** ;
+- **Agilité**.
+
+Une action peut donc développer simultanément une compétence et plusieurs caractéristiques lorsque cela correspond réellement à l'activité effectuée.
+
+## 8. Force
 
 La Force représente la puissance physique brute du personnage.
 
@@ -73,7 +155,7 @@ Lorsque le poids de l'inventaire dépasse la capacité de transport du personnag
 
 Un inventaire restant sous la capacité normale du personnage ne produit pas de progression de Force liée au poids transporté.
 
-## 6. Agilité
+## 9. Agilité
 
 L'Agilité représente la capacité à contrôler rapidement et précisément le corps.
 
@@ -88,7 +170,7 @@ Elle peut progresser notamment en :
 - utilisant des armes demandant rapidité et précision ;
 - réalisant des actions nécessitant une importante coordination corporelle.
 
-## 7. Intelligence
+## 10. Intelligence
 
 L'Intelligence représente la capacité à apprendre, comprendre, raisonner et mémoriser.
 
@@ -107,7 +189,7 @@ Elle peut progresser notamment en :
 
 Exemple : découvrir une plante et la récolter sollicite principalement la Perception. Étudier ses effets, comprendre son fonctionnement et mémoriser les conditions dans lesquelles elle pousse sollicitent l'Intelligence.
 
-## 8. Perception
+## 11. Perception
 
 La Perception représente la capacité à observer, remarquer et interpréter les éléments présents dans l'environnement.
 
@@ -126,7 +208,7 @@ Elle peut progresser notamment en :
 
 La difficulté à remarquer un élément doit influencer la progression. Une ressource évidente et visible ne doit pas produire la même progression qu'une ressource rare ou très bien dissimulée.
 
-## 9. Volonté
+## 12. Volonté
 
 La Volonté représente la force mentale, la maîtrise de soi et la capacité à rester concentré malgré la pression.
 
@@ -140,7 +222,7 @@ Elle peut progresser notamment en :
 - résistant à certaines provocations ou tentations ;
 - supportant des situations psychologiquement éprouvantes.
 
-## 10. Charisme
+## 13. Charisme
 
 Le Charisme représente la capacité à influencer les autres et à interagir efficacement avec eux.
 
@@ -158,7 +240,7 @@ Il peut progresser notamment en :
 
 L'utilisation d'une langue étrangère peut donc solliciter plusieurs caractéristiques différentes. Son apprentissage sollicite notamment l'Intelligence, tandis que son utilisation réussie dans une négociation peut solliciter le Charisme.
 
-## 11. Progression multi-caractéristiques
+## 14. Progression multi-caractéristiques
 
 Une action peut développer plusieurs caractéristiques simultanément lorsqu'elle sollicite réellement plusieurs capacités.
 
@@ -176,7 +258,7 @@ Un joueur découvre une plante rare dans une forêt :
 
 Le système ne donne donc pas automatiquement un bonus arbitraire à une caractéristique : chaque progression doit découler de l'activité réellement effectuée.
 
-## 12. Relation avec les compétences
+## 15. Relation avec les compétences
 
 Les caractéristiques et les compétences restent deux systèmes distincts.
 
@@ -188,9 +270,24 @@ Une action peut donc :
 - développer une compétence ;
 - développer simultanément plusieurs caractéristiques et une compétence lorsque l'action le justifie.
 
-Exemple : apprendre une langue développe l'Intelligence et la compétence linguistique. Utiliser cette langue pour convaincre un marchand peut ensuite solliciter le Charisme et la compétence linguistique.
+Exemple : apprendre une langue développe l'Intelligence et la compétence Linguistique. Utiliser cette langue pour convaincre un marchand peut ensuite solliciter le Charisme et la compétence Linguistique.
 
-## 13. Relation avec les classes
+## 16. Relation avec les compétences — séparation fondamentale
+
+Les deux systèmes ne doivent pas être confondus.
+
+> **Caractéristique = ce dont le personnage est capable.**
+>
+> **Compétence = ce que le personnage sait particulièrement bien faire.**
+
+Exemples :
+
+- **Force 80 / Épée 35** : personnage très puissant physiquement, mais encore peu compétent à l'épée.
+- **Force 35 / Épée 85** : excellent épéiste techniquement, mais disposant de moins de puissance physique.
+
+Cette séparation permet aux caractéristiques et aux compétences de produire des profils de personnages très différents.
+
+## 17. Relation avec les classes
 
 Les classes utilisent les caractéristiques comme base de spécialisation.
 
@@ -198,20 +295,19 @@ Une classe possède certaines caractéristiques principales. Le joueur peut déb
 
 Les seuils exacts et les effets précis des caractéristiques sur les classes seront définis dans la documentation dédiée aux classes.
 
-## 14. Principe fondamental
+## 18. Principe fondamental
 
 > **Le personnage devient progressivement ce que le joueur lui fait réellement pratiquer.**
 
 La progression doit donc être organique, cohérente et directement liée aux actions du joueur plutôt qu'à un système de niveaux global imposant une progression prédéterminée.
 
-## 15. Éléments restant à définir
+## 19. Éléments restant à définir
 
 - nombre exact de points de départ ;
 - valeurs minimales ;
-- formule exacte de progression ;
-- influence numérique précise de chaque caractéristique sur les actions ;
 - effets détaillés de chaque valeur de 0 à 100 ;
-- éventuelle décroissance ou absence de décroissance des caractéristiques ;
+- influence numérique précise de chaque caractéristique sur les actions ;
+- définition détaillée des multiplicateurs `M` selon les actions ;
 - interaction numérique exacte entre caractéristiques et compétences ;
 - interaction exacte avec les races ;
 - interaction exacte avec les classes.
