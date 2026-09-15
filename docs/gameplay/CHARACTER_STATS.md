@@ -6,6 +6,8 @@ Les caractéristiques représentent les capacités fondamentales du personnage. 
 
 Le système suit le principe fondamental de **Merge** : progression par utilisation (*learning by doing*).
 
+Les caractéristiques suivent également une règle de puissance importante : **un personnage avec une caractéristique basse reste un être humain ou une créature normalement fonctionnelle. Le dépassement de 50 marque progressivement l'entrée dans le domaine surhumain.**
+
 ## 2. Caractéristiques de base
 
 Le personnage possède six caractéristiques de base :
@@ -85,7 +87,7 @@ Plus l'action est difficile par rapport au niveau actuel, plus elle apporte de p
 1 / (1 + 0.012 × C)
 ```
 
-La progression ralentit continuellement lorsque la caractéristique augmente. Il n'existe donc pas de paliers artificiels entre les niveaux.
+La progression ralentit continuellement lorsque la caractéristique augmente. Il n'existe donc pas de paliers artificiels dans la progression elle-même.
 
 **Sollicitation de l'action :**
 
@@ -93,30 +95,105 @@ La progression ralentit continuellement lorsque la caractéristique augmente. Il
 
 Le multiplicateur `M` doit être défini par le système de gameplay en fonction de l'action et ne doit pas servir à contourner les règles générales de progression.
 
-## 6. Effets continus des caractéristiques
+## 6. Échelle de puissance des caractéristiques
 
-Les valeurs de caractéristiques ont des effets **continus** sur les capacités du personnage. Il n'existe pas de tableau de bonus fixes du type « 50 = +10 % » ou « 75 = nouveau pouvoir » pour les actions ordinaires.
+Les valeurs de caractéristiques ne correspondent pas à des classes de personnage fixes. Elles décrivent une progression continue des capacités.
 
-À mesure que la valeur augmente, l'efficacité correspondante augmente progressivement. Une différence de quelques points peut donc avoir un effet mesurable, sans créer artificiellement un nouveau palier de puissance.
+### 0–19 — Faible, mais normalement fonctionnel
 
-Les seuils fixes sont réservés à des situations exceptionnelles où une interaction nécessite une condition minimale clairement définie par le gameplay.
+Le personnage est relativement faible dans cette caractéristique, mais reste un être humain ou une créature normalement fonctionnelle.
+
+Une valeur de 10 ou 20 ne signifie pas que le personnage est incapable d'accomplir les actions ordinaires liées à cette caractéristique. Elle indique simplement qu'il est moins performant que la moyenne dans ce domaine.
+
+### 20–39 — Domaine normal
+
+Le personnage se situe dans une plage normale pour un être humain ou une créature comparable.
+
+Il peut accomplir les activités ordinaires sans capacités fantastiques. Les différences de valeur modifient progressivement son efficacité sans lui retirer artificiellement des actions normales.
+
+### 40–49 — Excellence humaine
+
+Le personnage commence à se rapprocher des meilleurs niveaux naturellement accessibles à un être humain exceptionnel.
+
+Il peut être un athlète remarquable, un individu extrêmement observateur, un apprenant exceptionnel, un combattant très doué ou posséder une présence sociale impressionnante selon la caractéristique concernée.
+
+### 50–59 — Début du domaine surhumain
+
+À partir de 50, la caractéristique commence progressivement à dépasser les capacités humaines ordinaires.
+
+Le personnage peut commencer à accomplir des exploits qui seraient extrêmement difficiles ou impossibles pour un humain normal.
+
+Exemples physiques :
+
+- sauts nettement plus hauts ;
+- mouvements plus rapides et plus explosifs ;
+- force permettant de manipuler des charges anormalement lourdes ;
+- enchaînements physiques plus complexes.
+
+Pour les caractéristiques mentales ou sociales, le dépassement est également progressif : apprentissage exceptionnellement rapide, perception de détails difficiles à remarquer, résistance mentale remarquable ou influence sociale inhabituelle.
+
+### 60–69 — Surhumain confirmé
+
+Les capacités dépassent clairement le domaine humain normal.
+
+Le personnage peut réaliser régulièrement des exploits qui paraîtraient extraordinaires à une personne ordinaire.
+
+### 70–79 — Très surhumain
+
+Le personnage possède des capacités suffisamment élevées pour réaliser des exploits spectaculaires.
+
+Dans les caractéristiques physiques, cela peut permettre des mouvements et des enchaînements rappelant les héros d'action ou de fantasy.
+
+### 80–89 — Niveau héroïque extrême
+
+Les capacités deviennent exceptionnellement puissantes.
+
+Le personnage peut accomplir des actions qui seraient normalement considérées comme impossibles pour un humain ordinaire et qui peuvent avoir une forte dimension spectaculaire en jeu.
+
+### 90–99 — Niveau exceptionnel
+
+Le personnage approche de la limite supérieure du système.
+
+Ses exploits peuvent devenir légendaires selon la caractéristique concernée.
+
+### 100 — Maximum
+
+100 représente le maximum définitif de la caractéristique dans le système de **Merge**.
+
+Il s'agit de la limite supérieure des capacités accessibles par la progression normale du personnage.
+
+## 7. Règle fondamentale : pas de paliers artificiels de puissance
+
+Les catégories ci-dessus servent à définir la **sensation générale de puissance**, pas à créer des compétences automatiquement débloquées à chaque tranche de dix points.
+
+Le système ne doit pas fonctionner ainsi :
+
+> « Force 50 = double saut débloqué. »
+
+Il doit fonctionner ainsi :
+
+> « Plus la Force augmente, plus le personnage devient physiquement capable, jusqu'à dépasser progressivement les limites humaines. »
+
+Les effets ordinaires sont donc calculés continuellement.
+
+Les seuils fixes sont réservés à des situations exceptionnelles où une interaction nécessite réellement une condition minimale de faisabilité.
 
 Exemples :
 
 - une porte particulièrement lourde peut nécessiter une Force minimale pour être déplacée ;
-- une zone ou une prise peut nécessiter une Agilité minimale pour être franchie ;
-- un mécanisme extrêmement complexe peut nécessiter un niveau minimal d'Intelligence pour être compris ;
+- une prise ou une trajectoire particulière peut nécessiter une Agilité minimale ;
+- un mécanisme extrêmement complexe peut nécessiter une Intelligence minimale ;
 - un détail pratiquement impossible à percevoir peut nécessiter une Perception minimale ;
 - un effet mental particulièrement puissant peut nécessiter une Volonté minimale ;
 - une interaction sociale exceptionnelle peut nécessiter un Charisme minimal.
 
-Ces seuils ne remplacent pas le calcul continu : ils représentent uniquement des conditions de faisabilité.
+Ces seuils ne remplacent jamais le calcul continu.
 
-## 7. Force
+## 8. Force
 
 La Force représente la puissance physique brute du personnage.
 
-Son effet est calculé continuellement et peut notamment influencer :
+Elle influence continuellement :
 
 - la puissance des attaques physiques ;
 - la capacité à porter une charge ;
@@ -124,9 +201,18 @@ Son effet est calculé continuellement et peut notamment influencer :
 - la capacité à déplacer certains éléments du monde ;
 - les actions physiques exigeantes ;
 - l'efficacité des armes nécessitant une importante puissance physique ;
-- certaines actions d'escalade et d'athlétisme.
+- certaines actions d'escalade et d'athlétisme ;
+- la capacité à produire des mouvements physiques explosifs.
 
-Plus la Force augmente, plus ces capacités deviennent efficaces. Le jeu ne doit pas imposer de paliers arbitraires pour les actions ordinaires.
+Une Force basse n'empêche pas un personnage de vivre et d'agir normalement. Une Force élevée augmente progressivement ses performances, puis permet des exploits surhumains au-delà de 50.
+
+### Exemple de sensation
+
+- **Force 20** : humain relativement peu puissant mais parfaitement fonctionnel.
+- **Force 40** : humain physiquement très capable.
+- **Force 50+** : dépassement progressif des limites humaines.
+- **Force 70+** : exploits physiques spectaculaires possibles.
+- **Force 90+** : puissance proche du maximum fantastique du système.
 
 ### Surcharge d'inventaire
 
@@ -138,15 +224,16 @@ Lorsque le poids de l'inventaire dépasse la capacité de transport du personnag
 - ses déplacements sont ralentis en fonction de la surcharge ;
 - maintenir cette surcharge pendant un effort réel peut progressivement développer la Force.
 
-La capacité de transport augmente progressivement avec la Force. Un inventaire restant sous la capacité normale du personnage ne produit pas de progression de Force liée au poids transporté.
+La capacité de transport augmente continuellement avec la Force.
 
-## 8. Agilité
+## 9. Agilité
 
 L'Agilité représente la capacité à contrôler rapidement et précisément le corps.
 
-Son effet est calculé continuellement et peut notamment influencer :
+Elle influence continuellement :
 
 - la rapidité d'exécution des mouvements ;
+- l'accélération et les changements de direction ;
 - la précision des mouvements ;
 - l'esquive ;
 - l'acrobatie ;
@@ -155,13 +242,15 @@ Son effet est calculé continuellement et peut notamment influencer :
 - la manipulation fine ;
 - certaines actions d'escalade et de furtivité.
 
-Une Agilité plus élevée améliore progressivement la coordination et la réactivité sans créer automatiquement de nouvelles capacités à chaque palier.
+Une Agilité basse correspond toujours à un personnage fonctionnel. Au-delà de 50, elle peut progressivement produire des mouvements dépassant les capacités humaines ordinaires.
 
-## 9. Intelligence
+À des valeurs élevées, elle peut permettre des enchaînements spectaculaires, des esquives rapides, des sauts et des changements de direction impossibles pour un humain normal.
+
+## 10. Intelligence
 
 L'Intelligence représente la capacité à apprendre, comprendre, raisonner et mémoriser.
 
-Son effet est calculé continuellement et peut notamment influencer :
+Elle influence continuellement :
 
 - la vitesse d'apprentissage des compétences ;
 - la compréhension des mécanismes ;
@@ -172,13 +261,15 @@ Son effet est calculé continuellement et peut notamment influencer :
 - l'étude de la magie ;
 - la mémorisation et l'exploitation d'informations.
 
+Une Intelligence basse reste compatible avec une vie normale. Une Intelligence élevée améliore progressivement les capacités cognitives et, au-delà de 50, peut représenter des capacités d'apprentissage et d'analyse dépassant clairement les limites humaines ordinaires.
+
 L'Intelligence intervient notamment comme modificateur de la progression des compétences, conformément au système défini dans `CHARACTER_SKILLS.md`.
 
-## 10. Perception
+## 11. Perception
 
 La Perception représente la capacité à observer, remarquer et interpréter les éléments présents dans l'environnement.
 
-Son effet est calculé continuellement et peut notamment influencer :
+Elle influence continuellement :
 
 - la détection des ennemis ;
 - la détection des ressources ;
@@ -189,13 +280,15 @@ Son effet est calculé continuellement et peut notamment influencer :
 - la précision à distance ;
 - la capacité à remarquer des éléments dissimulés.
 
-Plus la Perception augmente, plus les éléments difficiles à remarquer deviennent progressivement accessibles à l'observation du personnage.
+Une Perception basse signifie seulement que le personnage remarque moins facilement certaines informations. Elle ne doit pas rendre artificiellement aveugle un personnage normalement fonctionnel.
 
-## 11. Volonté
+Au-delà de 50, la capacité d'observation peut progressivement dépasser les capacités humaines ordinaires, jusqu'à permettre la détection de détails extrêmement difficiles à remarquer.
+
+## 12. Volonté
 
 La Volonté représente la force mentale, la maîtrise de soi et la capacité à rester concentré malgré la pression.
 
-Son effet est calculé continuellement et peut notamment influencer :
+Elle influence continuellement :
 
 - la résistance au contrôle mental ;
 - la résistance à certaines influences magiques ;
@@ -205,13 +298,13 @@ Son effet est calculé continuellement et peut notamment influencer :
 - la maîtrise des réactions émotionnelles ;
 - la résistance à certaines provocations, tentations ou pressions psychologiques.
 
-Une Volonté plus élevée améliore progressivement la résistance mentale, tandis que les effets exceptionnellement puissants peuvent utiliser un seuil minimal de faisabilité.
+Une Volonté basse correspond à une personne plus facilement perturbée, mais reste compatible avec une vie mentale normale. Au-delà de 50, la résistance et la maîtrise de soi peuvent progressivement devenir surhumaines.
 
-## 12. Charisme
+## 13. Charisme
 
 Le Charisme représente la capacité à influencer les autres et à interagir efficacement avec eux.
 
-Son effet est calculé continuellement et peut notamment influencer :
+Il influence continuellement :
 
 - la persuasion ;
 - l'intimidation ;
@@ -222,9 +315,31 @@ Son effet est calculé continuellement et peut notamment influencer :
 - la résolution de conflits par la communication ;
 - certaines premières impressions et réactions sociales.
 
-Le Charisme ne force pas automatiquement un PNJ à accepter une demande. Il modifie progressivement les chances et la qualité d'une interaction, en combinaison avec le contexte, les relations, la réputation, la langue et les compétences sociales.
+Une valeur basse ne signifie pas que le personnage est socialement incapable. Elle indique une influence plus faible ou une présence moins marquante.
 
-## 13. Exemple — Escalade
+Au-delà de 50, le Charisme peut progressivement produire une influence exceptionnellement forte, jusqu'à des niveaux presque légendaires à très haute valeur.
+
+Le Charisme ne force jamais automatiquement un PNJ à accepter une demande. Il modifie progressivement les chances et la qualité d'une interaction, en combinaison avec le contexte, les relations, la réputation, la langue et les compétences sociales.
+
+## 14. Combinaison des caractéristiques
+
+Les caractéristiques peuvent produire des capacités très différentes lorsqu'elles sont combinées.
+
+Exemple physique :
+
+**Force 75 + Agilité 80 + Épée 85**
+
+Le personnage peut devenir extrêmement puissant, rapide et techniquement compétent, permettant des enchaînements de combat spectaculaires.
+
+À l'inverse :
+
+**Force 75 + Agilité 25 + Épée 85**
+
+Le personnage reste très puissant et techniquement compétent, mais ses mouvements sont beaucoup moins rapides et acrobatiques.
+
+Les caractéristiques ne donnent donc pas automatiquement une « capacité spéciale ». Elles déterminent progressivement les possibilités physiques, mentales et sociales du personnage.
+
+## 15. Exemple — Escalade
 
 Un personnage possède :
 
@@ -242,7 +357,7 @@ Le jeu calcule alors séparément la progression de chaque caractéristique avec
 
 La Force et l'Agilité peuvent donc progresser simultanément, mais pas automatiquement les quatre autres caractéristiques.
 
-## 14. Exemple — Mécanisme complexe
+## 16. Exemple — Mécanisme complexe
 
 Un mécanisme difficile peut avoir par exemple :
 
@@ -260,16 +375,7 @@ Le système peut alors faire progresser séparément :
 
 Une action peut donc développer simultanément une compétence et plusieurs caractéristiques lorsque cela correspond réellement à l'activité effectuée.
 
-## 15. Exemple — différence entre caractéristiques et compétences
-
-Les effets continus permettent de conserver une séparation nette entre aptitude générale et maîtrise technique.
-
-- **Force 80 / Épée 35** : personnage très puissant physiquement, mais encore peu compétent à l'épée.
-- **Force 35 / Épée 85** : excellent épéiste techniquement, mais disposant de moins de puissance physique.
-
-Le premier peut produire des attaques naturellement puissantes grâce à sa Force, mais manque de technique. Le second maîtrise très bien les gestes et techniques de l'épée, mais dispose de moins de puissance physique brute.
-
-## 16. Progression multi-caractéristiques
+## 17. Progression multi-caractéristiques
 
 Une action peut développer plusieurs caractéristiques simultanément lorsqu'elle sollicite réellement plusieurs capacités.
 
@@ -287,11 +393,13 @@ Un joueur découvre une plante rare dans une forêt :
 
 Le système ne donne donc pas automatiquement un bonus arbitraire à une caractéristique : chaque progression doit découler de l'activité réellement effectuée.
 
-## 17. Relation avec les compétences
+## 18. Relation avec les compétences
 
 Les caractéristiques et les compétences restent deux systèmes distincts.
 
-Une caractéristique représente une capacité générale. Une compétence représente un savoir-faire particulier.
+> **Caractéristique = ce dont le personnage est capable.**
+>
+> **Compétence = ce que le personnage sait particulièrement bien faire.**
 
 Une action peut donc :
 
@@ -299,9 +407,12 @@ Une action peut donc :
 - développer une compétence ;
 - développer simultanément plusieurs caractéristiques et une compétence lorsque l'action le justifie.
 
-Exemple : apprendre une langue développe l'Intelligence et la compétence Linguistique. Utiliser cette langue pour convaincre un marchand peut ensuite solliciter le Charisme et la compétence Linguistique.
+Exemples :
 
-## 18. Relation avec les classes
+- **Force 80 / Épée 35** : personnage très puissant physiquement, mais encore peu compétent à l'épée.
+- **Force 35 / Épée 85** : excellent épéiste techniquement, mais disposant de moins de puissance physique.
+
+## 19. Relation avec les classes
 
 Les classes utilisent les caractéristiques comme base de spécialisation.
 
@@ -309,13 +420,15 @@ Une classe possède certaines caractéristiques principales. Le joueur peut déb
 
 Les seuils exacts et les effets précis des caractéristiques sur les classes seront définis dans la documentation dédiée aux classes.
 
-## 19. Principe fondamental
+## 20. Principe fondamental
 
 > **Le personnage devient progressivement ce que le joueur lui fait réellement pratiquer.**
+>
+> **En dessous de 50, les caractéristiques décrivent principalement des différences humaines ou naturelles. Au-dessus de 50, elles permettent progressivement de dépasser les limites humaines et d'entrer dans le domaine surhumain et fantastique.**
 
-La progression doit donc être organique, cohérente et directement liée aux actions du joueur plutôt qu'à un système de niveaux global imposant une progression prédéterminée.
+La progression doit donc rester organique, continue et directement liée aux actions du joueur plutôt qu'à un système de niveaux global imposant une progression prédéterminée.
 
-## 20. Éléments restant à définir
+## 21. Éléments restant à définir
 
 - nombre exact de points de départ ;
 - valeurs minimales ;
