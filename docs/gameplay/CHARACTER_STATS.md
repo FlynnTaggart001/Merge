@@ -93,7 +93,138 @@ La progression ralentit continuellement lorsque la caractéristique augmente. Il
 
 Le multiplicateur `M` doit être défini par le système de gameplay en fonction de l'action et ne doit pas servir à contourner les règles générales de progression.
 
-## 6. Exemple — Escalade
+## 6. Effets continus des caractéristiques
+
+Les valeurs de caractéristiques ont des effets **continus** sur les capacités du personnage. Il n'existe pas de tableau de bonus fixes du type « 50 = +10 % » ou « 75 = nouveau pouvoir » pour les actions ordinaires.
+
+À mesure que la valeur augmente, l'efficacité correspondante augmente progressivement. Une différence de quelques points peut donc avoir un effet mesurable, sans créer artificiellement un nouveau palier de puissance.
+
+Les seuils fixes sont réservés à des situations exceptionnelles où une interaction nécessite une condition minimale clairement définie par le gameplay.
+
+Exemples :
+
+- une porte particulièrement lourde peut nécessiter une Force minimale pour être déplacée ;
+- une zone ou une prise peut nécessiter une Agilité minimale pour être franchie ;
+- un mécanisme extrêmement complexe peut nécessiter un niveau minimal d'Intelligence pour être compris ;
+- un détail pratiquement impossible à percevoir peut nécessiter une Perception minimale ;
+- un effet mental particulièrement puissant peut nécessiter une Volonté minimale ;
+- une interaction sociale exceptionnelle peut nécessiter un Charisme minimal.
+
+Ces seuils ne remplacent pas le calcul continu : ils représentent uniquement des conditions de faisabilité.
+
+## 7. Force
+
+La Force représente la puissance physique brute du personnage.
+
+Son effet est calculé continuellement et peut notamment influencer :
+
+- la puissance des attaques physiques ;
+- la capacité à porter une charge ;
+- la capacité à pousser, tirer ou soulever des objets ;
+- la capacité à déplacer certains éléments du monde ;
+- les actions physiques exigeantes ;
+- l'efficacité des armes nécessitant une importante puissance physique ;
+- certaines actions d'escalade et d'athlétisme.
+
+Plus la Force augmente, plus ces capacités deviennent efficaces. Le jeu ne doit pas imposer de paliers arbitraires pour les actions ordinaires.
+
+### Surcharge d'inventaire
+
+Le simple fait de posséder beaucoup d'objets ne fait pas progresser la Force.
+
+Lorsque le poids de l'inventaire dépasse la capacité de transport du personnage :
+
+- le personnage devient **surchargé** ;
+- ses déplacements sont ralentis en fonction de la surcharge ;
+- maintenir cette surcharge pendant un effort réel peut progressivement développer la Force.
+
+La capacité de transport augmente progressivement avec la Force. Un inventaire restant sous la capacité normale du personnage ne produit pas de progression de Force liée au poids transporté.
+
+## 8. Agilité
+
+L'Agilité représente la capacité à contrôler rapidement et précisément le corps.
+
+Son effet est calculé continuellement et peut notamment influencer :
+
+- la rapidité d'exécution des mouvements ;
+- la précision des mouvements ;
+- l'esquive ;
+- l'acrobatie ;
+- les déplacements sur des surfaces difficiles ;
+- l'utilisation d'armes demandant rapidité et précision ;
+- la manipulation fine ;
+- certaines actions d'escalade et de furtivité.
+
+Une Agilité plus élevée améliore progressivement la coordination et la réactivité sans créer automatiquement de nouvelles capacités à chaque palier.
+
+## 9. Intelligence
+
+L'Intelligence représente la capacité à apprendre, comprendre, raisonner et mémoriser.
+
+Son effet est calculé continuellement et peut notamment influencer :
+
+- la vitesse d'apprentissage des compétences ;
+- la compréhension des mécanismes ;
+- l'analyse des problèmes ;
+- l'assimilation des connaissances ;
+- la compréhension des langues ;
+- l'artisanat complexe ;
+- l'étude de la magie ;
+- la mémorisation et l'exploitation d'informations.
+
+L'Intelligence intervient notamment comme modificateur de la progression des compétences, conformément au système défini dans `CHARACTER_SKILLS.md`.
+
+## 10. Perception
+
+La Perception représente la capacité à observer, remarquer et interpréter les éléments présents dans l'environnement.
+
+Son effet est calculé continuellement et peut notamment influencer :
+
+- la détection des ennemis ;
+- la détection des ressources ;
+- l'observation des détails ;
+- la recherche d'indices ;
+- la détection des pièges ;
+- la perception des mouvements ;
+- la précision à distance ;
+- la capacité à remarquer des éléments dissimulés.
+
+Plus la Perception augmente, plus les éléments difficiles à remarquer deviennent progressivement accessibles à l'observation du personnage.
+
+## 11. Volonté
+
+La Volonté représente la force mentale, la maîtrise de soi et la capacité à rester concentré malgré la pression.
+
+Son effet est calculé continuellement et peut notamment influencer :
+
+- la résistance au contrôle mental ;
+- la résistance à certaines influences magiques ;
+- la concentration ;
+- la capacité à maintenir une action exigeant une forte concentration ;
+- la résistance à la peur ;
+- la maîtrise des réactions émotionnelles ;
+- la résistance à certaines provocations, tentations ou pressions psychologiques.
+
+Une Volonté plus élevée améliore progressivement la résistance mentale, tandis que les effets exceptionnellement puissants peuvent utiliser un seuil minimal de faisabilité.
+
+## 12. Charisme
+
+Le Charisme représente la capacité à influencer les autres et à interagir efficacement avec eux.
+
+Son effet est calculé continuellement et peut notamment influencer :
+
+- la persuasion ;
+- l'intimidation ;
+- l'éloquence ;
+- le marchandage ;
+- la capacité à établir une relation ;
+- l'influence exercée sur un groupe ;
+- la résolution de conflits par la communication ;
+- certaines premières impressions et réactions sociales.
+
+Le Charisme ne force pas automatiquement un PNJ à accepter une demande. Il modifie progressivement les chances et la qualité d'une interaction, en combinaison avec le contexte, les relations, la réputation, la langue et les compétences sociales.
+
+## 13. Exemple — Escalade
 
 Un personnage possède :
 
@@ -111,7 +242,7 @@ Le jeu calcule alors séparément la progression de chaque caractéristique avec
 
 La Force et l'Agilité peuvent donc progresser simultanément, mais pas automatiquement les quatre autres caractéristiques.
 
-## 7. Exemple — Mécanisme complexe
+## 14. Exemple — Mécanisme complexe
 
 Un mécanisme difficile peut avoir par exemple :
 
@@ -129,118 +260,16 @@ Le système peut alors faire progresser séparément :
 
 Une action peut donc développer simultanément une compétence et plusieurs caractéristiques lorsque cela correspond réellement à l'activité effectuée.
 
-## 8. Force
+## 15. Exemple — différence entre caractéristiques et compétences
 
-La Force représente la puissance physique brute du personnage.
+Les effets continus permettent de conserver une séparation nette entre aptitude générale et maîtrise technique.
 
-Elle peut progresser notamment en :
+- **Force 80 / Épée 35** : personnage très puissant physiquement, mais encore peu compétent à l'épée.
+- **Force 35 / Épée 85** : excellent épéiste techniquement, mais disposant de moins de puissance physique.
 
-- utilisant régulièrement des armes lourdes ;
-- portant des objets lourds ;
-- poussant ou tirant des objets ;
-- déplaçant des éléments du monde ;
-- réalisant des actions physiques exigeantes ;
-- combattant avec des armes nécessitant une importante puissance physique ;
-- transportant une charge dépassant sa capacité normale.
+Le premier peut produire des attaques naturellement puissantes grâce à sa Force, mais manque de technique. Le second maîtrise très bien les gestes et techniques de l'épée, mais dispose de moins de puissance physique brute.
 
-### Surcharge d'inventaire
-
-Le simple fait de posséder beaucoup d'objets ne fait pas progresser la Force.
-
-Lorsque le poids de l'inventaire dépasse la capacité de transport du personnage :
-
-- le personnage devient **surchargé** ;
-- ses déplacements sont ralentis en fonction de la surcharge ;
-- maintenir cette surcharge pendant un effort réel peut progressivement développer la Force.
-
-Un inventaire restant sous la capacité normale du personnage ne produit pas de progression de Force liée au poids transporté.
-
-## 9. Agilité
-
-L'Agilité représente la capacité à contrôler rapidement et précisément le corps.
-
-Elle peut progresser notamment en :
-
-- esquivant des attaques ;
-- effectuant des mouvements rapides ;
-- réalisant des sauts précis ;
-- escaladant ;
-- effectuant des acrobaties ;
-- se déplaçant sur des surfaces difficiles ;
-- utilisant des armes demandant rapidité et précision ;
-- réalisant des actions nécessitant une importante coordination corporelle.
-
-## 10. Intelligence
-
-L'Intelligence représente la capacité à apprendre, comprendre, raisonner et mémoriser.
-
-Elle peut progresser notamment en :
-
-- apprenant une nouvelle langue ;
-- étudiant des plantes ou des substances ;
-- apprenant leurs propriétés ;
-- mémorisant où certaines ressources poussent ou se trouvent ;
-- comprenant des mécanismes ;
-- résolvant des problèmes ;
-- étudiant des documents ;
-- apprenant l'histoire ou les connaissances d'un peuple ;
-- comprenant des systèmes complexes ;
-- étudiant certaines formes de magie ou de connaissances spécialisées.
-
-Exemple : découvrir une plante et la récolter sollicite principalement la Perception. Étudier ses effets, comprendre son fonctionnement et mémoriser les conditions dans lesquelles elle pousse sollicitent l'Intelligence.
-
-## 11. Perception
-
-La Perception représente la capacité à observer, remarquer et interpréter les éléments présents dans l'environnement.
-
-Elle peut progresser notamment en :
-
-- repérant des baies ;
-- trouvant des plantes et denrées utiles ;
-- détectant des ressources ;
-- repérant des traces ;
-- découvrant des indices ;
-- détectant des pièges ;
-- repérant des ennemis cachés ;
-- remarquant des détails inhabituels ;
-- retrouvant des objets dissimulés ;
-- observant attentivement une scène.
-
-La difficulté à remarquer un élément doit influencer la progression. Une ressource évidente et visible ne doit pas produire la même progression qu'une ressource rare ou très bien dissimulée.
-
-## 12. Volonté
-
-La Volonté représente la force mentale, la maîtrise de soi et la capacité à rester concentré malgré la pression.
-
-Elle peut progresser notamment en :
-
-- résistant à la peur ;
-- résistant à certaines influences mentales ;
-- maintenant sa concentration dans des situations difficiles ;
-- continuant malgré la douleur ou une forte pression ;
-- maîtrisant ses réactions émotionnelles ;
-- résistant à certaines provocations ou tentations ;
-- supportant des situations psychologiquement éprouvantes.
-
-## 13. Charisme
-
-Le Charisme représente la capacité à influencer les autres et à interagir efficacement avec eux.
-
-Il peut progresser notamment en :
-
-- négociant ;
-- persuadant ;
-- convainquant ;
-- intimidant ;
-- dirigeant ou influençant un groupe ;
-- résolvant des conflits par la parole ;
-- établissant de bonnes relations ;
-- obtenant quelque chose d'une personne grâce à son interaction sociale ;
-- communiquant avec des personnes de cultures différentes.
-
-L'utilisation d'une langue étrangère peut donc solliciter plusieurs caractéristiques différentes. Son apprentissage sollicite notamment l'Intelligence, tandis que son utilisation réussie dans une négociation peut solliciter le Charisme.
-
-## 14. Progression multi-caractéristiques
+## 16. Progression multi-caractéristiques
 
 Une action peut développer plusieurs caractéristiques simultanément lorsqu'elle sollicite réellement plusieurs capacités.
 
@@ -258,7 +287,7 @@ Un joueur découvre une plante rare dans une forêt :
 
 Le système ne donne donc pas automatiquement un bonus arbitraire à une caractéristique : chaque progression doit découler de l'activité réellement effectuée.
 
-## 15. Relation avec les compétences
+## 17. Relation avec les compétences
 
 Les caractéristiques et les compétences restent deux systèmes distincts.
 
@@ -272,22 +301,7 @@ Une action peut donc :
 
 Exemple : apprendre une langue développe l'Intelligence et la compétence Linguistique. Utiliser cette langue pour convaincre un marchand peut ensuite solliciter le Charisme et la compétence Linguistique.
 
-## 16. Relation avec les compétences — séparation fondamentale
-
-Les deux systèmes ne doivent pas être confondus.
-
-> **Caractéristique = ce dont le personnage est capable.**
->
-> **Compétence = ce que le personnage sait particulièrement bien faire.**
-
-Exemples :
-
-- **Force 80 / Épée 35** : personnage très puissant physiquement, mais encore peu compétent à l'épée.
-- **Force 35 / Épée 85** : excellent épéiste techniquement, mais disposant de moins de puissance physique.
-
-Cette séparation permet aux caractéristiques et aux compétences de produire des profils de personnages très différents.
-
-## 17. Relation avec les classes
+## 18. Relation avec les classes
 
 Les classes utilisent les caractéristiques comme base de spécialisation.
 
@@ -295,17 +309,16 @@ Une classe possède certaines caractéristiques principales. Le joueur peut déb
 
 Les seuils exacts et les effets précis des caractéristiques sur les classes seront définis dans la documentation dédiée aux classes.
 
-## 18. Principe fondamental
+## 19. Principe fondamental
 
 > **Le personnage devient progressivement ce que le joueur lui fait réellement pratiquer.**
 
 La progression doit donc être organique, cohérente et directement liée aux actions du joueur plutôt qu'à un système de niveaux global imposant une progression prédéterminée.
 
-## 19. Éléments restant à définir
+## 20. Éléments restant à définir
 
 - nombre exact de points de départ ;
 - valeurs minimales ;
-- effets détaillés de chaque valeur de 0 à 100 ;
 - influence numérique précise de chaque caractéristique sur les actions ;
 - définition détaillée des multiplicateurs `M` selon les actions ;
 - interaction numérique exacte entre caractéristiques et compétences ;
