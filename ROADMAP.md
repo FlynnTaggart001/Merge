@@ -16,7 +16,7 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [x] Écosystème prédateur/proie et populations dynamiques spécifiés
 - [x] Monde non régénératif et multi-mondes spécifiés
 - [x] Ciblage, groupe et magie collective spécifiés
-- [x] Montures et Domptage spécifiés
+- [x] Système de montures spécifié (acquisition, confiance, comportement)
 - [x] Survie, sommeil, Médecine et maladies régionales spécifiés
 - [x] Système aquatique et dégâts environnementaux spécifiés
 - [x] Catastrophes naturelles, volcan et hydrologie spécifiés
@@ -24,6 +24,10 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [x] Matrice d'intégration inter-systèmes créée
 - [x] Direction de world design en trois grandes régions cadrée
 - [x] Taille cible du monde fixée à 40 km² (référence 6,32 × 6,32 km)
+- [x] Système canonique de progression : 45 compétences + 6 caractéristiques
+- [x] Création : 45 compétences à 5, 30 points de spécialisation, maximum 10 par compétence
+- [x] Learning by Doing et progression automatique des caractéristiques spécifiés
+- [x] Classes/voies : qualification par profil de caractéristiques et révélation à l'atteinte des conditions
 
 ---
 
@@ -74,13 +78,18 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [ ] Marche / course / sprint
 - [ ] Saut + coût d'Endurance
 - [ ] Accroupissement
-- [ ] Roulade + i-frames liées au Réflexe
+- [ ] Roulade + i-frames liées à la fenêtre défensive d'Esquive
 - [ ] Bond arrière
 - [ ] Pas de côté
 - [ ] Franchissement contextuel
 - [ ] Escalade contextuelle
 - [ ] Réception contrôlée
-- [ ] Progression Endurance / Agilité / Défense / Réflexe
+- [ ] Implémenter le pipeline des **45 compétences**
+- [ ] Implémenter la progression **Learning by Doing**
+- [ ] Implémenter la progression automatique des **6 caractéristiques**
+- [ ] Implémenter les seuils, poids et valeurs data-driven
+- [ ] Implémenter la validation anti-farming
+- [ ] Implémenter la détection des classes/voies à partir du profil de caractéristiques
 
 ### Furtivité & combat
 - [ ] Perception / bruit / visibilité
@@ -89,7 +98,7 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [ ] CombatResolver / DamageContext
 - [ ] Blocage
 - [ ] Parade et riposte
-- [ ] Esquive manuelle et automatique réflexe
+- [ ] Esquive manuelle
 - [ ] Maîtrises d'armes
 
 ### Ciblage & groupe
@@ -122,9 +131,9 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 ### Montures
 - [ ] Système de montée / descente
 - [ ] Acquisition auprès d'éleveurs
-- [ ] Domptage
-- [ ] Endurance / mouvement de monture
+- [ ] Acquisition naturelle selon compatibilité de l'espèce
 - [ ] Confiance et comportement
+- [ ] Endurance / mouvement de monture
 - [ ] Interactions terrain / eau / dangers
 - [ ] Combat monté si retenu
 
