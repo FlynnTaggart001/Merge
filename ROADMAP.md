@@ -214,6 +214,6 @@ Prototype technique → contenu → expansion du monde → quêtes/factions → 
 
 ---
 
-**Dernière mise à jour** : 2026-08-31  
+**Dernière mise à jour** : 2026-09-16  
 **Moteur** : Unreal Engine 5.8.1  
 **Langage principal** : C++
