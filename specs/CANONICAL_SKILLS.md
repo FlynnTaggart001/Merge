@@ -7,6 +7,17 @@ Merge has **45 unique skills**. All skills start at **5** at character creation.
 
 After character creation, skill and characteristic points are not manually distributed. Skills improve through learning by doing; characteristics improve automatically from linked skill progression.
 
+## Characteristics
+
+The six canonical characteristics are:
+
+- Force
+- Agilité
+- Perception
+- Intelligence
+- Volonté
+- Charisme
+
 ## Combat — 9
 
 | Skill | Characteristics |
@@ -49,13 +60,15 @@ After character creation, skill and characteristic points are not manually distr
 
 | Skill | Characteristics |
 |---|---|
-| Invocation | Intelligence + Volonté |
-| Nécromancie | Intelligence + Volonté |
-| Contrôle mental | Intelligence + Volonté |
-| Magie élémentaire | Intelligence + Volonté |
-| Magie physique | Intelligence + Volonté |
-| Magie de groupe | Intelligence + Volonté |
-| Magie de pacte | Intelligence + Volonté |
+| Invocation | **Volonté + Intelligence** |
+| Nécromancie | **Volonté + Intelligence** |
+| Contrôle mental | **Volonté + Intelligence** |
+| Magie élémentaire | **Volonté + Intelligence** |
+| Magie physique | **Volonté + Intelligence** |
+| Magie de groupe | **Volonté + Intelligence** |
+| Magie de pacte | **Volonté + Intelligence** |
+
+**Magic is primarily based on Volonté. Intelligence is secondary and represents understanding/learning rather than the core magical force.** Numeric characteristic weights remain data-driven and are not fixed in this document.
 
 ## Connaissances — 7
 
