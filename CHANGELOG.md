@@ -9,6 +9,11 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed — Consistency (2026-09-16)
+- Synchronisé `ai/PROJECT_STATE.md` avec le baseline de progression du jour.
+- Aligné `GAME_BIBLE.md` §07 (caractéristiques + compétences) sur le système canonique approuvé (45 skills + 6 caractéristiques 0–20).
+- Corrigé le multiplicateur d'Intelligence dans `specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md` pour l'échelle 0–20 (`0.75 + 0.025 × I`).
+
 ### Added — AI Team Orchestration
 - End-to-end supervised workflow: objective → state → planning → dependencies → role → permissions → proposal → Devil's Advocate → review → QA → human gate → execution → handoff → state → follow-up tasks.
 - AI-assisted task decomposition with strict JSON contract and safe fallback.
@@ -151,4 +156,4 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-**Dernière mise à jour** : 2026-08-24
+**Dernière mise à jour** : 2026-09-16
