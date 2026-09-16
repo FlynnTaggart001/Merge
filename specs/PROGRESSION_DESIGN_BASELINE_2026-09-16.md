@@ -63,7 +63,9 @@ Weights, thresholds and characteristic limits are data-driven.
 
 The class system uses **fundamental classes only** as the normal class layer. There is one exceptional class: **Déité**, which is a special case and is not treated like the ordinary fundamental classes.
 
-Classes are tied to the player's skill development rather than being an unrelated character-level selection system.
+A class/path is determined by the player's **characteristic profile**: the distribution and levels of the six characteristics are what qualify the player for a class/path. The underlying skills matter indirectly because they are what make the characteristics progress.
+
+If the player does not yet have enough progression in the characteristics required by a class/path, that class/path is not available yet. The player must continue playing and naturally develop the required profile.
 
 The player should be **notified when a new path becomes available**. The **class/path name is revealed when the corresponding class/path becomes available**.
 
