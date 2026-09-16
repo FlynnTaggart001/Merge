@@ -15,14 +15,14 @@ After character creation, skills are never increased by manually spending points
 
 For a valid successful action, progression is calculated from the current skill level, action difficulty and Intelligence:
 
-`P = 0.9 × max(0, (D - S + 15) / 50) × 1 / (1 + 0.012 × S) × (0.75 + 0.005 × I)`
+`P = 0.9 × max(0, (D - S + 15) / 50) × 1 / (1 + 0.012 × S) × (0.75 + 0.025 × I)`
 
 Where:
 
 - `P` = progression gained by the action;
 - `D` = action difficulty;
 - `S` = current skill level;
-- `I` = Intelligence.
+- `I` = Intelligence, on the canonical characteristic scale 0–20.
 
 The action must first pass the skill progression validation/context rules. Repetitive actions performed only to farm progression must not receive normal progression.
 
