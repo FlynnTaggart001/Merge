@@ -75,13 +75,13 @@ On définit :
 
 - `S` = niveau actuel de la compétence, compris entre 0 et 100 ;
 - `D` = difficulté prédéfinie de l'action ;
-- `I` = Intelligence du personnage, comprise entre 0 et 100 ;
+- `I` = Intelligence du personnage, comprise entre **0 et 20** ;
 - `P` = progression accordée par une réussite.
 
 Pour une action réussie :
 
 ```text
-P = 0.9 × max(0, (D − S + 15) / 50) × 1 / (1 + 0.012 × S) × (0.75 + 0.005 × I)
+P = 0.9 × max(0, (D − S + 15) / 50) × 1 / (1 + 0.012 × S) × (0.75 + 0.025 × I)
 ```
 
 La nouvelle valeur de la compétence est ensuite :
@@ -119,18 +119,18 @@ Plus la compétence est élevée, moins une réussite individuelle apporte de pr
 #### C. Influence de l'Intelligence
 
 ```text
-0.75 + 0.005 × I
+0.75 + 0.025 × I
 ```
 
-L'effet de l'Intelligence est volontairement modéré :
+L'Intelligence utilise désormais l'échelle **0–20** des caractéristiques.
 
 | Intelligence | Multiplicateur d'apprentissage |
 |---:|---:|
 | 0 | ×0,75 |
-| 25 | ×0,875 |
-| 50 | ×1,00 |
-| 75 | ×1,125 |
-| 100 | ×1,25 |
+| 5 | ×0,875 |
+| 10 | ×1,00 |
+| 15 | ×1,125 |
+| 20 | ×1,25 |
 
 L'Intelligence permet donc d'apprendre plus rapidement, sans permettre de progresser sans pratiquer.
 
@@ -150,7 +150,7 @@ L'interface peut afficher simplement `47`, tandis que le système conserve `47.7
 
 ### 3.3 Exemples de progression
 
-Avec Intelligence = 50 :
+Avec Intelligence = 10 :
 
 | Compétence actuelle | Difficulté | Progression approximative |
 |---:|---:|---:|
@@ -311,17 +311,18 @@ La Magie de groupe ne désigne pas simplement une magie affectant plusieurs cibl
 Elle peut notamment permettre :
 
 - avec l'Invocation, d'invoquer des créatures extrêmement puissantes, comme une Hydre ;
-- avec la Nécromancie, de produire des phénomènes nécromantiques d'une ampleur exceptionnelle ;
-- avec le Contrôle mental, d'exercer une influence sur un très grand nombre d'individus ;
-- avec la Magie élémentaire, de provoquer des phénomènes naturels majeurs, pouvant aller jusqu'à des catastrophes naturelles.
+- avec la Magie élémentaire, d'affecter une zone entière ;
+- avec la Magie physique, d'appliquer des effets à grande échelle.
 
-La Magie de groupe constitue donc un niveau de puissance supérieur pouvant avoir des conséquences importantes sur le monde.
+La Magie de groupe doit rester rare et difficile à utiliser.
 
 ### 9.3 Magie de pacte
 
-La Magie de pacte repose sur des pactes, contrats ou liens magiques avec des entités. Ses règles détaillées, conditions et contreparties restent à définir.
+La Magie de pacte repose sur des **conditions et contreparties explicites**. Le personnage accepte volontairement une contrainte pour obtenir un effet magique plus puissant ou plus spécifique.
 
-## 10. Compétences de connaissances
+Les règles détaillées des pactes, leurs coûts, leurs conditions et leurs conséquences restent à définir.
+
+## 10. Compétences de connaissance
 
 - **Alchimie** — Intelligence + Perception
 - **Botanique** — Intelligence + Perception
@@ -331,11 +332,9 @@ La Magie de pacte repose sur des pactes, contrats ou liens magiques avec des ent
 - **Créatures** — Intelligence + Perception
 - **Linguistique** — Intelligence + Perception
 
-La **Médecine** inclut l'Anatomie. Il n'existe pas de compétence séparée d'Anatomie.
+La **Médecine** comprend notamment l'Anatomie. La **Linguistique** couvre l'apprentissage et la compréhension des langues.
 
-La **Linguistique** couvre l'apprentissage et la compréhension des langues. Elle reste une compétence de Connaissances et n'est pas dupliquée dans le domaine social.
-
-## 11. Compétences d'artisanat
+## 11. Compétences de craft
 
 - **Forge** — Force + Intelligence
 - **Travail de la matière** — Intelligence + Agilité
@@ -344,10 +343,6 @@ La **Linguistique** couvre l'apprentissage et la compréhension des langues. Ell
 - **Fabrication d'armures** — Intelligence + Force
 - **Réparation** — Intelligence + Perception
 
-Le **Travail de la matière** regroupe notamment le travail du bois, du cuir et d'autres matériaux ne nécessitant pas une compétence spécialisée distincte.
-
-La Forge, la Fabrication d'armes et la Fabrication d'armures restent des compétences distinctes.
-
 ## 12. Compétences sociales et communication
 
 - **Persuasion** — Charisme + Intelligence
@@ -355,47 +350,4 @@ La Forge, la Fabrication d'armes et la Fabrication d'armures restent des compét
 - **Éloquence** — Charisme + Intelligence
 - **Marchandage** — Charisme + Intelligence
 
-Il n'existe pas de compétence d'**Étiquette**. Les comportements sociaux et la manière dont les PNJ réagissent au personnage sont notamment gérés par le système de réputation et les autres systèmes sociaux du jeu.
-
-## 13. Caractéristiques et compétences
-
-Les caractéristiques associées à chaque compétence indiquent les capacités générales principalement sollicitées par cette pratique. Elles ne remplacent pas la compétence elle-même.
-
-Par exemple :
-
-- utiliser une épée développe la compétence **Épée** et peut solliciter Force et Agilité ;
-- apprendre une langue développe **Linguistique** et sollicite notamment Intelligence ;
-- négocier dans une langue étrangère peut solliciter **Linguistique**, **Marchandage** et Charisme ;
-- réussir une parade développe **Parade** et sollicite Agilité et Perception.
-
-Une même action peut donc développer plusieurs éléments du système lorsqu'elle exerce réellement plusieurs capacités.
-
-## 14. Structure actuelle
-
-Le système contient actuellement **45 compétences** réparties en 7 domaines :
-
-| Domaine | Nombre |
-|---|---:|
-| Combat | 10 |
-| Défense / mouvement | 6 |
-| Furtivité | 5 |
-| Magie | 7 |
-| Connaissances | 7 |
-| Artisanat | 6 |
-| Social / communication | 4 |
-| **Total** | **45** |
-
-## 15. Éléments restant à définir
-
-- valeur initiale des compétences ;
-- effets précis des différents niveaux ;
-- influence numérique exacte des caractéristiques sur chaque compétence ;
-- formule numérique précise des actions opposées ;
-- calcul détaillé des dégâts ;
-- influence exacte de l'équipement ;
-- éventuels prérequis ;
-- interactions détaillées avec les races ;
-- interactions détaillées avec les classes ;
-- fonctionnement précis des compétences magiques ;
-- règles détaillées de chaque compétence ;
-- paramètres d'équilibrage de la formule si les tests en jeu montrent qu'un ajustement est nécessaire.
+Il n'existe pas de compétence distincte d'Étiquette.
