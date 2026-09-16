@@ -24,13 +24,15 @@ MountSystem
 └── MountPersistence
 ```
 
+Le **domptage** peut exister comme mécanique d'acquisition pour certaines espèces, mais **Domptage n'est pas une compétence canonique du joueur** et ne doit pas être ajouté aux 45 compétences sans décision explicite dans `specs/CANONICAL_SKILLS.md`.
+
 ## 2. Acquisition et interaction
 
 Le joueur dispose de deux voies principales d'acquisition selon la monture et les règles du monde :
 
 ### 2.1 Achat auprès d'un éleveur
 
-L'achat de montures se fait **exclusivement auprès d'éleveurs**. Le jeu ne possède pas de catégorie générique de « marchand de bêtes ».
+L'achat de montures se fait **auprès d'éleveurs**. Le jeu ne possède pas de catégorie générique de « marchand de bêtes ».
 
 Un éleveur peut proposer des montures selon :
 - espèce / famille ;
@@ -47,22 +49,18 @@ L'éleveur doit être traité comme une source cohérente de créatures élevée
 
 L'achat crée une association persistante entre la monture et le joueur lorsqu'elle devient sa monture.
 
-### 2.2 Domptage / capture
+### 2.2 Acquisition naturelle / domptage
 
-Certaines montures peuvent être obtenues sans achat grâce à une compétence de **Domptage**.
-
-Le joueur doit pouvoir :
+Certaines montures peuvent être obtenues sans achat lorsque les règles de l'espèce le permettent.
 
 ```text
 Repérer une créature compatible
         ↓
 S'approcher / l'approcher sans la faire fuir
         ↓
-Déclencher une tentative de domptage
+Interaction de domptage ou d'acquisition
         ↓
-Calcul de la difficulté
-        ↓
-Résolution progressive
+Résolution selon les règles de l'espèce
    ┌────┴────┐
    ↓         ↓
 Succès     Échec
@@ -71,56 +69,38 @@ Créature   fuite / résistance /
 acceptée   tentative à reprendre
 ```
 
-La compétence de Domptage est une compétence de progression distincte des maîtrises d'armes et du Réflexe.
+Le système de domptage est une **mécanique**, pas une compétence canonique supplémentaire. Sa difficulté et ses conditions sont déterminées par les données de la créature et par le contexte du monde.
 
-### 2.3 Compétence de Domptage
-
-Le **Domptage** progresse avec des tentatives et réussites de domestication réellement pertinentes.
+### 2.3 Règles d'acquisition
 
 Le système doit pouvoir prendre en compte :
 
-- difficulté de l'espèce ;
+- difficulté propre à l'espèce ;
 - tempérament ;
 - niveau de peur/agression ;
 - état de la créature ;
-- familiarité avec l'espèce ;
-- expérience du joueur en Domptage ;
+- familiarité éventuelle du personnage avec l'espèce ;
 - contexte et approche ;
 - qualité des interactions précédentes ;
-- éventuels objets ou techniques d'aide.
+- éventuels objets ou techniques d'aide ;
+- conditions de quête ou de monde.
 
-La compétence doit réduire progressivement la difficulté effective et augmenter la fiabilité, sans transformer automatiquement toute créature en monture.
+Aucune compétence « Domptage » ne doit être utilisée pour déterminer directement le résultat.
 
-```text
-Domptage faible
-→ espèces dociles / faciles
-→ forte probabilité d'échec sur créatures sauvages difficiles
-
-Domptage moyen
-→ plus d'espèces accessibles
-→ meilleure tolérance aux erreurs
-
-Domptage élevé
-→ créatures plus rares / sauvages potentiellement domptables
-→ meilleure fiabilité
-```
-
-Les espèces intrinsèquement incompatibles avec le domptage doivent pouvoir être déclarées **non domptables** dans leurs données.
+Les espèces intrinsèquement incompatibles avec l'acquisition par domptage doivent pouvoir être déclarées **non domptables** dans leurs données.
 
 ### 2.4 Familles et familiarité
 
-La familiarité avec une espèce ou une famille de montures peut être enregistrée séparément ou comme modificateur du Domptage.
+Une familiarité avec une espèce ou une famille de montures peut être enregistrée comme état ou modificateur propre au système de montures.
 
-Exemple : un joueur ayant beaucoup de pratique avec les équidés peut mieux gérer une nouvelle créature de la même famille qu'une créature complètement inconnue.
-
-La familiarité ne doit pas remplacer la compétence générale de Domptage.
+La familiarité ne constitue pas une compétence ou une caractéristique canonique supplémentaire du joueur.
 
 ### 2.5 Relation et confiance
 
 Après l'acquisition, la monture peut posséder un état de relation avec le joueur :
 
 ```text
-Nouvellement domptée / achetée
+Nouvellement acquise
         ↓
 Confiance faible
         ↓
@@ -170,6 +150,8 @@ Monture
 
 Les coûts doivent être data-driven et varier selon le type de déplacement.
 
+L'Endurance de la monture est une ressource/paramètre de la monture et ne crée pas une caractéristique canonique **Endurance** pour le joueur.
+
 ## 5. Terrain et environnement
 
 Les montures doivent interagir avec les systèmes de terrain déjà prévus : pente, boue, neige, feu, zones volcaniques, eau, falaises, obstacles et catastrophes naturelles.
@@ -188,9 +170,9 @@ Le combat monté doit utiliser le `CombatResolver` commun.
 
 Le système peut supporter une progression propre à la monture sans la rendre obligatoire : maîtrise de conduite, familiarité, endurance, vitesse, maniabilité, confiance/lien joueur-monture.
 
-La **compétence de Domptage** appartient au joueur et reste distincte de ces éventuelles caractéristiques de la monture.
+Ces valeurs concernent le système de montures et ne constituent pas de nouvelles compétences ou caractéristiques canoniques du joueur.
 
-L'utilisation effective de montures peut contribuer aux événements de progression pertinents si le game design le confirme.
+L'utilisation effective de montures peut contribuer à une compétence canonique uniquement lorsqu'une compétence existante est réellement concernée et que l'action passe les règles normales de validation de progression. Aucune compétence dédiée « Domptage » ne doit être créée implicitement.
 
 ## 8. IA et comportement
 
@@ -213,7 +195,7 @@ MountState
 ├── Equipment
 ├── CurrentOwner / Association
 ├── AcquisitionMethod
-├── TamingProgress / TamingHistory
+├── AcquisitionHistory
 ├── TrustState
 ├── Status
 └── WorldRelationship
@@ -254,17 +236,19 @@ MountSystem
 └── MountPersistence
 ```
 
+`TamingComponent` représente une mécanique d'acquisition éventuelle. Il ne représente pas une compétence canonique du joueur.
+
 ## 13. Tests prioritaires
 
 - achat auprès d'un éleveur ;
 - conditions d'achat chez un éleveur ;
 - absence de système générique de marchand de bêtes ;
-- tentative de domptage d'une monture facile ;
-- tentative sur une monture difficile ;
-- échec de domptage ;
-- réussite de domptage ;
+- acquisition d'une monture compatible ;
+- tentative d'acquisition d'une monture difficile ;
+- échec d'acquisition ;
+- réussite d'acquisition ;
 - espèce déclarée non domptable ;
-- progression de Domptage ;
+- absence de progression d'une compétence « Domptage » inexistante ;
 - familiarité par famille ;
 - montée / descente ;
 - déplacement monté ;
@@ -279,6 +263,6 @@ MountSystem
 
 ## 14. Ce qui reste volontairement ouvert
 
-Les espèces de montures, leur nombre, leurs statistiques, leurs capacités spéciales, leurs prix, leurs méthodes exactes de domptage, leurs difficultés de domptage, leur reproduction éventuelle, leur mortalité et leurs systèmes de progression restent des décisions de game design.
+Les espèces de montures, leur nombre, leurs statistiques, leurs capacités spéciales, leurs prix, leurs méthodes exactes d'acquisition, leurs difficultés d'acquisition, leur reproduction éventuelle, leur mortalité et leurs systèmes de progression restent des décisions de game design.
 
 Le cœur technique doit être prêt à recevoir ces choix sans refonte majeure.
