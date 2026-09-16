@@ -85,7 +85,7 @@ Les règles canoniques de création des compétences sont :
 - maximum de départ d'une compétence : **15** ;
 - après la création, aucune répartition manuelle de points de compétence ou de caractéristique.
 
-Les détails de répartition initiale des caractéristiques restent séparés tant qu'ils ne sont pas explicitement validés.
+Les caractéristiques progressent ensuite automatiquement à partir des compétences selon `specs/CHARACTERISTIC_PROGRESSION.md`.
 
 ## 6. Progression des caractéristiques
 
@@ -107,4 +107,4 @@ Lorsqu'une nouvelle voie devient accessible, le joueur est averti et le nom de l
 
 Les classes normales sont fondamentales. **Déité** constitue une voie spéciale distincte.
 
-La condition documentée pour Déité est l'atteinte de **20/20 dans chacune des six caractéristiques**. Les conditions détaillées des classes fondamentales restent à finaliser dans leur propre spécification.
+Les conditions numériques exactes de Déité et des classes fondamentales ne sont pas encore fixées dans cette documentation. Elles devront être définies dans la spécification dédiée aux classes avant toute implémentation.
