@@ -255,36 +255,56 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 
 ## 07. Personnage Joueur
 
-### 07.1 Attributs
+### 07.1 Caractéristiques
 
-À DÉCIDER :
-- Liste des attributs (Force, Endurance, Intelligence, Sagesse, Agilité, Charisme, etc.)
-- Valeurs min/max
-- Impact sur les compétences
-- Formules de calcul
+Six caractéristiques fondamentales (échelle **0–20**) :
+
+- **Force**
+- **Agilité**
+- **Perception**
+- **Intelligence**
+- **Volonté**
+- **Charisme**
+
+Elles progressent **automatiquement** à partir des compétences liées. Voir `specs/CHARACTERISTIC_PROGRESSION.md` et `docs/gameplay/CHARACTER_ATTRIBUTES.md`.
 
 ### 07.2 Compétences
 
-À COMPLÉTER :
-- Liste complète des compétences
-- Catégories de compétences
-- Progression de chaque compétence
-- Effet du niveau de compétence sur les performances
+**45 compétences canoniques** regroupées en 7 catégories :
+
+- Combat (9)
+- Défense / mouvement (6) — *Parade appartient ici, pas au Combat*
+- Furtivité (6)
+- Magie (7)
+- Connaissances (7)
+- Artisanat (6)
+- Social / communication (4)
+
+Liste complète + liens caractéristiques : `specs/CANONICAL_SKILLS.md`.
+
+Création : toutes démarrent à **5**. Le joueur dispose de **30 points de spécialisation** (max 10 sur une seule compétence → max départ 15).
+
+Après la création : plus aucune répartition manuelle.
 
 ### 07.3 Progression
 
-- **Système** : Learning by doing (pas de niveaux fixes)
-- **Mécanique** : Utilisation d'une compétence → progression de cette compétence
-- **Plafonné** : Oui, chaque compétence a un maximum
-- **Réinitialisation** : À DÉCIDER (possible ou pas)
+- **Système** : Learning by doing (pas de niveaux artificiels)
+- **Mécanique** : action pertinente réussie → progression de la compétence → contribution pondérée aux caractéristiques liées
+- **Formule de base** (voir baseline 2026-09-16) :
+  `P = 0.9 × max(0, (D - S + 15) / 50) × 1 / (1 + 0.012 × S) × (0.75 + 0.025 × I)`
+  où `I` = Intelligence (0–20)
+- **Échelle** : compétence 50 = déjà niveau superhumain
+- **Réinitialisation** : non prévue
+
+Référence : `specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md`
 
 ### 07.4 États
 
-À COMPLÉTER :
-- États de base (faim, fatigue, santé mentale, etc.)
-- États temporaires (poison, bénédiction, malédiction, etc.)
-- Impact sur le gameplay
-- Mécaniques de guérison
+- Besoins physiologiques progressifs : faim, hydratation, fatigue/sommeil
+- Maladies régionales (diagnostic diégétique uniquement)
+- États temporaires (poison, blessures, etc.) gérés par le système d'effets data-driven
+
+Détails : `specs/FOOD_MEDICINE_AND_NONMAGICAL_HEALING_SPEC.md` et docs associées.
 
 ---
 
@@ -536,4 +556,4 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 
 ---
 
-**Dernière mise à jour : 2026-08-31**
+**Dernière mise à jour : 2026-09-16**
