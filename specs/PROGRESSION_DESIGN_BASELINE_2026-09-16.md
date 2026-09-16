@@ -20,9 +20,9 @@ Merge has **45 unique canonical skills**. The complete list and skill → charac
 
 Skills increase through relevant gameplay actions. The action progression formula is:
 
-`P = 0.9 × max(0, (D - S + 15) / 50) × 1 / (1 + 0.012 × S) × (0.75 + 0.005 × I)`
+`P = 0.9 × max(0, (D - S + 15) / 50) × 1 / (1 + 0.012 × S) × (0.75 + 0.025 × I)`
 
-Where `P` is progression gained, `D` is action difficulty, `S` is current skill level and `I` is Intelligence.
+Where `P` is progression gained, `D` is action difficulty, `S` is current skill level and `I` is Intelligence (scale 0–20).
 
 The action must be valid, successful and contextually relevant. Anti-farming rules prevent repetitive low-value actions from becoming a normal progression source.
 
@@ -35,6 +35,14 @@ Skill level **50 is already an extremely high / superhuman level of mastery**. H
 Characteristics are separate from skills and increase **automatically** from linked skill progression.
 
 They have their own hidden progression pools and thresholds. They do not simply copy skill levels.
+
+Canonical characteristics (scale 0–20):
+- Force
+- Agilité
+- Perception
+- Intelligence
+- Volonté
+- Charisme
 
 For each configured relationship:
 
