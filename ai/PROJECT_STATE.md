@@ -1,6 +1,6 @@
 # Merge — Project State
 
-**Last updated:** 2026-08-24
+**Last updated:** 2026-09-16
 
 ## Current state
 
@@ -16,6 +16,10 @@
 - AI team workflow: **implemented** — planning, dependency checks, role routing, least privilege, proposal/review, Devil's Advocate, human decision gate, handoffs, state persistence and follow-up planning
 - Security/secrets policy: enforced
 - CI: runtime guard tests + recommendation/team workflow tests + secrets hygiene
+- Progression design baseline: **approved** (`specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md` + `specs/CANONICAL_SKILLS.md`)
+  - 45 canonical skills
+  - 6 characteristics (Force, Agilité, Perception, Intelligence, Volonté, Charisme)
+  - Learning by doing + automatic characteristic progression
 
 ## Current milestone
 
