@@ -22,12 +22,12 @@ PlayerMovement
 ```
 
 Connexions :
-- Endurance : tous les mouvements physiques significatifs ont un coût data-driven.
-- Agilité : mobilité, esquives, saut, franchissement, escalade et réceptions pertinentes peuvent faire progresser l'Agilité.
-- Réflexe : influence les automatismes défensifs, mais pas la maîtrise physique de base.
-- Combat : mouvements défensifs et fenêtres d'impact utilisent le même pipeline de résolution.
+- **Endurance** : tous les mouvements physiques significatifs peuvent avoir un coût data-driven. Il s'agit d'une ressource de gameplay, pas d'une caractéristique canonique.
+- **Compétences** : lorsqu'une action de mouvement correspond à une compétence canonique, elle peut générer une progression validée de cette compétence selon les règles de `SKILL_PROGRESSION.md`.
+- **Caractéristiques** : elles ne progressent pas directement à partir du mouvement ; elles progressent automatiquement à partir de la progression validée des compétences liées.
+- **Combat** : les mouvements défensifs et fenêtres d'impact utilisent le même pipeline de résolution lorsque pertinent.
 
-## 2. Défense et Réflexe
+## 2. Défense et compétences canoniques
 
 ```text
 Blocage
@@ -36,16 +36,15 @@ Esquive
 Roulade i-frames
 Saut arrière
 Pas de côté
-Esquive réflexe
 ```
 
-Le Réflexe :
-- peut déclencher probabilistiquement une esquive automatique ;
-- élargit la fenêtre de timing de parade après l'input du joueur ;
-- augmente la fenêtre d'i-frames de la roulade ;
-- peut être modulé par la familiarité avec des familles d'attaques ;
-- ne doit jamais déclencher automatiquement une parade complète ;
-- ne doit jamais créer une invulnérabilité permanente.
+Règles :
+- **Blocage** utilise la compétence canonique Blocage lorsque le contexte correspond.
+- **Parade** utilise la compétence canonique Parade.
+- **Esquive** utilise la compétence canonique Esquive.
+- La roulade possède une fenêtre défensive temporelle et peut contribuer à Esquive lorsqu'une progression est validée.
+- Aucun système de **Réflexe** indépendant ne doit être utilisé comme caractéristique ou compétence de progression.
+- Une action défensive ne doit pas créer une source de progression de caractéristique indépendante du pipeline de compétence → caractéristique.
 
 ## 3. Combat et dégâts environnementaux
 
@@ -76,7 +75,7 @@ Medicine
 ├── Diagnosis
 ├── Treatment
 ├── Stabilization
-└── MedicalProgression
+└── MedicalSkillProgression
 
 Disease
 ├── RegionalDiseasePool
@@ -95,7 +94,8 @@ Règles :
 - aucune maladie n'est révélée automatiquement par du texte au joueur ;
 - diagnostic professionnel par médecin ou autodiagnostic selon la compétence Médecine ;
 - un traitement mal adapté peut être inefficace ;
-- Médecine et magie de soin restent des voies distinctes.
+- Médecine et magie de soin restent des voies distinctes ;
+- la progression de Médecine suit le système canonique des compétences et ses règles de validation.
 
 ## 5. Maladies et monde dynamique
 
@@ -133,18 +133,11 @@ Diagnostic
 
 ```text
 Acquisition
-├── Achat auprès d'un éleveur uniquement
-└── Domptage selon compatibilité de l'espèce
+├── Achat auprès d'un éleveur
+└── Acquisition naturelle selon les règles propres à l'espèce
 ```
 
-Le système ne doit pas contenir de catégorie générique de marchand de bêtes.
-
-`Domptage` est une compétence du joueur distincte de :
-- Réflexe ;
-- Agilité ;
-- Maîtrises d'armes ;
-- Médecine ;
-- magie.
+Le système de montures ne crée pas de compétence canonique **Domptage**.
 
 Les montures peuvent également avoir :
 - faim ;
@@ -153,7 +146,9 @@ Les montures peuvent également avoir :
 - blessures ;
 - maladies spécifiques ;
 - confiance ;
-- Endurance propre.
+- endurance propre en tant que ressource/paramètre de la monture.
+
+Aucune de ces mécaniques n'ajoute une caractéristique ou une compétence aux **6 caractéristiques / 45 compétences** canoniques du joueur.
 
 ## 7. Ciblage et groupe
 
@@ -186,7 +181,7 @@ ShallowWater
 
 La flottabilité dépend du personnage et de l'équipement. Une armure lourde peut faire couler le personnage ou rendre la remontée difficile.
 
-Endurance et réserve d'air sont deux ressources différentes.
+Endurance et réserve d'air sont deux ressources différentes. Aucune ne constitue une caractéristique canonique supplémentaire.
 
 ## 9. Monde naturel
 
@@ -272,4 +267,5 @@ Avant toute nouvelle implémentation système dans Unreal, vérifier :
 4. sa stratégie hors zone ;
 5. ses conséquences de sauvegarde ;
 6. ses tests de montée en charge ;
-7. l'absence de contradiction avec les systèmes existants.
+7. l'absence de contradiction avec les systèmes existants ;
+8. l'absence d'ajout implicite à la liste canonique des **45 compétences** ou **6 caractéristiques**.
