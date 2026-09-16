@@ -13,9 +13,9 @@ Le personnage joueur possède six caractéristiques fondamentales :
 
 Les caractéristiques représentent les capacités générales du personnage. Elles sont distinctes des compétences, qui représentent les savoir-faire acquis par la pratique.
 
-## 2. Nouvelle échelle des caractéristiques
+## 2. Échelle
 
-Les caractéristiques utilisent désormais une échelle de **0 à 20**.
+Les caractéristiques utilisent une échelle de **0 à 20**.
 
 | Valeur | Interprétation générale |
 |---:|---|
@@ -28,71 +28,42 @@ Les caractéristiques utilisent désormais une échelle de **0 à 20**.
 | 17–19 | Surhumain |
 | 20 | Sommet absolu de la caractéristique |
 
-Cette échelle remplace l'ancienne représentation des caractéristiques sur 100. **Les compétences restent sur une échelle indépendante de 0 à 100.**
+Les compétences utilisent une échelle indépendante. **Le niveau 50 d'une compétence correspond déjà à une maîtrise extrêmement élevée / surhumaine.**
 
-Important : une valeur de **50** qui pouvait apparaître dans une ancienne représentation des caractéristiques ne doit plus être utilisée comme valeur de caractéristique dans le nouveau système. Les valeurs de 50 et plus restent pertinentes pour les **compétences**, qui utilisent toujours leur propre échelle 0–100.
-
-## 3. Création du personnage — proposition mise à l'échelle
-
-La proposition précédemment envisagée sur une échelle 0–100 était :
-
-- 30 points de base dans chacune des 6 caractéristiques ;
-- 120 points supplémentaires à répartir ;
-- 80 comme maximum à la création.
-
-Transposée proprement sur une échelle maximale de 20, cela donne :
-
-- **6 points de base dans chaque caractéristique** ;
-- **24 points supplémentaires à répartir** ;
-- **60 points au total** sur les six caractéristiques ;
-- **16/20 maximum dans une caractéristique à la création**.
-
-Cette proposition est conservée comme **proposition de travail à valider**, et non comme règle définitive tant que le budget de création n'est pas confirmé.
-
-### Exemple spécialisé
-
-Une répartition équivalente à l'ancien exemple 75 / 65 / 45 / 35 / 40 / 40 devient :
-
-| Caractéristique | Valeur |
-|---|---:|
-| Force | 15/20 |
-| Agilité | 13/20 |
-| Perception | 9/20 |
-| Intelligence | 7/20 |
-| Volonté | 8/20 |
-| Charisme | 8/20 |
-| **Total** | **60/120** |
-
-Ce modèle permet donc de créer un personnage nettement spécialisé sans lui donner immédiatement une caractéristique au maximum.
-
-## 4. Relation avec les compétences
+## 3. Relation avec les compétences
 
 Les caractéristiques et les compétences restent deux systèmes distincts.
 
 - **Caractéristique** : capacité générale du personnage.
 - **Compétence** : maîtrise acquise par la pratique.
 
-Les compétences restent sur **0–100** et utilisent leurs caractéristiques associées pour les actions concernées.
+La progression d'une compétence validée alimente automatiquement les caractéristiques qui lui sont liées. Les poids numériques sont data-driven.
 
 Exemples :
 
 - Épée → Force + Agilité
 - Arc → Agilité + Perception
 - Crochetage → Agilité + Intelligence
-- Invocation → Intelligence + Volonté
+- Invocation → **Volonté + Intelligence**
 - Persuasion → Charisme + Intelligence
 
-## 5. Intelligence et apprentissage
+### Magie
 
-La nouvelle échelle de l'Intelligence est **0–20**.
+Pour les sept compétences de Magie, **Volonté est la caractéristique principale**. Elle représente la force mentale nécessaire pour imposer, maintenir et contrôler la magie.
 
-Pour conserver l'amplitude d'apprentissage prévue précédemment (×0,75 à ×1,25), toute formule de progression qui utilisait une Intelligence sur 0–100 doit désormais utiliser :
+**Intelligence est secondaire** : elle représente notamment la compréhension et l'apprentissage des principes magiques, mais ne constitue pas la source principale de la puissance magique.
+
+Les poids numériques exacts restent data-driven.
+
+## 4. Intelligence et progression
+
+L'Intelligence est comprise entre **0 et 20**. Dans la formule de progression des compétences, son modificateur d'apprentissage est :
 
 ```text
 Multiplicateur d'apprentissage = 0.75 + 0.025 × I
 ```
 
-où `I` est l'Intelligence comprise entre 0 et 20.
+où `I` est l'Intelligence.
 
 Ainsi :
 
@@ -104,30 +75,36 @@ Ainsi :
 | 15 | ×1,125 |
 | 20 | ×1,25 |
 
-Cette conversion conserve le comportement prévu du système tout en utilisant la nouvelle échelle 0–20.
+## 5. Création du personnage
 
-## 6. Progression et classes
+Les règles canoniques de création des compétences sont :
 
-Les caractéristiques peuvent évoluer au cours du jeu.
+- les **45 compétences** commencent à 5 ;
+- **30 points de spécialisation** sont disponibles ;
+- maximum **10 points** investis dans une même compétence ;
+- maximum de départ d'une compétence : **15** ;
+- après la création, aucune répartition manuelle de points de compétence ou de caractéristique.
 
-Les classes ne sont pas choisies directement à la création. Les caractéristiques et les compétences développées déterminent les voies accessibles au personnage.
+Les détails de répartition initiale des caractéristiques restent séparés tant qu'ils ne sont pas explicitement validés.
 
-Les conditions exactes des classes restent cachées au joueur.
+## 6. Progression des caractéristiques
 
-Lorsqu'une nouvelle classe devient accessible, le jeu doit notifier le joueur :
+Les caractéristiques progressent automatiquement à partir de la progression validée des compétences liées :
 
-> **Une nouvelle voie s'ouvre à vous.**
+```text
+CharacteristicProgress += SkillProgress × Weight
+```
 
-Le nom de la classe est alors révélé.
+Chaque caractéristique possède son propre pool de progression caché et sa courbe de seuils. Lorsqu'un seuil est atteint, la caractéristique augmente de +1 et le surplus est conservé.
 
-Si plusieurs classes sont accessibles, le joueur peut choisir sa voie **hors combat** et changer de voie hors combat tant que les conditions de la voie sont remplies.
+Voir `specs/CHARACTERISTIC_PROGRESSION.md` pour la règle complète.
 
-Une exception particulière existe pour **Déité** : la voie est liée à l'atteinte de **20/20 dans chacune des six caractéristiques**, soit 100 % de la valeur maximale de chaque caractéristique.
+## 7. Classes et voies
 
-## 7. Évolution vers le maximum
+Les classes ne sont pas choisies directement à la création. Les compétences et caractéristiques développées déterminent progressivement les voies accessibles.
 
-Le maximum normal d'une caractéristique est **20/20**.
+Lorsqu'une nouvelle voie devient accessible, le joueur est averti et le nom de la classe est révélé.
 
-Le joueur ne peut pas atteindre 20/20 dans toutes les caractéristiques simplement par la répartition initiale : la création impose une limite inférieure au maximum afin que l'évolution du personnage reste significative.
+Les classes normales sont fondamentales. **Déité** constitue une voie spéciale distincte.
 
-L'objectif de 20/20 partout constitue donc un accomplissement de très long terme et conditionne l'accès à la voie spéciale **Déité**.
+La condition documentée pour Déité est l'atteinte de **20/20 dans chacune des six caractéristiques**. Les conditions détaillées des classes fondamentales restent à finaliser dans leur propre spécification.
