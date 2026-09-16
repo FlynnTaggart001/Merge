@@ -30,110 +30,73 @@ Règle : un système producteur ne doit pas connaître les détails internes de 
 
 ## 3. Progression
 
-Le personnage progresse principalement par utilisation réelle :
+Le personnage progresse selon le système canonique **Learning by Doing**. Il n'existe pas de niveau global de personnage servant à distribuer des points.
 
 ```text
-Endurance ← course / combat / saut / effort
-Agilité   ← esquives réussies / sauts / mobilité
-Défense   ← dégâts réellement subis
-Réflexe   ← expérience de combat significative / situations de combat réellement vécues
-Arme X    ← utilisation significative de la famille X
-Magie X   ← utilisation effective du domaine magique X
+Action de gameplay
+      ↓
+Validation de l'action
+      ↓
+Compétence canonique concernée
+      ↓
+Progression de la compétence
+      ↓
+Contribution pondérée aux caractéristiques liées
 ```
 
-Les gains passent par un système de progression commun et peuvent être validés par des règles anti-farming.
+Le modèle canonique comprend **45 compétences** et **6 caractéristiques**. La liste et les relations compétence → caractéristique sont définies exclusivement dans `specs/CANONICAL_SKILLS.md`.
 
-Les statistiques dérivées doivent être calculées à partir des attributs/maîtrises et non stockées comme des valeurs arbitrairement dupliquées lorsque cela n'est pas nécessaire.
+À la création :
+- les 45 compétences commencent à 5 ;
+- 30 points de spécialisation sont disponibles ;
+- maximum 10 points dans une même compétence ;
+- maximum de départ d'une compétence : 15.
 
-### 3.1 Réflexe de combat
+Après la création, aucune répartition manuelle de points de compétence ou de caractéristique.
 
-Le personnage possède une jauge/compétence de **Réflexe** distincte de l'Agilité.
-
-Le Réflexe représente l'expérience et les automatismes acquis au combat. Il augmente progressivement grâce à l'expérience de combat significative, notamment lorsque le personnage survit et apprend de situations où il doit réagir à des attaques réelles.
-
-Le Réflexe peut donner une **chance passive d'esquive automatique** lorsqu'une attaque ennemie est détectée et que les conditions de réaction sont réunies, sans input direct du joueur.
-
-Principes :
-
-- le Réflexe ne remplace jamais l'esquive manuelle ;
-- une forte maîtrise doit améliorer la fiabilité, pas rendre le joueur invulnérable ;
-- l'esquive automatique doit être limitée par le contexte, la direction, l'espace disponible, l'état du personnage et le coût éventuel en Endurance ;
-- les attaques impossibles à éviter, les situations sans espace et certains effets spéciaux peuvent ignorer l'automatisme ;
-- l'automatisme doit respecter les mêmes règles de collision, animation et invulnérabilité que l'esquive manuelle ;
-- le système doit empêcher le farming artificiel de Réflexe sur des attaques répétées sans danger réel.
-
-Le Réflexe et l'Agilité sont volontairement séparés :
+La progression par action utilise le baseline de `specs/SKILL_PROGRESSION.md` :
 
 ```text
-Agilité → capacité physique / qualité des mouvements et esquives du joueur
-Réflexe → expérience de combat / capacité à réagir automatiquement
+P = 0.9 × max(0, (D - S + 15) / 50)
+    × 1 / (1 + 0.012 × S)
+    × (0.75 + 0.025 × I)
 ```
 
-### 3.2 Familiarité de combat et parade réflexe
+La progression doit être validée par le contexte de jeu. Les actions répétitives réalisées uniquement pour farmer ne constituent pas une source normale de progression.
 
-Le Réflexe influence également la **tolérance de timing des parades**, sans déclencher la parade à la place du joueur.
+### 3.1 Progression automatique des caractéristiques
 
-Le joueur doit toujours effectuer l'input de parade. Le Réflexe permet au personnage expérimenté d'anticiper légèrement l'impact :
+Les caractéristiques progressent uniquement à partir de la progression validée des compétences qui leur sont liées :
 
 ```text
-Réflexe faible → fenêtre de parade très exigeante
-Réflexe moyen → fenêtre légèrement plus permissive
-Réflexe élevé → fenêtre nettement plus permissive
+CharacteristicProgress += SkillProgress × Weight
 ```
 
-Cette assistance peut être modulée par une **familiarité de combat** acquise à force d'affronter réellement certaines familles d'attaques.
-
-L'assistance de parade est différente de l'esquive automatique :
+Chaque caractéristique possède son propre pool caché et ses seuils. Lorsqu'un seuil est atteint :
 
 ```text
-Esquive automatique → le système peut déclencher une esquive selon le Réflexe et les conditions.
-Parade réflexe → le système ne déclenche rien ; il améliore uniquement la fenêtre de timing après l'input du joueur.
+while CharacteristicProgress >= Threshold(C + 1):
+    CharacteristicProgress -= Threshold(C + 1)
+    C += 1
 ```
 
-### 3.3 Réflexe et invulnérabilité de roulade
+Le surplus est conservé. Les poids, seuils et limites sont data-driven.
 
-La roulade accorde une **fenêtre temporaire d'invulnérabilité (i-frames)** pendant son exécution. Cette protection fait partie du système de défense de la roulade et non d'une invulnérabilité générale du personnage.
+### 3.2 Classes et voies
 
-Le **Réflexe** influence la durée de cette fenêtre : plus le personnage est expérimenté, plus il peut exploiter précisément le moment où l'attaque passe à proximité.
+Les classes/voies sont déterminées par le **profil de caractéristiques** du personnage.
 
-```text
-Réflexe faible
-→ i-frames courtes, timing très exigeant
+- Les caractéristiques sont la base de qualification d'une classe/voie.
+- Les compétences influencent les classes indirectement puisqu'elles alimentent les caractéristiques.
+- Si les caractéristiques requises sont insuffisantes, la classe/voie correspondante n'est pas encore disponible.
+- Lorsque les conditions d'une nouvelle voie sont atteintes, le joueur est averti et le nom de la classe est révélé.
+- Les classes normales sont des **classes fondamentales**.
+- **Déité** est une voie spéciale distincte des classes fondamentales.
+- Les noms et conditions numériques détaillés doivent être définis dans une spécification dédiée avant implémentation.
 
-Réflexe moyen
-→ i-frames plus tolérantes
+### 3.3 Échelle de maîtrise
 
-Réflexe élevé
-→ i-frames nettement plus longues
-```
-
-Règles :
-
-- les i-frames ne commencent qu'à une phase définie de la roulade ;
-- elles cessent avant la fin complète de l'animation ;
-- le Réflexe augmente la fenêtre d'invulnérabilité, mais ne rend pas toute la roulade invulnérable ;
-- la roulade conserve son coût en Endurance ;
-- l'espace disponible, les collisions et l'état du personnage restent déterminants ;
-- certaines attaques spéciales, attaques imparables ou effets explicitement définis peuvent ignorer les i-frames ;
-- le système doit empêcher le spam de roulades de créer une invulnérabilité quasi permanente ;
-- les valeurs exactes de durée, seuils et courbes restent des paramètres d'équilibrage data-driven.
-
-La **familiarité de combat** peut améliorer l'anticipation contre des familles d'attaques réellement connues, mais ne doit pas créer une immunité automatique contre un nouvel ennemi.
-
-Le modèle défensif devient donc :
-
-```text
-                 Réflexe
-                    │
-       ┌────────────┼─────────────┐
-       ↓            ↓             ↓
-  Esquive auto   Parade        Roulade
-  probabilité    fenêtre       durée des i-frames
-       │          timing             │
-       └──── Familiarité ────────────┘
-```
-
-Le Réflexe améliore ainsi les automatismes et la tolérance défensive sans supprimer l'importance du joueur.
+Le niveau **50 d'une compétence représente déjà une maîtrise extrêmement élevée / surhumaine**. Les difficultés d'action et l'anti-farming doivent préserver cette signification.
 
 ## 4. Mouvement et esquives
 
@@ -150,7 +113,7 @@ Le saut arrière doit pouvoir :
 - être déclenché par une combinaison d'input dédiée ;
 - propulser le personnage vers l'arrière selon le design final ;
 - être intégré au système d'Endurance ;
-- contribuer à la progression d'Agilité lorsqu'il est utilisé de manière pertinente ;
+- générer une progression de compétence uniquement lorsqu'il correspond à une compétence canonique et que l'action est validée ;
 - interagir avec le combat, la furtivité et les animations ;
 - être soumis aux mêmes contraintes de collision et d'espace que les autres mouvements.
 
@@ -166,7 +129,9 @@ DodgeSystem
 
 ### 4.1 Roulade et i-frames
 
-La roulade possède une fenêtre d'invulnérabilité temporaire, calculée par le `DodgeSystem` à partir de la progression de Réflexe et des paramètres de l'attaque.
+La roulade possède une fenêtre d'invulnérabilité temporaire. Cette protection est une mécanique défensive du `DodgeSystem` et non une caractéristique ou compétence supplémentaire.
+
+La durée exacte de la fenêtre est un paramètre d'équilibrage data-driven. Elle ne doit pas dépendre d'une progression **Réflexe**, puisque Réflexe n'est pas une caractéristique ou compétence canonique actuelle.
 
 Le système doit exposer une fenêtre de protection exploitable par le `CombatResolver` plutôt que d'ajouter un booléen global `IsInvincible` au personnage.
 
@@ -216,9 +181,7 @@ Esquive → évitement spatial via le DodgeSystem, avec i-frames pour la roulade
 
 La parade doit être résolue par le même `CombatResolver` que les autres interactions et produire des événements comme `SuccessfulParry` ou `ParryFailed`.
 
-Une parade réussie ne doit pas être déclenchée automatiquement par le système de Réflexe.
-
-Le système d'esquive automatique du Réflexe utilise le même pipeline de résolution que les esquives manuelles et ne doit pas créer une seconde mécanique de combat incompatible.
+Une parade réussie doit toujours résulter de l'input du joueur et du timing de la compétence **Parade** ; aucun système de Réflexe ne doit la déclencher ou en modifier automatiquement la fenêtre.
 
 Les valeurs finales seront équilibrées pendant le prototype.
 
@@ -334,7 +297,7 @@ Prévoir un système de temps mondial pouvant alimenter cycle jour/nuit, routine
 
 ## 14. Événements mondiaux
 
-Un `WorldEventSystem` doit permettre de diffuser des événements persistants ou temporaires, dont `CreatureKilled`, `FactionDestroyed`, `LocationDestroyed`, `SuccessfulParry`, `ParryFailed` et les événements défensifs nécessaires au suivi de progression.
+Un `WorldEventSystem` doit permettre de diffuser des événements persistants ou temporaires, dont `CreatureKilled`, `FactionDestroyed`, `LocationDestroyed`, `SuccessfulParry`, `ParryFailed` et les événements nécessaires au suivi de progression des compétences canoniques.
 
 ## 15. Sauvegarde et multi-mondes
 
@@ -346,11 +309,13 @@ World Partition est prévu pour le monde ouvert. Les populations hors zone activ
 
 ## 17. Tests
 
-Les systèmes critiques doivent être testables indépendamment du rendu 3D : progression, dégâts, sauvegarde, écologie, persistance, événements, quêtes, Réflexe, esquives, saut arrière, fenêtre de parade, familiarité, et **durée des i-frames de roulade selon le Réflexe**.
+Les systèmes critiques doivent être testables indépendamment du rendu 3D : progression des compétences, progression des caractéristiques, validation anti-farming, classes/voies, dégâts, sauvegarde, écologie, persistance, événements, esquives, saut arrière, fenêtre de parade, familiarité éventuelle de gameplay et durée des i-frames.
 
 ## 18. Ce qui reste volontairement ouvert
 
-Les domaines magiques, familles d'armes, dégâts, courbes de progression, probabilité exacte du Réflexe, durée exacte des i-frames, fenêtre exacte de parade, familiarité, factions, bestiaire, quêtes et valeurs d'équilibrage restent des données de game design à régler pendant les prototypes.
+Les domaines magiques, familles d'armes, dégâts, courbes de progression, durée exacte des i-frames, fenêtre exacte de parade, familiarité, factions, bestiaire, quêtes et valeurs d'équilibrage restent des données de game design à régler pendant les prototypes.
+
+Les conditions exactes des classes fondamentales et de **Déité** restent également à définir. Aucun nom ou seuil de classe non validé ne doit être inventé.
 
 ## 19. Ordre recommandé d'implémentation Unreal
 
@@ -362,15 +327,14 @@ Les domaines magiques, familles d'armes, dégâts, courbes de progression, proba
 5. Weapons + Weapon Mastery
 6. Dodge / Roll / BackwardJump / Crouch / Stealth / Backstab
 7. Parry / Block / Defense reactions
-8. Reflex System + automatic reaction + reflex-scaled i-frames
-9. Inventory + Equipment
-10. AI + Perception
-11. Save/Load + World Persistence
-12. Time + World Events
-13. Ecology + Population Simulation
-14. Factions + Reputation
-15. Quests + Reactive Dialogue
-16. Streaming + Profiling + Optimization
+8. Inventory + Equipment
+9. AI + Perception
+10. Save/Load + World Persistence
+11. Time + World Events
+12. Ecology + Population Simulation
+13. Factions + Reputation
+14. Quests + Reactive Dialogue
+15. Streaming + Profiling + Optimization
 ```
 
 Chaque étape doit produire un prototype testable avant d'augmenter la complexité.
