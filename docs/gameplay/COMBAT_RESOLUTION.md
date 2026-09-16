@@ -159,7 +159,115 @@ Lorsque l'adversaire est largement supérieur, le joueur peut chercher une autre
 
 Ces méthodes permettent de réduire ou de contourner l'avantage de l'adversaire sans introduire de règle artificielle du type « niveau minimum obligatoire ».
 
-## 8. Extension du modèle
+## 8. Attaque contre parade
+
+La Parade représente une interception précise de l'attaque avec une arme ou un outil. Elle repose principalement sur la compétence de Parade, avec l'Agilité et la Perception comme caractéristiques complémentaires.
+
+### 8.1 Score de parade
+
+```text
+P = 0.55 × Parade + 0.30 × Agilité + 0.15 × Perception
+```
+
+- `P` = score défensif utilisé contre l'attaque ;
+- `Parade` = compétence Parade, 0–100 ;
+- `Agilité` = caractéristique Agilité, 0–100 ;
+- `Perception` = caractéristique Perception, 0–100.
+
+### 8.2 Écart et probabilité
+
+```text
+Δ = A − P
+
+P_passer = 5 + 90 / (1 + e^(−Δ / 15))
+```
+
+La probabilité finale est bornée entre **5 % et 95 %**.
+
+Un écart positif favorise l'attaquant ; un écart négatif favorise le défenseur.
+
+## 9. Attaque contre blocage
+
+Le **Blocage** représente une tentative d'arrêter ou d'absorber physiquement une attaque, notamment avec un bouclier, une arme ou un autre moyen défensif approprié.
+
+Contrairement à la Parade, qui repose sur la précision du geste et le timing, le Blocage accorde davantage de poids à la capacité physique à maintenir et absorber le choc. La Force intervient donc directement dans le score de Blocage.
+
+### 9.1 Score de blocage
+
+```text
+B = 0.50 × Blocage + 0.30 × Force + 0.20 × Agilité
+```
+
+- `B` = score défensif utilisé contre l'attaque ;
+- `Blocage` = compétence Blocage, 0–100 ;
+- `Force` = caractéristique Force, 0–100 ;
+- `Agilité` = caractéristique Agilité, 0–100.
+
+### 9.2 Écart entre attaque et blocage
+
+On définit :
+
+```text
+Δ = A − B
+```
+
+- `Δ < 0` : le défenseur possède l'avantage et a davantage de chances d'arrêter l'attaque ;
+- `Δ = 0` : les capacités sont équilibrées ;
+- `Δ > 0` : l'attaquant possède l'avantage et a davantage de chances de traverser le blocage.
+
+### 9.3 Probabilité que l'attaque passe
+
+```text
+P_passer = 5 + 90 / (1 + e^(−Δ / 15))
+```
+
+La valeur finale est bornée entre **5 % et 95 %**.
+
+La même courbe logistique est utilisée afin de conserver une progression cohérente avec l'Esquive et la Parade.
+
+### 9.4 Référence de comportement
+
+| Écart `Δ` | Probabilité approximative que l'attaque passe |
+|---:|---:|
+| -60 | 6,6 % |
+| -40 | 11,1 % |
+| -20 | 23,3 % |
+| -10 | 39,1 % |
+| 0 | 50 % |
+| +10 | 60,9 % |
+| +20 | 76,7 % |
+| +40 | 88,9 % |
+| +60 | 93,4 % |
+
+### 9.5 Différence avec Parade et Esquive
+
+| Défense | Fonction principale | Facteurs complémentaires |
+|---|---|---|
+| Esquive | Éviter complètement l'attaque | Agilité + Perception |
+| Parade | Dévier/intercepter précisément l'attaque | Agilité + Perception |
+| Blocage | Arrêter/absorber physiquement l'attaque | Force + Agilité |
+
+## 10. Combat contre un adversaire très supérieur
+
+Un très grand écart entre les capacités ne crée pas de « niveau requis » artificiel.
+
+Il rend simplement le combat direct progressivement plus défavorable.
+
+Lorsque l'adversaire est largement supérieur, le joueur peut chercher une autre solution :
+
+- piège permettant de l'immobiliser ou de le gêner ;
+- embuscade ;
+- poison ou préparation alchimique ;
+- furtivité ;
+- exploitation du terrain ou de l'environnement ;
+- magie ;
+- aide d'alliés ou de PNJ ;
+- manipulation sociale ;
+- connaissances spécifiques de la cible ou du monde.
+
+Ces méthodes permettent de réduire ou de contourner l'avantage de l'adversaire sans introduire de règle artificielle du type « niveau minimum obligatoire ».
+
+## 11. Extension du modèle
 
 Le même principe d'opposition progressive servira de base aux autres situations de combat :
 
@@ -171,14 +279,16 @@ Le même principe d'opposition progressive servira de base aux autres situations
 
 Les coefficients précis des autres oppositions seront définis séparément afin de ne pas supposer qu'une même caractéristique possède exactement le même poids dans toutes les situations.
 
-## 9. État actuel
+## 12. État actuel
 
-La formule **Attaque ↔ Esquive** est définie comme base numérique du système de combat.
+Les trois oppositions suivantes sont maintenant définies comme base numérique du système de combat :
+
+- **Attaque ↔ Esquive** ;
+- **Attaque ↔ Parade** ;
+- **Attaque ↔ Blocage**.
 
 Restent à définir :
 
-- formule Attaque ↔ Parade ;
-- formule Attaque ↔ Blocage ;
 - formule des dégâts ;
 - influence précise des armes et armures ;
 - interactions avec les capacités spéciales et les techniques débloquées par les compétences ;
