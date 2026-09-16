@@ -2,15 +2,24 @@
 
 **Statut** : APPROUVÉ — conception / architecture
 **Moteur** : Unreal Engine 5.8.1
-**Langage principal** : C++
+**Langage principal** : C++20
 
 ---
 
 ## 1. Objectif
 
-Cette spécification formalise les décisions de gameplay concernant le déplacement, la progression par utilisation, la furtivité, le Backstab, l'écologie dynamique et la persistance irréversible du monde.
+Cette spécification formalise les systèmes de déplacement, furtivité, Backstab, écologie dynamique et persistance du monde.
 
-Ces systèmes sont **spécifiés mais pas encore entièrement implémentés**. Leur architecture doit être prévue avant leur développement afin d'éviter une refonte ultérieure.
+Les règles de progression du joueur ne sont pas redéfinies ici. Elles sont centralisées dans :
+
+1. `specs/CANONICAL_SKILLS.md`
+2. `specs/SKILL_PROGRESSION.md`
+3. `specs/CHARACTERISTIC_PROGRESSION.md`
+4. `specs/PLAYER_PROGRESSION.md`
+
+Cela évite qu'un système secondaire crée ses propres caractéristiques ou compétences.
+
+Ces systèmes sont spécifiés mais pas encore entièrement implémentés.
 
 ---
 
@@ -18,22 +27,30 @@ Ces systèmes sont **spécifiés mais pas encore entièrement implémentés**. L
 
 Le joueur évolue en troisième personne.
 
-Les états de mouvement prévus comprennent :
+Les états de mouvement prévus comprennent notamment :
 
-- Debout
-- Déplacement
-- Accroupi
-- Roulade / esquive
-- Saut
+- debout ;
+- déplacement ;
+- course / sprint ;
+- accroupissement ;
+- roulade / esquive ;
+- saut ;
+- saut arrière ;
+- pas de côté ;
+- franchissement contextuel ;
+- escalade contextuelle ;
+- réception contrôlée ;
+- nage / plongée selon le contexte.
 
 La roulade est une mécanique de gameplay à part entière et non une simple animation. Elle devra intégrer :
 
 - direction basée sur l'input ;
-- coût d'endurance ;
-- fenêtre d'invulnérabilité à équilibrer ;
+- coût éventuel en Endurance ;
+- fenêtre d'invulnérabilité temporaire à équilibrer ;
 - restrictions d'actions pendant l'esquive ;
-- transitions cohérentes avec combat et furtivité ;
-- progression de l'Agilité liée à son utilisation réussie.
+- transitions cohérentes avec combat et furtivité.
+
+La roulade utilise la compétence canonique **Esquive** lorsqu'une action de progression est validée. Elle ne dépend d'aucune caractéristique ou compétence « Réflexe ».
 
 ---
 
@@ -50,16 +67,15 @@ La furtivité n'est pas un booléen. Elle résulte de plusieurs facteurs :
 - luminosité / environnement ;
 - bruit ;
 - terrain ;
-- équipement et compétences (notamment Discrétion) ;
+- équipement ;
+- compétence **Discrétion** ;
 - état de l'ennemi.
 
 Le système de détection est progressif :
 
 `Calme → Soupçon → Recherche → Alerte → Combat`
 
-Les valeurs exactes seront équilibrées pendant le prototype gameplay.
-
-La compétence **Discrétion** module ces facteurs : plus elle est élevée, plus la visibilité et le bruit du joueur diminuent, et plus la détection progressive est retardée.
+La compétence **Discrétion** progresse uniquement à partir d'actions de furtivité pertinentes et validées selon le système canonique.
 
 ---
 
@@ -80,211 +96,51 @@ Les conditions prévues comprennent :
 
 L'architecture doit permettre différentes armes, animations, compétences et effets sans coupler le Backstab à un seul type d'ennemi.
 
-Un Backstab réussi contribue à la progression de la Discrétion.
+Un Backstab réussi peut générer un événement de progression pour **Élimination furtive** ou une autre compétence canonique uniquement si la relation est définie et si la validation de progression l'autorise.
 
 ---
 
-## 5. Progression par utilisation
+## 5. Progression et gameplay
 
-Merge utilise une progression organique pour plusieurs aptitudes fondamentales : les compétences progressent principalement parce que le joueur les utilise réellement.
+Les actions de gameplay produisent des événements de progression lorsqu'elles correspondent à une compétence canonique.
 
-### Endurance
+```text
+Action réussie
+      ↓
+Validation contextuelle
+      ↓
+Compétence canonique
+      ↓
+Progression de compétence
+      ↓
+Caractéristiques liées
+```
 
-L'Endurance progresse progressivement grâce aux activités physiques du joueur, notamment :
+Il n'existe pas de progression directe de « Endurance », « Défense », « Réflexe » ou d'une autre aptitude non présente dans les 45 compétences / 6 caractéristiques canoniques.
 
-- courir ;
-- se battre ;
-- sauter ;
-- effectuer des efforts physiques répétés.
+**Endurance** peut être utilisée comme ressource de gameplay pour les efforts physiques, sans être une caractéristique canonique.
 
-L'Endurance ne doit pas simplement augmenter parce que le joueur gagne un niveau abstrait. Son évolution doit être liée à l'activité physique réellement effectuée.
+**Agilité** ne progresse pas directement parce qu'un mouvement est effectué : elle progresse automatiquement via les compétences liées lorsqu'une progression de compétence validée est générée.
 
-### Agilité
-
-L'Agilité progresse progressivement grâce à l'utilisation de mouvements demandant de la mobilité et du timing, notamment :
-
-- esquiver / rouler ;
-- sauter ;
-- réussir des mouvements d'évitement.
-
-Le système d'esquive est donc une mécanique fondamentale et une source directe de progression de l'Agilité.
-
-### Défense
-
-La Défense progresse progressivement lorsque le joueur subit des dégâts.
-
-L'objectif est de créer une progression cohérente avec l'expérience réelle du personnage face au danger, sans permettre une montée artificielle par des actions sans risque.
-
-Le système devra éviter les abus évidents tels que l'auto-infligement contrôlé de dégâts ou les boucles de farming artificielles.
-
-### Discrétion
-
-La Discrétion progresse avec les actions de furtivité réussies (déplacement non détecté, backstab, infiltration, etc.).
-
-Elle réduit la visibilité, le bruit et la sensibilité à la détection progressive. Voir `specs/PLAYER_PROGRESSION.md` pour le détail.
-
-### Magie
-
-La progression magique est séparée par domaine de magie.
-
-Chaque domaine disposera de sa propre progression et augmentera principalement à force d'utiliser effectivement les capacités appartenant à ce domaine.
-
-Exemple conceptuel :
-
-`Utilisation répétée d'un domaine → maîtrise progressive de ce domaine`
-
-Les domaines de magie sont **encore en cours de définition**. L'architecture doit donc être générique et ne doit pas figer une liste de domaines maintenant.
-
-La progression devra pouvoir supporter plusieurs domaines indépendants sans modifier le code central à chaque ajout d'un nouveau domaine.
-
-### Règle générale
-
-La progression par utilisation doit rester mesurable, équilibrable et persistante. Elle ne doit pas devenir une simple multiplication automatique de statistiques à chaque action.
+Les règles détaillées sont celles des spécifications canoniques de progression.
 
 ---
 
-## 6. Relations entre progression et gameplay
+## 6. Magie
 
-Les aptitudes progressives doivent renforcer les comportements qu'elles récompensent.
+Les domaines magiques progressent par l'utilisation des **sept compétences canoniques de Magie** :
 
-Exemples :
+- Invocation ;
+- Nécromancie ;
+- Contrôle mental ;
+- Magie élémentaire ;
+- Magie physique ;
+- Magie de groupe ;
+- Magie de pacte.
 
-```text
-Course / combat / saut répétés
-        ↓
-    progression Endurance
-        ↓
-    meilleure capacité physique
-```
+Toutes sont liées à **Volonté + Intelligence**, avec Volonté comme caractéristique principale.
 
-```text
-Esquives / sauts réussis
-        ↓
-    progression Agilité
-        ↓
-    mobilité accrue
-```
-
-```text
-Dégâts réellement subis
-        ↓
-    progression Défense
-        ↓
-    amélioration défensive
-```
-
-```text
-Actions furtives réussies / non-détection
-        ↓
-    progression Discrétion
-        ↓
-    furtivité accrue
-```
-
-```text
-Utilisation d'un domaine magique
-        ↓
-    progression de CE domaine
-        ↓
-    maîtrise accrue
-```
-
-Le système doit empêcher une progression incohérente où une action sans rapport ferait progresser une aptitude.
-
----
-
-## 5. Progression par utilisation
-
-Merge utilise une progression organique pour plusieurs aptitudes fondamentales : les compétences progressent principalement parce que le joueur les utilise réellement.
-
-### Endurance
-
-L'Endurance progresse progressivement grâce aux activités physiques du joueur, notamment :
-
-- courir ;
-- se battre ;
-- sauter ;
-- effectuer des efforts physiques répétés.
-
-L'Endurance ne doit pas simplement augmenter parce que le joueur gagne un niveau abstrait. Son évolution doit être liée à l'activité physique réellement effectuée.
-
-### Agilité
-
-L'Agilité progresse progressivement grâce à l'utilisation de mouvements demandant de la mobilité et du timing, notamment :
-
-- esquiver / rouler ;
-- sauter ;
-- réussir des mouvements d'évitement.
-
-Le système d'esquive est donc une mécanique fondamentale et une source directe de progression de l'Agilité.
-
-### Défense
-
-La Défense progresse progressivement lorsque le joueur subit des dégâts.
-
-L'objectif est de créer une progression cohérente avec l'expérience réelle du personnage face au danger, sans permettre une montée artificielle par des actions sans risque.
-
-Le système devra éviter les abus évidents tels que l'auto-infligement contrôlé de dégâts ou les boucles de farming artificielles.
-
-### Magie
-
-La progression magique est séparée par domaine de magie.
-
-Chaque domaine disposera de sa propre progression et augmentera principalement à force d'utiliser effectivement les capacités appartenant à ce domaine.
-
-Exemple conceptuel :
-
-`Utilisation répétée d'un domaine → maîtrise progressive de ce domaine`
-
-Les domaines de magie sont **encore en cours de définition**. L'architecture doit donc être générique et ne doit pas figer une liste de domaines maintenant.
-
-La progression devra pouvoir supporter plusieurs domaines indépendants sans modifier le code central à chaque ajout d'un nouveau domaine.
-
-### Règle générale
-
-La progression par utilisation doit rester mesurable, équilibrable et persistante. Elle ne doit pas devenir une simple multiplication automatique de statistiques à chaque action.
-
----
-
-## 6. Relations entre progression et gameplay
-
-Les aptitudes progressives doivent renforcer les comportements qu'elles récompensent.
-
-Exemples :
-
-```text
-Course / combat / saut répétés
-        ↓
-    progression Endurance
-        ↓
-    meilleure capacité physique
-```
-
-```text
-Esquives / sauts réussis
-        ↓
-    progression Agilité
-        ↓
-    mobilité accrue
-```
-
-```text
-Dégâts réellement subis
-        ↓
-    progression Défense
-        ↓
-    amélioration défensive
-```
-
-```text
-Utilisation d'un domaine magique
-        ↓
-    progression de CE domaine
-        ↓
-    maîtrise accrue
-```
-
-Le système doit empêcher une progression incohérente où une action sans rapport ferait progresser une aptitude.
+Aucun système de progression magique parallèle ne doit être créé.
 
 ---
 
@@ -301,7 +157,9 @@ Chaque espèce peut définir notamment :
 - capacité du territoire ;
 - population minimale / maximale ;
 - mobilité ;
-- relations écologiques.
+- relations écologiques ;
+- territoire principal ;
+- capacité de migration.
 
 ---
 
@@ -311,11 +169,9 @@ Les populations s'influencent mutuellement.
 
 Exemple :
 
-`Hydres → prédation → Sangliers → consommation → Ressources`
+`Prédateurs ↓ → pression de prédation ↓ → proies ↑ → ressources ↓ → reproduction des proies ↓`
 
-Si le joueur élimine une grande partie des Hydres, la pression prédatrice sur les Sangliers diminue. Les Sangliers peuvent alors augmenter jusqu'à ce que d'autres contraintes écologiques deviennent dominantes.
-
-Le système ne doit jamais utiliser une simple conversion linéaire du type « prédateurs -20 % = proies +20 % ».
+Le système ne doit pas utiliser une simple conversion linéaire entre populations.
 
 Il doit prendre en compte autant que possible :
 
@@ -326,7 +182,8 @@ Il doit prendre en compte autant que possible :
 - capacité du territoire ;
 - concurrence ;
 - migration ;
-- actions du joueur.
+- actions du joueur ;
+- saisonnalité et conditions environnementales.
 
 ---
 
@@ -368,9 +225,9 @@ Les actions du joueur peuvent produire des effets indirects.
 
 Exemple :
 
-`Hydres ↓ → Sangliers ↑ → végétation ↓ → ressources ↓ → reproduction des Sangliers ↓ / migration`
+`Prédateurs ↓ → proies ↑ → végétation ↓ → ressources ↓ → reproduction ↓ / migration`
 
-Les systèmes doivent donc permettre des conséquences émergentes sans nécessiter un script spécifique pour chaque événement.
+Les systèmes doivent permettre des conséquences émergentes sans nécessiter un script spécifique pour chaque événement.
 
 ---
 
@@ -380,7 +237,7 @@ La population simulée est distincte des créatures matérialisées dans le mond
 
 Exemple :
 
-`Population simulée : 2 000 Sangliers`
+`Population simulée : 2 000 individus`
 
 ne signifie pas `2 000 Actors Unreal`.
 
@@ -437,16 +294,6 @@ Le joueur doit pouvoir choisir :
 - **Continuer un monde existant** ;
 - **Créer un nouveau monde**.
 
-Exemple :
-
-```text
-World_001
-  état sauvegardé et potentiellement détruit
-
-World_002
-  nouveau monde indépendant
-```
-
 Chaque monde possède son propre état persistant.
 
 Le joueur doit pouvoir revenir dans un ancien monde et retrouver son état antérieur.
@@ -455,102 +302,50 @@ Le joueur doit pouvoir revenir dans un ancien monde et retrouver son état anté
 
 ## 15. Architecture logicielle cible
 
-La conception doit permettre une séparation claire :
+La progression est découplée des systèmes d'action :
 
 ```text
-MergeCharacter
-├── Movement
-│   ├── Standing
-│   ├── Crouching
-│   ├── Rolling
-│   └── Jumping
-├── Progression
-│   ├── Endurance
-│   ├── Agility
-│   ├── Defense
-│   ├── Discretion
-│   └── MagicDomains
-├── Stealth
-│   ├── Visibility
-│   ├── Noise
-│   ├── Detection
-│   └── BackstabEligibility
-└── Combat
-    ├── Attack
-    ├── Dodge / Roll
-    ├── Backstab
-    └── Damage
-
-World Systems
-├── Persistence
-├── Ecology
-├── Species
-├── Population
-├── PredatorPrey
-├── Resources
-├── Migration
-└── Destruction
+Gameplay System
+      ↓
+Validated Progression Event
+      ↓
+ProgressionSystem
+      ↓
+Canonical Skill
+      ↓
+CharacteristicProgression
 ```
 
-La progression doit être découplée des systèmes d'action afin que les événements de gameplay puissent enregistrer leur utilisation sans que chaque système connaisse les détails internes de progression.
+Les systèmes de mouvement, combat, furtivité, magie, survie et montures ne doivent pas créer leurs propres compétences ou caractéristiques cachées.
 
-Exemple conceptuel :
-
-```text
-Action réussie
-    ↓
-Progression Event
-    ↓
-Progression System
-    ↓
-Aptitude concernée
-```
-
-Les systèmes fondamentaux devront être développés en C++ et rester suffisamment découplés pour permettre l'exposition de paramètres de gameplay aux outils éditables d'Unreal lorsque pertinent.
+Les systèmes fondamentaux devront être développés en C++ et rester suffisamment découplés pour permettre l'exposition des paramètres de gameplay aux outils data-driven.
 
 ---
 
-## 16. Règles de conception
+## 16. Tests prioritaires
 
-1. Aucun respawn global artificiel ne doit restaurer l'ancien état du monde.
-2. Une population simulée n'est pas équivalente à un nombre d'Actors Unreal.
-3. Une extinction locale doit être réellement persistante jusqu'à une éventuelle recolonisation naturelle.
-4. Les conséquences du joueur doivent pouvoir modifier l'écosystème indirectement.
-5. Le Backstab doit dépendre de la furtivité et du positionnement.
-6. L'accroupissement doit être intégré au système de furtivité.
-7. La roulade / esquive doit être un état de gameplay et une source de progression de l'Agilité.
-8. L'Endurance doit progresser avec les efforts physiques réels : course, combat, saut et activités comparables.
-9. La Défense doit progresser avec les dégâts réellement subis, avec des protections contre le farming artificiel.
-10. La magie doit progresser indépendamment par domaine, sans figer les domaines avant leur validation.
-11. Les paramètres d'équilibrage ne doivent pas être figés avant le prototype.
-12. Aucun système complexe ne doit être implémenté prématurément simplement pour satisfaire cette spécification.
-10. La Discrétion progresse via les actions de furtivité réussies et module la détection.
-11. La magie doit progresser indépendamment par domaine, sans figer les domaines avant leur validation.
-12. Les paramètres d'équilibrage ne doivent pas être figés avant le prototype.
-13. Aucun système complexe ne doit être implémenté prématurément simplement pour satisfaire cette spécification.
+Les systèmes critiques doivent être testables indépendamment du rendu 3D :
+
+- validation des événements de progression ;
+- progression des compétences canoniques ;
+- progression automatique des caractéristiques ;
+- anti-farming ;
+- détection et furtivité ;
+- Backstab ;
+- combat ;
+- sauvegarde ;
+- écologie ;
+- persistance ;
+- migration ;
+- extinction locale ;
+- simulation hors zone.
 
 ---
 
-## 17. État d'implémentation
+## 17. Ce qui reste volontairement ouvert
 
-| Système | État |
-|---|---|
-| Troisième personne | Fondation existante |
-| Accroupissement | À implémenter |
-| Roulade / esquive | À implémenter |
-| Furtivité | Spécifiée, à prototyper |
-| Détection progressive | Spécifiée, à prototyper |
-| Backstab | Spécifié, à prototyper |
-| Progression Endurance | Spécifiée, à architecturer |
-| Progression Agilité | Spécifiée, à architecturer |
-| Progression Défense | Spécifiée, à architecturer |
-| Progression Discrétion | Spécifiée, à architecturer |
-| Progression par domaines magiques | Spécifiée, domaines à définir |
-| Reproduction des espèces | Spécifiée, à architecturer |
-| Prédateur / proie | Spécifié, à architecturer |
-| Extinction locale | Spécifiée |
-| Monde non régénératif | Règle approuvée |
-| Persistance du monde | Spécifiée, à architecturer |
-| Plusieurs mondes | Spécifié |
+Les valeurs exactes de combat, furtivité, écologie, migration, reproduction, dégâts, survie, catastrophes et contenu restent data-driven et seront équilibrées pendant les prototypes.
 
-**Ce document ne constitue pas une déclaration d'implémentation complète.**
+Les conditions exactes des classes fondamentales et de **Déité** restent également à définir dans la spécification dédiée aux classes.
+
+Aucune nouvelle compétence ou caractéristique ne doit être introduite ici sans mise à jour préalable de `specs/CANONICAL_SKILLS.md`.
