@@ -9,9 +9,14 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Fixed — Consistency (2026-09-16)
+### Fixed — Progression consistency (2026-09-16)
 - Synchronisé `ai/PROJECT_STATE.md` avec le baseline de progression du jour.
-- Aligné `GAME_BIBLE.md` §07 (caractéristiques + compétences) sur le système canonique approuvé (45 skills + 6 caractéristiques 0–20).
+- Aligné `GAME_BIBLE.md` §07 et les systèmes dépendants sur le système canonique approuvé : **45 compétences + 6 caractéristiques**.
+- Supprimé des règles actuelles toute progression indépendante de **Réflexe** ou **Domptage**.
+- Clarifié que **Endurance** reste une ressource de gameplay et n'est pas une caractéristique canonique.
+- Clarifié que les caractéristiques progressent automatiquement à partir de la progression validée des compétences.
+- Clarifié que les classes/voies sont déterminées par le **profil de caractéristiques**, avec notification et révélation du nom lorsqu'une voie devient accessible.
+- Retiré de la documentation actuelle la condition non validée précédemment attribuée à **Déité** ; ses conditions restent à définir dans la future spécification des classes.
 - Corrigé le multiplicateur d'Intelligence dans `specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md` pour l'échelle 0–20 (`0.75 + 0.025 × I`).
 
 ### Added — AI Team Orchestration
@@ -35,13 +40,11 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Architecture conceptuelle de persistance par monde et de plusieurs mondes indépendants.
 - **Saut arrière**, **pas de côté**, franchissement contextuel, escalade contextuelle et réception contrôlée.
 - Coûts d'**Endurance** data-driven pour les principaux efforts physiques : course/sprint, saut, roulade, bond arrière, pas de côté, franchissement et escalade.
-- **Agilité** reliée aux actions de mobilité et **Réflexe** ajouté comme progression distincte de l'Agilité.
-- Réflexe : esquive automatique probabiliste, assistance du timing de parade, i-frames de roulade plus tolérantes et familiarité de combat.
+- **Agilité** reliée aux actions de mobilité uniquement via les compétences canoniques concernées et leur progression validée.
 - **Parade active** : timing précis, `CombatResolver`, attaques parables/non parables et fenêtre de riposte.
 - Système de ciblage intelligent : priorité aux cibles proches, parcours des cibles valides et lock-on compatible mêlée/magie.
 - Système de **groupe de PNJ** et de **magie collective** avec positionnement, synchronisation, mana, compatibilité et interruption.
-- Système de **montures** avec deux voies d'acquisition : achat **exclusivement auprès d'éleveurs** ou **domptage** lorsque l'espèce est compatible.
-- Nouvelle compétence **Domptage**, distincte du Réflexe, de l'Agilité, des maîtrises d'armes et de Médecine.
+- Système de **montures** avec acquisition auprès d'éleveurs ou acquisition naturelle selon les règles propres à l'espèce.
 - Système de confiance/lien avec la monture et persistance de son état.
 - Système aquatique : eau peu profonde, flottaison, nage, plongée, respiration et noyade.
 - Flottabilité influencée par l'équipement : une armure lourde peut faire couler le personnage ou rendre la remontée difficile.
