@@ -1,428 +1,188 @@
 # Merge — Player Progression Specification
 
-**Statut** : APPROUVÉ — conception / architecture
-**Moteur** : Unreal Engine 5.8.1
-**Langage principal** : C++
+**Status:** APPROVED — canonical progression architecture
+**Engine:** Unreal Engine 5.8.1
 
-## 1. Principe
+## 1. Core principle
 
-La progression de Merge est principalement **organique et liée à l'utilisation**. Le personnage améliore une aptitude en pratiquant réellement les actions correspondant à cette aptitude.
+Merge uses **learning by doing**.
 
-Il ne s'agit pas d'un système où toutes les statistiques augmentent uniquement grâce à un niveau global.
+The player does not gain a generic level that distributes points into attributes or skills. Skills improve through meaningful, validated use. The resulting skill progression automatically feeds the linked characteristics.
 
-## 2. Endurance
+After character creation, the player never manually distributes skill or characteristic points again.
 
-L'Endurance progresse progressivement avec les efforts physiques répétés :
+## 2. Canonical character model
 
-- course ;
-- combat ;
-- saut ;
-- esquive / roulade ;
-- autres activités physiques pertinentes à définir.
+Merge has **45 unique skills** and **6 canonical characteristics**.
 
-Le système doit mesurer l'effort utile plutôt que compter aveuglément chaque input.
+### Characteristics
 
-Objectifs :
+- Force
+- Agilité
+- Perception
+- Intelligence
+- Volonté
+- Charisme
 
-- récompenser l'activité physique réelle ;
-- éviter le farming artificiel ;
-- permettre un équilibrage du gain selon l'intensité et la durée de l'effort ;
-- permettre une progression persistante par personnage.
-- course / sprint ;
-- combat ;
-- saut ;
-- roulade / esquive ;
-- bond en arrière ;
-- pas de côté ;
-- franchissement d'obstacles ;
-- escalade ;
-- nage et plongée ;
-- autres activités physiques pertinentes.
+### Skills
 
-Toutes ces actions ont un **coût d'Endurance** lorsqu'elles représentent un effort physique significatif. Les coûts sont data-driven et peuvent varier selon l'action, sa durée, son intensité, l'équipement et le contexte.
+The complete skill list and every skill → characteristic relationship are defined exclusively in:
 
-Une action nécessitant de l'Endurance ne doit normalement pas être exécutée lorsque la ressource est insuffisante. Le comportement exact en cas d'Endurance faible sera équilibré dans le prototype.
+`specs/CANONICAL_SKILLS.md`
 
-### 2.1 Coûts par mouvement
+That document is the source of truth for names, categories and relationships.
+
+## 3. Character creation
+
+At character creation:
+
+- all 45 skills start at **5**;
+- the player receives **30 specialization points**;
+- at most **10 points** may be invested in one skill;
+- therefore the maximum starting value of a skill is **15**.
+
+There is no manual skill/characteristic point allocation after creation.
+
+## 4. Skill progression
+
+A skill progresses when the player performs a relevant action successfully and the progression system validates that the action is meaningful.
+
+The action progression baseline is defined in `specs/SKILL_PROGRESSION.md`.
+
+The system must reject or strongly reduce progression from artificial farming, including repetitive actions performed only to generate progression.
+
+### 4.1 Action progression
+
+The current baseline formula is:
 
 ```text
-Course / Sprint          → coût selon durée et intensité
-Saut                     → coût par impulsion
-Roulade                  → coût par utilisation
-Bond en arrière          → coût par utilisation
-Pas de côté              → coût par utilisation
-Franchissement           → coût selon l'obstacle / effort
-Escalade                 → coût progressif selon durée et effort
-Nage / Plongée           → coût selon durée et intensité
+P = 0.9 × max(0, (D - S + 15) / 50)
+    × 1 / (1 + 0.012 × S)
+    × (0.75 + 0.025 × I)
 ```
 
-Les coûts sont exposés comme données d'équilibrage et ne doivent pas être codés en dur dans les animations ou le personnage.
+Where:
 
-## 3. Agilité
+- `P` = progression gained;
+- `D` = action difficulty;
+- `S` = current skill level;
+- `I` = Intelligence on the 0–20 characteristic scale.
 
-L'Agilité progresse avec les actions nécessitant mobilité, timing et évitement :
+This formula is for **skill progression from an action**. It must not be confused with the characteristic threshold system.
 
-- esquive / roulade réussie ;
-- saut ;
-- autres actions acrobatiques futures.
+## 5. Characteristic progression
 
-Le système d'esquive doit être une véritable mécanique de gameplay :
+Characteristics do not receive points directly from the player.
 
-- direction selon l'input ;
-- coût d'Endurance ;
-- état d'esquive ;
-- fenêtre d'invulnérabilité à équilibrer ;
-- verrouillage ou interruption de certaines actions ;
-- intégration au combat et à la furtivité.
-
-Une esquive ne doit pas automatiquement donner une progression maximale : la progression doit pouvoir distinguer une utilisation significative d'un spam sans danger.
-- bond en arrière ;
-- pas de côté ;
-- franchissement d'obstacles ;
-- escalade / déplacement vertical ;
-- réception contrôlée après une chute ;
-- mobilité aquatique pertinente ;
-- autres actions acrobatiques futures.
-
-Le système de mouvement doit distinguer les actions de mobilité des simples inputs répétés. Une utilisation significative en situation réelle doit être davantage valorisée qu'un spam sans contexte.
-
-### 3.1 Bond en arrière
-
-Le bond en arrière est une action de mouvement et d'esquive distincte de la roulade. Il peut contribuer à l'Agilité lorsqu'il est utilisé dans un contexte pertinent de mouvement ou de combat.
-
-### 3.2 Pas de côté
-
-Le pas de côté est une esquive/mobilité latérale rapide. Il doit respecter l'Endurance, les collisions, l'espace disponible et les règles de récupération.
-
-### 3.3 Réception de chute
-
-Une chute modérée peut être résolue par une réception contrôlée lorsque les conditions sont réunies. La qualité de la réception peut dépendre de l'Agilité et du contexte.
-
-Une chute importante ne doit pas être annulée simplement par une statistique élevée.
-
-## 4. Défense
-
-La Défense progresse avec les dégâts réellement subis par le personnage.
-
-Le système devra comptabiliser l'exposition réelle au danger et empêcher les boucles artificielles de progression, par exemple :
-
-- dégâts auto-infligés volontairement ;
-- sources triviales répétées ;
-- dégâts sans risque ni contexte de combat ;
-- exploitation d'un événement répétable.
-
-Les règles exactes de validation et les paliers de progression seront déterminés lors du prototype.
-
-## 5. Magie
-
-La progression magique est **séparée par domaine de magie**.
-
-Chaque domaine possède sa propre maîtrise :
+Validated skill progression feeds the linked characteristics:
 
 ```text
-Domaine A → maîtrise A
-Domaine B → maîtrise B
-Domaine C → maîtrise C
+CharacteristicProgress += SkillProgress × Weight
 ```
 
-L'utilisation effective d'une capacité appartenant à un domaine fait progresser principalement ce domaine.
+Each characteristic has a hidden progression pool and data-driven thresholds.
 
-Les domaines de magie sont actuellement en cours de définition. Aucun nom, nombre ou liste définitive ne doit être codé en dur dans l'architecture centrale.
-
-L'architecture doit permettre d'ajouter un nouveau domaine par données / configuration lorsque possible, sans réécrire le système de progression.
-
-## 6. Événements de progression
-
-Les systèmes de gameplay doivent pouvoir envoyer des événements de progression génériques au système de progression.
-
-Conceptuellement :
+When a threshold is reached:
 
 ```text
-Course réussie
-    ↓
-ProgressionEvent(PhysicalEffort)
-    ↓
-ProgressionSystem
-    ↓
-Endurance
+while CharacteristicProgress >= Threshold(C + 1):
+    CharacteristicProgress -= Threshold(C + 1)
+    C += 1
 ```
 
+Surplus progression is retained.
+
+The characteristic system must not create a separate arbitrary source of progression that bypasses validated skill progression.
+
+## 6. Characteristic scale
+
+The canonical characteristic scale is **0–20**.
+
+The exact threshold curve and numerical weights are data-driven and belong to the characteristic progression specification.
+
+The six characteristics are not interchangeable with skills. A characteristic represents a broad underlying capability; a skill represents learned practical mastery.
+
+## 7. Magic
+
+Magic is represented by the seven canonical Magic skills listed in `specs/CANONICAL_SKILLS.md`.
+
+For all seven:
+
+**Volonté is the primary characteristic.**
+
+**Intelligence is secondary.**
+
+Volonté represents the mental force required to impose, sustain and control magic. Intelligence represents understanding, learning and technical comprehension of magical principles.
+
+The canonical relationships are therefore:
+
 ```text
-Esquive réussie
-    ↓
-ProgressionEvent(SuccessfulDodge)
-    ↓
-ProgressionSystem
-    ↓
-Agilité
+Invocation          → Volonté + Intelligence
+Nécromancie         → Volonté + Intelligence
+Contrôle mental     → Volonté + Intelligence
+Magie élémentaire   → Volonté + Intelligence
+Magie physique      → Volonté + Intelligence
+Magie de groupe     → Volonté + Intelligence
+Magie de pacte      → Volonté + Intelligence
 ```
 
-```text
-Dégâts réellement subis
-    ↓
-ProgressionEvent(ReceivedDamage)
-    ↓
-ProgressionSystem
-    ↓
-Défense
-Le système comptabilise l'exposition réelle au danger et empêche les boucles artificielles de progression : dégâts auto-infligés volontairement, sources triviales répétées et événements sans risque réel.
+No separate generic magic attribute, magic skill or hidden progression system may be introduced without updating the canonical skill specification first.
 
-## 5. Réflexe de combat
+## 8. Progression validation and anti-farming
 
-Le **Réflexe** est une compétence distincte de l'Agilité. Il représente l'expérience pratique accumulée lors de combats réels et la capacité du personnage à développer des automatismes défensifs.
+Progression events must be validated according to gameplay context.
 
-Le Réflexe progresse avec l'XP/expérience de combat pertinente : combats réellement engagés, attaques rencontrées, situations de danger, survie et répétition de situations variées.
+The system should support data-driven rules for:
 
-### 5.1 Esquive réflexe automatique
+- required context;
+- meaningful success;
+- minimum intensity or difficulty;
+- repetition detection;
+- diminishing returns;
+- frequency limits;
+- prevention of actions performed solely for farming.
 
-Lorsque le personnage est suffisamment expérimenté, le Réflexe lui donne une **probabilité passive d'effectuer automatiquement une esquive** lorsqu'une attaque ennemie va réellement le toucher.
-## 5. Discrétion
+The objective is to reward genuine learning rather than input repetition.
 
-La Discrétion progresse avec les actions de furtivité réussies qui permettent d'éviter d'être repéré par les ennemis.
+## 9. Skill level scale
 
-Sources principales de progression :
+**Skill level 50 already represents extremely high / superhuman mastery.**
 
-- déplacement en furtivité sans détection ;
-- passage à proximité d'ennemis sans déclencher Soupçon / Recherche / Alerte ;
-- backstab réussi ;
-- utilisation prolongée de l'accroupissement en zone hostile sans être vu ;
-- actions furtives significatives (vol, infiltration, etc. à définir).
+Progression balancing must preserve this meaning. Low-difficulty repetitive actions must not make level 50 routine or quickly attainable.
 
-Effets attendus de la maîtrise :
+Higher skill levels require appropriately difficult and varied actions.
 
-- réduction de la visibilité et du bruit générés ;
-- meilleure résistance à la détection progressive ;
-- fenêtre de backstab plus tolérante ;
-- réduction du rayon de détection ennemi contre le joueur.
+## 10. Classes and paths
 
-La progression doit récompenser l'utilisation réelle et réussie de la furtivité, pas le spam d'accroupissement en zone sûre. Les règles anti-abus (contexte, intensité, fréquence) s'appliquent comme pour les autres aptitudes.
+Classes are derived progressively from the player's developing skill/characteristic profile rather than being freely selected as a conventional class at character creation.
 
-La Discrétion s'intègre au système de furtivité déjà spécifié (posture, vitesse, ligne de vue, luminosité, bruit, terrain, équipement, état de l'ennemi).
+When a new path becomes available:
 
-## 6. Magie
+1. the player is notified;
+2. the class name is revealed;
+3. its progression path can then be pursued through gameplay.
 
-L'automatisme utilise le même système de Dodge que l'esquive commandée par le joueur et respecte collisions, espace, Endurance, états, animation, cooldowns et attaques intrinsèquement inévitables.
+Only **fundamental classes** are planned as normal classes.
 
-### 5.2 Parade réflexe
+**Déité** is a special case and is not treated as an ordinary fundamental class.
 
-Le joueur doit toujours effectuer l'input de parade. Le Réflexe améliore uniquement la **tolérance de la fenêtre de timing**.
+Detailed fundamental-class requirements must be defined in the class specification before implementation. They must not be invented elsewhere in the repository.
 
-La familiarité acquise contre certaines familles d'attaques peut améliorer l'anticipation, sans rendre les attaques inconnues triviales.
+## 11. Canonical terminology constraints
 
-### 5.3 Roulade et i-frames
+- **Lutte is not a Merge skill or characteristic.**
+- **Parade** is a canonical skill and belongs exclusively to **Défense / mouvement**.
+- The canonical skill count is **45 unique skills**.
+- The canonical characteristic count is **6**.
+- Do not reintroduce obsolete progression concepts such as Endurance, Défense, Réflexe or Domptage as skills/characteristics unless they are explicitly added to the canonical system.
 
-Le Réflexe influence la durée de la fenêtre temporaire d'invulnérabilité de la roulade :
+## 12. Source-of-truth hierarchy
 
-```text
-Réflexe faible → i-frames courtes
-Réflexe moyen → i-frames plus tolérantes
-Réflexe élevé → i-frames plus longues
-```
+When two documents appear to disagree, use this hierarchy:
 
-Les i-frames ne couvrent jamais automatiquement toute l'animation. Certaines attaques peuvent ignorer cette fenêtre.
+1. `specs/CANONICAL_SKILLS.md` — canonical skills, categories and skill → characteristic relationships.
+2. `specs/SKILL_PROGRESSION.md` — skill action progression and skill-level curve.
+3. `specs/CHARACTERISTIC_PROGRESSION.md` — characteristic progression, weights and thresholds.
+4. Other gameplay documents — implementation/design context only; they must not redefine the canonical progression system.
 
-## 6. Magie
-
-La progression magique est séparée par domaine de magie. Chaque domaine possède sa propre maîtrise et progresse principalement avec son utilisation effective.
-
-Les domaines restent extensibles et ne sont pas figés dans l'architecture centrale.
-## 7. Événements de progression
-
-## 7. Domptage
-
-Le **Domptage** est une compétence distincte destinée à l'acquisition de montures sauvages compatibles.
-
-Elle progresse avec des tentatives de domptage réellement pertinentes et des réussites de domestication.
-
-La progression peut tenir compte :
-- difficulté des créatures affrontées ;
-- diversité des espèces rencontrées ;
-- qualité de l'approche ;
-- répétition de situations variées ;
-- réussites et échecs instructifs.
-
-Le Domptage peut réduire la difficulté effective ou améliorer la fiabilité des tentatives, sans rendre automatiquement domptable une espèce déclarée incompatible.
-
-La familiarité avec une famille d'animaux peut agir comme modificateur secondaire, sans remplacer la compétence générale.
-
-## 8. Médecine
-
-La **Médecine** est une compétence distincte de la magie de soin.
-
-Elle progresse avec des actions médicales réellement pertinentes :
-
-- diagnostic / identification ;
-- premiers secours ;
-- stabilisation ;
-- traitement de blessures ;
-- préparation ou application de traitements ;
-- reconnaissance et traitement de maladies.
-```text
-Action furtive réussie / non-détection
-    ↓
-ProgressionEvent(SuccessfulStealth)
-    ↓
-ProgressionSystem
-    ↓
-Discrétion
-```
-
-```text
-Sort du domaine X utilisé
-    ↓
-ProgressionEvent(MagicUsage, DomainX)
-    ↓
-ProgressionSystem
-    ↓
-Maîtrise DomainX
-```
-
-Cette séparation évite de coupler le système de combat, de mouvement ou de magie aux détails internes des statistiques.
-
-## 7. Anti-abus
-
-Chaque source de progression doit pouvoir définir des règles de validation :
-
-- contexte requis ;
-- fréquence maximale de contribution ;
-- intensité minimale ;
-- rendement décroissant ;
-- répétition détectée ;
-- récompense uniquement pour une action réellement pertinente.
-
-Ces mécanismes seront équilibrés pendant le prototype et ne doivent pas être surconçus maintenant.
-
-## 8. Architecture cible
-
-```text
-La progression doit favoriser les situations réelles et variées plutôt qu'un soin répété sans nécessité.
-
-### 8.1 Diagnostic
-## 8. Anti-abus
-
-Le joueur peut tenter de diagnostiquer lui-même un problème de santé. Une meilleure compétence de Médecine améliore la précision et réduit l'incertitude.
-
-Le diagnostic d'un médecin PNJ reste une voie distincte et peut être plus fiable selon son expertise.
-
-Le jeu ne doit pas révéler automatiquement le nom d'une maladie avant un diagnostic réussi.
-
-## 9. Événements de progression
-
-Les systèmes de gameplay envoient des événements génériques au système de progression :
-
-```text
-PhysicalEffort          → Endurance
-SuccessfulDodge         → Agilité
-BackwardJump            → Agilité
-SideStep                → Agilité
-Jump                    → Agilité / Endurance selon contexte
-ObstacleTraversal       → Agilité / Endurance selon contexte
-Climb                   → Agilité / Endurance selon contexte
-ControlledLanding       → Agilité
-SwimmingMovement        → Endurance / Agilité selon contexte
-ReceivedDamage          → Défense
-CombatExperience        → Réflexe
-MagicUsage(Domain)      → Maîtrise du domaine
-TamingAttempt           → Domptage
-TamingSuccess           → Domptage
-MedicalDiagnosis        → Médecine
-MedicalTreatment        → Médecine
-DiseaseTreatment        → Médecine
-```
-
-Chaque événement doit être validé par des règles anti-farming.
-
-## 10. Anti-abus
-
-Chaque source de progression doit pouvoir définir : contexte requis, fréquence maximale, intensité minimale, rendement décroissant, répétition détectée et récompense uniquement pour une action réellement pertinente.
-
-## 11. Architecture cible
-## 9. Architecture cible
-
-```text
-PlayerMovementSystem
-├── Walk / Run / Sprint
-├── Jump
-├── Crouch
-├── Roll
-├── BackwardJump
-├── SideStep
-├── ObstacleTraversal
-├── ContextualClimb
-├── ControlledLanding
-├── Swimming
-└── Diving
-
-ProgressionSystem
-├── AttributeProgression
-│   ├── Endurance
-│   ├── Agility
-│   └── Defense
-├── CombatExperience
-│   └── Reflex
-│       └── AutomaticDodgeChance
-├── DomptageProgression
-│   ├── Attempt
-│   ├── Success
-│   └── Familiarity
-├── MedicineProgression
-│   ├── Diagnosis
-│   ├── Treatment
-│   └── DiseaseTreatment
-├── PhysicalEffort
-│   └── EnduranceCost[*]
-├── MagicProgression
-│   └── MagicDomainMastery[*]
-│   ├── Defense
-│   └── Discretion
-│
-├── MagicProgression
-│   └── MagicDomainMastery[*]
-│
-├── ProgressionEvent
-│   ├── PhysicalEffort
-│   ├── SuccessfulDodge
-│   ├── Jump
-│   ├── ReceivedDamage
-│   ├── SuccessfulStealth
-│   └── MagicUsage(Domain)
-│
-└── ProgressionRules
-    ├── Validation
-    ├── AntiAbuse
-    └── GainCalculation
-```
-
-Les valeurs de gain, paliers et formules ne sont pas encore définitifs.
-
-## 9. Règles
-## 12. Règles
-Les valeurs de gain, paliers et formules ne sont pas encore définitifs.
-
-## 10. Règles
-
-1. La progression doit être principalement liée à l'utilisation réelle.
-2. Une action doit progresser l'aptitude à laquelle elle correspond.
-3. Les systèmes gameplay ne doivent pas modifier directement toutes les statistiques sans passer par une logique de progression cohérente.
-4. L'Esquive est une mécanique de gameplay obligatoire et une source d'Agilité.
-5. Les domaines magiques restent extensibles et non figés.
-6. Les mécanismes anti-farming sont nécessaires, mais seront équilibrés au prototype.
-7. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
-8. Aucun système complet n'est considéré comme implémenté par cette spécification seule.
-4. La roulade, le bond en arrière et le pas de côté sont des mécaniques d'esquive distinctes.
-5. Les actions physiques significatives — course, saut, roulade, bond en arrière, pas de côté, franchissement, escalade, nage et plongée — ont un coût d'Endurance data-driven.
-6. Une action nécessitant de l'Endurance ne doit normalement pas être exécutée lorsque le coût ne peut pas être payé.
-7. Le Réflexe est distinct de l'Agilité.
-8. Le Réflexe peut déclencher une esquive automatique avec une probabilité limitée lorsque les conditions sont réunies.
-9. Le Réflexe ne déclenche pas automatiquement une parade complète.
-10. Les mouvements d'exploration restent contextuels.
-11. Domptage et Médecine sont des compétences de progression distinctes.
-12. Le diagnostic de maladie n'est pas révélé automatiquement avant une résolution de diagnostic.
-13. Les mécanismes anti-farming sont nécessaires et seront équilibrés au prototype.
-14. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
-4. L'Esquive est une mécanique de gameplay obligatoire et une source d'Agilité.
-5. La Discrétion progresse uniquement via des actions de furtivité réussies et significatives.
-6. Les domaines magiques restent extensibles et non figés.
-7. Les mécanismes anti-farming sont nécessaires, mais seront équilibrés au prototype.
-8. La progression doit être persistante avec le personnage et compatible avec la persistance du monde.
-9. Aucun système complet n'est considéré comme implémenté par cette spécification seule.
+Any future progression change must update the relevant source-of-truth document and then remove obsolete terminology from dependent documents.
