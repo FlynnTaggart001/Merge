@@ -8,7 +8,7 @@
 
 Le jeu fusionne l'exploration libre et l'immersion narrative des The Elder Scrolls (Morrowind, Oblivion, Skyrim) avec l'esthétique gothique et la mécanique des jeux PS1 originaux comme MediEvil.
 
-**Objectif principal** : Créer une expérience RPG riche, immersive et explorable dans une esthétique intentionnellement rétro et gothique, où chaque système sert l'ambiance générale du monde.
+**Objectif principal** : créer une expérience RPG riche, immersive et explorable dans une esthétique intentionnellement rétro et gothique, où chaque système sert l'ambiance générale du monde.
 
 ---
 
@@ -18,7 +18,7 @@ Le jeu fusionne l'exploration libre et l'immersion narrative des The Elder Scrol
 2. **Immersion narrative** - Monde riche en histoire, lore et secrets
 3. **Esthétique rétro intentionnelle** - PS1 low-poly comme choix artistique, pas limitation
 4. **Ambiance gothique** - Sombre, mystérieuse, mais avec moments chaleureux
-5. **Progression par utilisation** - Learning by doing, pas de niveaux artificiels
+5. **Progression par utilisation** - Learning by doing, sans niveau global artificiel
 6. **Conséquences des actions** - Les choix du joueur importent et marquent le monde
 7. **Monde vivant** - PNJ avec routines, cycle jour/nuit, météo, événements
 
@@ -30,7 +30,7 @@ Le jeu fusionne l'exploration libre et l'immersion narrative des The Elder Scrol
 - **Époque** : PS1, années 1996-1999
 - **Inspiration principale** : MediEvil
 - **Technique** : Low poly avec textures pixelisées
-- **Philosophie** : L'esthétique rétro est un choix artistique intentionnel, pas une limitation
+- **Philosophie** : l'esthétique rétro est un choix artistique intentionnel, pas une limitation
 
 ### Caractéristiques Techniques
 - Silhouettes anguleuses et géométriques
@@ -44,11 +44,11 @@ Le jeu fusionne l'exploration libre et l'immersion narrative des The Elder Scrol
 - Nombre de polygones limité par zone
 
 ### Palette de Couleurs
-- **Dominante** : Palette gothique
-- **Couleurs principales** : Violets, bleus nuit, ocres et oranges
+- **Dominante** : palette gothique
+- **Couleurs principales** : violets, bleus nuit, ocres et oranges
 - **Ambiance générale** : Halloween/gothique permanente
-- **Contrastes chauds** : Torches, feux et fenêtres éclairées créent des zones chaleureuses
-- **Contraste froid/chaud** : Base froide + sources chaudes pour ambiance contrastée
+- **Contrastes chauds** : torches, feux et fenêtres éclairées créent des zones chaleureuses
+- **Contraste froid/chaud** : base froide + sources chaudes pour ambiance contrastée
 
 ### Architecture et Environnement
 - Architecture médiévale-fantastique (pas de technologie avancée)
@@ -128,7 +128,7 @@ Détails géographiques, biomes et points d'intérêt majeurs : À COMPLÉTER un
 **Royaume de la Fantaisie**  
 Territoire principal des humains. Cœur « classique » du monde : villages, fermes, forêts, châteaux. La plupart des humains y vivent. Ambiance médiévale-fantastique standard, contrastée par l'esthétique gothique globale du jeu.
 
-**Gouvernement** : monarchie. Le roi est fainéant et ne pense qu'à ses intérêts personnels. L'élite dirigeante ressemble à celle de notre monde : des incapables qui se foutent du peuple. Le pouvoir sert d'abord ceux qui le détiennent.
+**Gouvernement** : monarchie. Le roi est fainéant et ne pense qu'à ses intérêts personnels. L'élite dirigeante ressemble à celle de notre monde : des personnes privilégiant leurs intérêts au détriment du peuple. Le pouvoir sert d'abord ceux qui le détiennent.
 
 **Esclavage** : légal dans le monde des humains.
 
@@ -152,7 +152,7 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 #### Royaume de la Fantaisie (humains)
 - **Forme** : Monarchie
 - **Roi** : fainéant, intérêts personnels uniquement
-- **Élite** : incompétente, indifférente au peuple
+- **Élite** : privilégie ses intérêts au détriment du peuple
 - **Conséquence** : le pouvoir sert d'abord ceux qui le détiennent
 - **Esclavage** : légal
 
@@ -257,7 +257,7 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 
 ### 07.1 Caractéristiques
 
-Six caractéristiques fondamentales (échelle **0–20**) :
+Les six caractéristiques fondamentales de Merge sont :
 
 - **Force**
 - **Agilité**
@@ -266,39 +266,79 @@ Six caractéristiques fondamentales (échelle **0–20**) :
 - **Volonté**
 - **Charisme**
 
-Elles progressent **automatiquement** à partir des compétences liées. Voir `specs/CHARACTERISTIC_PROGRESSION.md` et `docs/gameplay/CHARACTER_ATTRIBUTES.md`.
+La référence numérique actuelle est une échelle **0–20**. Ces caractéristiques ne sont pas réparties manuellement après la création : elles progressent automatiquement à partir de la progression validée des compétences qui leur sont liées.
+
+Relation canonique :
+
+`CharacteristicProgress += SkillProgress × Weight`
+
+Chaque caractéristique possède sa propre réserve de progression et ses seuils. Lorsqu'un seuil est atteint, la caractéristique augmente de +1 et le surplus est conservé.
+
+Les poids, seuils et limites numériques détaillées sont data-driven et ne doivent pas être dupliqués avec des valeurs contradictoires dans d'autres documents.
 
 ### 07.2 Compétences
 
 **45 compétences canoniques** regroupées en 7 catégories :
 
 - Combat (9)
-- Défense / mouvement (6) — *Parade appartient ici, pas au Combat*
+- Défense / mouvement (6) — **Parade appartient ici, pas au Combat**
 - Furtivité (6)
 - Magie (7)
 - Connaissances (7)
 - Artisanat (6)
 - Social / communication (4)
 
-Liste complète + liens caractéristiques : `specs/CANONICAL_SKILLS.md`.
+La liste exacte des 45 compétences et leurs caractéristiques liées est définie exclusivement dans `specs/CANONICAL_SKILLS.md`.
 
-Création : toutes démarrent à **5**. Le joueur dispose de **30 points de spécialisation** (max 10 sur une seule compétence → max départ 15).
+### 07.3 Création du personnage
 
-Après la création : plus aucune répartition manuelle.
+- Les **45 compétences commencent à 5**.
+- Le joueur reçoit **30 points de spécialisation**.
+- Maximum investi dans une seule compétence : **10 points**.
+- Maximum de départ d'une compétence : **15**.
+- Ces points servent à spécialiser le profil initial du personnage.
 
-### 07.3 Progression
+Après la création, le joueur **ne répartit plus manuellement de points de compétence ou de caractéristique**. La progression se fait par le jeu.
 
-- **Système** : Learning by doing (pas de niveaux artificiels)
-- **Mécanique** : action pertinente réussie → progression de la compétence → contribution pondérée aux caractéristiques liées
-- **Formule de base** (voir baseline 2026-09-16) :
-  `P = 0.9 × max(0, (D - S + 15) / 50) × 1 / (1 + 0.012 × S) × (0.75 + 0.025 × I)`
-  où `I` = Intelligence (0–20)
-- **Échelle** : compétence 50 = déjà niveau superhumain
-- **Réinitialisation** : non prévue
+### 07.4 Progression
 
-Référence : `specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md`
+Merge utilise le **Learning by Doing** : une action pertinente et validée fait progresser la compétence concernée. Cette progression validée alimente ensuite automatiquement les caractéristiques liées.
 
-### 07.4 États
+Il n'existe **pas de niveau global de personnage** servant de progression principale.
+
+Pour une action valide, la formule de base actuelle est :
+
+`P = 0.9 × max(0, (D - S + 15) / 50) × 1 / (1 + 0.012 × S) × (0.75 + 0.025 × I)`
+
+avec :
+- `P` = progression gagnée par l'action ;
+- `D` = difficulté de l'action ;
+- `S` = niveau actuel de la compétence ;
+- `I` = Intelligence, sur l'échelle canonique 0–20.
+
+La progression doit être validée selon le contexte de l'action. Les actions répétitives réalisées uniquement pour farmer la progression ne donnent pas la progression normale.
+
+Courbe de seuil actuelle de référence :
+
+`XP_required(level) = 100 × level^1.5`
+
+Cette courbe est une **baseline de tuning**, distincte de la formule de progression par action.
+
+**Échelle de maîtrise : le niveau 50 d'une compétence représente déjà une maîtrise extrêmement élevée / surhumaine.** Les difficultés d'action et l'anti-farming doivent préserver cette signification.
+
+### 07.5 Classes et voies
+
+Les classes ne sont pas choisies comme un simple choix arbitraire indépendant de la progression.
+
+- Le profil du personnage est déterminé par la distribution de ses **caractéristiques**.
+- Une voie / classe devient disponible lorsque le personnage atteint les caractéristiques et seuils requis pour cette voie.
+- Si le personnage n'a pas suffisamment progressé dans les caractéristiques nécessaires, aucune classe correspondante n'est attribuée.
+- Lorsque les conditions d'une nouvelle voie sont atteintes, **le joueur est averti et le nom de la classe est révélé**.
+- Le joueur peut donc continuer à évoluer avant de satisfaire les conditions d'une classe.
+- Le jeu comporte des **classes fondamentales** et une voie **Déité**, qui constitue un cas particulier.
+- Les noms et conditions numériques détaillés des classes restent à définir dans une spécification dédiée ; ils ne doivent pas être inventés ici.
+
+### 07.6 États
 
 - Besoins physiologiques progressifs : faim, hydratation, fatigue/sommeil
 - Maladies régionales (diagnostic diégétique uniquement)
@@ -311,27 +351,28 @@ Détails : `specs/FOOD_MEDICINE_AND_NONMAGICAL_HEALING_SPEC.md` et docs associé
 ## 08. Combat
 
 ### Système de Base
-- **Type** : Combat temps réel (pas de tour par tour)
-- **Perspective** : Vue à la troisième personne
-- **Contrôle** : Libre et direct
+- **Type** : combat temps réel (pas de tour par tour)
+- **Perspective** : vue à la troisième personne
+- **Contrôle** : libre et direct
 
-### Méchaniques Offensives
+### Mécaniques Offensives
 - Attaques légères
 - Attaques lourdes (coûtent plus d'endurance)
 - Combinaisons d'attaques
 - Visée libre possible
 - Différents types de dégâts (tranchant, contondant, perçant, magie)
 
-### Méchaniques Défensives
-- Esquive (dodge) avec timing
-- Parade (block) avec arme/bouclier
+### Mécaniques Défensives
+- **Esquive** avec timing, utilisant la compétence Esquive
+- **Parade** avec arme/bouclier, utilisant la compétence Parade
 - Roulement d'esquive
-- Durabilité du blocage
+- Blocage, utilisant la compétence Blocage selon le contexte
+- Les coûts d'endurance sont des coûts de gameplay et **ne constituent pas une caractéristique ou une compétence canonique supplémentaire**
 
 ### Calcul des Dégâts
 À DÉCIDER :
 - Formule exacte
-- Rôle des attributs
+- Rôle des caractéristiques
 - Rôle de l'arme
 - Rôle de l'armure
 - Critique et précision
@@ -347,10 +388,18 @@ Détails : `specs/FOOD_MEDICINE_AND_NONMAGICAL_HEALING_SPEC.md` et docs associé
 ## 09. Magie
 
 ### Écoles de Magie
-À COMPLÉTER :
-- Nombre d'écoles
-- Noms et thèmes
-- Sorts de chaque école
+
+Les compétences magiques canoniques sont définies dans `specs/CANONICAL_SKILLS.md` :
+
+- Invocation
+- Nécromancie
+- Contrôle mental
+- Magie élémentaire
+- Magie physique
+- Magie de groupe
+- Magie de pacte
+
+Toutes reposent principalement sur la **Volonté**, avec l'**Intelligence** comme caractéristique secondaire. Volonté représente la force mentale, le contrôle et le maintien de la magie ; Intelligence représente la compréhension et l'apprentissage.
 
 ### Ressource Magique
 À DÉCIDER :
@@ -379,6 +428,7 @@ Détails : `specs/FOOD_MEDICINE_AND_NONMAGICAL_HEALING_SPEC.md` et docs associé
 - Détection progressive
 - Indicateurs non intrusifs
 - Backstab conditionnel
+- Progression via les compétences canoniques de Furtivité, notamment Discrétion et Élimination furtive
 
 ---
 
@@ -436,6 +486,8 @@ Détails : `specs/FOOD_MEDICINE_AND_NONMAGICAL_HEALING_SPEC.md` et docs associé
 - Médecine
 - Effets environnementaux
 
+La survie utilise des ressources et états de gameplay ; elle n'introduit pas de nouvelles caractéristiques ou compétences dans le système canonique des 6 caractéristiques / 45 compétences.
+
 ---
 
 ## 16. Système Aquatique
@@ -465,11 +517,13 @@ Détails : `specs/FOOD_MEDICINE_AND_NONMAGICAL_HEALING_SPEC.md` et docs associé
 ## 18. Montures
 
 - Acquisition
-- Domptage
+- Domptage / apprivoisement comme **mécanique de monture**, sans introduire de compétence canonique « Domptage »
 - Confiance
-- Endurance
+- Endurance de la monture comme **ressource ou paramètre de gameplay**, sans introduire de caractéristique canonique « Endurance »
 - Déplacement
 - Interactions avec le terrain
+
+Le système des montures ne modifie pas la liste canonique des **45 compétences** ni des **6 caractéristiques**.
 
 ---
 
@@ -493,6 +547,8 @@ Détails : `specs/FOOD_MEDICINE_AND_NONMAGICAL_HEALING_SPEC.md` et docs associé
 - Indices environnementaux
 - Absence de marqueurs obligatoires
 - Cartes achetables pour faciliter la navigation
+
+Le système de quêtes doit privilégier l'exploration, les dialogues, les indices et la compréhension du monde plutôt qu'un guidage permanent par marqueurs.
 
 ---
 
@@ -524,11 +580,11 @@ Détails : `specs/FOOD_MEDICINE_AND_NONMAGICAL_HEALING_SPEC.md` et docs associé
 
 ## 23. Technique
 
-- Unreal Engine 5.8.1
-- C++20
+- **Unreal Engine 5.8.1**
+- **C++20**
 - Blueprint complémentaire
 - World Partition
-- Mass Framework selon besoin
+- Mass Framework selon besoin et justification
 - Niagara
 - Sauvegarde persistante
 
@@ -553,6 +609,26 @@ Détails : `specs/FOOD_MEDICINE_AND_NONMAGICAL_HEALING_SPEC.md` et docs associé
 - Pas de barrières invisibles
 - Navigation naturelle
 - Systèmes interconnectés
+- **Une seule référence canonique pour les compétences et caractéristiques**
+- **Aucune nouvelle compétence ou caractéristique ne doit être ajoutée implicitement à un système secondaire**
+- **Le système de progression reste Learning by Doing**
+- **Il n'existe pas de niveau global de personnage**
+- **Le niveau 50 d'une compétence représente déjà une maîtrise surhumaine**
+
+---
+
+## Références canoniques
+
+Pour éviter les contradictions, l'ordre de référence pour la progression du personnage est :
+
+1. `specs/CANONICAL_SKILLS.md` — noms, catégories et liens compétences → caractéristiques
+2. `specs/SKILL_PROGRESSION.md` — progression des compétences et formule par action
+3. `specs/CHARACTERISTIC_PROGRESSION.md` — progression automatique des caractéristiques
+4. `specs/PLAYER_PROGRESSION.md` — synthèse du système
+5. `docs/gameplay/CHARACTER_ATTRIBUTES.md` — documentation des caractéristiques
+6. `GAME_BIBLE.md` — vision globale et contexte de design ; ne doit contredire aucune référence canonique ci-dessus
+
+En cas de divergence, les spécifications canoniques ci-dessus priment et la documentation contradictoire doit être corrigée.
 
 ---
 
