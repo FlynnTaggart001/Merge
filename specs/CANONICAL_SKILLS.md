@@ -1,4 +1,4 @@
-# Merge — Canonical Skills
+# Merge — Compétences canoniques
 
 **Statut :** APPROUVÉ — liste canonique
 **Moteur :** Unreal Engine 5.8.1
@@ -22,35 +22,127 @@ Lors de la création du personnage, le joueur distribue les points de caractéri
 
 Règles actuelles de création :
 
-- Chacune des 6 caractéristiques commence à **6**.
+- Chacune des 6 caractéristiques commence à **6/20**.
 - Le joueur reçoit **26 points de caractéristiques supplémentaires** à distribuer librement.
-- Une caractéristique ne peut pas dépasser **14** lors de la création du personnage.
+- Une caractéristique ne peut pas dépasser **14/20** lors de la création du personnage.
 - Le total initial est donc de **62 points** (`6 × 6 + 26`).
 - Aucune caractéristique ne peut être réduite sous sa valeur de base de 6.
 
-### Calcul initial des compétences
+### Conversion mathématique caractéristique → compétence à la création
 
-La direction du système est volontairement **inversée entre la création du personnage et le jeu normal** :
+La création du personnage utilise volontairement le chemin inverse de la progression en jeu :
 
-**Lors de la création du personnage :**
+`Caractéristiques → Compétences`
 
-`Caractéristiques → Compétences initiales`
+Chaque caractéristique est exprimée sur **20** et chaque compétence sur **100 %**.
 
-La valeur initiale de chaque compétence est calculée à partir des caractéristiques liées à cette compétence. La formule mathématique exacte n'est **pas encore finalisée** et doit être définie avant l'implémentation. Elle doit utiliser les liens caractéristiques-compétences canoniques ci-dessous et respecter l'échelle de progression du jeu.
+La conversion canonique est :
 
-**Après la création du personnage :**
+`Pourcentage de compétence = Caractéristique × 4`
+
+Pour une compétence liée à plusieurs caractéristiques, on utilise la moyenne arithmétique des caractéristiques liées :
+
+`Compétence initiale (%) = moyenne(Caractéristiques liées) × 4`
+
+Cette formule donne notamment :
+
+| Caractéristique | Niveau initial correspondant de compétence |
+|---:|---:|
+| 6/20 | 24 % |
+| 7/20 | 28 % |
+| 8/20 | 32 % |
+| 9/20 | 36 % |
+| 10/20 | 40 % |
+| 11/20 | 44 % |
+| 12/20 | 48 % |
+| 13/20 | 52 % |
+| 14/20 | 56 % |
+| 15/20 | 60 % |
+| 16/20 | 64 % |
+| 17/20 | 68 % |
+| 18/20 | 72 % |
+| 19/20 | 76 % |
+| 20/20 | 80 % |
+
+Ainsi, au début de la création, les 6/20 de base donnent **24 %** aux compétences qui dépendent entièrement de cette caractéristique.
+
+Exemple : une compétence liée à **Force + Agilité** avec Force = 14/20 et Agilité = 6/20 commence à :
+
+`((14 + 6) / 2) × 4 = 40 %`
+
+Les points de caractéristiques distribués par le joueur modifient donc directement les valeurs initiales des compétences avant le début du jeu.
+
+### Progression après la création : compétence → caractéristique
+
+Après la création du personnage, le système est inversé :
 
 `Compétences → Caractéristiques`
 
-Le joueur ne distribue pas manuellement de points de compétence ou de caractéristique. Les compétences progressent grâce au **Learning by Doing**, et la progression validée des compétences alimente automatiquement les caractéristiques liées.
+Le joueur ne distribue plus manuellement de points de caractéristique. Les compétences progressent par **Learning by Doing**, et cette progression alimente automatiquement les caractéristiques qui leur sont associées pour la progression.
 
-La formule de création et la formule de progression après la création sont deux systèmes distincts et ne doivent pas être confondus.
+La conversion inverse utilise la même relation mathématique :
 
-**Règle importante de progression :** une caractéristique peut contribuer au calcul d'une compétence sans que cette compétence puisse augmenter cette caractéristique pendant le jeu. Les relations **caractéristique → compétence** utilisées pour le calcul initial n'impliquent **pas automatiquement** une relation inverse **compétence → caractéristique** pour la progression.
+`Caractéristique = moyenne(Compétences contributrices) / 4`
+
+La valeur est limitée au maximum de **20/20** :
+
+`Caractéristique finale = min(20, moyenne(Compétences contributrices) / 4)`
+
+Cela signifie qu'une caractéristique atteint **20/20 lorsque la moyenne cumulée des compétences qui la font progresser atteint au moins 80 %**.
+
+Exemple :
+
+- Compétence A : 79 %
+- Compétence B : 81 %
+- Moyenne : `(79 + 81) / 2 = 80 %`
+- Caractéristique : `80 / 4 = 20/20`
+
+Une compétence individuelle peut donc être inférieure à 80 % sans empêcher la caractéristique d'atteindre 20/20, à condition que les autres compétences contributrices compensent cette valeur.
+
+Autre exemple :
+
+- Compétence A : 70 %
+- Compétence B : 90 %
+- Compétence C : 80 %
+- Compétence D : 80 %
+- Moyenne : `80 %`
+- Caractéristique : `20/20`
+
+### Relation exacte entre les deux systèmes
+
+Les deux conversions sont mathématiquement inverses sur l'échelle normale :
+
+`Caractéristique → Compétence : C × 4 = S`
+
+`Compétences → Caractéristique : moyenne(S) / 4 = C`
+
+La correspondance fondamentale est donc :
+
+`6/20 ↔ 24 %`
+
+`10/20 ↔ 40 %`
+
+`14/20 ↔ 56 %`
+
+`20/20 ↔ 80 %`
+
+Les compétences peuvent continuer à progresser au-delà de 80 % jusqu'à **100 %**. Une fois que la moyenne des compétences contributrices atteint 80 %, la caractéristique est déjà à son plafond de 20/20 et ne dépasse pas cette valeur.
+
+Cette règle permet aux compétences de conserver une progression indépendante jusqu'à 100 %, tout en faisant de **20/20 le plafond des caractéristiques**.
+
+### Important : liens de création et liens de progression
+
+Une caractéristique peut contribuer au calcul initial d'une compétence sans que cette compétence puisse nécessairement augmenter cette caractéristique après la création.
+
+Les relations **caractéristique → compétence** utilisées à la création ne définissent donc pas automatiquement les relations **compétence → caractéristique** utilisées pour la progression.
+
+La liste des compétences qui alimentent réellement chaque caractéristique pendant le jeu doit être définie explicitement dans les données de progression.
+
+Cette distinction permet par exemple à l'**Intimidation** de dépendre de **Charisme + Force** pour son calcul initial, tout en empêchant la progression de l'Intimidation d'augmenter automatiquement la Force.
 
 ## Combat — 9
 
-| Compétence | Caractéristiques |
+| Compétence | Caractéristiques pour le calcul initial |
 |---|---|
 | Épée | Force + Agilité |
 | Hache | Force + Agilité |
@@ -64,7 +156,7 @@ La formule de création et la formule de progression après la création sont de
 
 ## Défense / mouvement — 6
 
-| Compétence | Caractéristiques |
+| Compétence | Caractéristiques pour le calcul initial |
 |---|---|
 | Esquive | Agilité + Perception |
 | Parade | Agilité + Perception |
@@ -77,7 +169,7 @@ La formule de création et la formule de progression après la création sont de
 
 ## Furtivité — 6
 
-| Compétence | Caractéristiques |
+| Compétence | Caractéristiques pour le calcul initial |
 |---|---|
 | Discrétion | Agilité + Perception |
 | Élimination furtive | Agilité + Perception |
@@ -88,7 +180,7 @@ La formule de création et la formule de progression après la création sont de
 
 ## Magie — 7
 
-| Compétence | Caractéristiques |
+| Compétence | Caractéristiques pour le calcul initial |
 |---|---|
 | Invocation | **Volonté + Intelligence** |
 | Nécromancie | **Volonté + Intelligence** |
@@ -102,7 +194,7 @@ La formule de création et la formule de progression après la création sont de
 
 ## Connaissances — 7
 
-| Compétence | Caractéristiques |
+| Compétence | Caractéristiques pour le calcul initial |
 |---|---|
 | Alchimie | Intelligence + Perception |
 | Botanique | Intelligence + Perception |
@@ -114,7 +206,7 @@ La formule de création et la formule de progression après la création sont de
 
 ## Artisanat — 6
 
-| Compétence | Caractéristiques |
+| Compétence | Caractéristiques pour le calcul initial |
 |---|---|
 | Forge | Force + Intelligence |
 | Travail de la matière | Intelligence + Agilité |
@@ -125,14 +217,14 @@ La formule de création et la formule de progression après la création sont de
 
 ## Social / communication — 4
 
-| Compétence | Caractéristiques |
+| Compétence | Caractéristiques pour le calcul initial |
 |---|---|
 | Persuasion | Charisme + Intelligence |
 | Intimidation | **Charisme + Force** |
 | Éloquence | Charisme + Intelligence |
 | Marchandage | Charisme + Intelligence |
 
-**L'Intimidation utilise à la fois le Charisme et la Force pour le calcul de sa valeur initiale lors de la création du personnage. Cependant, augmenter l'Intimidation par le Learning by Doing n'augmente pas automatiquement la Force. La progression de l'Intimidation ne doit pas alimenter la progression de la Force ; la Force ne peut progresser que grâce aux compétences explicitement désignées comme contribuant à sa progression.**
+**L'Intimidation utilise à la fois le Charisme et la Force pour le calcul de sa valeur initiale lors de la création du personnage. Cependant, augmenter l'Intimidation par le Learning by Doing n'augmente pas automatiquement la Force. La progression de l'Intimidation ne doit alimenter la progression de la Force que si elle est explicitement définie comme compétence contributrice de la Force dans les données de progression.**
 
 ## Terminologie canonique
 
@@ -140,19 +232,19 @@ La formule de création et la formule de progression après la création sont de
 - **Parade** est le nom canonique et appartient à **Défense / mouvement**.
 - Aucun nom de compétence manquant ne doit être inventé.
 
-## Relation de progression après la création du personnage
+## Progression et compensation entre compétences
 
-La progression des compétences alimente la progression des caractéristiques :
+Pour chaque caractéristique, seules les compétences explicitement désignées comme contributrices à cette caractéristique sont prises en compte.
 
-`ProgressionCaractéristique += ProgressionCompétence × Weight`
+La progression utilise leur **moyenne arithmétique**. Il n'est donc pas nécessaire que chaque compétence atteigne individuellement le seuil de 80 %.
 
-Chaque caractéristique possède sa propre réserve de progression cachée et son propre seuil. Lorsqu'un seuil est atteint, la caractéristique augmente de +1 et la progression excédentaire est conservée pour le seuil suivant.
+`Moyenne = Somme des niveaux des compétences contributrices / Nombre de compétences contributrices`
 
-Cette progression est automatique. Le joueur ne peut pas attribuer manuellement de points de caractéristiques après la création du personnage.
+`Caractéristique = min(20, Moyenne / 4)`
 
-**Le `Weight` utilisé pour la progression après la création est spécifique à la relation entre chaque compétence et chaque caractéristique. Le fait qu'une caractéristique soit liée à une compétence pour son calcul initial ne signifie pas automatiquement que cette compétence peut faire progresser cette caractéristique après la création.**
+Le système permet ainsi la compensation entre compétences : une compétence à 79 % peut être compensée par une autre à 81 %, donnant une moyenne de 80 % et donc une caractéristique à 20/20.
 
-Cette distinction permet par exemple à l'Intimidation de dépendre de la Force pour son calcul initial, tout en empêchant la progression de l'Intimidation d'augmenter la Force.
+Aucune attribution manuelle de points de caractéristiques n'est possible après la création du personnage.
 
 ## Échelle
 
@@ -166,4 +258,10 @@ Le système doit conserver le cycle suivant :
 
 `Jeu : Compétences → Caractéristiques`
 
-La conversion mathématique utilisée lors de la création reste **À DÉFINIR** et doit être approuvée avant d'être considérée comme une donnée d'implémentation canonique.
+La formule mathématique de création et sa formule inverse de progression sont désormais canoniques :
+
+`Compétence initiale (%) = moyenne(Caractéristiques liées) × 4`
+
+`Caractéristique après progression = min(20, moyenne(Compétences contributrices) / 4)`
+
+Les liens utilisés pour le calcul initial et ceux utilisés pour la progression après création restent deux ensembles de données distincts.
