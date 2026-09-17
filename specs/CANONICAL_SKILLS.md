@@ -3,9 +3,7 @@
 **Status:** APPROVED — canonical list
 **Engine:** Unreal Engine 5.8.1
 
-Merge has **45 unique skills**. All skills start at **5** at character creation. The player receives **30 specialization points**, with a maximum of **10 points invested into one skill**, so the maximum starting value of one skill is **15**.
-
-After character creation, skill and characteristic points are not manually distributed. Skills improve through learning by doing; characteristics improve automatically from linked skill progression.
+Merge has **45 unique skills**.
 
 ## Characteristics
 
@@ -17,6 +15,36 @@ The six canonical characteristics are:
 - Intelligence
 - Volonté
 - Charisme
+
+### Character creation
+
+At character creation, the player distributes characteristic points **manually**. This is the only phase where the player directly allocates characteristic points.
+
+Current creation rules:
+
+- Each of the 6 characteristics starts at **6**.
+- The player receives **26 additional characteristic points** to distribute freely.
+- A characteristic cannot exceed **14** during character creation.
+- Therefore, the total starting characteristic pool is **62 points** (`6 × 6 + 26`).
+- No characteristic can be reduced below its base value of 6.
+
+### Initial skill calculation
+
+The direction of the system is intentionally **reversed between character creation and normal gameplay**:
+
+**At character creation:**
+
+`Characteristics → Initial Skills`
+
+The starting value of every skill is calculated from the characteristic values linked to that skill. The exact mathematical conversion formula is **not yet finalized** and must be defined before implementation. It must use the canonical characteristic links below and respect the game's progression scale.
+
+**After character creation:**
+
+`Skills → Characteristics`
+
+The player does not manually distribute skill or characteristic points. Skills improve through **Learning by Doing**, and validated skill progression feeds the linked characteristics automatically.
+
+The creation formula and the post-creation progression formula are two distinct systems and must not be conflated.
 
 ## Combat — 9
 
@@ -108,7 +136,7 @@ The six canonical characteristics are:
 - **Parade** is the canonical name and belongs to **Défense / mouvement**.
 - No missing skill names may be invented.
 
-## Progression relationship
+## Progression relationship after character creation
 
 Skill progression feeds characteristic progression:
 
@@ -116,6 +144,18 @@ Skill progression feeds characteristic progression:
 
 Each characteristic has its own hidden progression pool and threshold. When a threshold is reached, the characteristic increases by +1 and surplus progression is retained for the next threshold.
 
+This progression is automatic. The player cannot manually assign characteristic points after character creation.
+
 ## Scale
 
-Skill level **50 is already an extremely high / superhuman level of mastery**. Progression balancing must respect this scale.
+Skill level **50 is already an extremely high / superhuman level of mastery**. Both initial skill calculation and progression balancing must respect this scale.
+
+## Design rule
+
+The system must preserve the following lifecycle:
+
+`Character creation: Characteristics → Skills`
+
+`Gameplay: Skills → Characteristics`
+
+The mathematical conversion used at creation remains **TBD** and must be approved before being treated as canonical implementation data.
