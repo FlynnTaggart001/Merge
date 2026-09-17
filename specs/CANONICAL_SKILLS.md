@@ -1,6 +1,6 @@
 # Merge — Compétences canoniques
 
-**Statut :** APPROUVÉ — liste canonique
+**Statut :** APPROUVÉ — liste canonique  
 **Moteur :** Unreal Engine 5.8.1
 
 Merge possède **45 compétences uniques**.
@@ -128,17 +128,30 @@ La correspondance fondamentale est donc :
 
 Les compétences peuvent continuer à progresser au-delà de 80 % jusqu'à **100 %**. Une fois que la moyenne des compétences contributrices atteint 80 %, la caractéristique est déjà à son plafond de 20/20 et ne dépasse pas cette valeur.
 
-Cette règle permet aux compétences de conserver une progression indépendante jusqu'à 100 %, tout en faisant de **20/20 le plafond des caractéristiques**.
-
 ### Important : liens de création et liens de progression
 
-Une caractéristique peut contribuer au calcul initial d'une compétence sans que cette compétence puisse nécessairement augmenter cette caractéristique après la création.
+Les deux types de relations sont volontairement distincts :
 
-Les relations **caractéristique → compétence** utilisées à la création ne définissent donc pas automatiquement les relations **compétence → caractéristique** utilisées pour la progression.
+1. **Liens de création :** quelles caractéristiques déterminent la valeur initiale d'une compétence.
+2. **Liens de progression :** quelles compétences font progresser une caractéristique pendant le jeu.
 
-La liste des compétences qui alimentent réellement chaque caractéristique pendant le jeu doit être définie explicitement dans les données de progression.
+Une compétence peut donc utiliser plusieurs caractéristiques pour être calculée à la création, puis ne faire progresser qu'une seule caractéristique pendant le jeu.
 
-Cette distinction permet par exemple à l'**Intimidation** de dépendre de **Charisme + Force** pour son calcul initial, tout en empêchant la progression de l'Intimidation d'augmenter automatiquement la Force.
+#### Cas canonique : Intimidation
+
+L'**Intimidation** est calculée à la création à partir de **Charisme + Force** :
+
+`Intimidation initiale = moyenne(Charisme, Force) × 4`
+
+Mais après la création, lorsqu'un joueur améliore son **Intimidation** par le **Learning by Doing** :
+
+`Intimidation → Charisme`
+
+`Intimidation ↛ Force`
+
+Autrement dit : **la Force et le Charisme servent tous les deux à déterminer le niveau initial d'Intimidation, mais la progression de l'Intimidation augmente uniquement le Charisme. Elle n'augmente jamais automatiquement la Force.**
+
+Cette distinction est canonique et doit être conservée dans les données de progression du jeu.
 
 ## Combat — 9
 
@@ -224,8 +237,6 @@ Cette distinction permet par exemple à l'**Intimidation** de dépendre de **Cha
 | Éloquence | Charisme + Intelligence |
 | Marchandage | Charisme + Intelligence |
 
-**L'Intimidation utilise à la fois le Charisme et la Force pour le calcul de sa valeur initiale lors de la création du personnage. Cependant, augmenter l'Intimidation par le Learning by Doing n'augmente pas automatiquement la Force. La progression de l'Intimidation ne doit alimenter la progression de la Force que si elle est explicitement définie comme compétence contributrice de la Force dans les données de progression.**
-
 ## Terminologie canonique
 
 - **Lutte n'est pas une compétence ou une caractéristique de Merge.**
@@ -234,7 +245,7 @@ Cette distinction permet par exemple à l'**Intimidation** de dépendre de **Cha
 
 ## Progression et compensation entre compétences
 
-Pour chaque caractéristique, seules les compétences explicitement désignées comme contributrices à cette caractéristique sont prises en compte.
+Pour chaque caractéristique, seules les compétences explicitement désignées comme contributrices à cette caractéristique pendant le jeu sont prises en compte.
 
 La progression utilise leur **moyenne arithmétique**. Il n'est donc pas nécessaire que chaque compétence atteigne individuellement le seuil de 80 %.
 
@@ -243,6 +254,8 @@ La progression utilise leur **moyenne arithmétique**. Il n'est donc pas nécess
 `Caractéristique = min(20, Moyenne / 4)`
 
 Le système permet ainsi la compensation entre compétences : une compétence à 79 % peut être compensée par une autre à 81 %, donnant une moyenne de 80 % et donc une caractéristique à 20/20.
+
+Pour l'Intimidation, la règle de progression est explicitement : **Intimidation contribue au Charisme et ne contribue pas à la Force.**
 
 Aucune attribution manuelle de points de caractéristiques n'est possible après la création du personnage.
 
