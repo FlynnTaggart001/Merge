@@ -1,13 +1,13 @@
 # Merge — Canonical Skills
 
-**Status:** APPROVED — canonical list
-**Engine:** Unreal Engine 5.8.1
+**Statut :** APPROUVÉ — liste canonique
+**Moteur :** Unreal Engine 5.8.1
 
-Merge has **45 unique skills**.
+Merge possède **45 compétences uniques**.
 
-## Characteristics
+## Caractéristiques
 
-The six canonical characteristics are:
+Les six caractéristiques canoniques sont :
 
 - Force
 - Agilité
@@ -16,41 +16,41 @@ The six canonical characteristics are:
 - Volonté
 - Charisme
 
-### Character creation
+### Création du personnage
 
-At character creation, the player distributes characteristic points **manually**. This is the only phase where the player directly allocates characteristic points.
+Lors de la création du personnage, le joueur distribue les points de caractéristiques **manuellement**. C'est la seule phase durant laquelle le joueur attribue directement des points de caractéristiques.
 
-Current creation rules:
+Règles actuelles de création :
 
-- Each of the 6 characteristics starts at **6**.
-- The player receives **26 additional characteristic points** to distribute freely.
-- A characteristic cannot exceed **14** during character creation.
-- Therefore, the total starting characteristic pool is **62 points** (`6 × 6 + 26`).
-- No characteristic can be reduced below its base value of 6.
+- Chacune des 6 caractéristiques commence à **6**.
+- Le joueur reçoit **26 points de caractéristiques supplémentaires** à distribuer librement.
+- Une caractéristique ne peut pas dépasser **14** lors de la création du personnage.
+- Le total initial est donc de **62 points** (`6 × 6 + 26`).
+- Aucune caractéristique ne peut être réduite sous sa valeur de base de 6.
 
-### Initial skill calculation
+### Calcul initial des compétences
 
-The direction of the system is intentionally **reversed between character creation and normal gameplay**:
+La direction du système est volontairement **inversée entre la création du personnage et le jeu normal** :
 
-**At character creation:**
+**Lors de la création du personnage :**
 
-`Characteristics → Initial Skills`
+`Caractéristiques → Compétences initiales`
 
-The starting value of every skill is calculated from the characteristic values linked to that skill. The exact mathematical conversion formula is **not yet finalized** and must be defined before implementation. It must use the canonical characteristic links below and respect the game's progression scale.
+La valeur initiale de chaque compétence est calculée à partir des caractéristiques liées à cette compétence. La formule mathématique exacte n'est **pas encore finalisée** et doit être définie avant l'implémentation. Elle doit utiliser les liens caractéristiques-compétences canoniques ci-dessous et respecter l'échelle de progression du jeu.
 
-**After character creation:**
+**Après la création du personnage :**
 
-`Skills → Characteristics`
+`Compétences → Caractéristiques`
 
-The player does not manually distribute skill or characteristic points. Skills improve through **Learning by Doing**, and validated skill progression feeds the linked characteristics automatically.
+Le joueur ne distribue pas manuellement de points de compétence ou de caractéristique. Les compétences progressent grâce au **Learning by Doing**, et la progression validée des compétences alimente automatiquement les caractéristiques liées.
 
-The creation formula and the post-creation progression formula are two distinct systems and must not be conflated.
+La formule de création et la formule de progression après la création sont deux systèmes distincts et ne doivent pas être confondus.
 
-**Important progression rule:** A characteristic can contribute to the calculation of a skill without that skill being allowed to increase the characteristic during gameplay. Characteristic-to-skill relationships used for initial calculation do **not** automatically imply a reverse skill-to-characteristic progression relationship.
+**Règle importante de progression :** une caractéristique peut contribuer au calcul d'une compétence sans que cette compétence puisse augmenter cette caractéristique pendant le jeu. Les relations **caractéristique → compétence** utilisées pour le calcul initial n'impliquent **pas automatiquement** une relation inverse **compétence → caractéristique** pour la progression.
 
 ## Combat — 9
 
-| Skill | Characteristics |
+| Compétence | Caractéristiques |
 |---|---|
 | Épée | Force + Agilité |
 | Hache | Force + Agilité |
@@ -64,7 +64,7 @@ The creation formula and the post-creation progression formula are two distinct 
 
 ## Défense / mouvement — 6
 
-| Skill | Characteristics |
+| Compétence | Caractéristiques |
 |---|---|
 | Esquive | Agilité + Perception |
 | Parade | Agilité + Perception |
@@ -73,11 +73,11 @@ The creation formula and the post-creation progression formula are two distinct 
 | Escalade | Force + Agilité |
 | Athlétisme | Force + Agilité |
 
-**Parade belongs to Défense / mouvement. It is not a Combat skill.**
+**Parade appartient à Défense / mouvement. Ce n'est pas une compétence de Combat.**
 
 ## Furtivité — 6
 
-| Skill | Characteristics |
+| Compétence | Caractéristiques |
 |---|---|
 | Discrétion | Agilité + Perception |
 | Élimination furtive | Agilité + Perception |
@@ -88,7 +88,7 @@ The creation formula and the post-creation progression formula are two distinct 
 
 ## Magie — 7
 
-| Skill | Characteristics |
+| Compétence | Caractéristiques |
 |---|---|
 | Invocation | **Volonté + Intelligence** |
 | Nécromancie | **Volonté + Intelligence** |
@@ -98,11 +98,11 @@ The creation formula and the post-creation progression formula are two distinct 
 | Magie de groupe | **Volonté + Intelligence** |
 | Magie de pacte | **Volonté + Intelligence** |
 
-**Magic is primarily based on Volonté. Intelligence is secondary and represents understanding/learning rather than the core magical force.** Numeric characteristic weights remain data-driven and are not fixed in this document.
+**La magie repose principalement sur la Volonté. L'Intelligence est secondaire et représente la compréhension et l'apprentissage plutôt que la force magique elle-même.** Les pondérations numériques des caractéristiques restent définies par les données et ne sont pas fixées dans ce document.
 
 ## Connaissances — 7
 
-| Skill | Characteristics |
+| Compétence | Caractéristiques |
 |---|---|
 | Alchimie | Intelligence + Perception |
 | Botanique | Intelligence + Perception |
@@ -114,7 +114,7 @@ The creation formula and the post-creation progression formula are two distinct 
 
 ## Artisanat — 6
 
-| Skill | Characteristics |
+| Compétence | Caractéristiques |
 |---|---|
 | Forge | Force + Intelligence |
 | Travail de la matière | Intelligence + Agilité |
@@ -125,45 +125,45 @@ The creation formula and the post-creation progression formula are two distinct 
 
 ## Social / communication — 4
 
-| Skill | Characteristics |
+| Compétence | Caractéristiques |
 |---|---|
 | Persuasion | Charisme + Intelligence |
 | Intimidation | **Charisme + Force** |
 | Éloquence | Charisme + Intelligence |
 | Marchandage | Charisme + Intelligence |
 
-**Intimidation uses both Charisme and Force for its skill calculation at character creation. However, increasing Intimidation through Learning by Doing does not increase Force automatically. The Intimidation skill-to-characteristic progression must not feed Force; Force can only be increased by skills explicitly designated as contributing to Force progression.**
+**L'Intimidation utilise à la fois le Charisme et la Force pour le calcul de sa valeur initiale lors de la création du personnage. Cependant, augmenter l'Intimidation par le Learning by Doing n'augmente pas automatiquement la Force. La progression de l'Intimidation ne doit pas alimenter la progression de la Force ; la Force ne peut progresser que grâce aux compétences explicitement désignées comme contribuant à sa progression.**
 
-## Canonical terminology
+## Terminologie canonique
 
-- **Lutte is not a Merge skill or characteristic.**
-- **Parade** is the canonical name and belongs to **Défense / mouvement**.
-- No missing skill names may be invented.
+- **Lutte n'est pas une compétence ou une caractéristique de Merge.**
+- **Parade** est le nom canonique et appartient à **Défense / mouvement**.
+- Aucun nom de compétence manquant ne doit être inventé.
 
-## Progression relationship after character creation
+## Relation de progression après la création du personnage
 
-Skill progression feeds characteristic progression:
+La progression des compétences alimente la progression des caractéristiques :
 
-`CharacteristicProgress += SkillProgress × Weight`
+`ProgressionCaractéristique += ProgressionCompétence × Weight`
 
-Each characteristic has its own hidden progression pool and threshold. When a threshold is reached, the characteristic increases by +1 and surplus progression is retained for the next threshold.
+Chaque caractéristique possède sa propre réserve de progression cachée et son propre seuil. Lorsqu'un seuil est atteint, la caractéristique augmente de +1 et la progression excédentaire est conservée pour le seuil suivant.
 
-This progression is automatic. The player cannot manually assign characteristic points after character creation.
+Cette progression est automatique. Le joueur ne peut pas attribuer manuellement de points de caractéristiques après la création du personnage.
 
-**The `Weight` used for post-creation progression is skill-to-characteristic specific. A characteristic listed for a skill's initial calculation is not automatically a valid target for post-creation progression.**
+**Le `Weight` utilisé pour la progression après la création est spécifique à la relation entre chaque compétence et chaque caractéristique. Le fait qu'une caractéristique soit liée à une compétence pour son calcul initial ne signifie pas automatiquement que cette compétence peut faire progresser cette caractéristique après la création.**
 
-This distinction allows a skill such as Intimidation to depend on Force when calculating its initial value, while preventing Intimidation progression from increasing Force.
+Cette distinction permet par exemple à l'Intimidation de dépendre de la Force pour son calcul initial, tout en empêchant la progression de l'Intimidation d'augmenter la Force.
 
-## Scale
+## Échelle
 
-Skill level **50 is already an extremely high / superhuman level of mastery**. Both initial skill calculation and progression balancing must respect this scale.
+Le niveau de compétence **50 correspond déjà à un niveau de maîtrise extrêmement élevé / surhumain**. Le calcul initial des compétences comme leur progression doivent respecter cette échelle.
 
-## Design rule
+## Règle de conception
 
-The system must preserve the following lifecycle:
+Le système doit conserver le cycle suivant :
 
-`Character creation: Characteristics → Skills`
+`Création du personnage : Caractéristiques → Compétences`
 
-`Gameplay: Skills → Characteristics`
+`Jeu : Compétences → Caractéristiques`
 
-The mathematical conversion used at creation remains **TBD** and must be approved before being treated as canonical implementation data.
+La conversion mathématique utilisée lors de la création reste **À DÉFINIR** et doit être approuvée avant d'être considérée comme une donnée d'implémentation canonique.
