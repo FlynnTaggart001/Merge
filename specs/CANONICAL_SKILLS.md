@@ -46,6 +46,8 @@ The player does not manually distribute skill or characteristic points. Skills i
 
 The creation formula and the post-creation progression formula are two distinct systems and must not be conflated.
 
+**Important progression rule:** A characteristic can contribute to the calculation of a skill without that skill being allowed to increase the characteristic during gameplay. Characteristic-to-skill relationships used for initial calculation do **not** automatically imply a reverse skill-to-characteristic progression relationship.
+
 ## Combat — 9
 
 | Skill | Characteristics |
@@ -126,11 +128,11 @@ The creation formula and the post-creation progression formula are two distinct 
 | Skill | Characteristics |
 |---|---|
 | Persuasion | Charisme + Intelligence |
-| Intimidation | **Charisme** |
+| Intimidation | **Charisme + Force** |
 | Éloquence | Charisme + Intelligence |
 | Marchandage | Charisme + Intelligence |
 
-**Intimidation is based on Charisme. Force no longer contributes to its characteristic linkage.**
+**Intimidation uses both Charisme and Force for its skill calculation at character creation. However, increasing Intimidation through Learning by Doing does not increase Force automatically. The Intimidation skill-to-characteristic progression must not feed Force; Force can only be increased by skills explicitly designated as contributing to Force progression.**
 
 ## Canonical terminology
 
@@ -147,6 +149,10 @@ Skill progression feeds characteristic progression:
 Each characteristic has its own hidden progression pool and threshold. When a threshold is reached, the characteristic increases by +1 and surplus progression is retained for the next threshold.
 
 This progression is automatic. The player cannot manually assign characteristic points after character creation.
+
+**The `Weight` used for post-creation progression is skill-to-characteristic specific. A characteristic listed for a skill's initial calculation is not automatically a valid target for post-creation progression.**
+
+This distinction allows a skill such as Intimidation to depend on Force when calculating its initial value, while preventing Intimidation progression from increasing Force.
 
 ## Scale
 
