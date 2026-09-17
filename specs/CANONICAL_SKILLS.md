@@ -126,9 +126,11 @@ The creation formula and the post-creation progression formula are two distinct 
 | Skill | Characteristics |
 |---|---|
 | Persuasion | Charisme + Intelligence |
-| Intimidation | Charisme + Force |
+| Intimidation | **Charisme** |
 | Éloquence | Charisme + Intelligence |
 | Marchandage | Charisme + Intelligence |
+
+**Intimidation is based on Charisme. Force no longer contributes to its characteristic linkage.**
 
 ## Canonical terminology
 
