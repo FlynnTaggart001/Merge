@@ -192,23 +192,48 @@ Escorter Samiu en sécurité jusqu'au Royaume Squelette.
 
 ## Q-005 — Devenir noble
 
-**Type :** Quête sociale / progression de statut  
-**Région :** Royaume de la Fantaisie (principale)  
-**Statut :** Conception en cours
+**Type :** Quête sociale / choix moral / progression de statut  
+**Région :** Royaume de la Fantaisie  
+**Statut :** Conception validée  
+**Personnage central :** Un noble influent et sincère (nom à définir)
 
 ### Synopsis
 
-Le joueur peut tenter d'obtenir un titre de noblesse dans le Royaume de la Fantaisie.
+Un noble gagne progressivement en influence grâce à sa popularité auprès du peuple et au ralliement d’autres nobles ou marchands. Ses actions restent entièrement légales, mais elles deviennent gênantes pour le roi.  
+Le joueur est celui qui annonce cette montée en puissance au roi.
 
-### Objectif
+### Point de départ
 
-Acquérir un statut de noble (par service, richesse, mariage, intrigue ou reconnaissance royale).
+Le joueur découvre ou suit la montée en influence du noble (observation, rumeurs, contacts à la cour ou parmi le peuple).  
+Rien d’illégal n’est commis par le noble.
 
-### Notes
+### Déroulement principal
 
-- Doit respecter le système de réputation, factions et conséquences persistantes.
-- Plusieurs voies possibles (à développer).
-- Impact durable sur les interactions avec l'élite, les autorités et le peuple.
+1. Le joueur rapporte au roi la montée en influence du noble.
+2. Le roi, vexé et inquiet, propose au joueur d’éliminer ce noble.
+3. En échange, le joueur recevra le titre et la place du noble.
+
+**Note :** le roi n’avait pas envoyé d’assassins plus tôt uniquement parce qu’il ne voulait pas les payer davantage.
+
+### Options principales
+
+**Option A — Accepter**  
+Le joueur élimine le noble.  
+→ Il obtient le titre de noblesse et les droits associés.
+
+**Option B — Refuser**  
+Le roi envoie des assassins pour tuer **le joueur et le noble**.
+
+### Conséquences
+
+- **Accepter :** réputation positive auprès du roi et de l’élite, négative auprès du peuple et des partisans du noble. Impact durable sur le statut social du joueur.
+- **Refuser :** le joueur et le noble deviennent des cibles prioritaires des assassins royaux. La situation peut évoluer selon les actions du joueur (fuite, protection du noble, confrontation, etc.).
+
+### Notes de conception
+
+- Le noble doit rester crédible et relativement sympathique pour que le choix moral ait du poids.
+- Le titre obtenu doit avoir des conséquences persistantes (accès, interactions, réputation, droits).
+- Plusieurs méthodes d’élimination possibles (directe, manipulation, accident arrangé, etc.).
 
 ---
 
