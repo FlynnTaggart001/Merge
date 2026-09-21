@@ -190,6 +190,28 @@ Escorter Samiu en sécurité jusqu'au Royaume Squelette.
 
 ---
 
+## Q-005 — Devenir noble
+
+**Type :** Quête sociale / progression de statut  
+**Région :** Royaume de la Fantaisie (principale)  
+**Statut :** Conception en cours
+
+### Synopsis
+
+Le joueur peut tenter d'obtenir un titre de noblesse dans le Royaume de la Fantaisie.
+
+### Objectif
+
+Acquérir un statut de noble (par service, richesse, mariage, intrigue ou reconnaissance royale).
+
+### Notes
+
+- Doit respecter le système de réputation, factions et conséquences persistantes.
+- Plusieurs voies possibles (à développer).
+- Impact durable sur les interactions avec l'élite, les autorités et le peuple.
+
+---
+
 ## Notes de conception générales
 
 - Le joueur ne doit jamais recevoir immédiatement une quête intitulée « Trouver le tueur en série ».
