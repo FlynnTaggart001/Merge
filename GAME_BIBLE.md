@@ -80,7 +80,7 @@ Le monde est divisé en **trois grands royaumes** distincts mais interconnectés
 |---|---|---|
 | Royaume de la Fantaisie | Humains (majorité) | Fantaisie classique, villages, forêts, châteaux |
 | Royaume de la Dark Fantaisie | Squelettes (principalement) | Gothique, nécropole, ossements, cimetières |
-| Royaume de la Light Fantaisie | Êtres de magie (principalement) | Magie pure, lumières, créatures éthérées |
+| Royaume de la Light Fantaisie | **Kima Vé** (principalement) | Magie pure, lumières, créatures éthérées |
 
 ### Échelle et Géographie
 - **Surface totale de la carte : 40 km²**
@@ -101,7 +101,7 @@ Les limites extérieures du monde ne sont pas matérialisées par des barrières
 ### Régions Principales
 - **Royaume de la Fantaisie** : zone de départ probable, majorité humaine, architecture médiévale-fantastique classique.
 - **Royaume de la Dark Fantaisie** : peuplé principalement de squelettes, ambiance nécropolitaine, cryptes, ossuaires.
-- **Royaume de la Light Fantaisie** : peuplé principalement d'êtres de magie, architecture et environnement saturés de magie pure.
+- **Royaume de la Light Fantaisie** : peuplé principalement de **Kima Vé**, architecture et environnement saturés de magie pure.
 
 Détails géographiques, biomes et points d'intérêt majeurs : À COMPLÉTER une fois les noms et frontières stabilisés.
 
@@ -143,9 +143,9 @@ Il considère son peuple comme ses potes. Beaucoup moins égoïste que le roi de
 Le roi est le premier des squelettes vivants et le premier des **Nécromentiens**. C'est lui qui a découvert le sort permettant de devenir squelette après la vie humaine. Les squelettes sont principalement d'anciens humains qui se sont transformés grâce à ce sort *avant* leur mort naturelle.
 
 **Royaume de la Light Fantaisie**  
-Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, environnement saturé d'énergie magique. Ambiance plus étrange et lumineuse, en contraste avec le gothique dominant.
+Territoire dominé par les **Kima Vé**. Magie pure, créatures éthérées, environnement saturé d'énergie magique. Ambiance plus étrange et lumineuse, en contraste avec le gothique dominant.
 
-**Gouvernement** : conscience collective. Seul le gouvernement forme cette conscience unifiée. Le peuple appartient à la même espèce mais reste indépendant — chaque individu a sa propre volonté. La conscience collective gouverne, elle ne fusionne pas la population.
+**Gouvernement** : le **Kiyeka** (conscience collective). Seul le gouvernement forme cette conscience unifiée. Le peuple appartient à la même espèce mais reste indépendant — chaque individu a sa propre volonté. Le Kiyeka gouverne, il ne fusionne pas la population.
 
 ### Factions et Pouvoirs
 
@@ -163,10 +163,10 @@ Territoire dominé par des êtres de magie. Magie pure, créatures éthérées, 
 - **Statut** : premier des squelettes vivants, premier des Nécromentiens
 - **Lore clé** : a découvert le sort de transformation en squelette (avant mort naturelle)
 
-#### Royaume de la Light Fantaisie
-- **Forme** : Conscience collective (gouvernement uniquement)
-- **Peuple** : même espèce, individus indépendants
-- **Implication** : le gouvernement agit comme une entité unique, le peuple non
+#### Royaume de la Light Fantaisie (Kima Vé)
+- **Forme** : **Kiyeka** (conscience collective, gouvernement uniquement)
+- **Peuple** : Kima Vé, individus indépendants
+- **Implication** : le Kiyeka agit comme une entité unique, le peuple non
 
 ### Quartiers sensibles (rivaux)
 
@@ -204,7 +204,7 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 #### Religion des squelettes / Nécromentiens
 À COMPLÉTER
 
-#### Religion des êtres de magie (Light Fantaisie)
+#### Religion des Kima Vé (Light Fantaisie)
 À COMPLÉTER
 
 #### Religion des Gork (si distincte)
@@ -223,11 +223,11 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 - Très hostiles aux humains
 - Localisation, culture détaillée, rapports aux autres espèces : À COMPLÉTER
 
-#### Les Êtres de Magie (Light Fantaisie)
+#### Les Kima Vé (Light Fantaisie)
 - **Apparence** : silhouettes lumineuses
 - **Couleur du corps** : change selon leur pouvoir dans la société
 - **Aura** : glow autour d'eux, indique leur état mental
-- Individus indépendants (seule la conscience collective gouverne)
+- Individus indépendants (seul le **Kiyeka** gouverne)
 
 À COMPLÉTER pour les humains.
 
@@ -470,166 +470,4 @@ Toutes reposent principalement sur la **Volonté**, avec l'**Intelligence** comm
 - Destruction persistante
 - PNJ morts définitivement
 - Ressources consommées non régénérées artificiellement
-- État écologique sauvegardé
-- Création de nouveaux mondes indépendants
-- Possibilité de continuer dans un monde fortement détruit
-
----
-
-## 15. Survie
-
-- Faim
-- Hydratation
-- Fatigue
-- Sommeil
-- Maladies
-- Médecine
-- Effets environnementaux
-
-La survie utilise des ressources et états de gameplay ; elle n'introduit pas de nouvelles caractéristiques ou compétences dans le système canonique des 6 caractéristiques / 45 compétences.
-
----
-
-## 16. Système Aquatique
-
-- Eau peu profonde
-- Nage
-- Plongée
-- Respiration
-- Noyade
-
----
-
-## 17. Catastrophes Naturelles
-
-- Tremblements de terre
-- Tornades
-- Feux de forêt
-- Foudre
-- Pluies torrentielles
-- Inondations
-- Glissements de terrain
-- Volcan
-- Coulées de lave
-
----
-
-## 18. Montures
-
-- Acquisition
-- Domptage / apprivoisement comme **mécanique de monture**, sans introduire de compétence canonique « Domptage »
-- Confiance
-- Endurance de la monture comme **ressource ou paramètre de gameplay**, sans introduire de caractéristique canonique « Endurance »
-- Déplacement
-- Interactions avec le terrain
-
-Le système des montures ne modifie pas la liste canonique des **45 compétences** ni des **6 caractéristiques**.
-
----
-
-## 19. Économie
-
-À COMPLÉTER :
-- Monnaies par peuple
-- Commerce
-- Prix
-- Ressources
-- Contrebande
-- Commerce inter-royaumes
-
----
-
-## 20. Quêtes
-
-- Quêtes à embranchements
-- Solutions multiples
-- Conséquences persistantes
-- Indices environnementaux
-- Absence de marqueurs obligatoires
-- Cartes achetables pour faciliter la navigation
-
-Le système de quêtes doit privilégier l'exploration, les dialogues, les indices et la compréhension du monde plutôt qu'un guidage permanent par marqueurs.
-
----
-
-## 21. Direction du Monde
-
-À COMPLÉTER :
-- Noms définitifs des trois royaumes
-- Répartition géographique des royaumes dans les 40 km²
-- Biomes détaillés
-- Villes et villages
-- Donjons
-- Routes
-- Points d'intérêt
-- Frontières internes
-
----
-
-## 22. Audio
-
-À COMPLÉTER :
-- Musique
-- Ambiances
-- Bruitages
-- Voix
-- Sons de créatures
-- Sons environnementaux
-
----
-
-## 23. Technique
-
-- **Unreal Engine 5.8.1**
-- **C++20**
-- Blueprint complémentaire
-- World Partition
-- Mass Framework selon besoin et justification
-- Niagara
-- Sauvegarde persistante
-
----
-
-## 24. Performance
-
-- Streaming World Partition
-- Simulation hors zone probabiliste
-- Budget CPU/GPU/mémoire
-- LOD
-- Optimisation IA
-- Optimisation VFX
-
----
-
-## 25. Principes de Design
-
-- Liberté du joueur
-- Conséquences durables
-- Monde cohérent
-- Pas de barrières invisibles
-- Navigation naturelle
-- Systèmes interconnectés
-- **Une seule référence canonique pour les compétences et caractéristiques**
-- **Aucune nouvelle compétence ou caractéristique ne doit être ajoutée implicitement à un système secondaire**
-- **Le système de progression reste Learning by Doing**
-- **Il n'existe pas de niveau global de personnage**
-- **Le niveau 50 d'une compétence représente déjà une maîtrise surhumaine**
-
----
-
-## Références canoniques
-
-Pour éviter les contradictions, l'ordre de référence pour la progression du personnage est :
-
-1. `specs/CANONICAL_SKILLS.md` — noms, catégories et liens compétences → caractéristiques
-2. `specs/SKILL_PROGRESSION.md` — progression des compétences et formule par action
-3. `specs/CHARACTERISTIC_PROGRESSION.md` — progression automatique des caractéristiques
-4. `specs/PLAYER_PROGRESSION.md` — synthèse du système
-5. `docs/gameplay/CHARACTER_ATTRIBUTES.md` — documentation des caractéristiques
-6. `GAME_BIBLE.md` — vision globale et contexte de design ; ne doit contredire aucune référence canonique ci-dessus
-
-En cas de divergence, les spécifications canoniques ci-dessus priment et la documentation contradictoire doit être corrigée.
-
----
-
-**Dernière mise à jour : 2026-09-16**
+- État du monde sauvegardé
