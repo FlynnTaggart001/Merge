@@ -283,14 +283,14 @@ Une partie des Kima Vé commence à se cristalliser et devient progressivement i
 
 Les Kima Vé parviennent à soigner temporairement l'esprit de l'entité grâce à leur affinité avec les esprits, mais celui-ci se détériore de nouveau. Ils en déduisent que quelque chose dans le monde physique continue de l'endommager. Ils découvrent alors l'hypothèse qu'elle possède un corps physique, alors qu'ils ignoraient jusque-là son existence.
 
-Le joueur découvre que ce corps est **le Wise Tree**.
+Le joueur découvre que ce corps est **le Wise Tree**, appelé **Sylva**.
 
 ### Déroulement
 
 1. Des Kima Vé commencent à se cristalliser et deviennent immobiles.
 2. Les Kima Vé soignent l'esprit de leur entité, mais celui-ci se dégrade à nouveau.
 3. Ils formulent l'hypothèse que l'entité possède un corps physique.
-4. Le joueur enquête et découvre que **le Wise Tree est le corps physique de l'entité**.
+4. Le joueur enquête et découvre que **le Wise Tree, appelé Sylva, est le corps physique de l'entité**.
 5. Les Kima Vé apprennent cette révélation du joueur.
 6. Le joueur découvre que l'eau entourant le Wise Tree est devenue toxique pour lui.
 7. La pollution provient d'une tribu Gork récemment installée à proximité, qui déverse tous ses déchets dans l'eau.
@@ -325,4 +325,4 @@ Le joueur peut l'utiliser en combat pour relier simultanément jusqu'à **5 âme
 - Les Kima Vé ne sont pas mentalement corrompus et leur couleur indique déjà leur état mental ; la cristallisation n'est donc pas un indicateur psychologique.
 - Les Kima Vé peuvent interagir physiquement normalement avec le monde. Leur particularité est leur affinité supérieure avec les esprits.
 - Le joueur est nécessaire principalement pour agir sur le problème physique que les Kima Vé n'avaient pas identifié.
-- Le Wise Tree est le nom utilisé dans le canon actuel ; aucun autre nom propre n'est établi pour l'entité.
+- Le Wise Tree est appelé **Sylva** ; ce nom est désormais établi dans le canon.
