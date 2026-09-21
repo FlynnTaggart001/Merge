@@ -233,6 +233,18 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 - **Aura (glow)** :
   - Pour les individus ordinaires : indique leur état mental personnel
   - Pour les membres du **Kiyeka** : l’aura reflète **toujours l’état mental du gouvernement** (le Kiyeka)
+
+  **Émotions positives et couleurs d’aura :**
+  - Sérénité → Bleu foncé
+  - Joie → Jaune (différent de l’or)
+  - Fierté → Violet
+  - Contentement → Blanc
+  - Espoir → Vert
+  - Bienveillance → Rose bonbon
+  - Exaltation → Rubis
+  - Confiance → Orange
+  - Gratitude → Gris
+
 - Individus indépendants (seul le **Kiyeka** gouverne)
 
 À COMPLÉTER pour les humains.
