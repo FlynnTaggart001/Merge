@@ -264,3 +264,64 @@ Détails complets dans `specs/NOBLE_LAND_AND_DOMAIN_MANAGEMENT.md`.
 - **La mort de Charon met définitivement fin à son activité criminelle. Son réseau personnel ne continue pas après sa mort.**
 - Les conséquences des décisions doivent être persistantes et compatibles avec le système de monde non régénératif de Merge.
 - Les squelettes vendus par Charon doivent pouvoir être reliés à leurs anciennes identités par des indices, objets ou souvenirs selon les mécaniques retenues.
+
+
+---
+
+## Q-006 — Le corps de l'entité
+
+**Type :** Quête narrative / exploration / combat / événement mondial  
+**Peuple central :** Kima Vé  
+**Statut :** Conception validée  
+**Récompense :** Choix exclusif entre devenir Kima Vé ou recevoir l'Artefact de Liaison
+
+### Synopsis
+
+Les Kima Vé, autrefois humains, ont transcendé leur condition après qu'un premier membre a conclu un pacte avec une entité supérieure afin de demeurer dans l'état de méditation le plus profond possible.
+
+Une partie des Kima Vé commence à se cristalliser et devient progressivement incapable de se déplacer. Ils restent cependant pleinement conscients, calmes et rationnels. Ils savent que l'entité à laquelle ils sont liés est en train de se dégrader.
+
+Les Kima Vé parviennent à soigner temporairement l'esprit de l'entité grâce à leur affinité avec les esprits, mais celui-ci se détériore de nouveau. Ils en déduisent que quelque chose dans le monde physique continue de l'endommager. Ils découvrent alors l'hypothèse qu'elle possède un corps physique, alors qu'ils ignoraient jusque-là son existence.
+
+Le joueur découvre que ce corps est **le Wise Tree**.
+
+### Déroulement
+
+1. Des Kima Vé commencent à se cristalliser et deviennent immobiles.
+2. Les Kima Vé soignent l'esprit de leur entité, mais celui-ci se dégrade à nouveau.
+3. Ils formulent l'hypothèse que l'entité possède un corps physique.
+4. Le joueur enquête et découvre que **le Wise Tree est le corps physique de l'entité**.
+5. Les Kima Vé apprennent cette révélation du joueur.
+6. Le joueur découvre que l'eau entourant le Wise Tree est devenue toxique pour lui.
+7. La pollution provient d'une tribu Gork récemment installée à proximité, qui déverse tous ses déchets dans l'eau.
+8. Le joueur doit combattre cette tribu Gork.
+9. Les Kima Vé déplacent physiquement le Wise Tree jusqu'à **la Source de la Colline**, afin de lui fournir l'eau la plus pure possible.
+10. Le Wise Tree récupère. Son esprit cesse de se détériorer, le lien avec les Kima Vé se stabilise et la cristallisation cesse de progresser.
+11. Le Wise Tree propose alors au joueur de devenir Kima Vé.
+12. Si le joueur refuse, le royaume Kima Vé lui remet un **Artefact de Liaison**.
+
+### Artefact de Liaison
+
+L'Artefact de Liaison appartient au royaume Kima Vé et n'est pas lié au Wise Tree.
+
+Il servait historiquement de base/outillage permettant aux Kima Vé d'intégrer des membres à leur système de conscience collective gouverné par **Kiyoka**.
+
+Le joueur peut l'utiliser en combat pour relier simultanément jusqu'à **5 âmes ennemies différentes**. Lorsque plusieurs ennemis sont liés, tuer l'un des ennemis entraîne la mort de tous les autres ennemis liés.
+
+**Temps de recharge actuel : 1 minute.** Cette valeur est provisoire et pourra être rééquilibrée.
+
+### Conséquences
+
+- Le Wise Tree est déplacé de son emplacement initial vers la Source de la Colline.
+- La situation des Kima Vé est durablement stabilisée.
+- La pollution et la présence de la tribu Gork sont résolues par le combat imposé au joueur.
+- Le joueur devient Kima Vé **ou** reçoit l'Artefact de Liaison ; les deux récompenses sont exclusives.
+- Le déplacement du Wise Tree constitue un événement persistant du monde.
+
+### Notes de cohérence
+
+- Le pacte initial des Kima Vé n'est pas rompu : c'est l'entité supérieure qui est devenue corrompue.
+- Les Kima Vé ne sont pas mentalement corrompus et leur couleur indique déjà leur état mental ; la cristallisation n'est donc pas un indicateur psychologique.
+- Les Kima Vé peuvent interagir physiquement normalement avec le monde. Leur particularité est leur affinité supérieure avec les esprits.
+- Le joueur est nécessaire principalement pour agir sur le problème physique que les Kima Vé n'avaient pas identifié.
+- Le Wise Tree est le nom utilisé dans le canon actuel ; aucun autre nom propre n'est établi pour l'entité.
