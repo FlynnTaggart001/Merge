@@ -73,7 +73,7 @@ Cette hypothèse est une conséquence de la crise : les Kima Vé n'avaient aupar
 
 ## 5. Découverte du Wise Tree
 
-Le joueur enquête dans le monde et découvre que **Sylva, le Wise Tree**, n'est autre que le corps physique de l'entité supérieure liée aux Kima Vé.
+Le joueur enquête dans le monde et découvre que **le Wise Tree** n'est autre que le corps physique de l'entité supérieure liée aux Kima Vé.
 
 Le Wise Tree est donc à la fois :
 
@@ -153,19 +153,45 @@ La résolution doit montrer que les Kima Vé avaient correctement compris le pro
 
 ### A. Devenir Kima Vé
 
-Le joueur peut choisir de transcender son humanité et de devenir un Kima Vé.
+Le **Wise Tree** propose directement au joueur de transcender son humanité et de devenir un Kima Vé.
 
 Ce choix doit être traité comme une transformation majeure du personnage et du gameplay, pas comme une simple récompense cosmétique.
 
 Les conséquences exactes de cette transformation restent à spécifier dans un document dédié.
 
-### B. Recevoir un artefact
+### B. Recevoir l'Artefact de Liaison
 
-Le joueur peut refuser la transcendance et recevoir à la place un artefact lié à l'entité / aux Kima Vé.
+Si le joueur refuse de devenir Kima Vé, le **royaume des Kima Vé** lui offre un Artefact de Liaison.
 
-Les propriétés exactes de l'artefact restent à définir.
+Cet artefact n'est pas lié au Wise Tree et ne provient pas de lui.
 
-Le choix est exclusif : le joueur ne reçoit pas simultanément les deux récompenses.
+À l'origine, l'Artefact de Liaison servait aux Kima Vé de base pour **intégrer des Kima Vé au système de conscience collective Kiyoka**, qui constitue le gouvernement / système de conscience collective des Kima Vé.
+
+Le joueur reçoit une version fonctionnelle de cet artefact et peut l'utiliser en combat.
+
+#### Pouvoir de liaison
+
+L'Artefact de Liaison permet au joueur de **lier jusqu'à 5 âmes ennemies simultanément**.
+
+Une fois plusieurs ennemis liés :
+
+- les âmes liées partagent la même liaison ;
+- si le joueur tue l'un des ennemis liés, la mort est transmise aux autres ennemis liés ;
+- tous les autres ennemis encore liés meurent également.
+
+**Exemple :**
+
+> 5 ennemis sont liés → le joueur en tue 1 → les 4 autres meurent également.
+
+L'artefact ne tue pas directement : il établit une liaison entre les âmes et transmet la conséquence de la mort du premier ennemi aux autres membres de la liaison.
+
+#### Limitation
+
+L'utilisation de cette capacité possède actuellement un **cooldown de 1 minute**.
+
+Cette valeur est provisoire et pourra être rééquilibrée lors des tests de gameplay.
+
+Le choix est exclusif : le joueur ne reçoit pas simultanément la transformation Kima Vé et l'Artefact de Liaison.
 
 ---
 
@@ -208,7 +234,11 @@ Le choix est exclusif : le joueur ne reçoit pas simultanément les deux récomp
 - La cristallisation des Kima Vé cesse de progresser.
 
 **Phase 9 — Récompense**
-- Choix exclusif : devenir Kima Vé ou recevoir un artefact.
+- Le Wise Tree propose au joueur de devenir Kima Vé.
+- Choix exclusif : devenir Kima Vé ou recevoir l'Artefact de Liaison.
+- Si l'artefact est choisi, il permet de lier jusqu'à 5 âmes ennemies.
+- Tuer un ennemi lié tue les autres ennemis liés.
+- Cooldown actuel : 1 minute.
 
 ---
 
@@ -223,10 +253,11 @@ Le choix est exclusif : le joueur ne reçoit pas simultanément les deux récomp
 - Pourquoi cette tribu s'est installée précisément à cet endroit.
 - Mise en scène du déplacement du Wise Tree.
 - Conséquences précises de la transformation du joueur en Kima Vé.
-- Nature et pouvoirs de l'artefact.
-- Sort des Kima Vé déjà totalement cristallisés.
+- Règles détaillées du système Kiyoka.
 - Conditions précises de déclenchement et de progression de la quête.
+- Équilibrage futur de l'Artefact de Liaison, notamment son cooldown.
+- Sort des Kima Vé déjà totalement cristallisés.
 
 ---
 
-**Note de cohérence :** cette quête établit que les Kima Vé peuvent interagir physiquement normalement avec le monde. Leur particularité est leur affinité supérieure avec les esprits et leur difficulté à agir directement sur le corps physique complexe de leur entité. 
+**Note de cohérence :** cette quête établit que les Kima Vé peuvent interagir physiquement normalement avec le monde. Leur particularité est leur affinité supérieure avec les esprits et leur difficulté à agir directement sur le corps physique complexe de leur entité. L'Artefact de Liaison est un objet du royaume Kima Vé et son origine fonctionnelle est liée à Kiyoka, pas au Wise Tree.
