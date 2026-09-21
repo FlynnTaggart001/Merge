@@ -168,6 +168,28 @@ Les conséquences doivent rester dans le monde : personnages morts ou libérés,
 
 ---
 
+## Q-004 — Samiu le Nécromancien Sage au Royaume Squelette
+
+**Type :** Quête d'escorte / RP  
+**Statut :** Conception en cours  
+**Personnage central :** **Samiu le Nécromancien Sage**, un Gork transformé en squelette
+
+### Synopsis
+
+Samiu, un Gork, a réussi le rituel de nécromancie et est devenu squelette.  
+Rejeté par sa tribu, il doit être accompagné jusqu'au Royaume Squelette.
+
+### Objectif
+
+Escorter Samiu en sécurité jusqu'au Royaume Squelette.
+
+### Notes
+
+- Personnage principal : Samiu le Nécromancien Sage
+- Thème lié aux squelettes et à la nécromancie (potentiel lien avec le cycle Charon / trafic de squelettes)
+
+---
+
 ## Notes de conception générales
 
 - Le joueur ne doit jamais recevoir immédiatement une quête intitulée « Trouver le tueur en série ».
