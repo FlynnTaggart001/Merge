@@ -219,20 +219,31 @@ Rien d’illégal n’est commis par le noble.
 
 **Option A — Accepter**  
 Le joueur élimine le noble.  
-→ Il obtient le titre de noblesse et les droits associés.
+→ Il obtient le titre de noblesse et les droits associés.  
+→ Débloque le système de **gestion de domaine** (voir `specs/NOBLE_LAND_AND_DOMAIN_MANAGEMENT.md`).
 
 **Option B — Refuser**  
 Le roi envoie des assassins pour tuer **le joueur et le noble**.
 
 ### Conséquences
 
-- **Accepter :** réputation positive auprès du roi et de l’élite, négative auprès du peuple et des partisans du noble. Impact durable sur le statut social du joueur.
-- **Refuser :** le joueur et le noble deviennent des cibles prioritaires des assassins royaux. La situation peut évoluer selon les actions du joueur (fuite, protection du noble, confrontation, etc.).
+- **Accepter :** réputation positive auprès du roi et de l’élite, négative auprès du peuple et des partisans du noble. Impact durable sur le statut social du joueur. Accès à la gestion de terres.
+- **Refuser :** le joueur et le noble deviennent des cibles prioritaires des assassins royaux.
+
+### Règle importante après obtention du titre
+
+Une fois noble, le joueur gère le bonheur de sa population.  
+**Si le bonheur général atteint ou dépasse 60 %**, le roi le considère comme un opposant :  
+- humeur du roi mauvaise  
+- négociations et dialogues plus difficiles  
+- assassins du roi qui viennent régulièrement  
+
+Détails complets dans `specs/NOBLE_LAND_AND_DOMAIN_MANAGEMENT.md`.
 
 ### Notes de conception
 
 - Le noble doit rester crédible et relativement sympathique pour que le choix moral ait du poids.
-- Le titre obtenu doit avoir des conséquences persistantes (accès, interactions, réputation, droits).
+- Le titre obtenu doit avoir des conséquences persistantes (accès, interactions, réputation, droits, gestion de domaine).
 - Plusieurs méthodes d’élimination possibles (directe, manipulation, accident arrangé, etc.).
 
 ---
