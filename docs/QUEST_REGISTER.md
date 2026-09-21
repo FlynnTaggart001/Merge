@@ -304,7 +304,7 @@ Le joueur découvre que ce corps est **le Wise Tree**.
 
 L'Artefact de Liaison appartient au royaume Kima Vé et n'est pas lié au Wise Tree.
 
-Il servait historiquement de base/outillage permettant aux Kima Vé d'intégrer des membres à leur système de conscience collective gouverné par **Kiyoka**.
+Il servait historiquement d'outillage permettant de **lier les Kima Vé entre eux** et de les intégrer au fonctionnement de leur gouvernement, **Kiyoka**, qui est une conscience collective. Le Kiyoka constitue donc le système gouvernemental et de conscience collective des Kima Vé.
 
 Le joueur peut l'utiliser en combat pour relier simultanément jusqu'à **5 âmes ennemies différentes**. Lorsque plusieurs ennemis sont liés, tuer l'un des ennemis entraîne la mort de tous les autres ennemis liés.
 
@@ -316,6 +316,7 @@ Le joueur peut l'utiliser en combat pour relier simultanément jusqu'à **5 âme
 - La situation des Kima Vé est durablement stabilisée.
 - La pollution et la présence de la tribu Gork sont résolues par le combat imposé au joueur.
 - Le joueur devient Kima Vé **ou** reçoit l'Artefact de Liaison ; les deux récompenses sont exclusives.
+- L'Artefact de Liaison est un outil de liaison entre les Kima Vé et leur gouvernement-conscience collective, le **Kiyoka**.
 - Le déplacement du Wise Tree constitue un événement persistant du monde.
 
 ### Notes de cohérence
