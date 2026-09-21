@@ -225,8 +225,12 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 
 #### Les Kima Vé (Light Fantaisie)
 - **Apparence** : silhouettes lumineuses
-- **Couleur du corps** : change selon leur pouvoir dans la société
-- **Aura** : glow autour d'eux, indique leur état mental
+- **Couleur du corps** :
+  - Change selon leur pouvoir dans la société pour les individus ordinaires
+  - **Dorée** pour les membres du **Kiyeka**
+- **Aura (glow)** :
+  - Pour les individus ordinaires : indique leur état mental personnel
+  - Pour les membres du **Kiyeka** : l’aura reflète **toujours l’état mental du gouvernement** (le Kiyeka)
 - Individus indépendants (seul le **Kiyeka** gouverne)
 
 À COMPLÉTER pour les humains.
@@ -363,8 +367,8 @@ Détails : `specs/FOOD_MEDICINE_AND_NONMAGICAL_HEALING_SPEC.md` et docs associé
 - Différents types de dégâts (tranchant, contondant, perçant, magie)
 
 ### Mécaniques Défensives
-- **Esquive** avec timing, utilisant la compétence Esquive
-- **Parade** avec arme/bouclier, utilisant la compétence Parade
+- **Esquive** with timing, utilisant la compétence Esquive
+- **Parade** with arme/bouclier, utilisant la compétence Parade
 - Roulement d'esquive
 - Blocage, utilisant la compétence Blocage selon le contexte
 - Les coûts d'endurance sont des coûts de gameplay et **ne constituent pas une caractéristique ou une compétence canonique supplémentaire**
