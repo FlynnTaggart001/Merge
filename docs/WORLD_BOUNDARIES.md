@@ -2,8 +2,8 @@
 
 ## World size
 
-- **Total world area:** 625 km²
-- **Reference dimensions:** 25 × 25 km
+- **Total world area:** 40 km²
+- **Reference dimensions:** 6.32 × 6.32 km
 - The three kingdoms are contained within this total area.
 
 ## Outer boundaries
@@ -12,7 +12,7 @@ The playable world has **no invisible wall** and no artificial barrier at its ou
 
 The external boundaries are part of the natural geography of the world:
 
-- **Ocean:** large portions of the outer world are bordered by an ocean that cannot be crossed within the scope of the game.
+- **Ocean:** the **eastern outer boundary** is formed by a large ocean that cannot be crossed within the scope of the game.
 - **Mountains:** the remaining outer limits are formed by high, steep and naturally impassable mountain ranges.
 
 These boundaries must be presented as genuine geographic features rather than technical level limits. The player should understand that the terrain and environment prevent further travel, not an invisible gameplay barrier.
