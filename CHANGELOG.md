@@ -14,7 +14,7 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Character creation is now consistently documented as **6/20 base in each of 6 characteristics + 26 points to distribute, maximum 14/20**.
 - Removed the obsolete creation model based on **45 skills at 5 + 30 specialization points** from current specifications.
 - Initial skill values are now consistently derived from the final characteristic profile using the canonical characteristic → skill conversion.
-- Synchronized the Kima Vé government name to **Kiyoka** where stale documentation still used Kiyeka.
+- Synchronized the Kima Vé government name to **Kiyeka**; the previous Kiyoka correction was itself erroneous.
 - Synchronized world boundaries to **40 km² / 6.32 × 6.32 km** and the **eastern ocean** boundary.
 - Removed obsolete `Domptage` / `Réflexe` progression architecture from current design documentation; Endurance remains a gameplay resource.
 - Marked `specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md` as historical/superseded rather than allowing it to override the current canonical rules.
@@ -170,4 +170,4 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-**Dernière mise à jour** : 2026-09-16
+**Dernière mise à jour** : 2026-09-22
