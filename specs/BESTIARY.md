@@ -119,6 +119,79 @@ L'hydre est une créature monstrueuse massive dont le corps est surmonté de plu
 - Créature particulièrement dangereuse lors des combats prolongés.
 - Son comportement et son cycle biologique restent spécifiques à l'espèce et suivent les cycles saisonniers généraux du monde.
 
+
+---
+
+## Phoenix
+
+### Statut
+- **Créature unique** : un seul Phoenix existe dans le monde de Merge.
+- **Immortel** : il ne peut pas mourir définitivement.
+- Il possède néanmoins une **barre de vie** et peut être vaincu temporairement.
+- Il ne se reproduit pas et ne pond pas d'œufs.
+
+### Habitat
+- Le Phoenix vit au **sommet de l'immense volcan du monde squelette**.
+- Son **nid** se trouve au sommet du volcan.
+- Le nid est uniquement son lieu de repos et son territoire : **aucun objet récupérable n'y est placé**.
+
+### Comportement
+- Le Phoenix est **pacifiste par nature**.
+- Il n'attaque pas spontanément le joueur.
+- C'est une créature **intelligente** capable d'observer et d'interpréter le comportement du joueur.
+- Son comportement peut varier en fonction des **statistiques du joueur**, de ses actions et du contexte de la rencontre.
+- Le détail précis de l'influence de chaque caractéristique reste à définir.
+- Même lorsqu'il devient défensif, il ne doit pas être considéré comme une créature naturellement hostile.
+
+### Marchandises
+Le Phoenix peut **marchander avec le joueur** et vendre certaines marchandises particulières, notamment :
+- **Cendre de Phoenix** ;
+- **Plume de feu**.
+
+Ces marchandises ne sont pas à récupérer dans son nid.
+
+### Renaissance
+- Lorsqu'il est vaincu, le Phoenix entre dans son cycle de renaissance.
+- Sa mort apparente n'est donc jamais définitive.
+- Les modalités précises de sa renaissance et son impact sur son état restent à détailler.
+
+---
+
+## Léviathan
+
+### Statut
+- **Créature unique** : un seul Léviathan existe dans le monde de Merge.
+- **Immortel** : il ne peut pas mourir.
+- Il possède une **barre de vie**.
+- Le joueur peut théoriquement lui infliger des dégâts, mais son immense taille et sa quantité de vie rendent impossible de vider normalement sa barre de vie.
+
+### Taille
+- **Longueur : environ 8 km**.
+- **Largeur maximale : environ 1 km**.
+- Sa taille est telle que le joueur ne peut pratiquement jamais percevoir son corps entier comme celui d'une créature classique.
+
+### Territoire
+- Le Léviathan est lié à l'**océan situé à l'est de la carte**.
+- Il constitue une **frontière naturelle vivante** du monde.
+- Il ne cherche pas à négocier, comprendre ou évaluer les intentions des intrus.
+
+### Comportement
+Le Léviathan détruit tout ce qui s'approche trop près de sa frontière, notamment :
+- les bateaux ;
+- les embarcations ;
+- les personnes qui nagent trop près ;
+- les créatures ou objets volants qui passent trop près ;
+- le joueur ;
+- toute autre présence suffisamment proche pour pénétrer dans son territoire.
+
+Son comportement **ne dépend pas des statistiques du joueur**.
+
+### Fonction dans le monde
+- Le Léviathan n'est pas un boss classique.
+- Il sert à rendre la limite orientale du monde naturelle et crédible.
+- Plus le joueur s'approche de son territoire, plus il doit comprendre qu'il entre dans une zone qu'il ne peut pas franchir normalement.
+- Sa puissance et son échelle doivent faire comprendre que le joueur fait face à une **force gigantesque du monde**, et non à une créature conçue pour un combat conventionnel.
+
 ---
 
 # Faune normale et gothique — base de conception
