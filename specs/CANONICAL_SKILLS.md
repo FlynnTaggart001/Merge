@@ -3,7 +3,7 @@
 **Statut :** APPROUVÉ — liste canonique  
 **Moteur :** Unreal Engine 5.8.1
 
-Merge possède **45 compétences uniques**.
+Merge possède **46 compétences uniques**.
 
 ## Caractéristiques
 
@@ -78,55 +78,19 @@ Après la création du personnage, le système est inversé :
 
 `Compétences → Caractéristiques`
 
-Le joueur ne distribue plus manuellement de points de caractéristique. Les compétences progressent par **Learning by Doing**, et cette progression alimente automatiquement les caractéristiques qui leur sont associées pour la progression.
+Le joueur ne distribue plus manuellement de points de caractéristique. Les activités pratiquées par le joueur génèrent des **points de progression de compétence** lorsqu'elles sont validées par le système de Learning by Doing.
 
-La conversion inverse utilise la même relation mathématique :
+Ces mêmes points de progression de compétence alimentent automatiquement la progression des caractéristiques auxquelles la compétence contribue.
 
-`Caractéristique = moyenne(Compétences contributrices) / 4`
+Le pipeline canonique est :
 
-La valeur est limitée au maximum de **20/20** :
+`Activité validée → points de compétence → augmentation de la compétence → contribution pondérée à la caractéristique → seuil → caractéristique +1`
 
-`Caractéristique finale = min(20, moyenne(Compétences contributrices) / 4)`
+La progression des caractéristiques utilise une **réserve de progression cachée**, des **poids** et des **seuils data-driven**, définis dans `specs/CHARACTERISTIC_PROGRESSION.md`.
 
-Cela signifie qu'une caractéristique atteint **20/20 lorsque la moyenne cumulée des compétences qui la font progresser atteint au moins 80 %**.
+Lorsqu'un seuil est atteint, la caractéristique augmente de +1 et le surplus de progression est conservé.
 
-Exemple :
-
-- Compétence A : 79 %
-- Compétence B : 81 %
-- Moyenne : `(79 + 81) / 2 = 80 %`
-- Caractéristique : `80 / 4 = 20/20`
-
-Une compétence individuelle peut donc être inférieure à 80 % sans empêcher la caractéristique d'atteindre 20/20, à condition que les autres compétences contributrices compensent cette valeur.
-
-Autre exemple :
-
-- Compétence A : 70 %
-- Compétence B : 90 %
-- Compétence C : 80 %
-- Compétence D : 80 %
-- Moyenne : `80 %`
-- Caractéristique : `20/20`
-
-### Relation exacte entre les deux systèmes
-
-Les deux conversions sont mathématiquement inverses sur l'échelle normale :
-
-`Caractéristique → Compétence : C × 4 = S`
-
-`Compétences → Caractéristique : moyenne(S) / 4 = C`
-
-La correspondance fondamentale est donc :
-
-`6/20 ↔ 24 %`
-
-`10/20 ↔ 40 %`
-
-`14/20 ↔ 56 %`
-
-`20/20 ↔ 80 %`
-
-Les compétences peuvent continuer à progresser au-delà de 80 % jusqu'à **100 %**. Une fois que la moyenne des compétences contributrices atteint 80 %, la caractéristique est déjà à son plafond de 20/20 et ne dépasse pas cette valeur.
+Il n'existe donc **pas de recalcul direct de la caractéristique à partir de la moyenne des compétences** pendant le jeu. La formule `moyenne(compétences) / 4` n'est pas une règle runtime de progression.
 
 ### Important : liens de création et liens de progression
 
@@ -228,7 +192,7 @@ Cette distinction est canonique et doit être conservée dans les données de pr
 | Fabrication d'armures | Intelligence + Force |
 | Réparation | Intelligence + Perception |
 
-## Social / communication — 4
+## Social / communication — 5
 
 | Compétence | Caractéristiques pour le calcul initial |
 |---|---|
@@ -236,32 +200,46 @@ Cette distinction est canonique et doit être conservée dans les données de pr
 | Intimidation | **Charisme + Force** |
 | Éloquence | Charisme + Intelligence |
 | Marchandage | Charisme + Intelligence |
+| Domptage | Perception + Charisme |
 
 ## Terminologie canonique
 
 - **Lutte n'est pas une compétence ou une caractéristique de Merge.**
+- **Domptage est une compétence canonique.**
 - **Parade** est le nom canonique et appartient à **Défense / mouvement**.
 - Aucun nom de compétence manquant ne doit être inventé.
 
-## Progression et compensation entre compétences
+## Progression des compétences vers les caractéristiques
 
-Pour chaque caractéristique, seules les compétences explicitement désignées comme contributrices à cette caractéristique pendant le jeu sont prises en compte.
+Pour chaque caractéristique, seules les compétences explicitement désignées comme contributrices pendant le jeu alimentent sa réserve de progression.
 
-La progression utilise leur **moyenne arithmétique**. Il n'est donc pas nécessaire que chaque compétence atteigne individuellement le seuil de 80 %.
+Les points de progression gagnés par une activité validée font donc deux choses dans le même événement :
 
-`Moyenne = Somme des niveaux des compétences contributrices / Nombre de compétences contributrices`
+1. ils augmentent la progression de la compétence pratiquée ;
+2. ils alimentent la progression cachée des caractéristiques auxquelles cette compétence contribue, selon son poids.
 
-`Caractéristique = min(20, Moyenne / 4)`
+`CharacteristicProgress += SkillProgress × Weight`
 
-Le système permet ainsi la compensation entre compétences : une compétence à 79 % peut être compensée par une autre à 81 %, donnant une moyenne de 80 % et donc une caractéristique à 20/20.
+Lorsque le seuil suivant est atteint :
 
-Pour l'Intimidation, la règle de progression est explicitement : **Intimidation contribue au Charisme et ne contribue pas à la Force.**
+`while CharacteristicProgress >= Threshold(C + 1):`
 
-Aucune attribution manuelle de points de caractéristiques n'est possible après la création du personnage.
+`    CharacteristicProgress -= Threshold(C + 1)`
 
-## Échelle
+`    C += 1`
 
-Le niveau de compétence **50 correspond déjà à un niveau de maîtrise extrêmement élevé / surhumain**. Le calcul initial des compétences comme leur progression doivent respecter cette échelle.
+Les poids, seuils et limites sont data-driven.
+
+**Il n'y a pas de recomposition directe de la caractéristique à partir de la moyenne des compétences.** Une compétence peut donc continuer à progresser sans provoquer immédiatement +1 dans une caractéristique : elle accumule une contribution jusqu'au prochain seuil.
+
+Pour l'**Intimidation** :
+- création : `moyenne(Charisme, Force) × 4` ;
+- progression : les points gagnés en Intimidation contribuent au **Charisme uniquement** ;
+- Intimidation ne contribue jamais automatiquement à la Force.
+
+## Règle d'activité
+
+Toute activité pertinente ne donne pas automatiquement de progression : elle doit être validée par les règles de contexte et d'anti-farming de `specs/SKILL_PROGRESSION.md`. Une activité réellement pratiquée et validée génère des points de compétence ; ces mêmes points alimentent la progression des caractéristiques selon les liens de progression.
 
 ## Règle de conception
 
@@ -271,10 +249,14 @@ Le système doit conserver le cycle suivant :
 
 `Jeu : Compétences → Caractéristiques`
 
-La formule mathématique de création et sa formule inverse de progression sont désormais canoniques :
+La formule de création est canonique :
 
 `Compétence initiale (%) = moyenne(Caractéristiques liées) × 4`
 
-`Caractéristique après progression = min(20, moyenne(Compétences contributrices) / 4)`
+Après la création, la règle canonique est un pipeline de progression :
+
+`Points de compétence gagnés → progression de compétence → contribution pondérée → seuil de caractéristique`
+
+La moyenne des compétences n'est pas utilisée comme formule runtime de recalcul des caractéristiques.
 
 Les liens utilisés pour le calcul initial et ceux utilisés pour la progression après création restent deux ensembles de données distincts.
