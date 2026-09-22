@@ -254,6 +254,10 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 - **Muntu** → terme utilisé par les Kima Vé pour désigner un humain.
 - **Mukwa** → terme utilisé par les Kima Vé pour désigner un squelette.
 
+**Artefacts Kima Vé — idées provisoires :**
+- **Mukumba** → outil permettant de relier des Kima Vé entre eux et de les connecter au Kiyeka lorsqu'ils sont liés. Le rôle exact et les détails de fonctionnement restent à définir.
+- **Kieleka** → artefact permettant d'observer à distance les statistiques d'une personne. **Idée non définitive**, à conserver comme concept provisoire jusqu'à validation du fonctionnement, des limites et des conditions d'utilisation.
+
 À COMPLÉTER pour les humains.
 
 ### Faune et créatures
