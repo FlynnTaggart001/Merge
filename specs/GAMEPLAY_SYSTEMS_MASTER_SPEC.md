@@ -47,10 +47,12 @@ Contribution pondérée aux caractéristiques liées
 Le modèle canonique comprend **45 compétences** et **6 caractéristiques**. La liste et les relations compétence → caractéristique sont définies exclusivement dans `specs/CANONICAL_SKILLS.md`.
 
 À la création :
-- les 45 compétences commencent à 5 ;
-- 30 points de spécialisation sont disponibles ;
-- maximum 10 points dans une même compétence ;
-- maximum de départ d'une compétence : 15.
+- les 6 caractéristiques commencent à **6/20** ;
+- 26 points de caractéristiques sont disponibles ;
+- maximum d'une caractéristique à la création : **14/20** ;
+- les compétences ne reçoivent aucun point manuellement.
+
+Après la distribution des caractéristiques, les 45 compétences sont calculées automatiquement selon `specs/CANONICAL_SKILLS.md`.
 
 Après la création, aucune répartition manuelle de points de compétence ou de caractéristique.
 
