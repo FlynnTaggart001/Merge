@@ -1,164 +1,106 @@
-# Audit de cohérence documentaire — Merge
+# Audit de cohérence documentaire — second audit
 
-**Date de clôture :** 2026-09-22  
-**Dépôt audité :** `FlynnTaggart001/Merge`  
-**Statut :** CORRECTIONS DOCUMENTAIRES ET CANONIQUES APPLIQUÉES
+**Date :** 2026-09-22  
+**Dépôt :** `FlynnTaggart001/Merge`  
+**Référence :** état actuel de la branche `main`
 
-## 1. Décisions canoniques appliquées
+## Autorité utilisée
 
-### 1.1 Domptage
+Cet audit applique les règles canoniques fournies par le Game Director et les sources suivantes :
 
-**Décision :** `Domptage` est une **compétence canonique**.
+1. `specs/CANONICAL_SKILLS.md`
+2. `specs/SKILL_PROGRESSION.md`
+3. `specs/CHARACTERISTIC_PROGRESSION.md`
+4. `specs/PLAYER_PROGRESSION.md`
 
-- Le nombre de compétences canoniques passe de **45 à 46**.
-- Domptage intervient dans l'acquisition naturelle des montures.
-- L'achat d'une monture auprès d'un éleveur ne nécessite pas Domptage.
-- Domptage est désormais présent dans `specs/CANONICAL_SKILLS.md`.
-- Les références aux « 45 compétences » concernées ont été mises à jour.
+L'écart entre vision, architecture cible et code du scaffold n'est pas considéré comme une incohérence lorsque les documents le présentent comme futur ou cible.
 
-### 1.2 Réflexe
+## Contradictions réelles trouvées
 
-**Décision :** `Réflexe` n'est **ni une compétence ni une caractéristique**.
+### 1. Ancien modèle de création et de caractéristiques
 
-C'est un **système défensif automatique** qui peut éviter une attaque surprise.
+`docs/gameplay/CHARACTER_STATS.md` décrivait :
 
-- Il dépend notamment de l'**Agilité** et de la **Perception**.
-- Sa formule est data-driven.
-- Il ne génère aucune progression indépendante.
-- Il ne crée aucun nouvel élément dans les 6 caractéristiques ou les 46 compétences.
+- des caractéristiques sur 0–100 ;
+- une progression directe des caractéristiques par action ;
+- un nombre de points de départ non défini.
 
-Les anciennes formulations qui présentaient Réflexe comme une compétence/caractéristique ont été corrigées.
+Cela contredisait le modèle canonique 0–20, 6/20, 26 points, plafond 14/20 et progression des caractéristiques uniquement via les points de progression des compétences. Le document a été remplacé par une synthèse canonique.
 
-## 2. Progression du personnage
+### 2. Ancien modèle de création dans `CHARACTER_ATTRIBUTES.md`
 
-Le modèle canonique est maintenant explicitement :
+Le document indiquait 45 compétences commençant à 5, 30 points de spécialisation et un plafond de 15. Cela contredisait directement la création par caractéristiques. Le document a été corrigé.
 
-```text
-Création :
-Caractéristiques → Compétences
+### 3. Création de classe contradictoire
 
-Après création :
-Activité pratiquée et validée
-        ↓
-Points de progression de compétence
-        ↓
-Augmentation de la compétence
-        ↓
-Même progression transmise aux caractéristiques liées
-        ↓
-Poids + réserve cachée
-        ↓
-Seuil
-        ↓
-Caractéristique +1
-```
+`docs/gameplay/CHARACTER_CREATION.md` indiquait que le joueur choisissait une classe de départ et pouvait changer de classe. Cela contredisait l'architecture de progression actuelle, où les classes/voies sont dérivées du profil et révélées lorsqu'elles deviennent disponibles. Le document a été corrigé pour renvoyer à `PLAYER_PROGRESSION.md`.
 
-### Règles
+### 4. Ancien statut canonique dans `GAME_BIBLE.md`
 
-- Les 6 caractéristiques commencent à **6/20**.
-- Le joueur reçoit **26 points** à la création.
-- Maximum à la création : **14/20**.
-- Les compétences initiales sont calculées à partir des caractéristiques.
-- Après la création, aucune distribution manuelle de points de caractéristique.
-- Une activité validée fait gagner des **points de progression de compétence**.
-- Ces mêmes points alimentent la progression des caractéristiques selon les liens et poids configurés.
-- La caractéristique n'est **pas** recalculée à partir de la moyenne instantanée des compétences.
-- Les seuils et poids sont conservés comme système runtime canonique.
-- L'Intimidation utilise Force + Charisme à la création, mais sa progression contribue uniquement au Charisme.
+`GAME_BIBLE.md` contient encore les anciennes occurrences de 45 compétences et des formulations héritées de l'ancien modèle. Elles doivent être corrigées avant de considérer l'audit global comme clos.
 
-## 3. Échelle compétence / XP
+### 5. Contradiction du système de montures
 
-La documentation distingue désormais :
+`specs/MOUNT_SYSTEM_SPEC.md` indique encore que Domptage n'est pas une compétence canonique et interdit son utilisation. Cela contredit la règle actuelle selon laquelle Domptage est la 46e compétence canonique. Ce fichier doit être corrigé sans modifier le reste de la mécanique de montures.
 
-- **Valeur de compétence :** échelle 0–100, affichée en %.
-- **Points de progression / XP :** progression interne gagnée lors des activités validées.
-- **Niveau 50 :** correspond à 50 % de maîtrise et représente déjà une maîtrise extrêmement élevée / surhumaine.
-- Les compétences peuvent progresser jusqu'à 100 %.
+### 6. Référence obsolète dans `specs/SKILL_PROGRESSION.md`
 
-La formule de création reste :
+L'ancienne version indiquait que la liste canonique contenait 45 compétences. La spécification a été corrigée pour utiliser 46 compétences et pour rappeler que Réflexe n'est pas une compétence.
 
-`Compétence initiale (%) = moyenne(Caractéristiques liées) × 4`
+### 7. Compétence `Parade` dupliquée dans `docs/gameplay/CHARACTER_SKILLS.md`
 
-La progression après création ne réutilise pas cette formule comme recalcul inverse.
+`Parade` apparaît dans la liste des compétences de combat et dans celle de Défense / mouvement. La source canonique la classe uniquement dans Défense / mouvement. Le document doit être corrigé.
 
-## 4. Statuts documentaires
+### 8. Compétence `Filature` absente d'un document de synthèse
 
-La hiérarchie canonique est :
+`docs/gameplay/CHARACTER_SKILLS.md` affirme que Filature n'est pas une compétence distincte, alors que `specs/CANONICAL_SKILLS.md` la définit comme compétence canonique. Cette contradiction doit être corrigée.
 
-1. `PROPOSÉ`
-2. `PENDING_HUMAN`
-3. `APPROUVÉ`
-4. `SPÉCIFIÉ`
-5. `SCAFFOLD`
-6. `IMPLÉMENTÉ`
-7. `VALIDÉ`
-8. `OPÉRATIONNEL`
+## Problèmes documentaires non nécessairement mécaniques
 
-**APPROUVÉ ≠ IMPLÉMENTÉ ≠ VALIDÉ.**
+- `specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md` est explicitement historique, mais contient encore l'ancien nombre de 45 compétences. Il faut soit annoter chaque règle obsolète comme historique, soit remplacer les valeurs par une mention claire « état historique au 2026-09-16 ».
+- Plusieurs documents utilisent `TERMINÉE`, `Done`, `À VENIR` ou `APPROUVÉ` sans toujours préciser s'il s'agit d'une décision, d'une spécification, d'un scaffold, d'une implémentation ou d'une validation.
+- `specs/TECHNICAL_ARCHITECTURE.md` décrit correctement une architecture cible, mais certaines sections de checklist utilisent des coches qui peuvent être interprétées comme une validation effective. La compilation UE5 reste locale et non démontrée par GitHub.
+- Les documents mélangent français et anglais. Ce n'est pas une contradiction de gameplay, mais la convention linguistique devrait être documentée.
 
-## 5. Infrastructure IA
+## Contrôles ne révélant pas de contradiction active
 
-Les documents distinguent maintenant :
+- Les documents principaux contrôlés indiquent bien **46 compétences** et **6 caractéristiques**.
+- Les six caractéristiques sont correctement nommées.
+- `Réflexe` est correctement décrit comme système automatique dans `README.md`, `docs/gameplay.md` et `docs/architecture.md`.
+- La formule `moyenne(Caractéristiques liées) × 4` est conservée pour la création.
+- La formule `moyenne(compétences) / 4` est explicitement rejetée comme progression runtime dans les sources canoniques contrôlées.
+- Les targets `Merge.Target.cs` et `MergeEditor.Target.cs` configurent C++20.
+- UE 5.8.1 est cohérent dans les fichiers contrôlés.
+- `Blueprints/Characters` et les chemins `Data/Items`, `Data/Gameplay`, `Data/World`, `Data/Loot` sont cohérents dans `Content/README.md` et l'architecture cible.
+- `L_TestArena` est documentée comme asset local à créer ; son absence de GitHub relève de la validation locale, pas d'une contradiction documentaire.
 
-- garde-fous et workflow IA : opérationnels ;
-- planner : encore à réaliser ;
-- providers IA réels : encore à brancher.
+## Corrections appliquées par cet audit
 
-La CI est décrite comme une CI de runtime/garde-fous et non comme une validation Unreal complète.
+- `README.md` : statuts alignés sur la hiérarchie canonique, 46 compétences, Réflexe et Domptage clarifiés, architecture cible distinguée du scaffold.
+- `specs/SKILL_PROGRESSION.md` : 46 compétences, échelle 0–100, progression par activité validée et alimentation des réserves cachées.
+- `docs/gameplay/CHARACTER_ATTRIBUTES.md` : ancien modèle 45/5/30/15 supprimé et règles canoniques rétablies.
+- `docs/gameplay/CHARACTER_CREATION.md` : ancienne création de classe et anciennes règles de statistiques remplacées par la règle canonique.
+- `docs/CONSISTENCY_AUDIT.md` : ce second rapport remplace le rapport initial.
 
-## 6. Unreal Engine
+## Contradictions restantes à corriger
 
-Le statut Phase 1 est maintenant :
+1. `GAME_BIBLE.md` : anciennes références 45 compétences et formulations de progression.
+2. `specs/MOUNT_SYSTEM_SPEC.md` : Domptage encore décrit comme non canonique.
+3. `docs/gameplay/CHARACTER_SKILLS.md` : Parade dupliquée et Filature déclarée inexistante.
+4. `docs/gameplay/CHARACTER_STATS.md` : les anciennes règles sont remplacées par la synthèse corrigée, mais les autres documents historiques doivent encore être vérifiés globalement.
+5. `specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md` : ancienne valeur 45 à annoter explicitement comme historique.
 
-> **Scaffold livré — compilation UE 5.8.1 et validation PIE encore nécessaires localement.**
+## Validation Unreal locale obligatoire
 
-L'architecture cible est explicitement distinguée du scaffold réellement présent.
+GitHub ne permet pas de valider :
 
-Les références à C++20 sont maintenant accompagnées d'une configuration explicite C++20 dans les targets Unreal.
-
-## 7. Conventions de contenu
-
-Convention retenue :
-
-```text
-Content/
-├── Blueprints/
-│   ├── Core/
-│   ├── Characters/
-│   ├── Gameplay/
-│   ├── UI/
-│   └── Tutorials/
-└── Data/
-    ├── Items/
-    ├── Gameplay/
-    ├── World/
-    └── Loot/
-```
-
-`Character` est remplacé par `Characters` dans les références concernées.
-
-## 8. Map de test
-
-`Config/DefaultEngine.ini` conserve `L_TestArena` comme map de démarrage prévue.
-
-Son absence du dépôt Git est désormais considérée comme un **asset local à créer en Phase 1**, et non comme une contradiction de configuration.
-
-## 9. Points restant à valider localement
-
-Les corrections documentaires sont appliquées. Les points suivants ne peuvent pas être déclarés validés depuis GitHub seul :
-
-- compilation réelle sous Unreal Engine 5.8.1 ;
+- compilation réelle sous UE 5.8.1 ;
 - génération des project files ;
-- création/validation des Blueprints ;
-- création de `L_TestArena` ;
-- fonctionnement PIE ;
-- validation effective du C++20 par le toolchain Unreal ;
+- validité effective de C++20 avec le toolchain installé ;
+- création des Blueprints ;
+- création et chargement de `L_TestArena` ;
+- fonctionnement du PIE ;
+- branchement Enhanced Input ;
 - profiling CPU/GPU/mémoire.
 
-Ces éléments restent des **validations techniques locales**, pas des incohérences documentaires.
-
-## Résultat
-
-L'audit initial a été traité selon les décisions du Game Director.
-
-**État actuel : cohérence documentaire principale corrigée ; validation Unreal locale restante.**
+Ces éléments sont des validations techniques locales, pas des contradictions documentaires.

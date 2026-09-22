@@ -1,82 +1,60 @@
 # Merge — Skill Progression Specification
 
-**Status:** APPROVED — gameplay baseline
-**Engine:** Unreal Engine 5.8.1
+**Status:** APPROUVÉ — baseline canonique de progression  
+**Engine:** Unreal Engine 5.8.1  
+**Échelle affichée des compétences:** 0–100 %
 
-## 1. Principle
+## 1. Principe
 
-Merge uses **learning by doing**. Skills improve through relevant gameplay actions rather than through a separate character-level system.
+Merge utilise le **Learning by Doing**. Les compétences progressent uniquement lorsqu'une activité pertinente, réellement pratiquée, réussie et validée par les règles de contexte est effectuée.
 
-There are **46 canonical skills**.
+Merge possède **46 compétences canoniques**. La liste et les relations entre compétences et caractéristiques sont définies exclusivement dans `specs/CANONICAL_SKILLS.md`.
 
-At character creation, skills are **not manually allocated**. Their initial values are derived from the player's six characteristic values:
-- a skill linked to one characteristic starts at `Characteristic × 4`;
-- a skill linked to multiple characteristics starts at `average(Linked Characteristics) × 4`.
+À la création, aucune compétence ne reçoit de points distribués manuellement. Sa valeur initiale est dérivée du profil des six caractéristiques :
 
-The characteristic creation rules are defined in `specs/CANONICAL_SKILLS.md` and `specs/CHARACTERISTIC_PROGRESSION.md`.
+- compétence liée à une caractéristique : `Caractéristique × 4` ;
+- compétence liée à plusieurs caractéristiques : `moyenne(Caractéristiques liées) × 4`.
 
-After character creation, skills increase only through validated Learning by Doing.
+Après la création, aucune distribution manuelle de points de compétence ou de caractéristique n'est autorisée.
 
-## 2. Progression gained from an action
+## 2. Progression gagnée lors d'une activité
 
-For a valid successful action, progression is calculated from the current skill level, action difficulty and Intelligence:
+Pour une activité réussie et validée :
 
-`P = 0.9 × max(0, (D - S + 15) / 50) × 1 / (1 + 0.012 × S) × (0.75 + 0.025 × I)`
+```text
+P = 0.9 × max(0, (D − S + 15) / 50)
+    × 1 / (1 + 0.012 × S)
+    × (0.75 + 0.025 × I)
+```
 
-Where:
+- `P` = points de progression de compétence gagnés ;
+- `D` = difficulté prédéfinie de l'activité ;
+- `S` = valeur actuelle de la compétence sur l'échelle 0–100 ;
+- `I` = Intelligence sur l'échelle 0–20.
 
-- `P` = points of skill progression gained by the action;
-- `D` = action difficulty;
-- `S` = current skill level;
-- `I` = Intelligence, on the canonical characteristic scale 0–20.
+Les mêmes points gagnés lors de cet événement :
 
-The action must first pass the skill progression validation/context rules. Repetitive actions performed only to farm progression must not receive normal progression.
+1. augmentent la compétence pratiquée ;
+2. alimentent les réserves cachées des caractéristiques liées selon leurs poids.
 
-## 3. Skill points and characteristic progression
+```text
+SkillProgress += P
+CharacteristicProgress += P × Weight
+```
 
-When a validated activity grants `P` skill progression points, those same points increase the practiced skill and are forwarded to the characteristic progression system through the configured skill → characteristic weight.
+Une caractéristique augmente uniquement lorsqu'une réserve cachée atteint son seuil. Le surplus est conservé. Une caractéristique n'est jamais recalculée directement par `moyenne(compétences) / 4` pendant le jeu.
 
-`SkillProgress += P`
+Les actions répétitives réalisées uniquement pour farmer peuvent être rejetées ou fortement réduites par les règles de validation et d'anti-farming. Une réussite réelle d'une activité pertinente reste une source valide de progression.
 
-`CharacteristicProgress += P × Weight`
+## 3. Courbe et niveau de maîtrise
 
-The characteristic does not get recalculated from the average of current skills. It increases only when its hidden progression reaches the configured threshold, with surplus retained. See `specs/CHARACTERISTIC_PROGRESSION.md`.
+Les valeurs de compétence sont stockées avec leur précision interne et affichées en pourcentage. La progression interne et les seuils restent data-driven.
 
-## 4. Design behavior
+Le **niveau 50** représente déjà une maîtrise extrêmement élevée / surhumaine. Les difficultés et la validation doivent préserver cette échelle.
 
-The formula intentionally creates diminishing returns as skill increases and makes higher skill levels require appropriately difficult actions.
+## 4. Contraintes terminologiques
 
-- Increasing `S` reduces progression from easy actions.
-- Increasing `D` makes difficult actions more appropriate for advanced skills.
-- Intelligence modifies progression without replacing the need to perform relevant actions.
-- `max(0, ...)` prevents progression when the action is sufficiently below the required difficulty.
-
-## 5. Skill XP / level thresholds
-
-Skill progression is accumulated as skill XP/progression. The threshold system remains data-driven.
-
-The current baseline threshold curve is:
-
-`XP_required(level) = 100 × level^1.5`
-
-This curve is a tuning baseline for the amount of accumulated progression associated with a target level; it is distinct from the **per-action progression formula** above.
-
-## 6. High-level scale
-
-Skill level **50 is already an extremely high / superhuman level of mastery**. The progression curve and action difficulties must preserve this meaning. Level 50 must not feel routine or easily attainable through low-difficulty repetition.
-
-The system should therefore use increasingly demanding action difficulties and anti-farming validation at high skill levels.
-
-## 7. Maximum and implementation
-
-- The skill maximum is data-driven and must be enforced by the skill system.
-- XP/progression values must be deterministic and suitable for save-game serialization.
-- Gameplay-facing progression should use a consistent rounding policy.
-- Skill → characteristic progression consumes validated skill progression events; see `specs/CHARACTERISTIC_PROGRESSION.md`.
-- The canonical 45-skill list and skill → characteristic relationships are defined in `specs/CANONICAL_SKILLS.md`.
-
-## 8. Terminology constraints
-
-- **Lutte is not a Merge skill or characteristic.**
-- **Parade** is the canonical skill name and belongs to **Défense / mouvement**.
-- Do not invent missing canonical skills.
+- `Lutte` n'est pas une compétence ou une caractéristique canonique.
+- `Domptage` est une compétence canonique.
+- `Réflexe` est un système automatique d'évitement des attaques surprises, pas une compétence ni une caractéristique.
+- `Parade` est la compétence canonique de `Défense / mouvement`.

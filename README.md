@@ -1,80 +1,83 @@
 # Merge
 
 Action-RPG with intentional PS1 aesthetic.  
-**Engine:** Unreal Engine 5.8.1 · **Primary language:** C++ · **Complementary:** Blueprint
+**Engine:** Unreal Engine 5.8.1 · **Primary language:** C++20 · **Complementary:** Blueprint
 
 ## Status
 
 | Phase | Status |
 |-------|--------|
-| 0 — Vision / Game Bible | Done |
-| 0.5 — AI infrastructure / security | Operational guardrails/workflow — planner & real providers pending |
-| 1 — UE5 foundation | Scaffold delivered — UE 5.8.1 local compile/PIE pending |
-| 2+ | Not started |
+| 0 — Vision / Game Bible | VALIDÉ |
+| 0.5 — AI infrastructure / security | OPÉRATIONNEL pour les garde-fous et le workflow ; planner et providers IA réels en attente |
+| 1 — UE5 foundation | SCAFFOLD livré ; compilation UE 5.8.1 et PIE à valider localement |
+| 2+ | PROPOSÉ / à venir |
 
-Les systèmes gameplay détaillés ci-dessous sont **spécifiés mais non déclarés comme implémentés** tant qu'ils n'ont pas été prototypés et testés dans Unreal.
+Les systèmes gameplay détaillés ci-dessous sont **spécifiés mais non déclarés comme implémentés** tant qu'ils n'ont pas été prototypés et validés dans Unreal.
 
 ## Quick links
 
 - [GAME_BIBLE.md](GAME_BIBLE.md) — vision
-- [specs/TECHNICAL_ARCHITECTURE.md](specs/TECHNICAL_ARCHITECTURE.md) — architecture technique
+- [specs/TECHNICAL_ARCHITECTURE.md](specs/TECHNICAL_ARCHITECTURE.md) — architecture cible
 - [specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md](specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md) — systèmes de gameplay
-- [specs/SKILL_PROGRESSION.md](specs/SKILL_PROGRESSION.md) — formule de progression des compétences
+- [specs/CANONICAL_SKILLS.md](specs/CANONICAL_SKILLS.md) — 46 compétences et relations canoniques
+- [specs/SKILL_PROGRESSION.md](specs/SKILL_PROGRESSION.md) — progression des compétences
+- [specs/CHARACTERISTIC_PROGRESSION.md](specs/CHARACTERISTIC_PROGRESSION.md) — progression cachée des caractéristiques
+- [specs/PLAYER_PROGRESSION.md](specs/PLAYER_PROGRESSION.md) — architecture globale de progression
 - [specs/SYSTEM_INTEGRATION_MATRIX.md](specs/SYSTEM_INTEGRATION_MATRIX.md) — cohérence entre systèmes
 - [specs/PERFORMANCE_AND_SIMULATION_SPEC.md](specs/PERFORMANCE_AND_SIMULATION_SPEC.md) — performance et simulation distante
-- [specs/WORLD_REGIONS_HYDROLOGY_AND_THREATS_SPEC.md](specs/WORLD_REGIONS_HYDROLOGY_AND_THREATS_SPEC.md) — direction de la carte
 - [docs/gameplay.md](docs/gameplay.md) — synthèse gameplay
 - [ROADMAP.md](ROADMAP.md) — phases
 - [docs/UE5_SETUP.md](docs/UE5_SETUP.md) — setup Unreal local
-- [ai/](ai/) — multi-agent protocol + runtime guards
+- [ai/](ai/) — protocole multi-agent et runtime guards
 
 ## Principaux systèmes spécifiés
 
 - mouvement troisième personne : roulade, bond arrière, pas de côté, franchissement, escalade contextuelle ;
-- furtivité, perception et Backstab ;
-- combat, maîtrises d'armes, blocage, parade, esquive, système Réflexe et i-frames ;
+- furtivité, perception, Backstab et système automatique Réflexe ;
+- combat, maîtrises d'armes, blocage, parade, esquive et fenêtres défensives ;
 - ciblage intelligent et lock-on ;
 - groupes de PNJ et magie collective ;
-- progression des 46 compétences canoniques, des 6 caractéristiques, de l'Endurance, de la Médecine et de la magie par domaine ;
+- progression des 46 compétences canoniques et des 6 caractéristiques ;
 - nourriture, hydratation, sommeil et altérations physiologiques ;
 - maladies régionales avec diagnostic diégétique ;
-- montures : achat auprès d'éleveurs ou acquisition naturelle via la compétence canonique Domptage ;
+- montures : achat auprès d'éleveurs ou acquisition naturelle pouvant utiliser Domptage ;
 - nage, plongée, flottabilité, noyade et dégâts environnementaux ;
 - écologie prédateur/proie et populations probabilistes ;
 - séismes, tornades, incendies, pluies torrentielles, inondations, glissements, volcan et lave ;
 - monde non régénératif et multi-mondes persistants ;
-- simulation détaillée uniquement autour du joueur, avec résolution probabiliste hors zone.
+- simulation détaillée autour du joueur, avec résolution probabiliste hors zone.
 
-## Structure
+`Réflexe` est un système automatique d'évitement des attaques surprises. Ce n'est ni une compétence ni une caractéristique et il ne possède aucune progression indépendante.
+
+## Structure actuelle et architecture cible
 
 ```text
 Merge.uproject
-Source/Merge/     C++ module (Core, Character, …)
-Content/          Maps, Blueprints, Input (Editor assets)
-Config/           DefaultEngine, Input, GameplayTags
-ai/               AI orchestration + security runtime
-specs/            Architecture docs
+Source/Merge/     scaffold C++ actuel (Core, Character, Data)
+Content/          assets Unreal à créer dans l'éditeur
+Config/           configuration Unreal
+ai/               orchestration IA et garde-fous
+specs/            architecture cible et règles de gameplay
+docs/             guides et synthèses
 ```
+
+L'architecture complète décrite dans `specs/TECHNICAL_ARCHITECTURE.md` est une cible de développement ; elle ne signifie pas que tous ses modules sont déjà présents.
 
 ## Local first steps (Phase 1)
 
-1. Install **UE 5.8.1**
-2. Generate project files from `Merge.uproject`
-3. Compile
-4. Create Blueprints + `L_TestArena` as described in `Content/README.md`
-5. PIE → verify move / look / jump
+1. Installer **UE 5.8.1**.
+2. Générer les project files depuis `Merge.uproject`.
+3. Compiler les targets Unreal en C++20.
+4. Créer les Blueprints et `L_TestArena` comme indiqué dans `Content/README.md`.
+5. Assigner les assets Enhanced Input.
+6. Lancer le PIE et vérifier déplacement, caméra et saut.
 
-See `docs/UE5_SETUP.md` for the full checklist.
+Voir `docs/UE5_SETUP.md` pour la checklist complète.
 
 ## Statuts documentaires
 
-- `PROPOSÉ` : idée non validée.
-- `PENDING_HUMAN` : décision attendue du Game Director.
-- `APPROUVÉ` : règle de conception validée.
-- `SPÉCIFIÉ` : règle décrite mais non codée.
-- `SCAFFOLD` : base technique créée.
-- `IMPLÉMENTÉ` : code présent.
-- `VALIDÉ` : tests appropriés réussis.
-- `OPÉRATIONNEL` : système utilisable dans son périmètre déclaré.
+```text
+PROPOSÉ → PENDING_HUMAN → APPROUVÉ → SPÉCIFIÉ → SCAFFOLD → IMPLÉMENTÉ → VALIDÉ → OPÉRATIONNEL
+```
 
-**Important :** `APPROUVÉ` ne signifie pas `IMPLÉMENTÉ` ni `VALIDÉ`.
+`APPROUVÉ` décrit une décision de conception. Il ne signifie ni `IMPLÉMENTÉ` ni `VALIDÉ`.
