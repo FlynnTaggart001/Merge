@@ -2,6 +2,9 @@
 
 Ce document contient les descriptions et comportements canoniques des animaux et créatures du monde de **Merge**. Les systèmes généraux d'écologie restent définis dans les spécifications de gameplay ; les informations propres aux espèces sont centralisées ici.
 
+> **État du bestiaire : EN COURS — NON TERMINÉ.**
+> Les fiches ci-dessous constituent une base de conception. Les valeurs précises de vitesse, reproduction, dégâts, endurance et autres paramètres restent à équilibrer et pourront être ajustées avant l'implémentation dans Unreal Engine.
+
 ---
 
 ## Vouivre
@@ -118,19 +121,180 @@ L'hydre est une créature monstrueuse massive dont le corps est surmonté de plu
 
 ---
 
+# Faune normale et gothique — base de conception
+
+Cette section constitue la base actuelle pour les **14 animaux normaux et gothiques**. Elle n'est **pas terminée** : les valeurs numériques et certains comportements devront encore être détaillés et équilibrés.
+
+## Loup
+
+- **Régime** : carnivore, chasse principalement en meute.
+- **Proies** : cerfs, sangliers laineux et petits animaux.
+- **Prédateurs** : aucun prédateur naturel majeur établi à ce stade.
+- **Vitesse maximale indicative** : ~55 km/h.
+- **Fuite** : endurance moyenne ; peut abandonner une poursuite si elle devient trop longue.
+- **Attaques** : morsure, attaques coordonnées en groupe.
+- **Comportement** : territorial, peut défendre sa meute et ses petits.
+- **Particularité** : privilégie les proies faibles, jeunes ou isolées.
+
+## Renard
+
+- **Régime** : omnivore.
+- **Proies** : poulets, rats et petits animaux.
+- **Prédateurs** : loups.
+- **Vitesse maximale indicative** : ~50 km/h.
+- **Fuite** : très rapide et généralement privilégiée face au danger.
+- **Attaques** : morsure.
+- **Comportement** : solitaire ; évite normalement les humains.
+- **Particularité** : peut s'approcher des villages la nuit et voler des poules.
+
+## Cerf
+
+- **Régime** : herbivore.
+- **Proies** : aucune.
+- **Prédateurs** : loups.
+- **Vitesse maximale indicative** : ~60 km/h.
+- **Fuite** : très rapide ; fuite immédiate lorsqu'un prédateur est détecté.
+- **Attaques** : bois, ruade.
+- **Comportement** : peut vivre en troupeaux dont la taille varie selon la saison.
+- **Particularité** : les mâles peuvent devenir territoriaux pendant la période de reproduction ; un cerf acculé peut charger.
+
 ## Sanglier laineux
 
+- **Régime** : omnivore.
+- **Proies / alimentation** : végétaux, racines, fruits et petits animaux.
+- **Prédateurs** : loups ; les individus sauvages peuvent également être exposés à d'autres créatures.
+- **Vitesse maximale indicative** : ~40 km/h.
+- **Fuite** : moyenne ; préfère fuir mais peut charger lorsqu'il est coincé.
+- **Attaques** : charge, morsure.
+- **Comportement** : les individus sauvages sont méfiants envers les humains, les squelettes et les Gork.
+- **Particularité** : une femelle accompagnée de ses petits devient particulièrement agressive.
+
+### Rôle domestique
 - Principalement utilisé comme **bétail par les humains**.
 - Élevé notamment pour la **nourriture** et le **vêtement / pelage**.
 - Quelques troupeaux sauvages existent, mais ils sont minoritaires et se trouvent surtout en dehors des zones fortement occupées par les humains.
-- Les populations sauvages sont généralement méfiantes envers les humains, les squelettes et les Gork.
-- Leur comportement et leur population suivent les cycles saisonniers propres à leur espèce.
+
+## Cheval
+
+- **Régime** : herbivore.
+- **Proies** : aucune.
+- **Prédateurs** : peut être attaqué par des loups.
+- **Vitesse maximale indicative** : ~65 km/h.
+- **Fuite** : élevée ; peut fuir en groupe.
+- **Attaques** : ruade.
+- **Comportement** : normalement calme, mais peut paniquer face à certains prédateurs ou créatures fantastiques.
+- **Particularité** : une ruade peut blesser involontairement un individu qui se trouve derrière lui.
+
+## Chèvre
+
+- **Régime** : herbivore.
+- **Proies** : aucune.
+- **Prédateurs** : loups.
+- **Vitesse maximale indicative** : ~30 km/h.
+- **Fuite** : élevée.
+- **Attaques** : coups de corne.
+- **Comportement** : grégaire.
+- **Particularité** : peut se déplacer et grimper facilement sur les terrains escarpés.
+
+## Mouton
+
+- **Régime** : herbivore.
+- **Proies** : aucune.
+- **Prédateurs** : loups.
+- **Vitesse maximale indicative** : ~25 km/h.
+- **Fuite** : faible individuellement mais fortement influencée par le troupeau.
+- **Attaques** : coup de tête.
+- **Comportement** : très grégaire.
+- **Particularité** : lorsqu'un individu fuit, les autres peuvent avoir tendance à le suivre.
+
+## Bovin
+
+- **Régime** : herbivore.
+- **Proies** : aucune.
+- **Prédateurs** : peu de prédateurs naturels établis à ce stade.
+- **Vitesse maximale indicative** : ~35 km/h.
+- **Fuite** : moyenne.
+- **Attaques** : charge, coup de tête.
+- **Comportement** : généralement calme.
+- **Particularité** : un taureau peut devenir territorial ; la charge est puissante mais demande une phase de déclenchement.
+
+## Poulet
+
+- **Régime** : omnivore.
+- **Alimentation** : graines, insectes et petites ressources au sol.
+- **Prédateurs** : renards, serpents et autres petits prédateurs.
+- **Vitesse maximale indicative** : ~15 km/h.
+- **Fuite** : très élevée en réaction à une menace ; déplacements parfois imprévisibles.
+- **Attaques** : coups de bec.
+- **Comportement** : se déplace en groupe et panique facilement.
+- **Particularité** : peut se percher pour échapper à certains prédateurs.
+
+## Serpent
+
+- **Régime** : carnivore.
+- **Proies** : rats, poulets et petits animaux.
+- **Prédateurs** : peut notamment être chassé par la vouivre.
+- **Vitesse maximale indicative** : ~10–20 km/h selon l'espèce.
+- **Fuite** : élevée ; préfère généralement éviter le combat.
+- **Attaques** : morsure, venin pour certaines espèces.
+- **Comportement** : peut rester immobile longtemps avant de frapper.
+- **Particularité** : attaque principalement lorsqu'il se sent menacé.
+
+## Corbeau
+
+- **Régime** : omnivore et charognard.
+- **Alimentation** : charognes, insectes, graines et petites ressources.
+- **Prédateurs** : peut être chassé par des créatures plus grandes.
+- **Vitesse maximale indicative** : ~50 km/h.
+- **Fuite** : très élevée.
+- **Attaques** : coups de bec, coups d'ailes.
+- **Comportement** : intelligent et opportuniste ; peut suivre les événements attirant de la nourriture.
+- **Particularité** : peut voler de petits objets ou de la nourriture.
+
+## Chauve-souris
+
+- **Régime** : principalement insectivore.
+- **Proies** : insectes.
+- **Prédateurs** : certains serpents et autres prédateurs.
+- **Vitesse maximale indicative** : ~30 km/h.
+- **Fuite** : très élevée.
+- **Attaques** : morsure.
+- **Comportement** : principalement nocturne, vit en colonies.
+- **Particularité** : utilise l'écholocation.
+
+## Rat
+
+- **Régime** : omnivore.
+- **Alimentation** : déchets, graines et petites ressources.
+- **Prédateurs** : renards, serpents et autres prédateurs.
+- **Vitesse maximale indicative** : ~15 km/h.
+- **Fuite** : très élevée.
+- **Attaques** : morsure.
+- **Comportement** : vit en colonies importantes, notamment dans les villes et les égouts.
+- **Particularité** : reproduction rapide ; devient agressif lorsqu'il est acculé.
+
+## Araignée
+
+- **Régime** : carnivore.
+- **Proies** : insectes et petits animaux.
+- **Prédateurs** : corbeaux, serpents et autres prédateurs selon l'espèce.
+- **Vitesse** : très variable selon l'espèce.
+- **Fuite** : moyenne.
+- **Attaques** : morsure, toile.
+- **Comportement** : préfère tendre des toiles plutôt que poursuivre ses proies.
+- **Particularité** : certaines espèces peuvent vivre en colonies, d'autres sont solitaires.
 
 ---
 
-## Faune et animaux du monde
+# Règles générales de la faune
 
-Les animaux et créatures de Merge suivent des cycles biologiques propres à leur espèce.
+- Les espèces possèdent des comportements propres et ne partagent pas toutes les mêmes cycles.
+- Les animaux normaux doivent rester cohérents avec une biologie animale crédible.
+- Les populations dépendent des ressources et des prédateurs.
+- Les espèces peuvent se reproduire.
+- Une population peut disparaître localement.
+- Les actions du joueur peuvent avoir des conséquences durables sur les populations.
+- Une partie de la simulation peut être effectuée de manière probabiliste hors de la zone active afin de limiter le coût CPU.
 
 ### Saison des amours
 La période de reproduction peut modifier :
@@ -149,14 +313,3 @@ Selon l'espèce, l'hiver peut entraîner :
 - une hibernation.
 
 Les hydres, les sangliers laineux et les autres espèces disposent d'un cycle saisonnier cohérent avec leur physiologie. Ces cycles peuvent influencer la présence des animaux, les migrations, les naissances, l'agressivité, les ressources disponibles et l'écosystème local.
-
----
-
-## Règles générales de la faune
-
-- Les espèces possèdent des comportements propres et ne partagent pas toutes les mêmes cycles.
-- Les populations dépendent des ressources et des prédateurs.
-- Les espèces peuvent se reproduire.
-- Une population peut disparaître localement.
-- Les actions du joueur peuvent avoir des conséquences durables sur les populations.
-- Une partie de la simulation peut être effectuée de manière probabiliste hors de la zone active afin de limiter le coût CPU.
