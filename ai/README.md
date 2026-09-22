@@ -22,4 +22,4 @@ Le dépôt est la mémoire persistante commune. Aucun agent ne doit supposer qu'
 
 Le Game Director reste l'autorité finale sur les décisions critiques.
 
-**Statut : infrastructure en construction.**
+**Statut : garde-fous et workflow opérationnels ; planner et providers IA réels encore à réaliser.**
