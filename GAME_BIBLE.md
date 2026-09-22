@@ -293,6 +293,13 @@ Cette section recense les personnages et entités uniques ou particulièrement i
 - **Rôle** : conseiller, source de savoir et personnage pouvant être lié à des quêtes.
 - **Localisation** : À DÉCIDER.
 
+#### Kiyeka
+- **Statut** : gouvernement unique du Royaume de la Light Fantaisie.
+- **Nature** : **conscience collective**.
+- **Portée** : seul le gouvernement forme cette conscience unifiée ; les Kima Vé qui composent le peuple restent des individus indépendants avec leur propre volonté.
+- **Fonction** : gouverne l'ensemble du peuple Kima Vé.
+- **Distinction importante** : le Kiyeka ne fusionne pas la population et ne transforme pas tous les Kima Vé en une seule conscience.
+
 #### Hessad
 - **Statut** : prophète actuel de la religion des humains.
 - **Rôle** : figure religieuse importante du Royaume de la Fantaisie.
