@@ -9,6 +9,17 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed — Canonical design synchronization (2026-09-22)
+- Synchronized `GAME_BIBLE.md`, `ROADMAP.md`, progression specifications and gameplay master documentation with the current **attribute-first character creation** model.
+- Character creation is now consistently documented as **6/20 base in each of 6 characteristics + 26 points to distribute, maximum 14/20**.
+- Removed the obsolete creation model based on **45 skills at 5 + 30 specialization points** from current specifications.
+- Initial skill values are now consistently derived from the final characteristic profile using the canonical characteristic → skill conversion.
+- Synchronized the Kima Vé government name to **Kiyoka** where stale documentation still used Kiyeka.
+- Synchronized world boundaries to **40 km² / 6.32 × 6.32 km** and the **eastern ocean** boundary.
+- Removed obsolete `Domptage` / `Réflexe` progression architecture from current design documentation; Endurance remains a gameplay resource.
+- Marked `specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md` as historical/superseded rather than allowing it to override the current canonical rules.
+
+
 ### Fixed — Progression consistency (2026-09-16)
 - Synchronisé `ai/PROJECT_STATE.md` avec le baseline de progression du jour.
 - Aligné `GAME_BIBLE.md` §07 et les systèmes dépendants sur le système canonique approuvé : **45 compétences + 6 caractéristiques**.
