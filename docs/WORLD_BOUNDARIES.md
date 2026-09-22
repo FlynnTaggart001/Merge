@@ -21,7 +21,7 @@ These boundaries must be presented as genuine geographic features rather than te
 
 The player must never encounter an invisible wall at the edge of the world.
 
-The ocean and mountain ranges should visually and physically communicate the end of the accessible landmass while suggesting that the wider world continues beyond the playable 625 km².
+The ocean and mountain ranges should visually and physically communicate the end of the accessible landmass while suggesting that the wider world continues beyond the playable 40 km².
 
 ## Internal borders
 
