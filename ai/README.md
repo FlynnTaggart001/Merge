@@ -2,24 +2,18 @@
 
 Ce dossier contient le protocole partagé utilisé pour coordonner les agents IA de Merge.
 
-## Objectif
-
-Permettre au Game Director de donner un objectif de haut niveau et permettre à l'orchestration de transformer cet objectif en tâches exécutables, validables et traçables.
+L'infrastructure de garde-fous et le workflow d'équipe sont opérationnels. Le planner d'exécution réelle et les providers IA réels restent à intégrer.
 
 ## Fichiers principaux
 
-- `AI_ORCHESTRATOR.md` — contrat et comportement de l'orchestrateur
-- `AGENT_REGISTRY.md` — agents disponibles et capacités
-- `PROJECT_STATE.md` — état partagé du projet
-- `TASK_QUEUE.md` — file des tâches et dépendances
-- `DECISIONS.md` — décisions importantes et décisions en attente
-- `HANDOFF_PROTOCOL.md` — format de transmission entre agents
-- `PERMISSIONS.md` — niveaux d'autonomie et garde-fous
+- `AI_ORCHESTRATOR.md` — contrat de l'orchestrateur
+- `AGENT_REGISTRY.md` — agents et capacités
+- `PROJECT_STATE.md` — état partagé
+- `TASK_QUEUE.md` — tâches et dépendances
+- `DECISIONS.md` — décisions
+- `HANDOFF_PROTOCOL.md` — transmissions
+- `PERMISSIONS.md` — autonomie et garde-fous
 
-## Règle essentielle
+Le dépôt est la mémoire persistante commune. Le Game Director reste l'autorité finale sur les décisions critiques.
 
-Le dépôt est la mémoire persistante commune. Aucun agent ne doit supposer qu'un autre agent connaît son contexte conversationnel.
-
-Le Game Director reste l'autorité finale sur les décisions critiques.
-
-**Statut : garde-fous et workflow opérationnels ; planner et providers IA réels encore à réaliser.**
+**Statut : garde-fous et workflow opérationnels ; planner et providers IA réels en attente.**
