@@ -255,7 +255,7 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 - **Mukwa** → terme utilisé par les Kima Vé pour désigner un squelette.
 
 **Artefacts Kima Vé — idées provisoires :**
-- **Mukumba** → outil permettant de relier des Kima Vé entre eux. Le Mukumba ne relie pas directement les individus au Kiyeka et ne donne pas, à lui seul, de connexion au gouvernement. Il sert uniquement à créer un lien entre plusieurs Kima Vé. Le fonctionnement détaillé de ce lien reste à définir.
+- **Mukumba** → outil permettant de relier des cibles entre elles. Il est possible de relier **5 personnes maximum en même temps**. Les personnes liées partagent toujours le même état : si l'une des personnes liées meurt, les **4 autres meurent également**.
 - **Kieleka** → artefact permettant d'observer à distance les statistiques d'une personne. **Idée non définitive**, à conserver comme concept provisoire jusqu'à validation du fonctionnement, des limites et des conditions d'utilisation.
 
 À COMPLÉTER pour les humains.
