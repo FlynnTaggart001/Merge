@@ -9,6 +9,7 @@ public class MergeTarget : TargetRules
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
+		CppStandard = CppStandardVersion.Cpp20;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_8;
 		ExtraModuleNames.Add("Merge");
 	}
