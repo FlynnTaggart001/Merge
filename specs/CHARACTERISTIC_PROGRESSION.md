@@ -22,11 +22,13 @@ After creation, no manual skill or characteristic point allocation is allowed.
 
 ## Canonical relationships
 
-The complete 45-skill list and skill → characteristic relationships are defined in `specs/CANONICAL_SKILLS.md`.
+The complete 46-skill list and skill → characteristic relationships are defined in `specs/CANONICAL_SKILLS.md`.
 
 **Parade belongs to Défense / mouvement, not Combat.**
 
 ## Automatic characteristic progression
+
+**The same validated skill progression points earned from a practiced activity feed both the skill and the linked characteristic progression.**
 
 `CharacteristicProgress += SkillProgress × Weight`
 
@@ -57,6 +59,12 @@ Characteristic +1
 ```
 
 Characteristic progression inherits skill progression validation and anti-farming rules.
+
+## Learning by Doing rule
+
+A relevant practiced activity can award skill progression only when it passes the validation/context and anti-farming rules. The awarded skill progression increases the practiced skill and simultaneously contributes to the linked characteristic progression according to its configured weight.
+
+There is no direct runtime recomputation of a characteristic from the average of its skills. The characteristic changes only when its hidden progression reaches the next threshold, with surplus retained.
 
 ## Terminology constraints
 
