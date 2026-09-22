@@ -266,18 +266,61 @@ Les descriptions, comportements, cycles biologiques et particularités propres a
 
 Le monde vivant de Merge comprend notamment des animaux domestiques, des espèces sauvages et des créatures fantastiques. Le bestiaire constitue la source de référence pour leurs caractéristiques propres afin d'éviter de dupliquer ou de créer des informations contradictoires dans la GAME BIBLE.
 
-### Personnages Importants
+### Personnages spéciaux et uniques
+
+Cette section recense les personnages et entités uniques ou particulièrement importants déjà établis dans le lore de **Merge**. Les fiches détaillées des créatures restent centralisées dans `specs/BESTIARY.md` ; cette section conserve leur rôle global dans le monde.
+
+#### Roi humain
+- **Statut** : roi du Royaume de la Fantaisie.
+- **Gouvernement** : monarchie.
+- **Personnalité / comportement** : fainéant et principalement préoccupé par ses intérêts personnels.
+- **Contexte** : l'élite dirigeante privilégie également ses propres intérêts et l'esclavage est légal dans le royaume.
+- **Nom** : À DÉFINIR.
+
+#### Roi squelette
+- **Statut** : roi du Royaume de la Dark Fantaisie.
+- **Statut unique** : premier squelette vivant et premier **Nécromentien**.
+- **Apparence** : squelette humain de **2,20 m**, immense couronne d'or.
+- **Habitudes** : quasiment toujours assis sur son trône dans une immense salle constamment remplie de fumée ; haltère dans la main gauche et chicha magique dans la main droite.
+- **Personnalité** : considère son peuple comme ses potes et se montre beaucoup moins égoïste que le roi humain.
+- **Lore clé** : il a découvert le sort permettant de devenir squelette avant la mort naturelle.
 
 #### Sylva the Wise Tree
-- **Apparence** : un arbre comme les autres, à quelques exceptions près. Sur son tronc : une paire d'yeux de bois et une bouche de bois (il parle).
-- **Personnalité** : très intelligent, très sage — comme un philosophe.
+- **Statut** : personnage unique et important.
+- **Apparence** : arbre apparemment normal avec une paire d'yeux de bois et une bouche de bois sur son tronc ; il parle.
+- **Personnalité** : très intelligent et très sage, avec une personnalité comparable à celle d'un philosophe.
 - **Capacités** : utilise la magie.
-- **Rôle** : personnage important (conseiller, source de savoir, quêtes possibles — à préciser).
+- **Rôle** : conseiller, source de savoir et personnage pouvant être lié à des quêtes.
 - **Localisation** : À DÉCIDER.
 
 #### Hessad
-- **Rôle** : prophète actuel de la religion des humains
-- Détails (personnalité, pouvoir, influence politique) : À COMPLÉTER
+- **Statut** : prophète actuel de la religion des humains.
+- **Rôle** : figure religieuse importante du Royaume de la Fantaisie.
+- **Personnalité, pouvoirs et influence précise** : À COMPLÉTER.
+
+#### Phoenix
+- **Statut** : créature unique et immortelle ; un seul Phoenix existe.
+- **Nature** : créature intelligente et **pacifiste par nature**.
+- **Localisation** : son nid se trouve au sommet de l'**immense volcan du monde squelette**.
+- **Comportement** : n'attaque pas spontanément ; son comportement peut varier en fonction des statistiques du joueur, de ses actions et du contexte.
+- **Marchandises** : peut marchander avec le joueur et vendre notamment de la **cendre de Phoenix** et une **plume de feu**.
+- **Reproduction** : ne se reproduit pas et ne pond pas d'œufs.
+- **Immortalité** : possède une barre de vie et peut être vaincu temporairement, mais ne peut jamais mourir définitivement.
+- **Détails de renaissance** : À COMPLÉTER.
+
+#### Léviathan
+- **Statut** : créature unique et immortelle ; un seul Léviathan existe.
+- **Taille** : environ **8 km de long** et **1 km de large**.
+- **Territoire** : océan situé à l'**est de la carte**.
+- **Fonction** : constitue une frontière naturelle vivante du monde.
+- **Comportement** : détruit tout ce qui s'approche trop près de son territoire, notamment les bateaux, embarcations, nageurs, créatures ou objets volants et le joueur.
+- **Réaction au joueur** : ne tient pas compte des statistiques, de l'identité ou des intentions du joueur.
+- **Combat** : possède une barre de vie, mais son immense taille et sa quantité de vie rendent impossible de vider normalement cette barre ; il ne peut pas mourir.
+- **Rôle** : n'est pas un boss classique et sert avant tout de manifestation gigantesque de la limite maritime du monde.
+
+### Personnages et entités à développer
+- De nouveaux personnages uniques peuvent être ajoutés ici lorsqu'ils deviennent canoniques.
+- Les détails propres aux créatures doivent rester dans `specs/BESTIARY.md` pour éviter les duplications contradictoires.
 
 ---
 
