@@ -221,6 +221,9 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 - Équivalent des orcs, appelés **Gork** dans le jeu
 - Vivent en **tribus séparées**
 - Très hostiles aux humains
+- **Taille minimale : 2,20 m**
+- **Peau : violette**
+- **Queue : présente chez les Gork**
 - Localisation, culture détaillée, rapports aux autres espèces : À COMPLÉTER
 
 #### Les Kima Vé (Light Fantaisie)
@@ -247,14 +250,30 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 
 - Individus indépendants (seul le **Kiyeka** gouverne)
 
+**Vocabulaire Kima Vé :**
+- **Muntu** → terme utilisé par les Kima Vé pour désigner un humain.
+- **Mukwa** → terme utilisé par les Kima Vé pour désigner un squelette.
+
 À COMPLÉTER pour les humains.
 
 ### Faune notable
 
 #### Sangliers laineux
-- Élevés en agriculture par les humains (nourriture, vêtements, etc.)
-- Peu de troupeaux sauvages en dehors du Royaume de la Fantaisie
-- Ont peur des hommes, des squelettes et des Gork (leurs prédateurs)
+- Principalement utilisés comme **bétail par les humains**.
+- Élevés notamment pour la **nourriture** et le **vêtement / pelage**.
+- Quelques troupeaux sauvages existent, mais ils sont minoritaires et se trouvent surtout en dehors des zones fortement occupées par les humains.
+- Les populations sauvages sont généralement méfiantes envers les humains, les squelettes et les Gork.
+- Comme les autres animaux, leur comportement et leur population suivent les cycles saisonniers.
+
+### Cycle biologique saisonnier de la faune
+
+Les animaux et créatures du monde suivent des cycles biologiques qui varient selon les espèces.
+
+- **Saison des amours** : période de reproduction propre à chaque espèce, pouvant modifier les comportements, les déplacements, la territorialité et les rassemblements.
+- **Saison d'hivernage** : période d'adaptation à l'hiver pouvant entraîner baisse d'activité, recherche d'abris, regroupements, migration ou hibernation selon l'espèce.
+- Les **hydres**, les sangliers laineux et les autres animaux disposent eux aussi d'un cycle saisonnier cohérent avec leur physiologie.
+- Les cycles peuvent influencer la présence des animaux, les migrations, les naissances, l'agressivité, les ressources disponibles et l'écosystème local.
+- Le système doit permettre une simulation cohérente du monde vivant sans imposer le même comportement à toutes les espèces.
 
 ### Personnages Importants
 
@@ -487,6 +506,8 @@ Toutes reposent principalement sur la **Volonté**, avec l'**Intelligence** comm
 ## 13. Écologie
 
 - Reproduction des créatures
+- **Saison des amours** et cycles de reproduction propres aux espèces
+- **Saison d'hivernage** et adaptations saisonnières propres aux espèces
 - Population dépendante des ressources et des prédateurs
 - Extinction locale possible
 - Actions du joueur ayant des conséquences durables
