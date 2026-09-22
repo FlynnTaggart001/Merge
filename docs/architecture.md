@@ -35,13 +35,11 @@ Character
 │   ├── Dodge / i-frames
 │   └── WeaponMastery
 ├── Progression
-│   ├── Endurance
-│   ├── Agility
-│   ├── Defense
-│   ├── Reflex
-│   ├── Domptage
-│   ├── Medicine
-│   └── MagicDomainMastery[*]
+│   ├── Skills (45 canonical skills)
+│   ├── Characteristics (6 canonical characteristics)
+│   ├── LearningByDoing
+│   ├── CharacteristicContribution
+│   └── ClassPathRecognition
 ├── Survival
 │   ├── Hunger
 │   ├── Hydration
@@ -141,10 +139,10 @@ Deux voies d'acquisition sont prévues :
 
 ```text
 Éleveur → achat
-Nature → domptage
+Nature → acquisition selon les règles propres à l'espèce
 ```
 
-Il n'existe pas de système générique de marchand de bêtes. La compétence `Domptage` appartient au joueur et reste distincte du lien/confiance propre à la monture.
+Il n'existe pas de compétence générique `Domptage` dans les 45 compétences canoniques actuelles. Une acquisition naturelle peut utiliser des règles propres à l'espèce et au système de confiance/lien de la monture.
 
 ## Ciblage et groupe
 
@@ -183,14 +181,14 @@ World Partition, streaming, culling, LOD/HLOD, timers/batches, IA à fréquence 
 ## Priorité d'implémentation
 
 1. Valider le bootstrap Unreal 5.8.1 et le mouvement de base.
-2. Prototyper mouvement, Endurance, roulade, bond arrière, pas de côté et saut.
+2. Prototyper mouvement, ressource d'Endurance, roulade, bond arrière, pas de côté et saut.
 3. Prototyper accroupissement, furtivité et Backstab.
 4. Prototyper CombatResolver, armes, blocage, parade et i-frames.
-5. Ajouter Réflexe et familiarité défensive.
+5. Prototyper progression des 45 compétences et des 6 caractéristiques.
 6. Prototyper IA/Perception et Targeting.
 7. Prototyper inventaire/équipement, survie, Médecine et maladies locales.
 8. Prototyper nage, plongée, noyade et dégâts environnementaux.
-9. Prototyper montures et Domptage.
+9. Prototyper montures, acquisition et système de confiance.
 10. Prototyper groupe de PNJ et magie collective.
 11. Construire les données d'espèces, populations et ressources.
 12. Implémenter le temps, saisons, météo, hydrologie et catastrophes naturelles.
