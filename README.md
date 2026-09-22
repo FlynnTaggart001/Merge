@@ -8,8 +8,8 @@ Action-RPG with intentional PS1 aesthetic.
 | Phase | Status |
 |-------|--------|
 | 0 — Vision / Game Bible | Done |
-| 0.5 — AI infrastructure / security | Done |
-| 1 — UE5 foundation | Scaffold ready — compile & assets local |
+| 0.5 — AI infrastructure / security | Operational guardrails/workflow — planner & real providers pending |
+| 1 — UE5 foundation | Scaffold delivered — UE 5.8.1 local compile/PIE pending |
 | 2+ | Not started |
 
 Les systèmes gameplay détaillés ci-dessous sont **spécifiés mais non déclarés comme implémentés** tant qu'ils n'ont pas été prototypés et testés dans Unreal.
@@ -32,13 +32,13 @@ Les systèmes gameplay détaillés ci-dessous sont **spécifiés mais non décla
 
 - mouvement troisième personne : roulade, bond arrière, pas de côté, franchissement, escalade contextuelle ;
 - furtivité, perception et Backstab ;
-- combat, maîtrises d'armes, blocage, parade, Réflexe et i-frames ;
+- combat, maîtrises d'armes, blocage, parade, esquive, système Réflexe et i-frames ;
 - ciblage intelligent et lock-on ;
 - groupes de PNJ et magie collective ;
-- progression Endurance / Agilité / Défense / Réflexe / Domptage / Médecine / magie par domaine ;
+- progression des 46 compétences canoniques, des 6 caractéristiques, de l'Endurance, de la Médecine et de la magie par domaine ;
 - nourriture, hydratation, sommeil et altérations physiologiques ;
 - maladies régionales avec diagnostic diégétique ;
-- montures : achat auprès d'éleveurs ou domptage ;
+- montures : achat auprès d'éleveurs ou acquisition naturelle via la compétence canonique Domptage ;
 - nage, plongée, flottabilité, noyade et dégâts environnementaux ;
 - écologie prédateur/proie et populations probabilistes ;
 - séismes, tornades, incendies, pluies torrentielles, inondations, glissements, volcan et lave ;
@@ -65,3 +65,16 @@ specs/            Architecture docs
 5. PIE → verify move / look / jump
 
 See `docs/UE5_SETUP.md` for the full checklist.
+
+## Statuts documentaires
+
+- `PROPOSÉ` : idée non validée.
+- `PENDING_HUMAN` : décision attendue du Game Director.
+- `APPROUVÉ` : règle de conception validée.
+- `SPÉCIFIÉ` : règle décrite mais non codée.
+- `SCAFFOLD` : base technique créée.
+- `IMPLÉMENTÉ` : code présent.
+- `VALIDÉ` : tests appropriés réussis.
+- `OPÉRATIONNEL` : système utilisable dans son périmètre déclaré.
+
+**Important :** `APPROUVÉ` ne signifie pas `IMPLÉMENTÉ` ni `VALIDÉ`.
