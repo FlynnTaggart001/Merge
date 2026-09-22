@@ -11,9 +11,19 @@ This folder holds Unreal assets (maps, blueprints, meshes, data assets).
 - `Blueprints/Core/BP_MergeGameMode` → `AMergeGameMode`
 - `Blueprints/Core/BP_MergePlayerController` → `AMergePlayerController`
 - `Blueprints/Core/BP_MergeGameInstance` → `UMergeGameInstance` (optional)
-- `Blueprints/Character/BP_MergeCharacter` → `AMergeCharacter`
+- `Blueprints/Characters/BP_MergeCharacter` → `AMergeCharacter`
 
-### Input (Enhanced Input)
+### Data assets
+
+The target data structure defined by the technical architecture is:
+- `Data/Items`
+- `Data/Gameplay`
+- `Data/World`
+- `Data/Loot`
+
+These are target content paths and can be created as their corresponding systems enter implementation.
+
+## Input (Enhanced Input)
 - `Input/IA_Move` (Axis2D)
 - `Input/IA_Look` (Axis2D)
 - `Input/IA_Jump` (Digital)
