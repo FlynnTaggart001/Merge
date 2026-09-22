@@ -94,9 +94,9 @@ Le basilicoq est une créature mythologique hybride à l'apparence particulière
 
 ### Cri du basilicoq
 Le cri du basilicoq possède un effet surnaturel particulier :
-- Son cri **inverse aléatoirement les contrôles du joueur**.
-- L'inversion peut concerner les directions de déplacement, notamment avancer/reculer et gauche/droite.
-- La combinaison inversée est aléatoire lors de chaque cri.
+- Son cri **inverse aléatoirement tous les contrôles du joueur**.
+- L'inversion concerne aussi bien les déplacements que les contrôles utilisés pour attaquer et toutes les autres actions contrôlées par le joueur.
+- La combinaison des contrôles inversés est aléatoire lors de chaque cri.
 - L'effet est temporaire et les contrôles reviennent ensuite à leur fonctionnement normal.
 - Le basilicoq peut utiliser son cri plusieurs fois pendant un affrontement.
 
