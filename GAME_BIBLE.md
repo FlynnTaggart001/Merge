@@ -145,7 +145,7 @@ Le roi est le premier des squelettes vivants et le premier des **Nécromentiens*
 **Royaume de la Light Fantaisie**  
 Territoire dominé par les **Kima Vé**. Magie pure, créatures éthérées, environnement saturé d'énergie magique. Ambiance plus étrange et lumineuse, en contraste avec le gothique dominant.
 
-**Gouvernement** : le **Kiyoka** (conscience collective). Seul le gouvernement forme cette conscience unifiée. Le peuple appartient à la même espèce mais reste indépendant — chaque individu a sa propre volonté. Le Kiyoka gouverne, il ne fusionne pas la population.
+**Gouvernement** : le **Kiyeka** (conscience collective). Seul le gouvernement forme cette conscience unifiée. Le peuple appartient à la même espèce mais reste indépendant — chaque individu a sa propre volonté. Le Kiyeka gouverne, il ne fusionne pas la population.
 
 ### Factions et Pouvoirs
 
@@ -164,9 +164,9 @@ Territoire dominé par les **Kima Vé**. Magie pure, créatures éthérées, env
 - **Lore clé** : a découvert le sort de transformation en squelette (avant mort naturelle)
 
 #### Royaume de la Light Fantaisie (Kima Vé)
-- **Forme** : **Kiyoka** (conscience collective, gouvernement uniquement)
+- **Forme** : **Kiyeka** (conscience collective, gouvernement uniquement)
 - **Peuple** : Kima Vé, individus indépendants
-- **Implication** : le Kiyoka agit comme une entité unique, le peuple non
+- **Implication** : le Kiyeka agit comme une entité unique, le peuple non
 
 ### Quartiers sensibles (rivaux)
 
@@ -229,10 +229,10 @@ Chaque peuple a sa propre religion. Détails encore à développer.
   - **Bleu** → individu ordinaire
   - **Ambre** → membre respecté des autres
   - **Violet** → individu indispensable à la communauté
-  - **Doré** → membres du **Kiyoka** (gouvernement)
+  - **Doré** → membres du **Kiyeka** (gouvernement)
 - **Aura (glow)** :
   - Pour les individus ordinaires : indique leur état mental personnel
-  - Pour les membres du **Kiyoka** : l’aura reflète **toujours l’état mental du gouvernement** (le Kiyoka)
+  - Pour les membres du **Kiyeka** : l’aura reflète **toujours l’état mental du gouvernement** (le Kiyeka)
 
   **Émotions positives et couleurs d’aura :**
   - Sérénité → Bleu foncé
@@ -245,7 +245,7 @@ Chaque peuple a sa propre religion. Détails encore à développer.
   - Confiance → Orange
   - Gratitude → Gris
 
-- Individus indépendants (seul le **Kiyoka** gouverne)
+- Individus indépendants (seul le **Kiyeka** gouverne)
 
 À COMPLÉTER pour les humains.
 
