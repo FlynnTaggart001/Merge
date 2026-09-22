@@ -43,7 +43,7 @@ Règles :
 - **Parade** utilise la compétence canonique Parade.
 - **Esquive** utilise la compétence canonique Esquive.
 - La roulade possède une fenêtre défensive temporelle et peut contribuer à Esquive lorsqu'une progression est validée.
-- Aucun système de **Réflexe** indépendant ne doit être utilisé comme caractéristique ou compétence de progression.
+- **Réflexe** est un système défensif automatique, pas une caractéristique ni une compétence. Il peut éviter automatiquement une attaque surprise selon notamment l'Agilité et la Perception du joueur. Sa formule est data-driven et il ne génère aucune progression indépendante.
 - Une action défensive ne doit pas créer une source de progression de caractéristique indépendante du pipeline de compétence → caractéristique.
 
 ## 3. Combat et dégâts environnementaux
@@ -137,7 +137,7 @@ Acquisition
 └── Acquisition naturelle selon les règles propres à l'espèce
 ```
 
-Le système de montures ne crée pas de compétence canonique **Domptage**.
+Le système de montures utilise la compétence canonique **Domptage** pour les situations d'acquisition naturelle compatibles avec l'espèce. L'achat auprès d'un éleveur ne nécessite pas Domptage.
 
 Les montures peuvent également avoir :
 - faim ;
@@ -148,7 +148,7 @@ Les montures peuvent également avoir :
 - confiance ;
 - endurance propre en tant que ressource/paramètre de la monture.
 
-Aucune de ces mécaniques n'ajoute une caractéristique ou une compétence aux **6 caractéristiques / 45 compétences** canoniques du joueur.
+Aucune de ces mécaniques n'ajoute une caractéristique ou une compétence aux **6 caractéristiques / 46 compétences** canoniques du joueur.
 
 ## 7. Ciblage et groupe
 
