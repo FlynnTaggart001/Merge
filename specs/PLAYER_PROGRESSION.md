@@ -36,10 +36,15 @@ That document is the source of truth for names, categories and relationships.
 
 At character creation:
 
-- all 45 skills start at **5**;
-- the player receives **30 specialization points**;
-- at most **10 points** may be invested in one skill;
-- therefore the maximum starting value of a skill is **15**.
+- all 6 characteristics start at **6/20**;
+- the player receives **26 characteristic points**;
+- no characteristic may exceed **14/20** at creation;
+- the player assigns those points directly to characteristics;
+- no skill points are manually distributed.
+
+After the characteristic profile is finalized, the 45 skills receive their initial values automatically:
+- single-characteristic skill: `Characteristic × 4`;
+- multi-characteristic skill: `average(Linked Characteristics) × 4`.
 
 There is no manual skill/characteristic point allocation after creation.
 
