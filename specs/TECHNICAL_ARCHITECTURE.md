@@ -20,7 +20,7 @@ L'architecture est conçue pour :
 - Assurer scalabilité et maintenabilité
 - Faciliter la collaboration multi-IA
 
-**Important** : Cette architecture établit le socle technique. Les performances réelles et scalabilité doivent être validées par tests et profiling durant le développement.
+**Important** : Cette architecture décrit la cible technique. Le scaffold actuel ne contient qu'une partie des modules et assets ; les performances réelles et la scalabilité doivent être validées par tests et profiling durant le développement.
 
 ---
 
@@ -968,6 +968,6 @@ Module: Core
 
 **Statut** : ✅ APPROUVÉ
 **Date de Révision** : À chaque changement d'architecture majeur
-**Responsable** : ChatGPT (Lead Developer)
+**Responsable** : Architecture / Game Director
 **Validé par** : Game Director
 **Date d'Approbation** : 2026-08-19
