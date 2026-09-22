@@ -13,7 +13,7 @@ After character creation, the player never manually distributes skill or charact
 
 ## 2. Canonical character model
 
-Merge has **45 unique skills** and **6 canonical characteristics**.
+Merge has **46 unique skills** and **6 canonical characteristics**.
 
 ### Characteristics
 
@@ -42,7 +42,7 @@ At character creation:
 - the player assigns those points directly to characteristics;
 - no skill points are manually distributed.
 
-After the characteristic profile is finalized, the 45 skills receive their initial values automatically:
+After the characteristic profile is finalized, the 46 skills receive their initial values automatically:
 - single-characteristic skill: `Characteristic × 4`;
 - multi-characteristic skill: `average(Linked Characteristics) × 4`.
 
@@ -52,7 +52,7 @@ There is no manual skill/characteristic point allocation after creation.
 
 A skill progresses when the player performs a relevant action successfully and the progression system validates that the action is meaningful.
 
-The action progression baseline is defined in `specs/SKILL_PROGRESSION.md`.
+The action progression baseline is defined in `specs/SKILL_PROGRESSION.md`. The same validated skill progression points then feed the linked characteristic progression according to the configured weights.
 
 The system must reject or strongly reduce progression from artificial farming, including repetitive actions performed only to generate progression.
 
@@ -177,9 +177,9 @@ Detailed fundamental-class requirements must be defined in the class specificati
 
 - **Lutte is not a Merge skill or characteristic.**
 - **Parade** is a canonical skill and belongs exclusively to **Défense / mouvement**.
-- The canonical skill count is **45 unique skills**.
+- The canonical skill count is **46 unique skills**.
 - The canonical characteristic count is **6**.
-- Do not reintroduce obsolete progression concepts such as Endurance, Défense, Réflexe or Domptage as skills/characteristics unless they are explicitly added to the canonical system.
+- Do not reintroduce obsolete progression concepts such as Endurance or Défense as skills/characteristics. **Domptage is now a canonical skill. Réflexe remains a system, not a skill or characteristic.**
 
 ## 12. Source-of-truth hierarchy
 
