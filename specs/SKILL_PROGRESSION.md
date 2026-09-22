@@ -7,9 +7,15 @@
 
 Merge uses **learning by doing**. Skills improve through relevant gameplay actions rather than through a separate character-level system.
 
-There are **45 canonical skills**, all starting at **5**. At character creation the player receives **30 specialization points**, with a maximum of **10 points per skill**, giving a maximum starting skill of **15**.
+There are **45 canonical skills**.
 
-After character creation, skills are never increased by manually spending points. They increase through use.
+At character creation, skills are **not manually allocated**. Their initial values are derived from the player's six characteristic values:
+- a skill linked to one characteristic starts at `Characteristic × 4`;
+- a skill linked to multiple characteristics starts at `average(Linked Characteristics) × 4`.
+
+The characteristic creation rules are defined in `specs/CANONICAL_SKILLS.md` and `specs/CHARACTERISTIC_PROGRESSION.md`.
+
+After character creation, skills increase only through validated Learning by Doing.
 
 ## 2. Progression gained from an action
 
