@@ -68,6 +68,10 @@ La défense distingue :
 
 La roulade possède des **i-frames temporaires**. Les règles exactes de leurs effets sont data-driven et doivent rester compatibles avec la compétence Esquive et les caractéristiques canoniques.
 
+### Système Réflexe
+
+**Réflexe** n'est ni une compétence ni une caractéristique. C'est un système automatique qui peut éviter une attaque surprise. Son efficacité dépend notamment de l'Agilité et de la Perception, sans générer de progression indépendante.
+
 ### Furtivité
 
 L'accroupissement et le déplacement discret influencent la furtivité. La détection est progressive selon posture, vitesse, distance, ligne de vue, luminosité, bruit, terrain, équipement et état de l'ennemi.
@@ -115,7 +119,7 @@ Un rituel peut être interrompu par dégâts, stagger, éloignement, incapacité
 
 La progression utilise le système canonique **learning by doing**.
 
-- Les **45 compétences** progressent par utilisation pertinente et validée.
+- Les **46 compétences** progressent par utilisation pertinente et validée.
 - Les **6 caractéristiques** progressent automatiquement à partir de la progression des compétences qui leur sont liées.
 - Le joueur ne distribue plus manuellement de points de compétence ou de caractéristique après la création.
 - Les actions répétitives effectuées uniquement pour farmer sont limitées ou rejetées par les règles anti-abus.
@@ -123,7 +127,7 @@ La progression utilise le système canonique **learning by doing**.
 
 Les six caractéristiques canoniques sont : **Force, Agilité, Perception, Intelligence, Volonté et Charisme**.
 
-La liste des 45 compétences et leurs relations avec les caractéristiques sont définies exclusivement dans `specs/CANONICAL_SKILLS.md`.
+La liste des 46 compétences et leurs relations avec les caractéristiques sont définies exclusivement dans `specs/CANONICAL_SKILLS.md`.
 
 ### Magie
 
@@ -200,7 +204,7 @@ Le joueur possède deux grandes voies d'acquisition :
 Nature → acquisition selon les règles propres à l'espèce
 ```
 
-Il n'existe pas de compétence **Domptage** dans les 45 compétences canoniques actuelles.
+**Domptage est une compétence canonique** et peut intervenir dans l'acquisition naturelle d'une monture. L'achat auprès d'un éleveur ne nécessite pas Domptage.
 
 Certaines espèces peuvent être déclarées non acquérables par le joueur. Une relation de confiance peut évoluer après acquisition selon le type de monture.
 
@@ -215,4 +219,4 @@ Pour toute règle de progression ou de caractéristique :
 3. `specs/CHARACTERISTIC_PROGRESSION.md`
 4. `specs/PLAYER_PROGRESSION.md`
 
-Les anciennes notions **Endurance**, **Défense**, **Réflexe** et **Domptage** ne doivent pas être utilisées comme caractéristiques ou compétences de progression tant qu'elles ne font pas partie du système canonique.
+Les notions **Endurance** et **Défense** ne sont pas des caractéristiques ou compétences canoniques. **Domptage est canonique comme compétence. Réflexe est un système automatique et non une compétence ou une caractéristique.**
