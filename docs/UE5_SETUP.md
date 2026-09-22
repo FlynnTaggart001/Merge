@@ -25,6 +25,8 @@ If you use another 5.x, update `Merge.uproject` → `EngineAssociation` and the 
 
 ## Architecture (C++)
 
+The directories described by the technical architecture are the **target architecture**. Only the modules explicitly delivered in the Phase 1 scaffold are currently present; the remaining modules are future implementation targets.
+
 ```
 Source/Merge/
   Core/          GameInstance, GameMode, PlayerController
