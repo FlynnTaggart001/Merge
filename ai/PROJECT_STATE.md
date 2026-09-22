@@ -1,6 +1,6 @@
 # Merge — Project State
 
-**Last updated:** 2026-09-16
+**Last updated:** 2026-09-22
 
 ## Current state
 
@@ -16,10 +16,13 @@
 - AI team workflow: **implemented** — planning, dependency checks, role routing, least privilege, proposal/review, Devil's Advocate, human decision gate, handoffs, state persistence and follow-up planning
 - Security/secrets policy: enforced
 - CI: runtime guard tests + recommendation/team workflow tests + secrets hygiene
-- Progression design baseline: **approved** (`specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md` + `specs/CANONICAL_SKILLS.md`)
+- Progression design: **canonical attribute-first creation + Learning by Doing** (`specs/CANONICAL_SKILLS.md`, `specs/CHARACTERISTIC_PROGRESSION.md`, `specs/SKILL_PROGRESSION.md`, `specs/PLAYER_PROGRESSION.md`)
   - 45 canonical skills
   - 6 characteristics (Force, Agilité, Perception, Intelligence, Volonté, Charisme)
-  - Learning by doing + automatic characteristic progression
+  - Character creation: all characteristics start at 6/20, 26 points distributed freely, maximum 14/20
+  - Initial skill values are derived automatically from the final characteristic profile
+  - After creation: Learning by Doing + automatic characteristic progression
+  - `specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md` is retained as a historical baseline and is superseded by the canonical rules above
 
 ## Current milestone
 
