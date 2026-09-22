@@ -44,7 +44,7 @@ Progression de la compétence
 Contribution pondérée aux caractéristiques liées
 ```
 
-Le modèle canonique comprend **45 compétences** et **6 caractéristiques**. La liste et les relations compétence → caractéristique sont définies exclusivement dans `specs/CANONICAL_SKILLS.md`.
+Le modèle canonique comprend **46 compétences** et **6 caractéristiques**. La liste et les relations compétence → caractéristique sont définies exclusivement dans `specs/CANONICAL_SKILLS.md`.
 
 À la création :
 - les 6 caractéristiques commencent à **6/20** ;
@@ -52,7 +52,7 @@ Le modèle canonique comprend **45 compétences** et **6 caractéristiques**. La
 - maximum d'une caractéristique à la création : **14/20** ;
 - les compétences ne reçoivent aucun point manuellement.
 
-Après la distribution des caractéristiques, les 45 compétences sont calculées automatiquement selon `specs/CANONICAL_SKILLS.md`.
+Après la distribution des caractéristiques, les 46 compétences sont calculées automatiquement selon `specs/CANONICAL_SKILLS.md`.
 
 Après la création, aucune répartition manuelle de points de compétence ou de caractéristique.
 
@@ -133,7 +133,7 @@ DodgeSystem
 
 La roulade possède une fenêtre d'invulnérabilité temporaire. Cette protection est une mécanique défensive du `DodgeSystem` et non une caractéristique ou compétence supplémentaire.
 
-La durée exacte de la fenêtre est un paramètre d'équilibrage data-driven. Elle ne doit pas dépendre d'une progression **Réflexe**, puisque Réflexe n'est pas une caractéristique ou compétence canonique actuelle.
+La durée exacte de la fenêtre est un paramètre d'équilibrage data-driven. Elle ne dépend pas du système **Réflexe**, qui est un mécanisme automatique distinct.
 
 Le système doit exposer une fenêtre de protection exploitable par le `CombatResolver` plutôt que d'ajouter un booléen global `IsInvincible` au personnage.
 
@@ -151,6 +151,10 @@ Non → résolution normale
 Cela permet de conserver une architecture propre pour la roulade, les esquives futures et les attaques spéciales.
 
 ## 5. Combat et dégâts
+
+### Système Réflexe — attaques surprises
+
+`Réflexe` n'est ni une compétence ni une caractéristique. C'est un système automatique qui peut éviter une attaque surprise avant qu'elle ne touche le joueur. Son fonctionnement dépend notamment de l'Agilité et de la Perception. La formule exacte est data-driven et ne génère aucune progression indépendante.
 
 Le combat physique utilise des définitions data-driven d'armes et de familles. Le système central doit gérer :
 
@@ -183,7 +187,7 @@ Esquive → évitement spatial via le DodgeSystem, avec i-frames pour la roulade
 
 La parade doit être résolue par le même `CombatResolver` que les autres interactions et produire des événements comme `SuccessfulParry` ou `ParryFailed`.
 
-Une parade réussie doit toujours résulter de l'input du joueur et du timing de la compétence **Parade** ; aucun système de Réflexe ne doit la déclencher ou en modifier automatiquement la fenêtre.
+Une parade réussie doit toujours résulter de l'input du joueur et du timing de la compétence **Parade** ; le système **Réflexe** ne déclenche pas une parade et ne modifie pas automatiquement sa fenêtre.
 
 Les valeurs finales seront équilibrées pendant le prototype.
 
