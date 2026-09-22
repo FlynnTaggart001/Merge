@@ -1,6 +1,6 @@
 # Merge — Progression Design Baseline — 2026-09-16
 
-**Status:** APPROVED baseline from today's design session
+**Status:** HISTORICAL BASELINE — superseded by the canonical attribute-first creation rules on 2026-09-22
 **Engine:** Unreal Engine 5.8.1
 
 ## 1. Skills
@@ -9,12 +9,19 @@ Merge has **45 unique canonical skills**. The complete list and skill → charac
 
 ### Character creation
 
-- All 45 skills start at **5**.
-- The player receives **30 specialization points**.
-- 1 point = +1 skill.
-- Maximum investment in one skill = **10 points**.
-- Maximum starting skill = **15**.
-- After character creation, the player never manually distributes skill or characteristic points.
+The previous skill-point creation model is superseded.
+
+- All 6 characteristics start at **6/20**.
+- The player receives **26 characteristic points**.
+- Maximum characteristic at creation: **14/20**.
+- Total initial characteristic pool: **62 points**.
+- No skill points are distributed manually.
+
+Initial skills are derived from the resulting characteristic profile:
+- single characteristic: `Characteristic × 4`;
+- multiple characteristics: `average(Linked Characteristics) × 4`.
+
+After creation, progression is Learning by Doing.
 
 ### Learning by doing
 
