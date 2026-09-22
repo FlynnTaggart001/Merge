@@ -12,12 +12,12 @@
 - Blueprint: complementary
 - Unreal project scaffold: **created** (`Merge.uproject`, Source/, Config/)
 - Unreal local compile / PIE: **must be validated on a machine with UE5**
-- AI orchestration infrastructure: operational (Phase 0.5)
+- AI orchestration infrastructure: operational guardrails/workflow (Phase 0.5); planner and real providers still pending
 - AI team workflow: **implemented** — planning, dependency checks, role routing, least privilege, proposal/review, Devil's Advocate, human decision gate, handoffs, state persistence and follow-up planning
 - Security/secrets policy: enforced
 - CI: runtime guard tests + recommendation/team workflow tests + secrets hygiene
 - Progression design: **canonical attribute-first creation + Learning by Doing** (`specs/CANONICAL_SKILLS.md`, `specs/CHARACTERISTIC_PROGRESSION.md`, `specs/SKILL_PROGRESSION.md`, `specs/PLAYER_PROGRESSION.md`)
-  - 45 canonical skills
+  - 46 canonical skills
   - 6 characteristics (Force, Agilité, Perception, Intelligence, Volonté, Charisme)
   - Character creation: all characteristics start at 6/20, 26 points distributed freely, maximum 14/20
   - Initial skill values are derived automatically from the final characteristic profile
