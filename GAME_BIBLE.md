@@ -256,24 +256,11 @@ Chaque peuple a sa propre religion. Détails encore à développer.
 
 À COMPLÉTER pour les humains.
 
-### Faune notable
+### Faune et créatures
 
-#### Sangliers laineux
-- Principalement utilisés comme **bétail par les humains**.
-- Élevés notamment pour la **nourriture** et le **vêtement / pelage**.
-- Quelques troupeaux sauvages existent, mais ils sont minoritaires et se trouvent surtout en dehors des zones fortement occupées par les humains.
-- Les populations sauvages sont généralement méfiantes envers les humains, les squelettes et les Gork.
-- Comme les autres animaux, leur comportement et leur population suivent les cycles saisonniers.
+Les descriptions, comportements, cycles biologiques et particularités propres aux espèces sont centralisés dans **specs/BESTIARY.md**.
 
-### Cycle biologique saisonnier de la faune
-
-Les animaux et créatures du monde suivent des cycles biologiques qui varient selon les espèces.
-
-- **Saison des amours** : période de reproduction propre à chaque espèce, pouvant modifier les comportements, les déplacements, la territorialité et les rassemblements.
-- **Saison d'hivernage** : période d'adaptation à l'hiver pouvant entraîner baisse d'activité, recherche d'abris, regroupements, migration ou hibernation selon l'espèce.
-- Les **hydres**, les sangliers laineux et les autres animaux disposent eux aussi d'un cycle saisonnier cohérent avec leur physiologie.
-- Les cycles peuvent influencer la présence des animaux, les migrations, les naissances, l'agressivité, les ressources disponibles et l'écosystème local.
-- Le système doit permettre une simulation cohérente du monde vivant sans imposer le même comportement à toutes les espèces.
+Le monde vivant de Merge comprend notamment des animaux domestiques, des espèces sauvages et des créatures fantastiques. Le bestiaire constitue la source de référence pour leurs caractéristiques propres afin d'éviter de dupliquer ou de créer des informations contradictoires dans la GAME BIBLE.
 
 ### Personnages Importants
 
