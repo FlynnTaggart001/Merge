@@ -273,7 +273,7 @@ Détails complets dans `specs/NOBLE_LAND_AND_DOMAIN_MANAGEMENT.md`.
 **Type :** Quête narrative / exploration / combat / événement mondial  
 **Peuple central :** Kima Vé  
 **Statut :** Conception validée  
-**Récompense :** Choix exclusif entre devenir Kima Vé ou recevoir l'Artefact de Liaison
+**Récompense :** Choix exclusif entre devenir Kima Vé ou recevoir le **Mukumba**
 
 ### Synopsis
 
@@ -298,13 +298,16 @@ Le joueur découvre que ce corps est **le Wise Tree**, appelé **Sylva**.
 9. Les Kima Vé déplacent physiquement le Wise Tree jusqu'à **la Source de la Colline**, afin de lui fournir l'eau la plus pure possible.
 10. Le Wise Tree récupère. Son esprit cesse de se détériorer, le lien avec les Kima Vé se stabilise et la cristallisation cesse de progresser.
 11. Le Wise Tree propose alors au joueur de devenir Kima Vé.
-12. Si le joueur refuse, le royaume Kima Vé lui remet un **Artefact de Liaison**.
+12. Si le joueur refuse, le royaume Kima Vé lui remet le **Mukumba**.
 
-### Artefact de Liaison
+### Mukumba
 
-L'Artefact de Liaison appartient au royaume Kima Vé et n'est pas lié au Wise Tree.
+Le **Mukumba** est l'artefact donné par les Kima Vé.  
+Il sert à **lier le peuple des Kima Vé à leur gouvernement**, le **Kiyoka** (conscience collective).
 
-Il servait historiquement d'outillage permettant de **lier les Kima Vé entre eux** et de les intégrer au fonctionnement de leur gouvernement, **Kiyoka**, qui est une conscience collective. Le Kiyoka constitue donc le système gouvernemental et de conscience collective des Kima Vé.
+Il appartient au royaume Kima Vé et n'est pas lié au Wise Tree.
+
+Historiquement, il permettait de lier les Kima Vé entre eux et de les intégrer au fonctionnement du Kiyoka.
 
 Le joueur peut l'utiliser en combat pour relier simultanément jusqu'à **5 âmes ennemies différentes**. Lorsque plusieurs ennemis sont liés, tuer l'un des ennemis entraîne la mort de tous les autres ennemis liés.
 
@@ -315,8 +318,8 @@ Le joueur peut l'utiliser en combat pour relier simultanément jusqu'à **5 âme
 - Le Wise Tree est déplacé de son emplacement initial vers la Source de la Colline.
 - La situation des Kima Vé est durablement stabilisée.
 - La pollution et la présence de la tribu Gork sont résolues par le combat imposé au joueur.
-- Le joueur devient Kima Vé **ou** reçoit l'Artefact de Liaison ; les deux récompenses sont exclusives.
-- L'Artefact de Liaison est un outil de liaison entre les Kima Vé et leur gouvernement-conscience collective, le **Kiyoka**.
+- Le joueur devient Kima Vé **ou** reçoit le **Mukumba** ; les deux récompenses sont exclusives.
+- Le Mukumba est l'artefact qui lie le peuple Kima Vé à leur gouvernement-conscience collective, le **Kiyoka**.
 - Le déplacement du Wise Tree constitue un événement persistant du monde.
 
 ### Notes de cohérence
