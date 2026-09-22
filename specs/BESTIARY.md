@@ -82,6 +82,29 @@ La gargouille constitue une force de dissuasion locale. Les habitants et les ind
 
 ---
 
+## Basilicoq
+
+### Description
+Le basilicoq est une créature mythologique hybride à l'apparence particulièrement étrange. Il possède une **tête de coq**, un **corps reptilien couvert d'écailles**, des **pattes terminées par de puissantes griffes**, une **longue queue reptilienne** et des **ailes membraneuses rappelant celles d'une chauve-souris**.
+
+### Attaques
+- **Coups de griffes** : le basilicoq attaque directement ses adversaires avec ses puissantes serres.
+- **Flaques de poison** : lorsqu'il poursuit le joueur, il crache du poison derrière lui. Le poison reste au sol sous forme de flaques et inflige des dégâts à ceux qui les traversent.
+- Les flaques servent également à **empêcher ou limiter la fuite du joueur**, en réduisant progressivement les trajectoires disponibles.
+
+### Cri du basilicoq
+Le cri du basilicoq possède un effet surnaturel particulier :
+- Son cri **inverse aléatoirement les contrôles du joueur**.
+- L'inversion peut concerner les directions de déplacement, notamment avancer/reculer et gauche/droite.
+- La combinaison inversée est aléatoire lors de chaque cri.
+- L'effet est temporaire et les contrôles reviennent ensuite à leur fonctionnement normal.
+- Le basilicoq peut utiliser son cri plusieurs fois pendant un affrontement.
+
+### Comportement en combat
+Le basilicoq utilise ses différentes capacités de manière complémentaire. Il peut poursuivre le joueur en laissant des flaques de poison derrière lui afin de limiter ses possibilités de fuite, puis utiliser son cri pour perturber ses contrôles et provoquer des déplacements involontaires. Il peut ensuite profiter de la confusion pour attaquer avec ses griffes.
+
+---
+
 ## Hydre
 
 ### Description
