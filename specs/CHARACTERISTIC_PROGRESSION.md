@@ -8,12 +8,17 @@
 Merge separates skills from characteristics. Skills improve through learning by doing. Characteristics improve automatically from linked skill progression. There is no global character level for distributing points.
 
 At character creation:
-- 45 skills start at 5.
-- 30 specialization points are available.
-- 1 point = +1 skill.
-- Maximum 10 points in one skill.
-- Maximum starting skill = 15.
-- After creation, no manual skill or characteristic point allocation.
+- all 6 characteristics start at **6/20**;
+- the player receives **26 characteristic points**;
+- maximum characteristic at creation: **14/20**;
+- total initial characteristic pool: **62 points**;
+- the player does not manually assign skill points.
+
+Initial skill values are derived from the final creation-time characteristic profile:
+- single-characteristic skill: `Characteristic × 4`;
+- multi-characteristic skill: `average(Linked Characteristics) × 4`.
+
+After creation, no manual skill or characteristic point allocation is allowed.
 
 ## Canonical relationships
 
