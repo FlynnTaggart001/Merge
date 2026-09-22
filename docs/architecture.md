@@ -33,9 +33,10 @@ Character
 │   ├── Block
 │   ├── Parry
 │   ├── Dodge / i-frames
+│   ├── SurpriseAvoidance (Réflexe)
 │   └── WeaponMastery
 ├── Progression
-│   ├── Skills (45 canonical skills)
+│   ├── Skills (46 canonical skills)
 │   ├── Characteristics (6 canonical characteristics)
 │   ├── LearningByDoing
 │   ├── CharacteristicContribution
@@ -142,7 +143,13 @@ Deux voies d'acquisition sont prévues :
 Nature → acquisition selon les règles propres à l'espèce
 ```
 
-Il n'existe pas de compétence générique `Domptage` dans les 45 compétences canoniques actuelles. Une acquisition naturelle peut utiliser des règles propres à l'espèce et au système de confiance/lien de la monture.
+`Domptage` est une compétence canonique. Une acquisition naturelle peut utiliser Domptage, ainsi que les règles propres à l'espèce et au système de confiance/lien de la monture.
+
+## Système Réflexe — évitement automatique des attaques surprises
+
+`Réflexe` n'est ni une compétence ni une caractéristique. C'est un système défensif automatique qui peut éviter une attaque surprise avant qu'elle ne touche le joueur.
+
+Son fonctionnement dépend notamment de **l'Agilité et de la Perception** du joueur. La formule exacte est data-driven et ce système ne génère aucune progression indépendante.
 
 ## Ciblage et groupe
 
@@ -184,7 +191,7 @@ World Partition, streaming, culling, LOD/HLOD, timers/batches, IA à fréquence 
 2. Prototyper mouvement, ressource d'Endurance, roulade, bond arrière, pas de côté et saut.
 3. Prototyper accroupissement, furtivité et Backstab.
 4. Prototyper CombatResolver, armes, blocage, parade et i-frames.
-5. Prototyper progression des 45 compétences et des 6 caractéristiques.
+5. Prototyper progression des 46 compétences et des 6 caractéristiques.
 6. Prototyper IA/Perception et Targeting.
 7. Prototyper inventaire/équipement, survie, Médecine et maladies locales.
 8. Prototyper nage, plongée, noyade et dégâts environnementaux.
