@@ -20,12 +20,14 @@ Son trait le plus remarquable est sa capacité à produire des sifflements capab
 - La vouivre n'attaque pas spontanément un individu qui la laisse tranquille.
 - Elle attaque si elle est attaquée en premier.
 - Elle devient immédiatement hostile si sa pierre précieuse est volée.
-- Si sa pierre est volée pendant sa baignade, elle sort de l'eau et poursuit le voleur.
+- Elle ressent **instantanément** le vol de sa pierre, quelle que soit la distance qui la sépare de celle-ci.
+- Dès que la pierre est volée, elle devient **extrêmement brûlante**.
+- Si sa pierre est volée pendant sa baignade, elle sort immédiatement de l'eau et poursuit le voleur.
 
 ### Sifflement et serpents
 La vouivre possède une capacité particulière lui permettant d'appeler les serpents présents dans les environs grâce à des sifflements spécifiques.
 - Elle peut attirer les serpents autour de son lieu de baignade.
-- Lorsqu'un voleur prend sa pierre, elle invoque les serpents environnants pour l'aider à poursuivre le voleur.
+- Lorsqu'un voleur prend sa pierre, elle appelle les serpents environnants pour l'aider à poursuivre le voleur.
 - Les serpents suivent le joueur de très près tant que celui-ci possède la pierre.
 
 ### Pierre précieuse
@@ -37,6 +39,46 @@ La vouivre possède une capacité particulière lui permettant d'appeler les ser
 
 ### Particularité de gameplay
 La vouivre ne constitue pas nécessairement un combat obligatoire. Le joueur peut observer son rituel nocturne sans l'agresser, ou tenter de voler sa pierre au prix d'une poursuite dangereuse par la vouivre et les serpents qu'elle appelle.
+
+---
+
+## Gargouille
+
+### Description
+La gargouille est une créature de pierre extrêmement lourde qui s'intègre directement aux bâtiments sur lesquels elle est installée. Elle ressemble à une statue architecturale tant qu'aucun danger n'est détecté dans son périmètre.
+
+Les gargouilles servent principalement de gardiennes. Leur présence dissuade les agressions et contribue à faire baisser le taux de criminalité dans les endroits où elles sont installées.
+
+### Position et déplacement
+- La gargouille est fixée à un bâtiment et reste immobile lorsqu'aucun danger n'est détecté.
+- Son poids est trop important pour lui permettre de voler.
+- Lorsqu'elle intervient, elle se détache du bâtiment et tombe vers l'initiateur de l'agression.
+- Une fois son intervention terminée, elle **grimpe le long du bâtiment** jusqu'à retrouver exactement son emplacement d'origine.
+- Elle ne vole jamais, y compris lors de son retour à son emplacement.
+
+### Intervention contre les agressions
+La gargouille surveille les agressions qui se produisent dans son périmètre.
+- Si le joueur attaque un PNJ, la gargouille considère **le joueur comme l'initiateur** et intervient contre lui.
+- Si un PNJ attaque le joueur, elle considère **ce PNJ comme l'initiateur** et intervient contre lui.
+- Elle ne prend donc pas automatiquement parti pour le joueur ou pour les PNJ : elle intervient contre celui qui a déclenché l'altercation.
+
+### Chute et onde de choc
+Lorsque la gargouille intervient :
+- Elle tombe directement sur l'initiateur de l'agression.
+- **Les dégâts de l'impact sont infligés uniquement à la personne sur laquelle elle tombe.**
+- La chute produit également une **onde de choc** autour du point d'impact.
+- L'onde de choc ne sert pas à infliger des dégâts de zone : elle **propulse les personnes présentes autour de la gargouille**.
+- Cette propulsion sépare les participants et permet de mettre fin à l'altercation.
+
+### Neutralisation de l'agresseur
+La gargouille cherche à arrêter la violence, pas à tuer.
+- Elle réduit l'initiateur de l'agression au **minimum de PV possible** sans l'achever.
+- Le PNJ agressé prend la fuite, ce qui sépare physiquement les deux protagonistes.
+- Si l'agresseur cesse son attaque, la gargouille n'a aucune raison de le tuer.
+- Si l'agresseur continue volontairement d'attaquer malgré son état critique et l'intervention de la gargouille, celle-ci peut finalement **le tuer**.
+
+### Rôle dans la société
+La gargouille constitue une force de dissuasion locale. Les habitants et les individus susceptibles de commettre des agressions savent qu'une violence déclenchée dans son périmètre peut provoquer son intervention. La présence de gargouilles dans un lieu contribue donc directement à **réduire le taux de criminalité et les agressions** dans la zone qu'elles surveillent.
 
 ---
 
