@@ -145,7 +145,7 @@ Le roi est le premier des squelettes vivants et le premier des **Nécromentiens*
 **Royaume de la Light Fantaisie**  
 Territoire dominé par les **Kima Vé**. Magie pure, créatures éthérées, environnement saturé d'énergie magique. Ambiance plus étrange et lumineuse, en contraste avec le gothique dominant.
 
-**Gouvernement** : le **Kiyeka** (conscience collective). Seul le gouvernement forme cette conscience unifiée. Le peuple appartient à la même espèce mais reste indépendant — chaque individu a sa propre volonté. Le Kiyeka gouverne, il ne fusionne pas la population.
+**Gouvernement** : le **Kiyoka** (conscience collective). Seul le gouvernement forme cette conscience unifiée. Le peuple appartient à la même espèce mais reste indépendant — chaque individu a sa propre volonté. Le Kiyoka gouverne, il ne fusionne pas la population.
 
 ### Factions et Pouvoirs
 
@@ -164,9 +164,9 @@ Territoire dominé par les **Kima Vé**. Magie pure, créatures éthérées, env
 - **Lore clé** : a découvert le sort de transformation en squelette (avant mort naturelle)
 
 #### Royaume de la Light Fantaisie (Kima Vé)
-- **Forme** : **Kiyeka** (conscience collective, gouvernement uniquement)
+- **Forme** : **Kiyoka** (conscience collective, gouvernement uniquement)
 - **Peuple** : Kima Vé, individus indépendants
-- **Implication** : le Kiyeka agit comme une entité unique, le peuple non
+- **Implication** : le Kiyoka agit comme une entité unique, le peuple non
 
 ### Quartiers sensibles (rivaux)
 
@@ -229,10 +229,10 @@ Chaque peuple a sa propre religion. Détails encore à développer.
   - **Bleu** → individu ordinaire
   - **Ambre** → membre respecté des autres
   - **Violet** → individu indispensable à la communauté
-  - **Doré** → membres du **Kiyeka** (gouvernement)
+  - **Doré** → membres du **Kiyoka** (gouvernement)
 - **Aura (glow)** :
   - Pour les individus ordinaires : indique leur état mental personnel
-  - Pour les membres du **Kiyeka** : l’aura reflète **toujours l’état mental du gouvernement** (le Kiyeka)
+  - Pour les membres du **Kiyoka** : l’aura reflète **toujours l’état mental du gouvernement** (le Kiyoka)
 
   **Émotions positives et couleurs d’aura :**
   - Sérénité → Bleu foncé
@@ -245,7 +245,7 @@ Chaque peuple a sa propre religion. Détails encore à développer.
   - Confiance → Orange
   - Gratitude → Gris
 
-- Individus indépendants (seul le **Kiyeka** gouverne)
+- Individus indépendants (seul le **Kiyoka** gouverne)
 
 À COMPLÉTER pour les humains.
 
@@ -284,15 +284,26 @@ Les six caractéristiques fondamentales de Merge sont :
 - **Volonté**
 - **Charisme**
 
-La référence numérique actuelle est une échelle **0–20**. Ces caractéristiques ne sont pas réparties manuellement après la création : elles progressent automatiquement à partir de la progression validée des compétences qui leur sont liées.
+La référence numérique actuelle est une échelle **0–20**.
 
-Relation canonique :
+### Création du personnage
 
-`CharacteristicProgress += SkillProgress × Weight`
+À la création :
 
-Chaque caractéristique possède sa propre réserve de progression et ses seuils. Lorsqu'un seuil est atteint, la caractéristique augmente de +1 et le surplus est conservé.
+- les 6 caractéristiques commencent à **6/20** ;
+- le joueur reçoit **26 points de caractéristiques** à distribuer librement ;
+- une caractéristique ne peut pas dépasser **14/20** à la création ;
+- le total initial est donc de **62 points**.
 
-Les poids, seuils et limites numériques détaillées sont data-driven et ne doivent pas être dupliqués avec des valeurs contradictoires dans d'autres documents.
+C'est la seule phase où le joueur attribue directement des points de caractéristiques.
+
+Les compétences sont ensuite calculées à partir du profil de caractéristiques selon la formule canonique de `specs/CANONICAL_SKILLS.md` :
+
+`Compétence initiale (%) = moyenne(Caractéristiques liées) × 4`
+
+Après la création, le joueur ne distribue plus manuellement de points de caractéristique. Les compétences progressent par Learning by Doing et alimentent automatiquement les caractéristiques selon les règles de progression canoniques.
+
+Les poids, seuils et limites de progression détaillés sont data-driven et ne doivent pas être dupliqués avec des valeurs contradictoires dans d'autres documents.
 
 ### 07.2 Compétences
 
@@ -310,13 +321,13 @@ La liste exacte des 45 compétences et leurs caractéristiques liées est défin
 
 ### 07.3 Création du personnage
 
-- Les **45 compétences commencent à 5**.
-- Le joueur reçoit **30 points de spécialisation**.
-- Maximum investi dans une seule compétence : **10 points**.
-- Maximum de départ d'une compétence : **15**.
-- Ces points servent à spécialiser le profil initial du personnage.
+- Le joueur ne distribue **aucun point de compétence** à la création.
+- Les 45 compétences reçoivent leur valeur initiale automatiquement à partir des 6 caractéristiques.
+- Une compétence liée à une seule caractéristique vaut cette caractéristique × 4.
+- Une compétence liée à plusieurs caractéristiques utilise leur moyenne × 4.
+- Avec les caractéristiques initiales comprises entre 6 et 14, les compétences initiales résultent donc du profil choisi.
 
-Après la création, le joueur **ne répartit plus manuellement de points de compétence ou de caractéristique**. La progression se fait par le jeu.
+Après la création, le joueur **ne répartit plus manuellement de points de compétence ou de caractéristique**. La progression se fait par Learning by Doing.
 
 ### 07.4 Progression
 
