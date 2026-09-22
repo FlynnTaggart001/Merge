@@ -24,7 +24,7 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [x] Matrice d'intégration inter-systèmes créée
 - [x] Direction de world design en trois grandes régions cadrée
 - [x] Taille cible du monde fixée à 40 km² (référence 6,32 × 6,32 km)
-- [x] Système canonique de progression : 45 compétences + 6 caractéristiques
+- [x] Système canonique de progression : 46 compétences + 6 caractéristiques
 - [x] Création : 6 caractéristiques à 6/20, 26 points à distribuer, maximum 14/20 ; compétences initiales dérivées automatiquement
 - [x] Learning by Doing et progression automatique des caractéristiques spécifiés
 - [x] Classes/voies : qualification par profil de caractéristiques et révélation à l'atteinte des conditions
@@ -84,7 +84,7 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [ ] Franchissement contextuel
 - [ ] Escalade contextuelle
 - [ ] Réception contrôlée
-- [ ] Implémenter le pipeline des **45 compétences**
+- [ ] Implémenter le pipeline des **46 compétences**
 - [ ] Implémenter la progression **Learning by Doing**
 - [ ] Implémenter la progression automatique des **6 caractéristiques**
 - [ ] Implémenter les seuils, poids et valeurs data-driven
