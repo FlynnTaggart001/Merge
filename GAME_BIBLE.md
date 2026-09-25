@@ -377,7 +377,7 @@ Les poids, seuils et limites de progression détaillés sont data-driven et ne d
 - Artisanat (6)
 - Social / communication (5)
 
-La liste exacte des 45 compétences et leurs caractéristiques liées est définie exclusivement dans `specs/CANONICAL_SKILLS.md`.
+La liste exacte des 46 compétences et leurs caractéristiques liées est définie exclusivement dans `specs/CANONICAL_SKILLS.md`.
 
 ### 07.3 Création du personnage
 
@@ -407,11 +407,7 @@ avec :
 
 La progression doit être validée selon le contexte de l'action. Les actions répétitives réalisées uniquement pour farmer la progression ne donnent pas la progression normale.
 
-Courbe de seuil actuelle de référence :
-
-`XP_required(level) = 100 × level^1.5`
-
-Cette courbe est une **baseline de tuning**, distincte de la formule de progression par action.
+Les seuils de progression des caractéristiques sont définis dans `specs/CHARACTERISTIC_PROGRESSION.md`. Aucune courbe d'XP de niveau global n'est utilisée comme progression principale du personnage.
 
 **Échelle de maîtrise : le niveau 50 d'une compétence représente déjà une maîtrise extrêmement élevée / surhumaine.** Les difficultés d'action et l'anti-farming doivent préserver cette signification.
 
