@@ -367,7 +367,7 @@ Les poids, seuils et limites de progression détaillés sont data-driven et ne d
 
 ### 07.2 Compétences
 
-**45 compétences canoniques** regroupées en 7 catégories :
+**46 compétences canoniques** regroupées en 7 catégories :
 
 - Combat (9)
 - Défense / mouvement (6) — **Parade appartient ici, pas au Combat**
@@ -375,14 +375,14 @@ Les poids, seuils et limites de progression détaillés sont data-driven et ne d
 - Magie (7)
 - Connaissances (7)
 - Artisanat (6)
-- Social / communication (4)
+- Social / communication (5)
 
 La liste exacte des 45 compétences et leurs caractéristiques liées est définie exclusivement dans `specs/CANONICAL_SKILLS.md`.
 
 ### 07.3 Création du personnage
 
 - Le joueur ne distribue **aucun point de compétence** à la création.
-- Les 45 compétences reçoivent leur valeur initiale automatiquement à partir des 6 caractéristiques.
+- Les 46 compétences reçoivent leur valeur initiale automatiquement à partir des 6 caractéristiques.
 - Une compétence liée à une seule caractéristique vaut cette caractéristique × 4.
 - Une compétence liée à plusieurs caractéristiques utilise leur moyenne × 4.
 - Avec les caractéristiques initiales comprises entre 6 et 14, les compétences initiales résultent donc du profil choisi.
@@ -440,37 +440,57 @@ Détails : `specs/FOOD_MEDICINE_AND_NONMAGICAL_HEALING_SPEC.md` et docs associé
 ## 08. Combat
 
 ### Système de Base
+Le système détaillé est défini dans `specs/COMBAT_SYSTEM_SPEC.md`.
+
 - **Type** : combat temps réel (pas de tour par tour)
 - **Perspective** : vue à la troisième personne
 - **Contrôle** : libre et direct
+- **Lock-on** : optionnel, au choix du joueur
+- **Endurance** : une seule barre commune
 
 ### Mécaniques Offensives
-- Attaques légères
-- Attaques lourdes (coûtent plus d'endurance)
-- Combinaisons d'attaques
-- Visée libre possible
-- Différents types de dégâts (tranchant, contondant, perçant, magie)
+- Attaques de base propres à chaque famille d'arme
+- Attaques puissantes sous forme d'attaques chargées
+- Attaques spéciales sous forme de combos préenregistrés
+- Mains nues avec ses propres attaques
+- Furtivité et attaques furtives également possibles avec l'arc
+- Chaque famille d'arme possède ses propres attaques et son identité
 
 ### Mécaniques Défensives
-- **Esquive** avec timing, utilisant la compétence Esquive
-- **Parade** avec arme/bouclier, utilisant la compétence Parade
-- Roulement d'esquive
-- Blocage, utilisant la compétence Blocage selon le contexte
-- Les coûts d'endurance sont des coûts de gameplay et **ne constituent pas une caractéristique ou une compétence canonique supplémentaire**
+- **Esquive** utilisant la compétence Esquive
+- **Parade** avec test de timing, utilisant la compétence Parade
+- **Blocage** utilisant la compétence Blocage
+- Une attaque qui rate naturellement le joueur ne déclenche aucun test de parade
+- Parade parfaite : aucun dégât + contre automatique + coup critique
+- Parade réussie : aucun dégât
+- Parade ratée : coup critique subi
+- Agilité : facilite la fenêtre de parade pour les personnages agiles et la rend plus difficile pour les personnages lourds
+- Les personnages lourds peuvent privilégier le blocage et compenser avec une armure plus élevée
+- Le blocage consomme davantage d'endurance
 
-### Calcul des Dégâts
-À DÉCIDER :
-- Formule exacte
-- Rôle des caractéristiques
-- Rôle de l'arme
-- Rôle de l'armure
-- Critique et précision
+### Dégâts
+- Deux catégories principales : **physique** et **magique**
+- Tranchant, perforant et contondant sont des propriétés des armes, pas des catégories principales indépendantes
+- Formule exacte des dégâts encore à définir
+- Les critiques sont principalement contextuels
+
+### Stagger
+- Dépend notamment de la puissance/impact de l'attaque ainsi que du poids et de la taille de la cible
+- Formule et seuils exacts encore à définir
+
+### Furtivité et Réflexe
+- Discrétion de l'attaquant → Perception de la cible → Réflexe automatique si une réaction est possible
+- Réflexe est un système automatique basé sur Agilité + Perception, pas une compétence ni une caractéristique
+- Un backstab est simplement un coup critique porté dans le dos
+- La cible peut éviter automatiquement le backstab selon ses capacités de détection et de réaction
+- La Discrétion de la cible ne sert pas à éviter un backstab
+- Les attaques furtives peuvent utiliser les armes de mêlée et l'arc
 
 ### Statut de Combat
 - Détection des ennemis
 - Aggression et fuite
 - Regroupement d'ennemis
-- IA basique (À COMPLÉTER en détail)
+- IA basique à détailler
 
 ---
 
