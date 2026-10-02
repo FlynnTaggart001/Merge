@@ -116,7 +116,7 @@ Progression de compétence
 Caractéristiques liées
 ```
 
-Il n'existe pas de progression directe de « Endurance », « Défense », « Réflexe » ou d'une autre aptitude non présente dans les 45 compétences / 6 caractéristiques canoniques.
+Il n'existe pas de progression directe de « Endurance », « Défense », « Réflexe » ou d'une autre aptitude non présente dans les 46 compétences / 6 caractéristiques canoniques.
 
 **Endurance** peut être utilisée comme ressource de gameplay pour les efforts physiques, sans être une caractéristique canonique.
 
