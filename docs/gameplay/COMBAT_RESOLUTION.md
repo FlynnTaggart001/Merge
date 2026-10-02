@@ -234,7 +234,7 @@ P_passer = 5 + 90 / (1 + e^(−Δ / 15))
 
 La valeur finale est bornée entre **5 % et 95 %**.
 
-La même courbe logistique est utilisée afin de conserver une progression cohérente avec l'Esquive et la Parade.
+La même courbe logistique est utilisée afin de conserver une progression cohérente avec l'Esquive et le Blocage.
 
 ### 9.4 Référence de comportement
 
