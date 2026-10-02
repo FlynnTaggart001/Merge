@@ -28,6 +28,7 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [x] Création : 6 caractéristiques à 6/20, 26 points à distribuer, maximum 14/20 ; compétences initiales dérivées automatiquement
 - [x] Learning by Doing et progression automatique des caractéristiques spécifiés
 - [x] Classes/voies : qualification par profil de caractéristiques et révélation à l'atteinte des conditions
+- [x] Système de réputation spécifié
 
 ---
 
@@ -223,6 +224,6 @@ Prototype technique → contenu → expansion du monde → quêtes/factions → 
 
 ---
 
-**Dernière mise à jour** : 2026-09-22  
+**Dernière mise à jour** : 2026-10-02  
 **Moteur** : Unreal Engine 5.8.1  
 **Langage principal** : C++
