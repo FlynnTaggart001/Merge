@@ -99,11 +99,11 @@ Attaque → blocage / réaction
 
 Les détails seront déterminés pendant le prototype.
 
-## 7. Relation avec la Défense
+## 7. Relation avec la défense
 
-Les dégâts subis pendant les combats physiques peuvent contribuer à la progression de la Défense selon les règles du système de progression.
+Les armes physiques interagissent avec les réponses défensives canoniques **Esquive**, **Parade** et **Blocage**.
 
-La Défense ne doit pas être liée à une seule famille d'arme.
+Les dégâts subis ne créent pas de progression automatique d'une compétence « Défense » : aucune telle compétence canonique n'est ajoutée par ce système.
 
 ## 8. Backstab
 
@@ -150,6 +150,6 @@ Les noms de catégories ci-dessus sont des exemples de conception et peuvent êt
 3. L'utilisation réelle fait progresser la maîtrise correspondante.
 4. Une maîtrise ne doit pas automatiquement augmenter les autres familles.
 5. Les familles d'armes doivent être extensibles par données.
-6. Le système doit rester compatible avec Endurance, Agilité, Défense, furtivité et Backstab.
+6. Le système doit rester compatible avec Endurance, Agilité, Esquive, Parade, Blocage, furtivité et Backstab.
 7. Aucun système de combat complet n'est considéré comme implémenté par cette spécification seule.
 8. Les valeurs d'équilibrage et les combos définitifs seront déterminés lors du prototype.
