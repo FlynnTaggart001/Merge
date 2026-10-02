@@ -7,7 +7,7 @@
 
 ## 1. Overview
 
-This specification defines the properties, mechanics, and data-driven architecture for weapons and equipment in Merge. It complements the combat system defined in `specs/COMBAT_SYSTEM_SPEC.md` by establishing the canonical rules for damage calculation, durability, repairs, and equipment properties.
+This specification defines the properties, mechanics, and data-driven architecture for weapons and equipment in Merge. It complements the combat system defined in `specs/COMBAT_SYSTEM_SPEC.md` by establishing how weapons scale damage, degrade, and interact with the character progression system.
 
 ## 2. Weapon Families
 
@@ -79,7 +79,7 @@ Weapons have three physical damage properties:
 - **Piercing (Perforant):** Penetrating damage, typically from spears and arrows
 - **Blunt (Contondant):** Impact damage, typically from maces and hammers
 
-These properties are **characteristics of weapons, not independent damage categories.** All physical damage is modified by a single armor value, though specific armor types may be more resistant to certain properties (to be defined in armor specifications).
+These properties are **characteristics of weapons, not independent damage categories.** All physical damage is modified by a single armor value, though specific armor types may be more resistant to certain properties.
 
 ## 4. Durability and Breakage
 
@@ -193,7 +193,7 @@ These properties may have consequences (to be defined in future specifications):
 
 Canonical rule: **Do not introduce randomization into weight or attack speed.**
 
-Randomness should be reserved for elements that truly benefit gameplay (e.g., random encounters, loot tables with genuine choice). Fixed properties like these are more predictable and allow for better game balance and player mastery.
+Randomness should be reserved for elements that truly benefit gameplay (e.g., random encounters, loot tables with genuine choice). Fixed properties like these are more predictable and allow for better balance and player agency.
 
 ## 8. Weapon Properties and Data Structure
 
@@ -251,30 +251,33 @@ Fixed properties allow:
 
 ### 10.1 Critical Multiplier (Canonical)
 
-Critical strikes deal **2× the normal damage** (times two).
+Critical strikes deal **2.0× the normal damage**.
 
 ```
 Critical_Damage = Normal_Damage × 2.0
 ```
 
+This multiplier applies to the final damage calculation after all other modifiers have been applied.
+
 ### 10.2 Critical Chance Modifiers
 
-Probability of landing a critical strike is influenced by:
+Probability of landing a critical strike on a normal attack is influenced by:
 
 - **Agility:** higher Agility increases critical chance
-- **Perception:** higher Perception increases critical chance (especially relevant for surprise attacks)
+- **Perception:** higher Perception increases critical chance (especially relevant for detecting and exploiting weaknesses)
 - **Weapon Mastery:** higher mastery with the weapon increases critical chance
-- **Context:** some attacks are guaranteed criticals (backstab, perfect parry counter)
+
+The exact formula incorporating these factors and their weights: À DÉFINIR.
 
 ### 10.3 Critical Damage Contexts
 
-Guaranteed criticals (not subject to probability):
+Guaranteed criticals (automatic, not subject to random probability):
 
-- **Backstab:** attacking an unaware target from behind = critical
-- **Perfect Parry Counter:** successful perfect parry counter attack = critical
+- **Backstab:** attacking an unaware target from behind = critical (see `specs/COMBAT_SYSTEM_SPEC.md` section 9.1)
+- **Perfect Parry Counter:** successful perfect parry counter attack = critical (see `specs/COMBAT_SYSTEM_SPEC.md` section 9.1)
 - **Other contextual effects:** to be defined per encounter or ability
 
-Non-critical contexts do not use random critical chance. Criticals must be earned through skill, positioning, or context.
+Contextual criticals are guaranteed when conditions are met and do not use random chance for their **triggering** (though their damage may still be subject to the 2.0× multiplier).
 
 ## 11. Enchantments and Special Effects
 
@@ -316,7 +319,7 @@ This specification focuses on weapons. Armor, accessories, and other equipment a
 
 This specification integrates with:
 
-- **COMBAT_SYSTEM_SPEC.md:** weapon attacks and damage types
+- **COMBAT_SYSTEM_SPEC.md:** weapon attacks, damage types, and critical mechanics
 - **CANONICAL_SKILLS.md:** weapon mastery skills and Forge skill
 - **SKILL_PROGRESSION.md:** how weapon mastery progresses
 - **CHARACTERISTIC_PROGRESSION.md:** how Strength and Agility scale
