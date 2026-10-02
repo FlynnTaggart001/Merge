@@ -41,7 +41,7 @@ Le système doit être extensible : les types définitifs ne sont pas encore fig
 
 ## Défense
 
-La Défense du personnage progresse par exposition réelle aux dégâts conformément à `PLAYER_PROGRESSION.md`, mais le calcul de dégâts et la progression restent deux responsabilités distinctes.
+Le terme **Défense** désigne ici l'ensemble des réponses défensives du combat. Il ne s'agit pas d'une compétence canonique supplémentaire et il n'existe aucune progression automatique par exposition aux dégâts.
 
 ## Parade
 
@@ -51,11 +51,11 @@ La parade repose sur le timing : le joueur tente de faire entrer son arme ou son
 
 Une parade réussie doit pouvoir :
 
-- annuler ou fortement réduire les dégâts ;
+- annuler les dégâts ;
 - interrompre, dévier ou déséquilibrer l'attaquant selon l'attaque ;
 - ouvrir une fenêtre de riposte ;
 - générer une réaction d'impact appropriée ;
-- contribuer à l'expérience de combat et, si retenu, à une progression liée à la maîtrise défensive.
+- générer l'événement de gameplay approprié pour le système de progression, si une compétence canonique concernée est validée.
 
 Une parade ne doit pas être un simple `Block = true` : elle dépend d'une **fenêtre temporelle**, de l'orientation, de la compatibilité de l'arme/équipement et de l'état des combattants.
 
@@ -94,32 +94,11 @@ La progression exacte associée à cet événement reste à définir : elle ne d
 
 ### Parade et Réflexe
 
-Le **Réflexe** intervient dans la parade comme une aide passive liée à l'expérience de combat, mais ne remplace pas l'input du joueur.
+Le **Réflexe** n'est ni une compétence ni une caractéristique. C'est un système automatique distinct qui peut éviter une attaque surprise avant qu'elle ne touche le joueur.
 
-Le joueur doit toujours déclencher la tentative de parade. Le niveau de Réflexe peut ensuite modifier la **tolérance de la fenêtre de parade** : plus le personnage est expérimenté, plus il peut anticiper légèrement l'impact.
+Son efficacité dépend notamment de l'**Agilité** et de la **Perception** du joueur et est modifiée par la **Discrétion** de l'adversaire. Le Réflexe ne progresse pas indépendamment, ne dépend pas de l'expérience de combat et ne modifie pas la fenêtre de parade.
 
-```text
-Réflexe faible
-→ fenêtre de parade très exigeante
-
-Réflexe moyen
-→ fenêtre légèrement plus permissive
-
-Réflexe élevé
-→ fenêtre nettement plus permissive
-```
-
-Le Réflexe ne doit pas fournir une parade automatique complète. Cela préserve la maîtrise du joueur et différencie clairement :
-
-```text
-Esquive automatique
-→ automatisme possible selon le Réflexe
-
-Parade réflexe
-→ assistance au timing, input toujours requis
-```
-
-La tolérance peut également être influencée par la **familiarité de combat** : un personnage très expérimenté contre une famille d'attaques peut mieux anticiper celle-ci qu'une attaque totalement inconnue. Cette familiarité doit rester data-driven et ne doit pas rendre les nouveaux ennemis trivialement prévisibles.
+La parade reste une action volontaire du joueur, résolue par son input et le timing de la compétence **Parade**.
 
 ### Saut arrière et parade
 
@@ -167,4 +146,4 @@ Les effets doivent pouvoir être définis comme données et composés sans modif
 6. Une parade réussie doit pouvoir créer une ouverture de riposte.
 7. Les attaques non parables doivent être définissables par données.
 8. Les valeurs finales sont réservées à l'équilibrage du prototype.
-9. Le Réflexe peut assister la parade par la fenêtre de timing, mais ne doit pas la déclencher automatiquement.
+9. Le Réflexe est un système automatique distinct de la parade : il ne déclenche pas la parade et ne modifie pas sa fenêtre.
