@@ -130,13 +130,36 @@ Les seuils et résultats exacts restent à définir.
 
 ## 9. Critiques
 
-Les coups critiques sont principalement contextuels et non basés sur une probabilité aléatoire générale.
+### 9.1 Critiques de situation (automatiques)
 
-Situations définies :
-- parade parfaite → contre automatique avec coup critique ;
-- attaque dans le dos / backstab → coup critique.
+Les coups critiques de situation se déclenchent automatiquement dans des contextes définis, **sans tirage aléatoire** :
 
-D'autres conditions contextuelles pourront être définies ultérieurement.
+- **Parade parfaite** → contre-attaque automatique avec coup critique sur l'ennemi.
+- **Backstab** (attaque depuis l'arrière) → coup critique automatique.
+
+Ces critiques se déclenchent toujours dans les conditions appropriées et ne dépendent pas d'une probabilité aléatoire générale.
+
+D'autres conditions contextuelles pourront être définies ultérieurement selon le même principe.
+
+### 9.2 Chance de critique basée sur les caractéristiques
+
+Une attaque normale peut également devenir critique selon la **chance de critique** du personnage attaquant.
+
+La chance de critique dépend de :
+
+- **Agilité** du personnage attaquant ;
+- **Perception** du personnage attaquant ;
+- **Maîtrise de l'arme** (ou compétence de combat pertinente) du personnage attaquant.
+
+La formule exacte et les poids de chaque facteur : À DÉFINIR.
+
+### 9.3 Multiplicateur de critique
+
+Tout coup critique inflige un multiplicateur de **2.0×** sur les dégâts calculés (voir `specs/WEAPONS_AND_EQUIPMENT_SPEC.md`, section 10.1).
+
+```
+Critical_Damage = Normal_Damage × 2.0
+```
 
 ## 10. Furtivité et combat
 
@@ -191,7 +214,7 @@ Le Combat à mains nues est une famille de combat canonique avec :
 
 Le combat n'utilise pas de progression séparée.
 
-Les actions pertinentes et validées peuvent alimenter les compétences correspondantes : Épée, Hache, Masse, Lance, Dague, Arme à deux mains, Arc, Arbalète, Combat à mains nues, Esquive, Parade et Blocage.
+Les actions pertinentes et validées peuvent alimenter les compétences correspondantes : Épée, Hache, Masse, Lance, Dague, Arme à deux mains, Arc, Arbalète, Combat à mains nues, Esquive, Parade, Blocage, Discrétion, Élimination furtive.
 
 Une parade contre une attaque qui ne pouvait pas toucher n'existe pas dans le système : aucun test de parade ne s'active et aucune progression de Parade ne peut être accordée par ce cas.
 
@@ -201,7 +224,7 @@ Les règles générales de validation et d'anti-farming de specs/SKILL_PROGRESSI
 
 Le système de combat standard peut amener une cible à 0 PV et à l'état mort.
 
-Les exceptions propres aux créatures uniques ou immortelles restent définies par leurs systèmes ou le bestiaire respectifs. Le système de combat générique ne doit pas intégrer en dur les règles propres au Phoenix, au Léviathan ou à d'autres créatures particulières.
+Les exceptions propres aux créatures uniques ou immortelles restent définies par leurs systèmes ou le bestiaire respectifs. Le système de combat générique ne doit pas intégrer en dur les règles d'immortalité.
 
 ## 16. Éléments encore à définir
 
@@ -215,6 +238,7 @@ Les exceptions propres aux créatures uniques ou immortelles restent définies p
 - détails des combos spéciaux par arme ;
 - comportement exact des réactions automatiques de Réflexe ;
 - détails de l'IA de combat ;
-- système de magie en combat.
+- système de magie en combat ;
+- formule exacte de la chance de critique incorporant Agilité, Perception et Maîtrise de l'arme.
 
 Ces éléments sont des sous-systèmes ou paramètres encore à concevoir, pas des contradictions avec le système approuvé.
