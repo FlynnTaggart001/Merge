@@ -268,4 +268,4 @@ Avant toute nouvelle implémentation système dans Unreal, vérifier :
 5. ses conséquences de sauvegarde ;
 6. ses tests de montée en charge ;
 7. l'absence de contradiction avec les systèmes existants ;
-8. l'absence d'ajout implicite à la liste canonique des **45 compétences** ou **6 caractéristiques**.
+8. l'absence d'ajout implicite à la liste canonique des **46 compétences** ou **6 caractéristiques**.
