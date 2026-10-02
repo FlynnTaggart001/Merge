@@ -181,7 +181,7 @@ Le système distingue trois réponses défensives :
 
 ```text
 Blocage → absorbe/réduit l'attaque selon les règles d'équipement.
-Parade  → timing précis avant impact, pouvant annuler/réduire le coup et ouvrir une riposte.
+Parade  → timing précis avant impact ; une parade réussie annule les dégâts et ouvre une riposte.
 Esquive → évitement spatial via le DodgeSystem, avec i-frames pour la roulade.
 ```
 
