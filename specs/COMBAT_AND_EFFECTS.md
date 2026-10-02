@@ -82,7 +82,7 @@ Le système doit pouvoir prendre en compte :
 - attaques imparables ou non parables ;
 - coût éventuel en Endurance ;
 - récupération après tentative ;
-- différence entre parade parfaite et parade partielle si le game design la conserve.
+- distinction entre parade parfaite et parade réussie non parfaite.
 
 Les valeurs de fenêtre, coûts, pénalités et effets ne sont pas encore figés et seront équilibrés dans le prototype.
 
