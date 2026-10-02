@@ -26,8 +26,8 @@ A = 0.50 × Épée + 0.30 × Agilité + 0.20 × Perception
 
 - `A` = score offensif utilisé pour l'opposition contre l'Esquive ;
 - `Épée` = compétence Épée, 0–100 ;
-- `Agilité` = caractéristique Agilité, 0–100 ;
-- `Perception` = caractéristique Perception, 0–100.
+- `Agilité` = caractéristique Agilité, 0–20 ;
+- `Perception` = caractéristique Perception, 0–20.
 
 La **Force n'entre pas dans le score de chance de toucher** dans cette première définition. Elle intervient principalement dans le calcul des dégâts après une touche.
 
@@ -41,8 +41,8 @@ E = 0.50 × Esquive + 0.35 × Agilité + 0.15 × Perception
 
 - `E` = score défensif utilisé contre l'attaque ;
 - `Esquive` = compétence Esquive, 0–100 ;
-- `Agilité` = caractéristique Agilité, 0–100 ;
-- `Perception` = caractéristique Perception, 0–100.
+- `Agilité` = caractéristique Agilité, 0–20 ;
+- `Perception` = caractéristique Perception, 0–20.
 
 La compétence **Esquive** constitue donc le facteur principal, tandis que l'Agilité et la Perception représentent les capacités physiques et perceptives nécessaires pour éviter le mouvement adverse.
 
@@ -161,31 +161,42 @@ Ces méthodes permettent de réduire ou de contourner l'avantage de l'adversaire
 
 ## 8. Attaque contre parade
 
-La Parade représente une interception précise de l'attaque avec une arme ou un outil. Elle repose principalement sur la compétence de Parade, avec l'Agilité et la Perception comme caractéristiques complémentaires.
+La **Parade** est une défense active fondée sur le **timing**, conformément au système de combat canonique. Elle ne se résout pas par une probabilité logistique indépendante.
 
-### 8.1 Score de parade
+La tentative de parade doit être déclenchée par l'input du joueur et évaluée dans une fenêtre temporelle définie par les données de combat.
 
-```text
-P = 0.55 × Parade + 0.30 × Agilité + 0.15 × Perception
-```
-
-- `P` = score défensif utilisé contre l'attaque ;
-- `Parade` = compétence Parade, 0–100 ;
-- `Agilité` = caractéristique Agilité, 0–100 ;
-- `Perception` = caractéristique Perception, 0–100.
-
-### 8.2 Écart et probabilité
+### 8.1 Résolution temporelle
 
 ```text
-Δ = A − P
-
-P_passer = 5 + 90 / (1 + e^(−Δ / 15))
+Attaque ennemie
+      ↓
+Fenêtre de parade
+      ↓
+Input du joueur ?
+   ├── Non → attaque résolue normalement
+   └── Oui
+        ↓
+Timing valide ?
+   ├── Oui → parade réussie
+   └── Non → parade ratée
 ```
 
-La probabilité finale est bornée entre **5 % et 95 %**.
+Les valeurs exactes de la fenêtre de parade restent **À DÉFINIR** et seront équilibrées pendant le prototype.
 
-Un écart positif favorise l'attaquant ; un écart négatif favorise le défenseur.
+La compétence **Parade**, ainsi que les caractéristiques pertinentes, peuvent influencer les paramètres de résolution prévus par le système, mais aucune formule probabiliste n'est introduite ici tant qu'elle n'est pas définie par le game design canonique.
 
+### 8.2 Résultats canoniques
+
+- **Parade réussie** → aucun dégât subi.
+- **Parade parfaite** → aucun dégât + contre-attaque automatique + coup critique.
+- **Parade ratée** → le joueur subit un coup critique.
+- Les attaques explicitement définies comme non parables restent non parables.
+
+Le système **Réflexe** ne déclenche pas une parade et ne modifie pas sa fenêtre.
+
+### 8.3 Critiques liés à la parade
+
+Une contre-attaque issue d'une parade parfaite constitue un **coup critique automatique**. Elle applique le multiplicateur critique canonique de **2.0×** défini dans `specs/COMBAT_SYSTEM_SPEC.md` et `specs/WEAPONS_AND_EQUIPMENT_SPEC.md`.
 ## 9. Attaque contre blocage
 
 Le **Blocage** représente une tentative d'arrêter ou d'absorber physiquement une attaque, notamment avec un bouclier, une arme ou un autre moyen défensif approprié.
@@ -200,7 +211,7 @@ B = 0.50 × Blocage + 0.30 × Force + 0.20 × Agilité
 
 - `B` = score défensif utilisé contre l'attaque ;
 - `Blocage` = compétence Blocage, 0–100 ;
-- `Force` = caractéristique Force, 0–100 ;
+- `Force` = caractéristique Force, 0–20 ;
 - `Agilité` = caractéristique Agilité, 0–100.
 
 ### 9.2 Écart entre attaque et blocage
