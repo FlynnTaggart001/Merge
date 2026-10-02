@@ -212,7 +212,7 @@ B = 0.50 × Blocage + 0.30 × Force + 0.20 × Agilité
 - `B` = score défensif utilisé contre l'attaque ;
 - `Blocage` = compétence Blocage, 0–100 ;
 - `Force` = caractéristique Force, 0–20 ;
-- `Agilité` = caractéristique Agilité, 0–100.
+- `Agilité` = caractéristique Agilité, 0–20.
 
 ### 9.2 Écart entre attaque et blocage
 
