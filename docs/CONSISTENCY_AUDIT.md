@@ -1,8 +1,8 @@
 # Second audit de cohérence — Merge
 
-**Date :** 2026-09-25  
+**Date :** 2026-10-05  
 **Dépôt :** `FlynnTaggart001/Merge`  
-**Statut :** corrections documentaires appliquées ; validation Unreal locale restante
+**Statut :** audit documentaire combat complété ; validation Unreal locale restante
 
 ## Règles vérifiées
 
@@ -22,8 +22,14 @@
 - Architecture cible distinguée du scaffold.
 - Convention `Blueprints/Characters`.
 - Statuts `APPROUVÉ`, `SPÉCIFIÉ`, `SCAFFOLD`, `IMPLÉMENTÉ` et `VALIDÉ` distincts.
+- Les maîtrises d'armes utilisent les neuf compétences canoniques : Épée, Hache, Masse, Lance, Dague, Arme à deux mains, Arc, Arbalète et Combat à mains nues.
 
 ## Fichiers corrigés dans cet audit
+
+- `specs/WEAPON_COMBAT_AND_MASTERY.md`
+- `docs/CONSISTENCY_AUDIT.md`
+
+Les corrections documentaires précédentes restent actives dans :
 
 - `README.md`
 - `ai/README.md`
@@ -33,25 +39,42 @@
 - `docs/gameplay/CHARACTER_STATS.md`
 - `specs/SKILL_PROGRESSION.md`
 - `specs/MOUNT_SYSTEM_SPEC.md`
-- `docs/CONSISTENCY_AUDIT.md`
 - `specs/COMBAT_SYSTEM_SPEC.md`
 
-## Documents historiques
+## Contradiction trouvée et corrigée le 2026-10-05
 
-`specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md` est conservé comme document historique et ne constitue pas une règle active. Les règles actives sont celles des quatre spécifications canoniques référencées ci-dessus.
+`specs/WEAPON_COMBAT_AND_MASTERY.md` utilisait encore des catégories génériques de maîtrise (`OneHanded`, `TwoHanded`, `Polearm`, `RangedPhysical`) alors que la liste canonique définit neuf compétences distinctes par famille d'arme.
 
-## Contradictions corrigées après l'ajout du système de combat
+Correction appliquée :
 
-- `GAME_BIBLE.md` indiquait encore **45 compétences** alors que la liste canonique en contient **46** : corrigé.
-- `GAME_BIBLE.md` indiquait encore **4 compétences** en Social / communication alors que la catégorie en contient **5** avec `Domptage` : corrigé.
-- `GAME_BIBLE.md` contenait encore une ancienne courbe `XP_required(level) = 100 × level^1.5`, incompatible avec l'absence de niveau global de personnage : supprimée.
-- L'ancienne formulation du combat dans `GAME_BIBLE.md` présentait les dégâts tranchant/contondant/perforant/magie comme un ensemble de types génériques : remplacée par les deux catégories principales **physique/magique**, avec tranchant/perforant/contondant comme propriétés des armes.
-- L'ancienne formulation de la parade a été remplacée par le système de timing approuvé, avec parade parfaite, parade réussie, parade ratée et condition d'activation.
-- Les règles de lock-on, d'endurance, de stagger, de furtivité, de Réflexe et de backstab sont désormais alignées entre la Game Bible et `COMBAT_SYSTEM_SPEC.md`.
+- remplacement des catégories génériques par les neuf compétences canoniques ;
+- interdiction explicite de créer une compétence de maîtrise générique non canonique ;
+- alignement de l'architecture `WeaponMastery` avec `specs/CANONICAL_SKILLS.md` ;
+- confirmation que l'utilisation d'une famille ne fait progresser que la compétence correspondante.
 
 ## Contradictions restantes
 
-Aucune contradiction active n'a été trouvée dans les documents canoniques vérifiés. Les éléments de combat encore marqués « à définir » dans `COMBAT_SYSTEM_SPEC.md` sont des sous-systèmes ou paramètres non encore décidés, pas des contradictions. Les occurrences historiques éventuelles dans le document baseline restent explicitement historiques et ne doivent pas être utilisées comme règles.
+Aucune contradiction active n'a été trouvée dans les documents canoniques vérifiés lors de cet audit.
+
+Les éléments de combat encore marqués « à définir » dans `specs/COMBAT_SYSTEM_SPEC.md` et `specs/WEAPONS_AND_EQUIPMENT_SPEC.md` sont des paramètres ou sous-systèmes non encore décidés, pas des contradictions. Ils constituent la prochaine étape de conception avant l'implémentation Unreal.
+
+### Paramètres de combat encore à décider
+
+- formule exacte des dégâts et coefficients de maîtrise / Force ;
+- valeurs d'endurance et régénération ;
+- valeurs d'armure et interaction avec tranchant / perforant / contondant ;
+- formule précise du stagger ;
+- fenêtres numériques de parade ;
+- valeurs de charge des attaques puissantes ;
+- règles précises d'interruption ;
+- combos spéciaux définitifs par famille d'arme ;
+- comportement exact des réactions automatiques de Réflexe ;
+- formule exacte de la chance de critique utilisant Agilité, Perception et compétence d'arme ;
+- valeurs de base des armes ;
+- coût exact des réparations selon Forge ;
+- dégradation selon la qualité.
+
+Ces points ne doivent pas être inventés dans le code ou dans une autre spécification tant qu'ils ne sont pas validés comme règles de game design.
 
 ## Validation locale restante
 
