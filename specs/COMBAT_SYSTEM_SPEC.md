@@ -75,19 +75,41 @@ Un personnage lourd peut toujours parer, mais peut choisir de privilégier le bl
 
 ### 3.3 Blocage
 
-Le blocage est une défense plus stable et moins dépendante du timing précis. Il consomme de l'endurance.
+Le blocage est une défense plus stable et moins dépendante du timing précis.
+
+**Coût d'endurance :** le simple maintien de la garde ne consomme aucune endurance. L'endurance est consommée uniquement lorsqu'une attaque ennemie est effectivement interceptée par le blocage.
+
+- Garde maintenue sans attaque reçue : **0 endurance**.
+- Attaque effectivement bloquée : **10 endurance par impact bloqué**.
+- Une attaque qui rate le joueur ou ne touche pas la garde : **0 endurance**.
 
 Les personnages lourds ont tendance à privilégier le blocage ; leur armure plus élevée compense une partie des dégâts qui peuvent traverser le blocage.
 
 ## 4. Endurance
 
-Merge utilise une seule barre d'endurance.
+Merge utilise une seule barre d'endurance de **100 points**.
 
 Elle sert notamment au sprint, à l'esquive, au blocage, aux attaques puissantes et, lorsque défini, aux attaques spéciales.
 
-Les attaques de base n'ont pas de coût d'endurance par défaut.
+Les attaques de base n'ont pas de coût d'endurance.
 
-Les valeurs de coût et de régénération restent à définir.
+### 4.1 Coûts canoniques
+
+- **Esquive : 20 endurance** par utilisation.
+- **Parade réussie : 10 endurance**.
+- **Parade parfaite : 5 endurance**.
+- **Blocage : 10 endurance par impact effectivement bloqué**, et non par seconde de garde.
+- **Attaque puissante : 20 à 40 endurance** selon le niveau de charge.
+- **Attaque spéciale : 30 endurance**.
+- **Sprint : 5 endurance par seconde**.
+
+### 4.2 Régénération
+
+La régénération est de **15 endurance par seconde**.
+
+Après **0,5 seconde sans action consommant de l'endurance**, la régénération commence.
+
+La barre est plafonnée à 100 points.
 
 ## 5. Styles défensifs émergents
 
@@ -229,11 +251,9 @@ Les exceptions propres aux créatures uniques ou immortelles restent définies p
 ## 16. Éléments encore à définir
 
 - formule exacte des dégâts ;
-- valeurs d'endurance et régénération ;
 - valeurs d'armure ;
 - formule précise du stagger ;
 - valeurs des fenêtres de parade ;
-- valeurs de charge des attaques puissantes ;
 - règles précises d'interruption ;
 - détails des combos spéciaux par arme ;
 - comportement exact des réactions automatiques de Réflexe ;
