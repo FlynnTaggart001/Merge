@@ -29,23 +29,25 @@ Each family has unique attack properties, animations, and mastery skill. Refer t
 
 ### 3.1 Damage Formula (Canonical)
 
-Damage dealt by a weapon attack is calculated as:
+Damage dealt by a physical weapon attack is calculated as:
 
 ```
-Damage = Weapon_Base_Damage 
-       × (1 + Weapon_Mastery_Scaling × Weapon_Mastery_Level)
-       × (1 + Strength_Scaling × Strength_Bonus)
-       × [Modifiers]
+Damage = Weapon_Base_Damage
+       × (1 + Weapon_Mastery × 0.005)
+       × (1 + Strength × 0.02)
+       × Armor_Modifier
+       × Other_Modifiers
 ```
 
 Where:
 
-- **Weapon_Base_Damage:** Fixed base damage value for the weapon
-- **Weapon_Mastery_Scaling:** Scaling factor for the relevant weapon mastery contribution; exact value remains to be calibrated
-- **Weapon_Mastery_Level:** Player's skill level in the weapon family (0–100)
-- **Strength_Scaling:** **0.02 per point of Strength**
-- **Strength_Bonus:** Player's Strength characteristic (0–20)
-- **[Modifiers]:** Special effects, buffs, armor reductions, critical multipliers, etc.
+- **Weapon_Base_Damage:** fixed base damage value for the weapon;
+- **Weapon_Mastery:** player's mastery level in the relevant weapon family (0–100);
+- **Strength:** player's Strength characteristic (0–20);
+- **Armor_Modifier:** deterministic protection coefficient based on physical damage property and armor category;
+- **Other_Modifiers:** contextual modifiers such as critical damage, buffs, or special effects.
+
+Maximum weapon mastery therefore contributes **+50% damage** and each point of Strength contributes **+2% physical damage**, for a maximum Strength contribution of **+40%** at 20/20.
 
 ### 3.2 Base Damage Values (Fixed)
 
@@ -59,9 +61,18 @@ Example: All standard iron swords have the same base damage. A superior-quality 
 
 A player's skill level in the weapon family directly increases damage. This reflects genuine combat experience.
 
-- No minimum or maximum mastery contribution is imposed here
-- The scaling factor will be determined based on progression balance
-- Mastery progresses through Learning by Doing (see `specs/SKILL_PROGRESSION.md`)
+**Canonical rule:** each mastery point contributes **0.5%** to the weapon mastery damage multiplier.
+
+Therefore:
+
+- Mastery 0 → +0% damage
+- Mastery 20 → +10% damage
+- Mastery 40 → +20% damage
+- Mastery 60 → +30% damage
+- Mastery 80 → +40% damage
+- Mastery 100 → **+50% damage**
+
+Mastery progresses through Learning by Doing (see `specs/SKILL_PROGRESSION.md`).
 
 ### 3.4 Strength Contribution
 
@@ -87,11 +98,37 @@ Strength ranges from 0–20. This bonus is deterministic and does not introduce 
 
 Weapons have three physical damage properties:
 
-- **Slashing (Tranchant):** Cutting damage, typically from swords and axes
-- **Piercing (Perforant):** Penetrating damage, typically from spears and arrows
-- **Blunt (Contondant):** Impact damage, typically from maces and hammers
+- **Slashing (Tranchant):** cutting damage, typically from swords and axes
+- **Piercing (Perforant):** penetrating damage, typically from spears and arrows
+- **Blunt (Contondant):** impact damage, typically from maces and other dedicated blunt weapons
 
-These properties are **characteristics of weapons, not independent damage categories.** All physical damage is modified by a single armor value, though specific armor types may be more resistant to certain properties.
+These properties are characteristics of weapons, not independent primary damage categories.
+
+Merge has only two armor categories: **Light Armor** and **Heavy Armor**. There is no Medium Armor category.
+
+Armor protection is deterministic and uses the following damage-reduction coefficients:
+
+| Physical property | Light Armor | Heavy Armor |
+|---|---:|---:|
+| **Slashing** | **35% reduction** | **60% reduction** |
+| **Piercing** | **30% reduction** | **45% reduction** |
+| **Blunt** | **25% reduction** | **40% reduction** |
+
+Therefore an attack dealing 100 damage before armor deals:
+
+- Slashing vs Light Armor → 65 damage
+- Piercing vs Light Armor → 70 damage
+- Blunt vs Light Armor → 75 damage
+- Slashing vs Heavy Armor → 40 damage
+- Piercing vs Heavy Armor → 55 damage
+- Blunt vs Heavy Armor → 60 damage
+
+The intended hierarchy is:
+
+- Light Armor provides meaningful protection against all three properties, with piercing slightly favored against it.
+- Heavy Armor is strongest against slashing, less resistant to piercing, and least resistant to blunt damage.
+
+**Canonical weapon rule:** weapons whose primary physical property is blunt are two-handed weapons. Their strong performance against heavy armor is therefore balanced by the two-handed weapon constraint.
 
 ## 4. Durability and Breakage
 
@@ -323,7 +360,6 @@ This specification focuses on weapons. Armor, accessories, and other equipment a
 - Whether weight affects mobility or stamina costs
 - Whether attack speed affects animation or cooldowns
 - Critical chance formula incorporating Agility, Perception, and Mastery
-- How armor interacts with each damage property (slashing, piercing, blunt)
 - Enchantment mechanics (if implemented)
 - Crafting and modification mechanics
 
