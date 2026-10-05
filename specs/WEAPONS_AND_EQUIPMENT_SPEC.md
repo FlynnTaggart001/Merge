@@ -41,9 +41,9 @@ Damage = Weapon_Base_Damage
 Where:
 
 - **Weapon_Base_Damage:** Fixed base damage value for the weapon
-- **Weapon_Mastery_Scaling:** Scaling factor (0.0–1.0, to be determined per weapon type)
+- **Weapon_Mastery_Scaling:** Scaling factor for the relevant weapon mastery contribution; exact value remains to be calibrated
 - **Weapon_Mastery_Level:** Player's skill level in the weapon family (0–100)
-- **Strength_Scaling:** Scaling factor for Strength contribution (to be determined, e.g., 0.3)
+- **Strength_Scaling:** **0.02 per point of Strength**
 - **Strength_Bonus:** Player's Strength characteristic (0–20)
 - **[Modifiers]:** Special effects, buffs, armor reductions, critical multipliers, etc.
 
@@ -65,11 +65,23 @@ A player's skill level in the weapon family directly increases damage. This refl
 
 ### 3.4 Strength Contribution
 
-Strength provides a bonus to physical damage. The scaling factor is to be calibrated during balancing.
+Strength provides a fixed, deterministic bonus to physical damage.
 
-- Strength ranges from 0–20
-- Scaling factor (e.g., 0.3) means each Strength point adds 30% of Strength to the damage multiplier
-- Exact scaling factor: À DÉFINIR
+**Canonical rule:** each point of Strength adds **2%** to the physical damage multiplier.
+
+```
+Strength_Bonus_Multiplier = 1 + (Strength × 0.02)
+```
+
+Therefore:
+
+- Strength 0 → +0% damage
+- Strength 5 → +10% damage
+- Strength 10 → +20% damage
+- Strength 15 → +30% damage
+- Strength 20 → +40% damage
+
+Strength ranges from 0–20. This bonus is deterministic and does not introduce damage randomization.
 
 ### 3.5 Physical Damage Properties
 
@@ -328,6 +340,6 @@ This specification integrates with:
 
 ---
 
-**Last updated:** 2026-10-02  
+**Last updated:** 2026-10-05  
 **Status:** SPÉCIFIÉ — Preproduction Phase 0  
 **Next steps:** Define numerical values, finalize armor specification, implement in Unreal Engine 5.8.1
