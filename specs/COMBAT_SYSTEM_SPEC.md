@@ -134,13 +134,68 @@ Les deux catégories principales de dégâts sont Physique et Magique.
 
 Tranchant, perforant et contondant sont des propriétés des armes utilisées pour caractériser les attaques physiques. Ils ne constituent pas trois catégories principales indépendantes.
 
-La formule numérique complète des dégâts, le rôle exact des caractéristiques, de l'arme et de l'armure restent à définir.
+### 6.1 Formule de dégâts physiques
+
+La formule canonique des dégâts physiques est :
+
+```
+Damage = Weapon_Base_Damage
+       × (1 + Weapon_Mastery × 0.005)
+       × (1 + Strength × 0.02)
+       × Armor_Modifier
+       × Other_Modifiers
+```
+
+Où :
+- **Weapon_Base_Damage** = dégâts de base fixes de l'arme ;
+- **Weapon_Mastery** = maîtrise de la famille d'arme, de 0 à 100 ;
+- **Strength** = Force du personnage, de 0 à 20 ;
+- **Armor_Modifier** = coefficient de protection correspondant au type de dégâts et au type d'armure ;
+- **Other_Modifiers** = modificateurs contextuels éventuels.
+
+La maîtrise maximale apporte donc **+50 %** de dégâts et chaque point de Force apporte **+2 %** de dégâts physiques, soit **+40 % maximum** à 20/20.
+
+### 6.2 Propriétés physiques et armure
+
+Merge ne possède que **deux catégories d'armure : légère et lourde**. Il n'existe pas d'armure moyenne.
+
+Les coefficients ci-dessous représentent la **réduction des dégâts physiques** appliquée par l'armure :
+
+| Type de dégâts | Armure légère | Armure lourde |
+|---|---:|---:|
+| **Tranchant** | **35 %** | **60 %** |
+| **Perforant** | **30 %** | **45 %** |
+| **Contondant** | **25 %** | **40 %** |
+
+Ainsi, pour une attaque de 100 dégâts avant armure :
+- tranchant contre légère = 65 dégâts ;
+- perforant contre légère = 70 dégâts ;
+- contondant contre légère = 75 dégâts ;
+- tranchant contre lourde = 40 dégâts ;
+- perforant contre lourde = 55 dégâts ;
+- contondant contre lourde = 60 dégâts.
+
+La hiérarchie recherchée est donc :
+- contre l'armure légère, les trois types restent utiles, avec le perforant légèrement favorisé ;
+- contre l'armure lourde, le tranchant est le plus pénalisé, le perforant reste sensiblement efficace et le contondant est le plus efficace.
+
+Les armes infligeant principalement des dégâts **contondants sont des armes à deux mains**. Leur avantage contre les armures lourdes est donc associé à une contrainte de maniement et de style de combat.
+
+Ces coefficients sont déterministes et ne sont pas randomisés.
 
 ## 7. Armure
 
-L'armure réduit les dégâts reçus selon le système de protection défini pour l'équipement.
+L'armure réduit les dégâts reçus selon les coefficients définis à la section 6.2.
 
-Les catégories et valeurs exactes d'armure, ainsi que ses éventuelles conséquences sur mobilité et endurance, restent à régler.
+Les seules catégories canoniques sont :
+- **Armure légère** ;
+- **Armure lourde**.
+
+Il n'existe pas de catégorie d'armure moyenne.
+
+L'armure légère fournit une protection significative tout en restant moins résistante que l'armure lourde. L'armure lourde est particulièrement résistante au tranchant, résiste davantage au perforant qu'au tranchant, et reste vulnérable au contondant relativement aux deux autres propriétés.
+
+Les conséquences exactes du poids de l'armure sur la mobilité et l'endurance restent à définir.
 
 ## 8. Stagger
 
@@ -250,10 +305,8 @@ Les exceptions propres aux créatures uniques ou immortelles restent définies p
 
 ## 16. Éléments encore à définir
 
-- formule exacte des dégâts ;
-- valeurs d'armure ;
-- formule précise du stagger ;
 - valeurs des fenêtres de parade ;
+- formule précise du stagger ;
 - règles précises d'interruption ;
 - détails des combos spéciaux par arme ;
 - comportement exact des réactions automatiques de Réflexe ;
