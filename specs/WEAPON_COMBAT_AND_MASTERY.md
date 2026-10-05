@@ -8,25 +8,27 @@
 
 Toutes les armes physiques non magiques doivent disposer d'un système d'attaque dédié et cohérent avec leur famille d'arme.
 
-La maîtrise des armes est indépendante par catégorie, dans l'esprit de Skyrim : utiliser une famille d'arme améliore progressivement la maîtrise de cette famille, sans augmenter artificiellement toutes les autres maîtrises.
+La maîtrise des armes est indépendante par **famille d'arme canonique**. Utiliser une famille améliore progressivement la compétence correspondante, sans augmenter artificiellement les autres compétences d'armes.
 
 Les domaines de magie restent séparés de ces maîtrises physiques.
 
-## 2. Catégories de maîtrise
+## 2. Catégories de maîtrise canoniques
 
-Les catégories doivent être définies comme des données extensibles et non comme une liste rigide dans le code central.
+Les familles de combat physiques utilisent les compétences canoniques définies dans `specs/CANONICAL_SKILLS.md` :
 
-Catégories prévues conceptuellement :
+- **Épée**
+- **Hache**
+- **Masse**
+- **Lance**
+- **Dague**
+- **Arme à deux mains**
+- **Arc**
+- **Arbalète**
+- **Combat à mains nues**
 
-- Armes à une main
-- Armes à deux mains
-- Armes d'hast / armes longues
-- Armes à distance physiques
-- autres familles physiques à définir selon le game design
+Une arme appartient à une seule famille de maîtrise déterminée par ses données.
 
-La distinction exacte des familles sera validée pendant la conception du bestiaire, des armes et du combat.
-
-Une arme appartient à une famille de maîtrise déterminée par ses données.
+**Important :** les anciennes catégories génériques telles que « Une Main », « Deux Mains », « Polearm » ou « RangedPhysical » ne sont pas des compétences canoniques et ne doivent pas être utilisées comme compétences de progression ou de scaling du personnage.
 
 ## 3. Progression de maîtrise
 
@@ -35,22 +37,20 @@ La maîtrise progresse principalement par l'utilisation effective de la famille 
 Exemple :
 
 ```text
-Épée à une main utilisée
-        ↓
-Maîtrise Une Main ↑
+Épée utilisée
+    ↓
+Compétence Épée ↑
 ```
 
 ```text
-Épée à deux mains utilisée
-        ↓
-Maîtrise Deux Mains ↑
+Dague utilisée
+    ↓
+Compétence Dague ↑
 ```
 
-Utiliser une épée à une main ne doit pas faire progresser automatiquement la maîtrise des armes à deux mains.
+Utiliser une épée ne doit pas faire progresser automatiquement Hache, Masse, Dague ou une autre famille.
 
-Le système doit pouvoir distinguer une utilisation significative d'un spam artificiel.
-
-Prévoir des règles d'anti-farming comparables aux autres systèmes de progression : contexte, fréquence, intensité, répétition et pertinence de l'action.
+Le système doit distinguer une utilisation significative d'un spam artificiel. Les règles générales de contexte et d'anti-farming de `specs/SKILL_PROGRESSION.md` restent prioritaires.
 
 ## 4. Système d'attaque par famille / arme
 
@@ -58,14 +58,14 @@ Chaque arme physique doit disposer d'un système d'attaque adapté à son compor
 
 Le système doit pouvoir gérer :
 
-- attaques légères ;
-- attaques lourdes ;
-- attaques enchaînées / combos ;
+- attaques de base ;
+- attaques puissantes chargées ;
+- attaques spéciales / combos préenregistrés ;
 - attaques directionnelles lorsque pertinent ;
 - fenêtres de récupération ;
 - portée ;
 - vitesse ;
-- stamina/endurance consommée ;
+- endurance consommée lorsque le design le prévoit ;
 - impact ;
 - interruptions éventuelles ;
 - interactions avec esquive et défense ;
@@ -77,17 +77,17 @@ L'architecture doit permettre à chaque famille et/ou arme de définir ses propr
 
 ## 5. Relation avec l'Endurance
 
-Les attaques physiques peuvent contribuer à la progression de l'Endurance selon les règles générales de progression.
+Les actions de combat pertinentes peuvent contribuer à la progression selon les règles générales de progression.
 
-Les attaques doivent également pouvoir consommer de l'Endurance si le design final le confirme.
+Les attaques doivent pouvoir consommer de l'Endurance lorsque le design final le prévoit. Les attaques de base n'ont pas de coût d'endurance par défaut conformément à `specs/COMBAT_SYSTEM_SPEC.md`.
 
-Les coûts exacts ne sont pas encore définitifs.
+Les coûts exacts restent des paramètres de balance à définir.
 
 ## 6. Relation avec l'Agilité
 
 L'esquive est une mécanique commune du combat physique.
 
-Une esquive réussie peut contribuer à la progression de l'Agilité selon le système déjà défini.
+Une esquive validée peut contribuer à la progression de la compétence Esquive selon les règles de `specs/SKILL_PROGRESSION.md`.
 
 Le combat doit permettre des transitions propres entre :
 
@@ -95,15 +95,17 @@ Le combat doit permettre des transitions propres entre :
 Attaque → récupération → esquive
 Esquive → récupération → attaque
 Attaque → blocage / réaction
-``` 
+```
 
-Les détails seront déterminés pendant le prototype.
+Les détails d'animation et de fenêtre d'interruption seront déterminés pendant le prototype.
 
 ## 7. Relation avec la défense
 
 Les armes physiques interagissent avec les réponses défensives canoniques **Esquive**, **Parade** et **Blocage**.
 
-Les dégâts subis ne créent pas de progression automatique d'une compétence « Défense » : aucune telle compétence canonique n'est ajoutée par ce système.
+Les dégâts subis ne créent pas de progression automatique d'une compétence « Défense » : aucune telle compétence canonique n'existe.
+
+La compétence **Parade** reste une compétence de Défense / mouvement, conformément à `specs/CANONICAL_SKILLS.md`.
 
 ## 8. Backstab
 
@@ -112,6 +114,8 @@ Certaines armes physiques peuvent être compatibles avec le Backstab.
 La compatibilité doit être définie dans les données de l'arme/famille plutôt que codée comme une règle globale.
 
 Le Backstab reste soumis au système de furtivité, au positionnement et à l'état de la cible.
+
+Un Backstab conforme aux conditions canoniques est un coup critique automatique ; il ne constitue pas une catégorie de dégâts distincte.
 
 ## 9. Architecture cible
 
@@ -127,29 +131,34 @@ WeaponSystem
 │   └── BackstabCompatibility
 │
 ├── WeaponCombat
-│   ├── LightAttack
+│   ├── BasicAttack
 │   ├── HeavyAttack
-│   ├── Combo
+│   ├── SpecialAttack
 │   ├── Recovery
 │   └── HitResolution
 │
 └── WeaponMastery
-    ├── OneHanded
+    ├── Sword
+    ├── Axe
+    ├── Mace
+    ├── Spear
+    ├── Dagger
     ├── TwoHanded
-    ├── Polearm
-    ├── RangedPhysical
-    └── FutureFamilies[*]
+    ├── Bow
+    ├── Crossbow
+    └── Unarmed
 ```
 
-Les noms de catégories ci-dessus sont des exemples de conception et peuvent être ajustés sans casser le système central.
+Les noms techniques peuvent être ajustés dans le code, mais ils doivent correspondre sans ambiguïté aux neuf compétences canoniques.
 
 ## 10. Règles
 
 1. Une arme physique doit avoir un système d'attaque adapté à sa famille.
-2. Les maîtrises sont indépendantes par famille d'arme.
-3. L'utilisation réelle fait progresser la maîtrise correspondante.
+2. Les maîtrises sont indépendantes par famille d'arme canonique.
+3. L'utilisation réelle fait progresser la compétence correspondante.
 4. Une maîtrise ne doit pas automatiquement augmenter les autres familles.
-5. Les familles d'armes doivent être extensibles par données.
+5. Les familles d'armes doivent être extensibles par données sans créer de nouvelle compétence non approuvée.
 6. Le système doit rester compatible avec Endurance, Agilité, Esquive, Parade, Blocage, furtivité et Backstab.
 7. Aucun système de combat complet n'est considéré comme implémenté par cette spécification seule.
 8. Les valeurs d'équilibrage et les combos définitifs seront déterminés lors du prototype.
+9. `specs/CANONICAL_SKILLS.md` est la source canonique pour les noms et le nombre des compétences d'armes.
