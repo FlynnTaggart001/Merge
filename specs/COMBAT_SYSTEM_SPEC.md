@@ -29,9 +29,23 @@ Les attaques utilisent les propriétés de l'arme, notamment tranchant, perforan
 
 L'attaque puissante est une attaque chargée. Le joueur maintient la commande d'attaque pour charger puis relâche pour exécuter l'attaque.
 
-La charge augmente la puissance jusqu'à la limite définie par l'arme.
+La charge augmente linéairement la puissance pendant **3 secondes maximum**.
 
-Les coûts d'endurance, temps de charge et valeurs numériques restent à définir.
+- le joueur maintient la commande pour charger ;
+- l'attaque est exécutée **immédiatement au relâchement** de la commande ;
+- à **1 % de charge**, la puissance correspond à celle d'une attaque de base ;
+- à **100 % de charge**, après 3 secondes, la puissance atteint **4× celle d'une attaque de base** ;
+- au-delà de 3 secondes, la puissance n'augmente plus.
+
+La progression est linéaire entre 1 % et 100 % de charge :
+
+```text
+Charge_Multiplier = 1 + ((Charge_Percent - 1) / 99) × 3
+```
+
+Exemples : 1 % = 1× ; 25 % ≈ 1,75× ; 50 % ≈ 2,50× ; 75 % ≈ 3,25× ; 100 % = 4×.
+
+Le coût d'endurance de l'attaque puissante reste de **20 à 40 endurance selon le niveau de charge**.
 
 ### 2.3 Attaque spéciale
 
