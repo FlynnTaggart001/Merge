@@ -329,3 +329,61 @@ Le joueur peut l'utiliser en combat pour relier simultanément jusqu'à **5 âme
 - Les Kima Vé peuvent interagir physiquement normalement avec le monde. Leur particularité est leur affinité supérieure avec les esprits.
 - Le joueur est nécessaire principalement pour agir sur le problème physique que les Kima Vé n'avaient pas identifié.
 - Le Wise Tree est appelé **Sylva** ; ce nom est désormais établi dans le canon.
+
+
+---
+
+## Q-007 — La Graine du Mal
+
+**Type :** Quête spéciale / Linguistique / événement mondial critique  
+**Statut :** Conception en cours  
+**Personnage central :** **𐬀𐬢𐬭𐬀⸱𐬨𐬀𐬌𐬥𐬌𐬌𐬀𐬎**, surnommé **La Graine du Mal**
+
+### Synopsis
+
+Le joueur découvre un œuf ancien dans un lieu perdu et oublié du monde. À l'intérieur se trouve un fœtus humain : **𐬀𐬢𐬭𐬀⸱𐬨𐬀𐬌𐬥𐬌𐬌𐬀𐬎**, dont l'âge est inconnu.
+
+L'entité est naturellement maléfique et constitue la source de tous les maux du monde. Elle se nourrit de la mort, de la peur et des mensonges produits par toutes les créatures, vivantes ou non vivantes.
+
+### Déclenchement
+
+La quête commence lorsque le joueur découvre l'œuf.
+
+Au moment de sa découverte, la coquille commence à s'écailler et à se fissurer. Cette découverte déclenche un **compte à rebours avant l'éclosion**.
+
+La durée exacte du compte à rebours reste à définir.
+
+### Objectif
+
+Le joueur doit rapidement trouver un **parchemin ancien écrit en avestique** décrivant un rituel capable :
+
+1. de contenir l'éclosion de l'œuf ;
+2. de réparer sa coquille ;
+3. d'empêcher temporairement la naissance de l'entité.
+
+Le joueur doit utiliser sa compétence de **Linguistique** pour déchiffrer le parchemin et comprendre le rituel.
+
+### Échec
+
+Si le joueur n'accomplit pas le rituel avant l'éclosion, **𐬀𐬢𐬭𐬀⸱𐬨𐬀𐬌𐬥𐬌𐬌𐬀𐬎 sort de son œuf**.
+
+Son éclosion entraîne **la fin du monde**.
+
+### Principes narratifs
+
+- Le joueur ne connaît pas nécessairement la durée exacte du compte à rebours lors de la découverte.
+- L'état de l'œuf évolue visuellement à mesure que l'éclosion approche.
+- La quête doit créer une véritable urgence sans révéler immédiatement toute l'ampleur de la menace.
+- L'entité n'est pas corrompue : **le mal fait partie de sa nature même**.
+- L'œuf constitue actuellement la seule chose empêchant son éclosion et donc la fin du monde.
+
+### Éléments restant à définir
+
+- Nom et emplacement précis du lieu où l'œuf est découvert.
+- Durée exacte du compte à rebours.
+- Localisation du parchemin.
+- Difficulté et étapes précises du déchiffrage en Linguistique.
+- Conditions exactes du rituel.
+- Manifestations de l'œuf pendant le compte à rebours.
+- Conséquences précises dans le monde si l'éclosion se produit.
+
