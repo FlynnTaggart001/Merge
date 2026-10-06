@@ -194,6 +194,44 @@ Son comportement **ne dépend pas des statistiques du joueur**.
 
 ---
 
+## Spraseed
+
+### Description
+Le Spraseed est une créature très frêle et chétive dont la dangerosité repose presque entièrement sur sa vitesse et sa maîtrise de l'espace. Sa faible résistance physique le rend très facile à faire chanceler ou projeter dans les airs. Cette apparente faiblesse est toutefois trompeuse : le Spraseed peut exploiter sa propre projection pour se repositionner et contre-attaquer.
+
+### Mobilité et téléportation
+- Le Spraseed peut se téléporter lui-même.
+- Il peut créer des portails dans l'espace afin de modifier instantanément sa position.
+- Ses attaques de base sont très rapides.
+- Pendant une attaque, il peut ouvrir un portail et modifier son angle d'attaque en réapparaissant à un autre endroit tout en poursuivant le même mouvement.
+- Il peut enchaîner des attaques et des téléportations afin d'attaquer successivement depuis des directions différentes.
+
+### Manipulation de la position du joueur
+Le Spraseed peut également créer un portail directement sous le joueur afin de déplacer celui-ci.
+
+Il peut notamment préparer une attaque qui semble devoir manquer sa cible, puis ouvrir au dernier moment un portail sous le joueur et le faire apparaître sur la trajectoire de l'attaque.
+
+### Contre lors d'une projection
+Lorsqu'un joueur fait valser ou projette le Spraseed :
+1. le Spraseed ouvre un portail devant lui, dans la direction de sa projection ;
+2. il ouvre un second portail derrière le joueur ;
+3. il traverse le premier portail ;
+4. il ressort du second portail derrière le joueur ;
+5. il peut immédiatement attaquer depuis cette nouvelle position.
+
+Ainsi, sa fragilité physique ne signifie pas qu'une projection est systématiquement sans danger pour le joueur.
+
+### Renvoi des attaques à distance
+Lorsqu'une attaque à distance est dirigée vers le Spraseed, notamment une flèche ou un projectile magique, il peut utiliser un portail pour intercepter l'attaque et la renvoyer vers son lanceur.
+
+Le principe est le suivant :
+**joueur → projectile → portail du Spraseed → portail près du joueur → joueur**.
+
+Le Spraseed n'est donc pas simplement capable d'éviter les attaques à distance : il peut transformer l'attaque du joueur en menace contre celui-ci.
+
+### Identité de gameplay
+Le Spraseed est un ennemi de harcèlement et de manipulation spatiale. Ses comportements doivent être cohérents et observables afin que le joueur puisse progressivement comprendre son fonctionnement et découvrir lui-même comment l'affronter. Aucune solution spécifique à une classe ou à un style de personnage n'est imposée par cette fiche.
+
 # Faune normale et gothique — base de conception
 
 Cette section constitue la base actuelle pour les **14 animaux normaux et gothiques**. Elle n'est **pas terminée** : les valeurs numériques et certains comportements devront encore être détaillés et équilibrés.
