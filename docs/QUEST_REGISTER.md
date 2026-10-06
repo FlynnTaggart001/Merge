@@ -369,6 +369,70 @@ Si le joueur n'accomplit pas le rituel avant l'éclosion, **𐬀𐬢𐬭𐬀⸱�
 
 Son éclosion entraîne **la fin du monde**.
 
+
+### Résolutions possibles
+
+**Option A — Accomplir le rituel soi-même**
+
+Le joueur peut réunir un groupe capable d'utiliser suffisamment bien la **magie de groupe** et accomplir lui-même le rituel. L'œuf est contenu et sa coquille est réparée.
+
+Cette résolution permet d'obtenir une récompense magique exceptionnelle : **le Lien du Mal**.
+
+**Option B — Prévenir un royaume**
+
+Le joueur peut transmettre le danger et le rituel à **n'importe quel royaume de son choix**. Le royaume choisi réalise alors le rituel avec ses propres spécialistes.
+
+Le joueur reçoit en échange **de l'argent et de la réputation auprès du royaume qu'il a choisi**.
+
+Le choix du royaume n'est pas imposé par la quête et peut servir à renforcer librement les relations du joueur avec la puissance politique de son choix.
+
+Dans les deux options, la compétence de **Linguistique** reste nécessaire pour comprendre le parchemin et permettre l'exécution ou la transmission correcte du rituel.
+
+### Récompense secrète — Le Lien du Mal
+
+Le **Lien du Mal** est un artefact prenant l'apparence d'un **cordon ombilical** sombre et organique.
+
+Sa seconde fonction est secrète et n'est pas révélée au joueur lors de son obtention.
+
+#### Fonction apparente
+
+Tant que le joueur porte le Lien du Mal :
+
+- les créatures vivantes fuient le joueur, même lorsqu'elles sont profondément maléfiques ;
+- les êtres humains ressentent une terreur instinctive face au joueur.
+
+#### Fonction secrète
+
+Le Lien du Mal peut être sacrifié dans le cadre d'une **magie de pacte** afin d'obtenir une magie unique : **Le Mal Nécessaire**.
+
+Cette possibilité doit rester cachée au joueur tant qu'il ne découvre pas comment réaliser le pacte.
+
+### Le Mal Nécessaire
+
+Après le sacrifice du Lien du Mal, le joueur obtient la capacité d'invoquer **Le Mal Nécessaire**.
+
+Lorsqu'elle est utilisée, une vaste zone de **30 mètres de rayon** est immédiatement enfermée par une barrière surnaturelle.
+
+**Règles de la barrière :**
+
+- aucun être vivant ne peut entrer dans la zone ;
+- aucun être vivant présent dans la zone ne peut en sortir ;
+- le joueur est **le seul être vivant immunisé** contre la magie.
+
+À l'intérieur de la zone :
+
+- tous les êtres vivants deviennent hostiles les uns envers les autres ;
+- ils cherchent à tuer les autres êtres vivants présents ;
+- la magie ne distingue ni alliés, ni ennemis, ni espèces ;
+- le joueur peut être présent dans la zone sans subir l'effet de la magie.
+
+Les êtres vivants présents s'entretuent jusqu'à ce qu'il n'en reste **qu'un seul**.
+
+Le dernier survivant **n'est pas forcé de mourir**. Il peut s'agir d'un simple animal, d'une créature particulièrement résistante ou d'un boss. La magie ne garantit donc pas la mort du dernier survivant et ne constitue pas une solution automatique contre les ennemis les plus puissants.
+
+Une fois qu'il ne reste qu'un seul être vivant, la barrière retombe et la zone redevient accessible.
+
+
 ### Principes narratifs
 
 - Le joueur ne connaît pas nécessairement la durée exacte du compte à rebours lors de la découverte.
