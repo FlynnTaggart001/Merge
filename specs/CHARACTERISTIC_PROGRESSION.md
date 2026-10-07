@@ -8,10 +8,11 @@
 Merge separates skills from characteristics. Skills improve through learning by doing. Characteristics improve automatically from linked skill progression. There is no global character level for distributing points.
 
 At character creation:
+- the player chooses a sex: **Homme or Femme**;
 - all 6 characteristics start at **6/20**;
-- the player receives **26 characteristic points**;
+- the player receives **20 characteristic points**;
 - maximum characteristic at creation: **14/20**;
-- total initial characteristic pool: **62 points**;
+- total initial characteristic pool: **56 points**;
 - the player does not manually assign skill points.
 
 Initial skill values are derived from the final creation-time characteristic profile:
