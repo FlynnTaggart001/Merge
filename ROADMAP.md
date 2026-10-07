@@ -25,7 +25,7 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [x] Direction de world design en trois grandes régions cadrée
 - [x] Taille cible du monde fixée à 40 km² (référence 6,32 × 6,32 km)
 - [x] Système canonique de progression : 46 compétences + 6 caractéristiques
-- [x] Création : 6 caractéristiques à 6/20, 26 points à distribuer, maximum 14/20 ; compétences initiales dérivées automatiquement
+- [x] Création : sexe Homme/Femme ; 6 caractéristiques à 6/20, 20 points à distribuer, maximum 14/20 ; compétences initiales dérivées automatiquement
 - [x] Learning by Doing et progression automatique des caractéristiques spécifiés
 - [x] Classes/voies : qualification par profil de caractéristiques et révélation à l'atteinte des conditions
 - [x] Système de réputation spécifié
