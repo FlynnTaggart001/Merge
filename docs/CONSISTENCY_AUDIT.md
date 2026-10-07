@@ -8,7 +8,7 @@
 
 - 46 compétences canoniques ; `Domptage` est canonique.
 - 6 caractéristiques sur 0–20.
-- Création : 6/20 partout, 26 points, maximum 14/20.
+- Création : sexe Homme/Femme ; 6/20 partout, 20 points, maximum 14/20.
 - Aucune distribution manuelle de compétences à la création.
 - Valeurs initiales calculées automatiquement à partir des caractéristiques.
 - Learning by Doing par activité pertinente, pratiquée et validée.
