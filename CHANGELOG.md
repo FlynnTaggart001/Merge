@@ -1,4 +1,12 @@
-# Changelog - CHANGELOG.md
+# Changelog
+
+### Changed — Character creation update (2026-10-07)
+- Character creation now offers a **Homme / Femme** sex choice.
+- The creation pool is reduced from **26 to 20 characteristic points**.
+- All 6 characteristics still start at **6/20** and remain capped at **14/20** during creation.
+- The initial characteristic pool is now **56 points** (6 × 6 + 20).
+- Initial skills remain automatically derived from the final characteristic profile.
+ - CHANGELOG.md
 
 Tous les changements notables du projet sont documentés dans ce fichier.
 
