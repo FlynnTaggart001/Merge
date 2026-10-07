@@ -23,9 +23,9 @@ Lors de la création du personnage, le joueur distribue les points de caractéri
 Règles actuelles de création :
 
 - Chacune des 6 caractéristiques commence à **6/20**.
-- Le joueur reçoit **26 points de caractéristiques supplémentaires** à distribuer librement.
+- Le joueur reçoit **20 points de caractéristiques supplémentaires** à distribuer librement.
 - Une caractéristique ne peut pas dépasser **14/20** lors de la création du personnage.
-- Le total initial est donc de **62 points** (`6 × 6 + 26`).
+- Le total initial est donc de **56 points** (`6 × 6 + 20`).
 - Aucune caractéristique ne peut être réduite sous sa valeur de base de 6.
 
 ### Conversion mathématique caractéristique → compétence à la création
