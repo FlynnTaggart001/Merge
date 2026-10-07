@@ -36,8 +36,9 @@ That document is the source of truth for names, categories and relationships.
 
 At character creation:
 
+- the player chooses a sex: **Homme or Femme**;
 - all 6 characteristics start at **6/20**;
-- the player receives **26 characteristic points**;
+- the player receives **20 characteristic points**;
 - no characteristic may exceed **14/20** at creation;
 - the player assigns those points directly to characteristics;
 - no skill points are manually distributed.
