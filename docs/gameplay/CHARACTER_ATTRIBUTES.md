@@ -4,7 +4,7 @@ Ce document est une synthèse. Les règles canoniques sont définies dans `specs
 
 Le personnage possède six caractéristiques sur 0–20 : Force, Agilité, Perception, Intelligence, Volonté et Charisme.
 
-À la création : 6/20 partout, 26 points à répartir, maximum 14/20. Les 46 compétences sont calculées automatiquement à partir des caractéristiques ; aucun point de compétence n'est distribué manuellement.
+À la création : le joueur choisit son sexe (**Homme ou Femme**), puis les 6 caractéristiques commencent à 6/20, avec 20 points à répartir et un maximum de 14/20. Les 46 compétences sont calculées automatiquement à partir des caractéristiques ; aucun point de compétence n'est distribué manuellement.
 
 Après la création, les activités pertinentes, réellement pratiquées et validées donnent des points de progression de compétence. Ces mêmes points alimentent les réserves cachées des caractéristiques liées selon leurs poids et seuils. Il n'existe aucun recalcul direct par moyenne des compétences.
 
