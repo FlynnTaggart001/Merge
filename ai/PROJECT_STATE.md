@@ -19,7 +19,7 @@
 - Progression design: **canonical attribute-first creation + Learning by Doing** (`specs/CANONICAL_SKILLS.md`, `specs/CHARACTERISTIC_PROGRESSION.md`, `specs/SKILL_PROGRESSION.md`, `specs/PLAYER_PROGRESSION.md`)
   - 46 canonical skills
   - 6 characteristics (Force, Agilité, Perception, Intelligence, Volonté, Charisme)
-  - Character creation: all characteristics start at 6/20, 26 points distributed freely, maximum 14/20
+  - Character creation: sex selectable as Homme/Femme; all characteristics start at 6/20, 20 points distributed freely, maximum 14/20
   - Initial skill values are derived automatically from the final characteristic profile
   - After creation: Learning by Doing + automatic characteristic progression
   - `specs/PROGRESSION_DESIGN_BASELINE_2026-09-16.md` is retained as a historical baseline and is superseded by the canonical rules above
