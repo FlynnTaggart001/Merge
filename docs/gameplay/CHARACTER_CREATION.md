@@ -4,8 +4,9 @@
 
 La création suit `specs/CANONICAL_SKILLS.md` et `specs/PLAYER_PROGRESSION.md`.
 
+- Le joueur choisit son sexe : **Homme ou Femme**.
 - Les six caractéristiques commencent à **6/20**.
-- Le joueur reçoit **26 points** à répartir.
+- Le joueur reçoit **20 points** à répartir.
 - Une caractéristique ne peut pas dépasser **14/20** à la création.
 - Les **46 compétences** sont calculées automatiquement à partir du profil final.
 - Aucun point de compétence n'est distribué manuellement.
