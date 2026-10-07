@@ -350,10 +350,11 @@ La référence numérique actuelle est une échelle **0–20**.
 
 À la création :
 
+- le joueur choisit son sexe : **Homme ou Femme** ;
 - les 6 caractéristiques commencent à **6/20** ;
-- le joueur reçoit **26 points de caractéristiques** à distribuer librement ;
+- le joueur reçoit **20 points de caractéristiques** à distribuer librement ;
 - une caractéristique ne peut pas dépasser **14/20** à la création ;
-- le total initial est donc de **62 points**.
+- le total initial est donc de **56 points**.
 
 C'est la seule phase où le joueur attribue directement des points de caractéristiques.
 
