@@ -47,8 +47,9 @@ Contribution pondérée aux caractéristiques liées
 Le modèle canonique comprend **46 compétences** et **6 caractéristiques**. La liste et les relations compétence → caractéristique sont définies exclusivement dans `specs/CANONICAL_SKILLS.md`.
 
 À la création :
+- le joueur choisit son sexe : **Homme ou Femme** ;
 - les 6 caractéristiques commencent à **6/20** ;
-- 26 points de caractéristiques sont disponibles ;
+- 20 points de caractéristiques sont disponibles ;
 - maximum d'une caractéristique à la création : **14/20** ;
 - les compétences ne reçoivent aucun point manuellement.
 
