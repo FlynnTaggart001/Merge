@@ -29,7 +29,7 @@ Les systèmes gameplay détaillés sont **spécifiés mais non déclarés comme 
 ## Principes canoniques
 
 - Merge possède **46 compétences canoniques** et **6 caractéristiques** sur 0–20.
-- Création : 6/20 partout, 26 points à répartir, maximum 14/20.
+- Création : sexe **Homme ou Femme**, 6/20 partout, 20 points à répartir, maximum 14/20.
 - Les compétences initiales sont calculées automatiquement ; aucun point de compétence n'est distribué manuellement.
 - Après création : Learning by Doing par activité pertinente, pratiquée et validée.
 - Les points gagnés augmentent la compétence et alimentent les caractéristiques liées via poids, réserves cachées et seuils ; aucune recomposition directe par moyenne des compétences.
