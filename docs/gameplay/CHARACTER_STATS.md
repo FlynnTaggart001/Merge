@@ -7,7 +7,7 @@ Les six caractéristiques sont Force, Agilité, Perception, Intelligence, Volont
 ## Création
 
 - chaque caractéristique commence à **6/20** ;
-- le joueur reçoit **26 points** à répartir ;
+- le joueur reçoit **20 points** à répartir ;
 - le maximum à la création est **14/20** ;
 - les 46 compétences sont calculées automatiquement ;
 - aucun point de compétence n'est distribué manuellement.
