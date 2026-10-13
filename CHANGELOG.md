@@ -1,5 +1,12 @@
 # Changelog
 
+### Changed — AI toolchain selected (2026-10-13)
+- Official Merge AI tools are now **ChatGPT Plus, Claude Code, and Wingman Premium** only.
+- Added ai/TOOLCHAIN.md as the canonical responsibility, cost, and handoff guide.
+- Clarified that ChatGPT Plus does not include OpenAI API credits and that Wingman is not assumed to have GitHub access.
+- Removed unused provider API-key placeholders from the example environment files and removed unselected providers from default runtime routing.
+- Automatic Claude Code runtime wiring and Wingman-to-GitHub handoff remain validation tasks; they are not claimed as complete.
+
 ### Changed — Character creation update (2026-10-07)
 - Character creation now offers a **Homme / Femme** sex choice.
 - The creation pool is reduced from **26 to 20 characteristic points**.
