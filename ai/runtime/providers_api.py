@@ -1,8 +1,10 @@
-"""HTTP provider adapters for OpenAI, Gemini and xAI.
+"""Legacy metered-API adapters retained for compatibility only.
 
-These adapters are intentionally small: the orchestrator owns task/state
-management, while each provider only turns a task+context into model output.
-Secrets are read exclusively from environment variables.
+The selected Merge toolchain is ChatGPT Plus, Claude Code, and Wingman Premium.
+These OpenAI/Gemini/xAI HTTP functions are NOT the selected integrations and
+must not be routed by default. ChatGPT Plus is a subscription interface, not an
+OpenAI API credential or API credit balance. Secrets are read from environment
+variables; never commit them.
 """
 
 from __future__ import annotations
