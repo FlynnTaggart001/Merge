@@ -85,6 +85,16 @@ Follow TOOLCHAIN.md as the source of truth for the three approved tools.
 - Never mark any of these as automatically connected unless the integration has been exercised successfully end to end.
 - Do not route Gemini, Grok, or generic OpenAI API adapters as part of the selected toolchain.
 
+## Selected toolchain handoff
+
+Follow TOOLCHAIN.md as the source of truth for the three approved tools.
+
+- **ChatGPT Plus:** interactive design, planning, audit, and review. Approved decisions must be written to canonical GitHub documents. It is not an OpenAI API key or an automatically callable runtime provider.
+- **Claude Code:** repository implementation and available tests. Read the relevant canonical docs before edits and report the exact files changed and tests actually run.
+- **Wingman Premium:** Unreal Editor/Blueprint assistance. GitHub access is not assumed; use a structured handoff to record changes and local validation.
+- Never mark any of these as automatically connected unless the integration has been exercised successfully end to end.
+- Do not route Gemini, Grok, or generic OpenAI API adapters as part of the selected toolchain.
+
 ## Limits
 
 The runtime never claims that an external provider, Unreal Editor, compiler, or Git operation ran unless the connected host actually performed it. Provider credentials remain outside the repository.
