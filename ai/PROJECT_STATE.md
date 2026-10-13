@@ -12,7 +12,7 @@
 - Blueprint: complementary
 - Unreal project scaffold: **created** (`Merge.uproject`, Source/, Config/)
 - Unreal local compile / PIE: **must be validated on a machine with UE5**
-- AI orchestration infrastructure: operational guardrails/workflow (Phase 0.5); planner and real providers still pending
+- AI orchestration infrastructure: guardrails and workflow contracts exist (Phase 0.5); selected toolchain is ChatGPT Plus + Claude Code + Wingman Premium, but automatic provider wiring remains unverified
 - AI team workflow: **implemented** — planning, dependency checks, role routing, least privilege, proposal/review, Devil's Advocate, human decision gate, handoffs, state persistence and follow-up planning
 - Security/secrets policy: enforced
 - CI: runtime guard tests + recommendation/team workflow tests + secrets hygiene
@@ -36,6 +36,8 @@
 4. Only then start Core Game Systems (Phase 2).
 
 ## AI team baseline
+
+Official tools and division of work: see ai/TOOLCHAIN.md. ChatGPT Plus is used interactively for design and review; Claude Code handles repository work; Wingman Premium assists inside Unreal Editor. Neither ChatGPT Plus nor Wingman is considered automatically connected to the runtime. Do not route Gemini/Grok/OpenAI API calls as if they were selected integrations.
 
 - All AI calls go through `Orchestrator.execute()`.
 - Hard token / budget / rate / circuit / retry controls remain mandatory.
