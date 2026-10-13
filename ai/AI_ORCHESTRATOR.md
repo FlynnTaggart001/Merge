@@ -2,6 +2,8 @@
 
 ## 1. Mission
 
+La pile d'outils approuvée est définie dans TOOLCHAIN.md : ChatGPT Plus pour le travail interactif de conception/revue, Claude Code pour le dépôt et Wingman Premium dans Unreal Editor. L'orchestrateur ne doit pas prétendre appeler automatiquement ChatGPT Plus ou Wingman sans adaptateur réel testé. Les transferts depuis Unreal doivent suivre HANDOFF_PROTOCOL.md.
+
 L'orchestrateur transforme un objectif du Game Director en une chaîne de tâches multi-agents exécutables, validables et traçables.
 
 Exemple :
