@@ -39,6 +39,10 @@ No normal code path can bypass the Orchestrator.
 python -m ai.tests.test_orchestrator_pipeline
 ```
 
+## Selected toolchain
+
+The approved tools are ChatGPT Plus, Claude Code, and Wingman Premium. See [ai/TOOLCHAIN.md](../TOOLCHAIN.md). ChatGPT Plus and Wingman are not callable API providers in this runtime. The Claude Code CLI adapter must be registered against the runtime provider interface and tested end to end before automatic execution is claimed. Legacy HTTP adapters are not part of the default selected toolchain.
+
 ## Configuration
 
 Copy `config.example.env` or root `.env.example` to a local `.env`.
