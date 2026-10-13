@@ -29,6 +29,8 @@ Les décisions critiques doivent être explicitement marquées `APPROVED` ou `PE
 
 ## 3. Rôles, pas modèles
 
+La sélection d'outils est canonisée dans ai/TOOLCHAIN.md : **ChatGPT Plus, Claude Code et Wingman Premium uniquement**. Ce choix ne signifie pas que les trois outils sont connectés à l'orchestrateur. ChatGPT Plus est utilisé interactivement pour la conception et la revue ; Claude Code travaille dans le dépôt ; Wingman intervient dans Unreal Editor. Les capacités et les limites réelles priment sur toute hypothèse d'intégration.
+
 Les responsabilités sont définies par **rôle et capacité**, et non par un modèle IA permanent.
 
 Un même agent peut remplir plusieurs rôles et un rôle peut être assuré par plusieurs agents.
