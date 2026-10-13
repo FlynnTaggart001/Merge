@@ -45,3 +45,16 @@
 "Implemented" means the repository now contains the runtime contract and enforcement path. It does not mean external providers, Unreal Engine, Git credentials or a human decision have been fabricated.
 
 The runtime remains truthful about unavailable external execution.
+
+
+## Addendum — selected toolchain (2026-10-13)
+
+The Game Director selected **ChatGPT Plus, Claude Code, and Wingman Premium** as the only AI tools for Merge. See TOOLCHAIN.md.
+
+This decision does not change the meaning of the historical audit rows above: runtime guardrails and orchestration contracts can be implemented while real external tool integrations remain unverified.
+
+- ChatGPT Plus is interactive; it must not be treated as an OpenAI API provider or as including API credits.
+- Claude Code is the repository-facing coding tool, but its local adapter still requires a verified end-to-end connection to the runtime provider interface before automatic orchestration can be claimed.
+- Wingman Premium is used inside Unreal Editor. GitHub handoff remains manual unless a real integration is tested.
+- Gemini, Grok, and other providers are not selected for active use. Legacy adapter code, if retained, is inactive and must not be routed by default.
+- Unreal compilation and PIE remain local validations and must not be inferred from CI success.
