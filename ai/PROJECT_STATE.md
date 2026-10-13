@@ -1,6 +1,6 @@
 # Merge — Project State
 
-**Last updated:** 2026-09-22
+**Last updated:** 2026-10-13
 
 ## Current state
 
