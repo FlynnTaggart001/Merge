@@ -39,6 +39,8 @@
 
 Official tools and division of work: see ai/TOOLCHAIN.md. ChatGPT Plus is used interactively for design and review; Claude Code handles repository work; Wingman Premium assists inside Unreal Editor. Neither ChatGPT Plus nor Wingman is considered automatically connected to the runtime. Do not route Gemini/Grok/OpenAI API calls as if they were selected integrations.
 
+Official tools and division of work: see ai/TOOLCHAIN.md. ChatGPT Plus is used interactively for design and review; Claude Code handles repository work; Wingman Premium assists inside Unreal Editor. Neither ChatGPT Plus nor Wingman is considered automatically connected to the runtime. Do not route Gemini/Grok/OpenAI API calls as if they were selected integrations.
+
 - All AI calls go through `Orchestrator.execute()`.
 - Hard token / budget / rate / circuit / retry controls remain mandatory.
 - Objectives can be decomposed into validated task contracts.
