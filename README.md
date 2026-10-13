@@ -49,6 +49,16 @@ specs/            architecture cible et règles de gameplay
 
 L'architecture cible ne signifie pas que tous ses modules sont déjà présents dans le scaffold.
 
+## Outils IA retenus pour Merge
+
+La pile officielle comprend uniquement **ChatGPT Plus**, **Claude Code** et **Wingman Premium**. Leurs responsabilités et limites sont définies dans [ai/TOOLCHAIN.md](ai/TOOLCHAIN.md).
+
+- ChatGPT Plus : conception, audits, planification et revue interactive.
+- Claude Code : travail dans le dépôt, code, tests et changements GitHub.
+- Wingman Premium : assistance dans Unreal Editor ; les changements doivent être retranscrits et validés dans GitHub.
+- Un abonnement ChatGPT Plus ne fournit pas de crédits API OpenAI. ChatGPT Plus et Wingman ne sont pas considérés comme connectés automatiquement à l'orchestrateur.
+- Aucun autre fournisseur IA n'est retenu dans le workflow actif.
+
 ## Validation locale
 
 UE 5.8.1, C++20, génération des project files, Blueprints, `L_TestArena`, Enhanced Input, PIE et profiling restent à valider localement.
