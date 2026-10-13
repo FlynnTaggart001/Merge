@@ -46,8 +46,12 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [x] CI GitHub Actions
 
 ### Restant (post-P0)
-- [ ] Planner → exécution réelle de tâches
-- [ ] Brancher les providers IA réels derrière l'orchestrateur
+- [ ] Vérifier l'adaptateur Claude Code contre l'interface provider et tester un cycle complet.
+- [ ] Conserver ChatGPT Plus comme outil interactif de conception/revue ; ne pas le traiter comme une API.
+- [ ] Définir et valider le handoff Wingman → GitHub après les tâches dans Unreal.
+- [ ] Tester les limites d'absence de provider et les erreurs explicites avant de déclarer l'orchestration réelle opérationnelle.
+
+**Pile d'outils approuvée :** ChatGPT Plus, Claude Code et Wingman Premium uniquement — détails dans ai/TOOLCHAIN.md. Les abonnements ne signifient pas que chaque outil est connecté automatiquement à l'orchestrateur.
 
 ---
 
