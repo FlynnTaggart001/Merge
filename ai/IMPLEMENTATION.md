@@ -53,4 +53,4 @@ Do not create scripts that merely print messages pretending to call other AIs. A
 
 ## Next implementation milestone
 
-Create the executable runtime only after selecting and configuring the actual provider integrations available to the development environment. Then perform a dry run that creates a task and handoff without modifying game code.
+The selected tools are already documented in TOOLCHAIN.md. Before claiming automatic orchestration, implement and test a Claude Code adapter that conforms to the runtime AgentProvider interface, register it explicitly, and run a dry-run task through planning, routing, permissions, execution, review, and handoff. Keep ChatGPT Plus interactive and Wingman inside Unreal Editor unless real, tested integrations are added. Do not add unselected providers merely to make the registry appear populated.
