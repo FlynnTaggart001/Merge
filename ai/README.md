@@ -2,10 +2,11 @@
 
 Ce dossier contient le protocole partagé utilisé pour coordonner les agents IA de Merge.
 
-L'infrastructure de garde-fous et le workflow d'équipe sont opérationnels. Le planner d'exécution réelle et les providers IA réels restent à intégrer.
+Les garde-fous et les contrats du workflow existent, mais les connexions automatiques aux outils doivent être validées séparément. La pile retenue est ChatGPT Plus, Claude Code et Wingman Premium ; voir TOOLCHAIN.md.
 
 ## Fichiers principaux
 
+- `TOOLCHAIN.md` — outils retenus, responsabilités et limites d'intégration
 - `AI_ORCHESTRATOR.md` — contrat de l'orchestrateur
 - `AGENT_REGISTRY.md` — agents et capacités
 - `PROJECT_STATE.md` — état partagé
@@ -16,4 +17,4 @@ L'infrastructure de garde-fous et le workflow d'équipe sont opérationnels. Le 
 
 Le dépôt est la mémoire persistante commune. Le Game Director reste l'autorité finale sur les décisions critiques.
 
-**Statut : garde-fous et workflow opérationnels ; planner et providers IA réels en attente.**
+**Statut : règles et garde-fous documentés ; intégration automatique de Claude Code et handoff Wingman → GitHub à valider.**
