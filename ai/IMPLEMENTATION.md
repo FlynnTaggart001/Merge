@@ -23,20 +23,17 @@ The real orchestrator must be able to:
 11. create commits/branches/PRs according to permissions;
 12. stop on `PENDING_HUMAN` decisions.
 
-## Provider abstraction
+## Selected toolchain and runtime boundary
 
-Implement providers behind a common interface rather than hard-coding a model:
+The approved development tools are **ChatGPT Plus, Claude Code, and Wingman Premium**, as specified in TOOLCHAIN.md.
 
-```text
-AgentProvider
-  - id
-  - capabilities
-  - availability
-  - execute(task, context)
-  - health_check()
-```
+These are three different interaction surfaces, not three interchangeable API providers:
 
-Possible providers include GPT/Codex, Claude, Gemini, GitHub Copilot and future providers, but only providers with a real configured integration may be marked available.
+- ChatGPT Plus is used interactively for design, planning, audits, and review. A Plus subscription does not grant OpenAI API credentials or API credits.
+- Claude Code is the repository-facing coding tool. Its local CLI adapter exists, but the adapter must not be described as fully wired into the team orchestrator until the AgentProvider interface and end-to-end tests prove that.
+- Wingman Premium is used inside Unreal Editor. Do not claim programmatic access to Wingman or automatic GitHub synchronization without a verified integration; use the documented handoff.
+
+The existing generic provider registry and legacy HTTP adapters are not proof that the selected tools are connected. Only a real, tested adapter may be marked available. Gemini, Grok, and other products are not part of the active toolchain.
 
 ## Recommended first runtime
 
