@@ -19,11 +19,20 @@ def build_team(registry: ProviderRegistry, *, config=None) -> TeamWorkflow:
         if normalized in cache:
             return cache[normalized]
         route = route_for(normalized)
-        descriptor = registry.get(route.provider_id)
-        if not descriptor.enabled or descriptor.provider is None:
+        try:
+            descriptor = registry.get(route.provider_id)
+        except KeyError:
+            # The preferred tool may not have a registered runtime adapter yet.
+            # Fall back only to an explicitly registered, enabled provider with
+            # the required capability; otherwise fail with a clear error.
+            descriptor = None
+        if descriptor is None or not descriptor.enabled or descriptor.provider is None:
             available = registry.available_for(normalized)
             if not available:
-                raise RuntimeError(f"No enabled provider available for role {normalized}")
+                raise RuntimeError(
+                    f"No enabled runtime provider available for role {normalized} "
+                    f"(preferred: {route.provider_id}). Check adapter registration."
+                )
             descriptor = available[0]
         cache[normalized] = Orchestrator(descriptor.provider, config=config)
         return cache[normalized]
