@@ -17,16 +17,21 @@ class Route:
     reason: str
 
 
+# This table only selects a provider inside the executable runtime.
+# ChatGPT Plus and Wingman are used interactively/outside this router; neither is
+# a callable AgentProvider merely because the user has a subscription.
+# Claude Code is the only selected repository-facing tool. Its actual runtime
+# availability still depends on a compatible registered adapter.
 DEFAULT_ROUTES = {
-    "ARCHITECT": Route("ARCHITECT", "openai", "architecture and project-wide reasoning"),
-    "GAMEPLAY_DESIGNER": Route("GAMEPLAY_DESIGNER", "gemini", "large-context design/research"),
-    "WORLD_DESIGNER": Route("WORLD_DESIGNER", "gemini", "content and world ideation"),
-    "RESEARCHER": Route("RESEARCHER", "gemini", "research and comparative analysis"),
+    "ARCHITECT": Route("ARCHITECT", "claude_code", "repository-aware architecture; use ChatGPT Plus interactively for design review"),
+    "GAMEPLAY_DESIGNER": Route("GAMEPLAY_DESIGNER", "claude_code", "implement approved gameplay specifications; ChatGPT Plus supports design"),
+    "WORLD_DESIGNER": Route("WORLD_DESIGNER", "claude_code", "repository-aware world documentation; ChatGPT Plus supports ideation"),
+    "RESEARCHER": Route("RESEARCHER", "claude_code", "record sourced research in the repository; ChatGPT Plus supports interactive research"),
     "PROGRAMMER": Route("PROGRAMMER", "claude_code", "repository-aware implementation"),
-    "REVIEWER": Route("REVIEWER", "grok", "independent critical review"),
-    "DEVIL_ADVOCATE": Route("DEVIL_ADVOCATE", "grok", "adversarial constructive challenge"),
-    "QA": Route("QA", "grok", "adversarial validation and bug finding"),
-    "DOCUMENTATION": Route("DOCUMENTATION", "openai", "cross-document consistency"),
+    "REVIEWER": Route("REVIEWER", "claude_code", "repository/code review; ChatGPT Plus can provide an additional interactive review"),
+    "DEVIL_ADVOCATE": Route("DEVIL_ADVOCATE", "claude_code", "constructive challenge and risk analysis; ChatGPT Plus can review interactively"),
+    "QA": Route("QA", "claude_code", "run available repository tests; Unreal validation remains local"),
+    "DOCUMENTATION": Route("DOCUMENTATION", "claude_code", "canonical documentation and cross-document consistency"),
     "RELEASE": Route("RELEASE", "claude_code", "repository-aware release preparation"),
 }
 
