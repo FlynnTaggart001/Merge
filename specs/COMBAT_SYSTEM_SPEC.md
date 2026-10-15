@@ -2,7 +2,7 @@
 
 **Statut :** APPROUVÉ — système de conception actuel  
 **Moteur :** Unreal Engine 5.8.1  
-**Référence canonique :** ce fichier est la spécification centrale du combat. Le document existant `docs/gameplay/COMBAT_RESOLUTION.md` contient un modèle de résolution plus ancien et des paramètres qui ne sont pas tous alignés sur les décisions canoniques actuelles. Il est conservé comme document historique à réconcilier ; il ne doit pas remplacer cette spécification ni servir de contrat d'implémentation tant que les conflits identifiés dans `docs/CONSISTENCY_AUDIT.md` ne sont pas résolus. Ne pas créer de second document concurrent.
+**Référence canonique :** ce fichier est la spécification centrale du combat. `docs/gameplay/COMBAT_RESOLUTION.md` a été remplacé par une redirection et ne définit plus aucune règle de gameplay. Les règles d'armes, dégâts, armures, durabilité et équipement sont complétées par `specs/WEAPONS_AND_EQUIPMENT_SPEC.md`. En cas de doute, ces deux spécifications prévalent sur les résumés d'architecture et les anciennes entrées du changelog. Ne pas créer de second document de combat concurrent.
 
 ## 1. Principes
 
