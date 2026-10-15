@@ -79,6 +79,8 @@ Résultats :
 
 Une parade réussie annule donc les dégâts de l'attaque parée.
 
+**Parades consécutives :** le joueur peut tenter une nouvelle parade immédiatement après une parade précédente, sans délai artificiel imposé. Chaque tentative reste soumise à la condition de disposer d'au moins **10 points d'endurance avant la tentative** et au coût correspondant au résultat (5 pour une parade parfaite, 10 pour une parade normale ou ratée).
+
 L'Agilité influence la facilité physique du timing :
 - personnage agile : fenêtre plus large ;
 - personnage moyen : fenêtre normale ;
