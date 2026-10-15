@@ -144,6 +144,6 @@ Les effets doivent pouvoir être définis comme données et composés sans modif
 4. Le système doit être compatible avec furtivité, Backstab, esquive, saut arrière, parade, défense, magie et IA.
 5. La parade doit être une mécanique de timing, pas un simple blocage.
 6. Une parade réussie doit pouvoir créer une ouverture de riposte.
-7. Les attaques non parables doivent être définissables par données.
+7. Aucune attaque n'est imparable par défaut ; les attaques lourdes ou spéciales peuvent définir des fenêtres de parade plus courtes dans les données, conformément à `specs/COMBAT_SYSTEM_SPEC.md`.
 8. Les valeurs finales sont réservées à l'équilibrage du prototype.
 9. Le Réflexe est un système automatique distinct de la parade : il ne déclenche pas la parade et ne modifie pas sa fenêtre.
