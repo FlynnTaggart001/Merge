@@ -73,7 +73,7 @@ La parade utilise un test de timing inspiré du principe des tests de compétenc
 Le test ne s'active que lorsqu'une attaque ennemie est réellement susceptible de toucher le joueur. Si l'attaque rate naturellement le joueur, aucun test de parade ne s'active.
 
 Résultats :
-- Parade parfaite : aucun dégât ; **interruption immédiate de l'attaque ennemie et déclenchement automatique de la contre-attaque critique** (le joueur n'a pas à déclencher une action distincte). La contre-attaque inflige un coup critique à l'ennemi. Cette contre-attaque touche automatiquement et ne peut pas être bloquée ni parée par les défenses ordinaires de l'ennemi ; d'éventuelles exceptions liées à des capacités spéciales devront être définies explicitement.
+- Parade parfaite : aucun dégât ; **interruption immédiate de l'attaque ennemie et déclenchement automatique de la contre-attaque critique** (le joueur n'a pas à déclencher une action distincte). La contre-attaque inflige un coup critique à l'ennemi. Cette contre-attaque touche automatiquement et ne peut pas être bloquée ni parée par les défenses ordinaires de l'ennemi. Elle ne peut pas non plus être interrompue par une attaque ordinaire ; seule une capacité spéciale explicitement définie, notamment celle d'un boss, peut constituer une exception.
 - Parade réussie mais non parfaite : aucun dégât, sans contre automatique.
 - Parade ratée : le joueur reçoit un coup critique et dépense **10 points d'endurance**, comme pour une parade réussie non parfaite.
 
