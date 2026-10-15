@@ -81,7 +81,7 @@ Une parade réussie annule donc les dégâts de l'attaque parée.
 
 **Protection pendant la parade parfaite :** l'attaque parée est annulée et ne blesse pas le joueur pendant la résolution de la parade parfaite et de sa contre-attaque automatique. En revanche, cette protection ne s'étend pas aux autres ennemis : leurs attaques peuvent toucher le joueur normalement pendant cette séquence. Les capacités spéciales peuvent suivre des règles distinctes uniquement si elles sont explicitement définies.
 
-**Parades consécutives :** le joueur peut tenter une nouvelle parade immédiatement après une parade précédente, sans délai artificiel imposé. Chaque tentative reste soumise à la condition de disposer d'au moins **10 points d'endurance avant la tentative** et au coût correspondant au résultat (5 pour une parade parfaite, 10 pour une parade normale ou ratée).
+**Parades consécutives :** le joueur peut tenter une nouvelle parade immédiatement après une parade précédente, sans délai artificiel imposé. Chaque tentative reste soumise à la condition de disposer d'au moins **10 points d'endurance avant la tentative** et au coût correspondant au résultat (5 pour une parade parfaite, 10 pour une parade normale ou ratée). Le seuil de 10 points est vérifié au début de la tentative uniquement : une fois la tentative autorisée, le joueur n'a pas besoin de conserver 10 points jusqu'à sa résolution. Si la parade est parfaite, le coût appliqué est de 5 points.
 
 L'Agilité influence la facilité physique du timing :
 - personnage agile : fenêtre plus large ;
