@@ -222,7 +222,7 @@ Les conséquences exactes du poids de l'armure sur la mobilité et l'endurance r
 
 ## 8. Stagger
 
-**Modèle retenu : stagger équilibré.** La résistance au stagger dépend notamment de la puissance et de l'impact de l'attaque, ainsi que du poids, de la taille et de l'armure de la cible.
+**Modèle retenu : puissance d'impact contre résistance de la cible.** Chaque attaque possède une puissance d'impact, comparée à la résistance au stagger de la cible. Cette résistance est déterminée par le poids, la taille et l'armure de la cible. Le stagger réussit lorsque l'impact atteint le seuil requis. La formule et les valeurs numériques restent à définir.
 
 - Les petites cibles légères sont généralement plus faciles à déséquilibrer.
 - Les créatures massives résistent davantage au déséquilibre.
