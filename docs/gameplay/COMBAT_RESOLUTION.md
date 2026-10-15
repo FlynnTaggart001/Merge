@@ -1,5 +1,8 @@
 # Résolution des actions de combat — Merge
 
+**Statut : HISTORIQUE / NON CANONIQUE (2026-10-15).** Ce document est conservé pour référence, mais contient un modèle de résolution et des paramètres antérieurs qui ne sont pas entièrement alignés sur les règles canoniques actuelles. Pour toute décision de conception ou tout contrat d'implémentation, utiliser `specs/COMBAT_SYSTEM_SPEC.md` et `specs/WEAPONS_AND_EQUIPMENT_SPEC.md`. Les écarts sont recensés dans `docs/CONSISTENCY_AUDIT.md`. Ne pas recopier ni implémenter une règle de ce document sans réconciliation explicite.
+
+
 ## 1. Principe général
 
 Le combat de **Merge** utilise des actions opposées entre les capacités de l'attaquant et celles du défenseur.
