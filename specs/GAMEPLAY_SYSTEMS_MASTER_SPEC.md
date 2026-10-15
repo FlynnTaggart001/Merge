@@ -320,7 +320,7 @@ Les systèmes critiques doivent être testables indépendamment du rendu 3D : pr
 
 ## 18. Ce qui reste volontairement ouvert
 
-Les domaines magiques, familles d'armes, dégâts, courbes de progression, durée exacte des i-frames, fenêtre exacte de parade, familiarité, factions, bestiaire, quêtes et valeurs d'équilibrage restent des données de game design à régler pendant les prototypes.
+Les domaines magiques, courbes de progression, durée exacte des i-frames, familiarité, factions, bestiaire, quêtes et valeurs d'équilibrage encore non spécifiées restent des données de game design à régler pendant les prototypes. Les fenêtres numériques de parade, la formule de résistance au stagger et les dégâts de base des familles d'armes (hors mains nues) sont définis dans `specs/COMBAT_SYSTEM_SPEC.md` et `specs/WEAPONS_AND_EQUIPMENT_SPEC.md` ; leur calibration en jeu reste à effectuer.
 
 Les conditions exactes des classes fondamentales et de **Déité** restent également à définir. Aucun nom ou seuil de classe non validé ne doit être inventé.
 
