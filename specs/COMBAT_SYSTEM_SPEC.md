@@ -89,7 +89,9 @@ La compétence Parade représente la maîtrise technique et influence également
 **Fenêtres de timing retenues pour un personnage de référence :**
 - fenêtre de parade parfaite : **200 ms** ;
 - fenêtre de parade normale : **350 ms au total**, incluant la fenêtre parfaite.
-- **Plafond d'amélioration des attaques ordinaires : 400 ms au total** après prise en compte de l'Agilité et de la compétence Parade ; la progression ne peut pas dépasser cette limite.
+- **Plafond de la fenêtre totale des attaques ordinaires : 400 ms** après prise en compte de l'Agilité et de la compétence Parade ; la progression ne peut pas dépasser cette limite.
+- **Plafond distinct de la fenêtre parfaite : 250 ms**. La fenêtre parfaite de référence reste de 200 ms, mais peut s'élargir avec la progression, sans jamais dépasser 250 ms.
+- Les deux plafonds sont indépendants : la fenêtre totale ne dépasse jamais 400 ms et la fenêtre parfaite ne dépasse jamais 250 ms ; la fenêtre parfaite reste incluse dans la fenêtre totale.
 
 L'Agilité et la compétence Parade influencent toutes deux la fenêtre effective de timing : **l'Agilité représente les réflexes physiques et la compétence Parade la maîtrise technique ; chacune peut élargir la fenêtre**, selon des coefficients qui restent à définir. **La compétence Parade a une influence supérieure à celle de l'Agilité** sur l'élargissement de la fenêtre ; les coefficients exacts restent à définir. La compétence Parade n'a pas d'effet canonique sur le coût d'endurance à ce stade ; ne pas inventer de coefficients avant validation.
 
