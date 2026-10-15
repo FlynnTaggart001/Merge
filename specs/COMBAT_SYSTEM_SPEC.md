@@ -1,7 +1,8 @@
 # Merge — Combat System Specification
 
 **Statut :** APPROUVÉ — système de conception actuel  
-**Moteur :** Unreal Engine 5.8.1
+**Moteur :** Unreal Engine 5.8.1  
+**Référence canonique :** ce fichier est la spécification centrale du combat. Au 2026-10-15, `COMBAT_RESOLUTION.md` n'est pas présent aux chemins historiques vérifiés dans la branche `main`. Ne pas créer un second document concurrent ; toute référence historique doit pointer ici tant que le document historique n'est pas retrouvé.
 
 ## 1. Principes
 
@@ -94,8 +95,9 @@ Le blocage est une défense plus stable et moins dépendante du timing précis.
 **Coût d'endurance :** le simple maintien de la garde ne consomme aucune endurance. L'endurance est consommée uniquement lorsqu'une attaque ennemie est effectivement interceptée par le blocage.
 
 - Garde maintenue sans attaque reçue : **0 endurance**.
-- Attaque effectivement bloquée : **10 endurance par impact bloqué**.
+- Attaque effectivement bloquée : **10 endurance par impact bloqué** (coût de base canonique actuel).
 - Une attaque qui rate le joueur ou ne touche pas la garde : **0 endurance**.
+- Aucun modificateur supplémentaire lié au poids de l'armure n'est encore défini. Jusqu'à décision explicite, appliquer uniformément le coût de base de 10 ; ne pas inventer de multiplicateur.
 
 Les personnages lourds ont tendance à privilégier le blocage ; leur armure plus élevée compense une partie des dégâts qui peuvent traverser le blocage.
 
@@ -103,7 +105,7 @@ Les personnages lourds ont tendance à privilégier le blocage ; leur armure plu
 
 Merge utilise une seule barre d'endurance de **100 points**.
 
-Elle sert notamment au sprint, à l'esquive, au blocage, aux attaques puissantes et, lorsque défini, aux attaques spéciales.
+Elle sert notamment au sprint, à l'esquive, au blocage, aux attaques puissantes et aux attaques spéciales.
 
 Les attaques de base n'ont pas de coût d'endurance.
 
@@ -136,9 +138,10 @@ Personnage agile :
 Personnage lourd :
 - parade plus difficile ;
 - blocage davantage privilégié ;
-- blocage plus consommateur d'endurance ;
-- armure plus élevée pour compenser les dégâts résiduels ;
+- armure généralement plus élevée pour compenser une partie des dégâts résiduels ;
 - style fondé davantage sur l'endurance et la résistance.
+
+Le coût de base du blocage reste de 10 endurance par impact. Un surcoût lié à l'armure lourde est une décision de design encore ouverte ; aucun surcoût ne doit être implémenté avant que sa valeur et sa règle soient approuvées.
 
 Aucun style n'est imposé au joueur.
 
@@ -319,6 +322,8 @@ Les exceptions propres aux créatures uniques ou immortelles restent définies p
 
 ## 16. Éléments encore à définir
 
+Les valeurs déjà fixées dans les sections précédentes (coûts de base d'endurance, régénération, formule de dégâts physiques, coefficients d'armure, charge maximale et multiplicateur critique) ne sont pas à redéfinir dans une autre spécification sans décision explicite.
+
 - valeurs des fenêtres de parade ;
 - formule précise du stagger ;
 - règles précises d'interruption ;
@@ -329,3 +334,5 @@ Les exceptions propres aux créatures uniques ou immortelles restent définies p
 - formule exacte de la chance de critique incorporant Agilité, Perception et Maîtrise de l'arme.
 
 Ces éléments sont des sous-systèmes ou paramètres encore à concevoir, pas des contradictions avec le système approuvé.
+
+**État de validation au 2026-10-15 :** spécification documentaire seulement. La compilation UE 5.8.1, l'intégration C++, les animations/collisions, les tests de dégâts et les tests PIE restent à effectuer localement. L'approbation du document ne signifie pas que le combat est implémenté ou validé.
