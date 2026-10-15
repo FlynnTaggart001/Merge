@@ -4,6 +4,8 @@
 
 Cette roadmap définit les grandes phases de développement de **Merge**. Une mécanique documentée n'est considérée comme implémentée que lorsque son prototype Unreal fonctionne et passe les tests correspondants.
 
+**Point de situation documentaire — 2026-10-15 :** les règles principales de combat sont spécifiées dans `specs/COMBAT_SYSTEM_SPEC.md` et les règles d'armes/équipement dans `specs/WEAPONS_AND_EQUIPMENT_SPEC.md`. Cette mise à jour ne déclare aucun système gameplay implémenté. Les paramètres encore ouverts sont listés dans ces spécifications et dans `docs/CONSISTENCY_AUDIT.md`.
+
 ---
 
 ## PHASE 0 : Préproduction
@@ -97,6 +99,18 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 - [ ] Implémenter la détection des classes/voies à partir du profil de caractéristiques
 
 ### Furtivité & combat
+
+**État documentaire :** règles principales spécifiées ; implémentation Unreal non commencée/validée. Références canoniques : `specs/COMBAT_SYSTEM_SPEC.md` et `specs/WEAPONS_AND_EQUIPMENT_SPEC.md`.
+
+**Avant de figer le contrat d'implémentation :**
+- [ ] Décider la formule de chance de critique (Agilité, Perception et maîtrise pertinente).
+- [ ] Définir les fenêtres numériques de parade et les seuils de stagger.
+- [ ] Définir les règles d'interruption et les réactions automatiques de Réflexe.
+- [ ] Définir les dégâts de base par famille d'arme et les trajectoires/projectiles.
+- [ ] Décider si le poids d'armure modifie le coût de blocage ; la valeur de base actuelle est 10 endurance par impact bloqué.
+- [ ] Définir les effets exacts du poids d'armure sur mobilité/endurance et les coûts de réparation/dégradation.
+
+**Implémentation prévue après validation locale de la Phase 1 :**
 - [ ] Perception / bruit / visibilité
 - [ ] Détection progressive
 - [ ] Backstab conditionnel
@@ -228,6 +242,6 @@ Prototype technique → contenu → expansion du monde → quêtes/factions → 
 
 ---
 
-**Dernière mise à jour** : 2026-10-02  
+**Dernière mise à jour** : 2026-10-15  
 **Moteur** : Unreal Engine 5.8.1  
 **Langage principal** : C++

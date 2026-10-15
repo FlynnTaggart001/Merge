@@ -1,81 +1,77 @@
-# Second audit de cohérence — Merge
+# Audit de cohérence — Merge
 
-**Date :** 2026-10-05  
+**Date :** 2026-10-15  
 **Dépôt :** `FlynnTaggart001/Merge`  
-**Statut :** audit documentaire combat complété ; validation Unreal locale restante
+**Périmètre :** progression canonique, spécifications de combat/armes, feuille de route et état Unreal  
+**Statut :** audit documentaire actualisé ; validation Unreal locale restante
 
-## Règles vérifiées
+## 1. Règles canoniques confirmées
 
-- 46 compétences canoniques ; `Domptage` est canonique.
+- 46 compétences canoniques ; `Domptage` est une compétence canonique.
 - 6 caractéristiques sur 0–20.
-- Création : sexe Homme/Femme ; 6/20 partout, 20 points, maximum 14/20.
-- Aucune distribution manuelle de compétences à la création.
-- Valeurs initiales calculées automatiquement à partir des caractéristiques.
-- Learning by Doing par activité pertinente, pratiquée et validée.
-- Les mêmes points augmentent la compétence et alimentent les réserves cachées des caractéristiques liées via poids et seuils.
-- Aucune recomposition runtime par `moyenne(compétences) / 4`.
-- `Réflexe` est un système automatique sans progression indépendante.
-- `Parade` est dans Défense / mouvement ; `Filature` est canonique.
-- Le système de combat approuvé est centralisé dans `specs/COMBAT_SYSTEM_SPEC.md` et aligné avec la Game Bible.
-- Les 46 compétences sont cohérentes avec les catégories et `Domptage` est bien canonique.
-- Classes/voies dérivées du profil et révélées lorsque les conditions sont remplies.
-- Architecture cible distinguée du scaffold.
-- Convention `Blueprints/Characters`.
-- Statuts `APPROUVÉ`, `SPÉCIFIÉ`, `SCAFFOLD`, `IMPLÉMENTÉ` et `VALIDÉ` distincts.
-- Les maîtrises d'armes utilisent les neuf compétences canoniques : Épée, Hache, Masse, Lance, Dague, Arme à deux mains, Arc, Arbalète et Combat à mains nues.
+- Création du personnage : choix Homme/Femme ; toutes les caractéristiques démarrent à 6/20 ; 20 points distribuables ; plafond de création à 14/20.
+- Les compétences initiales sont calculées automatiquement ; aucun point de compétence n'est distribué manuellement.
+- Progression après création par Learning by Doing ; les caractéristiques progressent automatiquement selon les poids, réserves et seuils spécifiés.
+- `Réflexe` est un système automatique fondé notamment sur Agilité et Perception, et non une compétence ou une caractéristique.
+- `Parade` appartient à Défense / mouvement ; `Filature` et `Domptage` sont canoniques.
+- Les classes/voies dérivent du profil et sont révélées lorsque leurs conditions sont remplies.
+- L'architecture cible est distincte du scaffold Unreal réellement livré.
+- Les statuts `APPROUVÉ`, `SPÉCIFIÉ`, `SCAFFOLD`, `IMPLÉMENTÉ` et `VALIDÉ` ne sont pas interchangeables.
 
-## Fichiers corrigés dans cet audit
+## 2. Références canoniques du combat
 
-- `specs/WEAPON_COMBAT_AND_MASTERY.md`
-- `docs/CONSISTENCY_AUDIT.md`
+- `specs/COMBAT_SYSTEM_SPEC.md` : règles centrales de combat.
+- `specs/WEAPONS_AND_EQUIPMENT_SPEC.md` : dégâts des armes, propriétés physiques, armures, durabilité, réparation et critiques.
+- `specs/CANONICAL_SKILLS.md` : compétences de maîtrise des neuf familles.
+- `specs/SKILL_PROGRESSION.md` : progression des compétences et anti-farming.
 
-Les corrections documentaires précédentes restent actives dans :
+Au 2026-10-15, le fichier historique `COMBAT_RESOLUTION.md` n'a pas été retrouvé à la racine ni au chemin `gameplay/COMBAT_RESOLUTION.md` vérifié pendant l'audit. La spécification centrale disponible est `specs/COMBAT_SYSTEM_SPEC.md`. Ne pas recréer de document concurrent : vérifier l'historique Git si le contenu historique doit être récupéré, puis corriger les références obsolètes.
 
-- `README.md`
-- `ai/README.md`
-- `Content/README.md`
-- `docs/gameplay/CHARACTER_CREATION.md`
-- `docs/gameplay/CHARACTER_ATTRIBUTES.md`
-- `docs/gameplay/CHARACTER_STATS.md`
-- `specs/SKILL_PROGRESSION.md`
-- `specs/MOUNT_SYSTEM_SPEC.md`
-- `specs/COMBAT_SYSTEM_SPEC.md`
+## 3. Paramètres de combat déjà spécifiés
 
-## Contradiction trouvée et corrigée le 2026-10-05
+- Une barre d'endurance de 100 points ; régénération de 15 points/seconde après 0,5 seconde sans action consommatrice.
+- Coûts actuels : esquive 20 ; parade réussie 10 ; parade parfaite 5 ; blocage 10 par impact intercepté ; attaque puissante 20–40 selon la charge ; attaque spéciale 30 ; sprint 5/seconde.
+- Attaque puissante : charge maximale de 3 secondes ; multiplicateur linéaire de 1× à 4×.
+- Dégâts physiques : dégâts de base × maîtrise × Force × modificateur d'armure × autres modificateurs.
+- Maîtrise d'arme : +0,5 % par point, jusqu'à +50 % à 100.
+- Force : +2 % par point, jusqu'à +40 % à 20/20.
+- Réductions d'armure fixes : tranchant 35 %/60 %, perforant 30 %/45 %, contondant 25 %/40 % (armure légère/lourde).
+- Critique : multiplicateur de 2× ; parade parfaite et backstab peuvent déclencher un critique contextuel garanti selon les conditions décrites.
+- Qualité d'arme : influence la résistance à la dégradation, pas les dégâts de base ; une arme standard à 0 % de durabilité est inutilisable et une réparation restaure 100 %.
 
-`specs/WEAPON_COMBAT_AND_MASTERY.md` utilisait encore des catégories génériques de maîtrise (`OneHanded`, `TwoHanded`, `Polearm`, `RangedPhysical`) alors que la liste canonique définit neuf compétences distinctes par famille d'arme.
+## 4. Clarification apportée sur le blocage
 
-Correction appliquée :
+Le coût de base canonique actuel est de **10 endurance par impact effectivement bloqué**, quelle que soit la durée de garde. Une garde sans impact coûte 0.
 
-- remplacement des catégories génériques par les neuf compétences canoniques ;
-- interdiction explicite de créer une compétence de maîtrise générique non canonique ;
-- alignement de l'architecture `WeaponMastery` avec `specs/CANONICAL_SKILLS.md` ;
-- confirmation que l'utilisation d'une famille ne fait progresser que la compétence correspondante.
+La spécification décrit aussi un style lourd davantage orienté vers le blocage et mentionnait un blocage plus coûteux. Ces formulations ne définissaient pas de modificateur chiffré. Le document de combat est clarifié : un surcoût selon le poids de l'armure reste **à décider** ; aucun coefficient supplémentaire ne doit être inventé ou implémenté avant approbation. Le coût de base de 10 reste la valeur utilisable en attendant cette décision.
 
-## Contradictions restantes
+## 5. Éléments de conception restant à définir
 
-Aucune contradiction active n'a été trouvée dans les documents canoniques vérifiés lors de cet audit.
+- Formule et poids exacts de la chance de critique (Agilité, Perception et maîtrise pertinente).
+- Fenêtres numériques de parade.
+- Seuils et résultats exacts du stagger.
+- Règles d'interruption et détails des réactions automatiques de Réflexe.
+- Dégâts de base de chaque famille d'arme et valeurs détaillées des projectiles.
+- Éventuel modificateur du coût de blocage selon l'armure.
+- Effets du poids d'armure sur la mobilité/endurance.
+- Formule des coûts de réparation selon Forge et taux de dégradation par qualité.
+- Détails définitifs des combos spéciaux, de l'IA et du système de magie en combat.
 
-Les éléments de combat encore marqués « à définir » dans `specs/COMBAT_SYSTEM_SPEC.md` et `specs/WEAPONS_AND_EQUIPMENT_SPEC.md` sont des paramètres ou sous-systèmes non encore décidés, pas des contradictions. Ils constituent la prochaine étape de conception avant l'implémentation Unreal.
+Ces points sont des décisions ouvertes, pas automatiquement des contradictions. Ils ne doivent pas être remplis arbitrairement dans le code.
 
-### Paramètres de combat encore à décider
+## 6. Feuille de route et validation Unreal
 
-- formule exacte des dégâts et coefficients de maîtrise / Force ;
-- valeurs d'endurance et régénération ;
-- valeurs d'armure et interaction avec tranchant / perforant / contondant ;
-- formule précise du stagger ;
-- fenêtres numériques de parade ;
-- valeurs de charge des attaques puissantes ;
-- règles précises d'interruption ;
-- combos spéciaux définitifs par famille d'arme ;
-- comportement exact des réactions automatiques de Réflexe ;
-- formule exacte de la chance de critique utilisant Agilité, Perception et compétence d'arme ;
-- valeurs de base des armes ;
-- coût exact des réparations selon Forge ;
-- dégradation selon la qualité.
+La feuille de route est datée du 2026-10-15. La Phase 1 reste : **scaffold livré, validation locale requise**. Les systèmes de combat et de progression sont spécifiés mais ne sont pas déclarés implémentés.
 
-Ces points ne doivent pas être inventés dans le code ou dans une autre spécification tant qu'ils ne sont pas validés comme règles de game design.
+Restent à vérifier sur une machine équipée d'Unreal Engine 5.8.1 :
+- génération des project files et compilation C++ ;
+- création/configuration des Blueprints et de `L_TestArena` ;
+- Enhanced Input, déplacement, caméra et saut ;
+- tests PIE et profilage CPU/GPU/mémoire ;
+- après la fondation, tests unitaires et en jeu des dégâts, armures, parade, blocage, endurance et progression.
 
-## Validation locale restante
+## 7. Conclusion
 
-La compilation UE 5.8.1, la génération des project files, la validation C++20 par le toolchain, la création des Blueprints, `L_TestArena`, Enhanced Input, le PIE et le profiling doivent encore être validés localement. Ce sont des validations techniques, pas des contradictions documentaires.
+L'audit documentaire confirme les règles canoniques principales et met à jour l'état des paramètres de combat. La contradiction rédactionnelle autour du coût du blocage est explicitée sans inventer de nouvelle valeur. Le statut documentaire ne vaut pas validation technique.
+
+**Dernière mise à jour :** 2026-10-15

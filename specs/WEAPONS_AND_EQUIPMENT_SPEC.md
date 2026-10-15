@@ -1,7 +1,8 @@
 # Merge — Weapons and Equipment Specification
 
 **Status:** SPÉCIFIÉ — system architecture and canonical rules  
-**Engine:** Unreal Engine 5.8.1
+**Engine:** Unreal Engine 5.8.1  
+**Canonical combat reference:** `specs/COMBAT_SYSTEM_SPEC.md`
 
 ---
 
@@ -354,6 +355,8 @@ This specification focuses on weapons. Armor, accessories, and other equipment a
 
 ## 14. Elements Still To Be Defined
 
+The rules already fixed in this document (damage scaling, armor reductions, critical multiplier, fixed weapon properties, and durability at 0% making a standard weapon unusable) must not be treated as undecided or independently redefined by another combat document.
+
 - Base damage values for each weapon family
 - Exact Forge skill scaling for repair costs
 - Degradation rate per quality level
@@ -376,6 +379,6 @@ This specification integrates with:
 
 ---
 
-**Last updated:** 2026-10-05  
+**Last updated:** 2026-10-15  
 **Status:** SPÉCIFIÉ — Preproduction Phase 0  
 **Next steps:** Define numerical values, finalize armor specification, implement in Unreal Engine 5.8.1
