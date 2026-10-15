@@ -147,7 +147,7 @@ Le blocage est une défense plus stable et moins dépendante du timing précis.
 - Attaque effectivement bloquée : **10 endurance par impact bloqué** (coût de base canonique actuel), à condition que le joueur dispose d'au moins 10 endurance au moment de l'impact.
 - **Endurance insuffisante :** si le joueur a moins de 10 endurance au moment où l'attaque arrive, le blocage échoue complètement et l'attaque inflige ses dégâts normalement ; aucun dégât n'est absorbé par la garde.
 - Une attaque qui rate le joueur ou ne touche pas la garde : **0 endurance**.
-- Aucun modificateur supplémentaire lié au poids de l'armure n'est encore défini. Jusqu'à décision explicite, appliquer uniformément le coût de base de 10 ; ne pas inventer de multiplicateur.
+- **Effet du poids de l'armure approuvé le 2026-10-15 (option B) :** l'armure lourde augmente le coût d'endurance des actions physiques qui consomment de l'endurance. Le coût de base du blocage reste de 10 par impact ; le surcoût exact et sa formule restent à définir. En attendant cette valeur, ne pas inventer de multiplicateur numérique.
 
 Les personnages lourds ont tendance à privilégier le blocage ; leur armure plus élevée compense une partie des dégâts qui peuvent traverser le blocage.
 
@@ -192,7 +192,7 @@ Personnage lourd :
 - armure généralement plus élevée pour compenser une partie des dégâts résiduels ;
 - style fondé davantage sur l'endurance et la résistance.
 
-Le coût de base du blocage reste de 10 endurance par impact. Un surcoût lié à l'armure lourde est une décision de design encore ouverte ; aucun surcoût ne doit être implémenté avant que sa valeur et sa règle soient approuvées.
+Le coût de base du blocage reste de 10 endurance par impact. Le principe d'un surcoût lié à l'armure lourde est approuvé (option B, 2026-10-15) ; sa valeur et sa formule restent à définir. Aucun multiplicateur numérique ne doit être inventé avant cette précision.
 
 Aucun style n'est imposé au joueur.
 
@@ -263,7 +263,7 @@ Il n'existe pas de catégorie d'armure moyenne.
 
 L'armure légère fournit une protection significative tout en restant moins résistante que l'armure lourde. L'armure lourde est particulièrement résistante au tranchant, résiste davantage au perforant qu'au tranchant, et reste vulnérable au contondant relativement aux deux autres propriétés.
 
-Les conséquences exactes du poids de l'armure sur la mobilité et l'endurance restent à définir.
+**Décision canonique — effets du poids de l'armure (option B approuvée le 2026-10-15) :** l'armure lourde réduit la vitesse de déplacement et de course, et augmente le coût d'endurance des actions physiques qui consomment de l'endurance. L'armure légère n'applique aucun malus supplémentaire lié au poids. Les coefficients exacts de réduction de vitesse et d'augmentation des coûts d'endurance restent à définir ; les coûts de base déjà fixés ailleurs dans cette spécification restent les références et ne sont pas remplacés par de nouvelles valeurs.
 
 ## 8. Stagger
 
@@ -404,7 +404,11 @@ Seuls les événements suivants peuvent interrompre une autre attaque en cours o
 - **Stagger réussi** ;
 - **Attaque chargée à 100 %** (charge maximale de 3 secondes).
 
-Une attaque ordinaire ou une attaque chargée à moins de 100 % ne peut pas, à elle seule, interrompre une autre attaque ni briser une défense. Cette règle limite les interruptions aux événements qui ont une importance tactique particulière.\n\n**Conséquence canonique d'un bris de défense — option B approuvée le 2026-10-15 :** le bris de défense ne provoque pas automatiquement un stagger. L'attaque inflige les dégâts normalement calculés ; la cible subit un stagger uniquement si les dégâts finaux dépassent strictement son seuil de stagger, conformément à la règle générale. Ainsi, un coup critique ou une attaque chargée à 100 % peut briser la défense sans immobiliser automatiquement la cible si le seuil de stagger n'est pas dépassé.\n\nLes priorités en cas d'événements simultanés et les réactions d'animation restent à définir, sans élargir la liste des événements autorisés.
+Une attaque ordinaire ou une attaque chargée à moins de 100 % ne peut pas, à elle seule, interrompre une autre attaque ni briser une défense. Cette règle limite les interruptions aux événements qui ont une importance tactique particulière.
+
+**Conséquence canonique d'un bris de défense — option B approuvée le 2026-10-15 :** le bris de défense ne provoque pas automatiquement un stagger. L'attaque inflige les dégâts normalement calculés ; la cible subit un stagger uniquement si les dégâts finaux dépassent strictement son seuil de stagger, conformément à la règle générale. Ainsi, un coup critique ou une attaque chargée à 100 % peut briser la défense sans immobiliser automatiquement la cible si le seuil de stagger n'est pas dépassé.
+
+Les priorités en cas d'événements simultanés et les réactions d'animation restent à définir, sans élargir la liste des événements autorisés.
 
 Les valeurs déjà fixées dans les sections précédentes (coûts de base d'endurance, régénération, formule de dégâts physiques, coefficients d'armure, charge maximale et multiplicateur critique) ne sont pas à redéfinir dans une autre spécification sans décision explicite.
 
