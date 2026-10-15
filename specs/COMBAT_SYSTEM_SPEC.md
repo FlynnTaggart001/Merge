@@ -93,7 +93,18 @@ La compétence Parade représente la maîtrise technique et influence également
 - **Plafond distinct de la fenêtre parfaite : 250 ms**. La fenêtre parfaite de référence reste de 200 ms, mais peut s'élargir avec la progression, sans jamais dépasser 250 ms.
 - Les deux plafonds sont indépendants : la fenêtre totale ne dépasse jamais 400 ms et la fenêtre parfaite ne dépasse jamais 250 ms ; la fenêtre parfaite reste incluse dans la fenêtre totale.
 
-L'Agilité et la compétence Parade influencent toutes deux la fenêtre effective de timing : **l'Agilité représente les réflexes physiques et la compétence Parade la maîtrise technique ; chacune peut élargir la fenêtre**, selon des coefficients qui restent à définir. **La compétence Parade a une influence supérieure à celle de l'Agilité** sur l'élargissement de la fenêtre ; les coefficients exacts restent à définir. La compétence Parade n'a pas d'effet canonique sur le coût d'endurance à ce stade ; ne pas inventer de coefficients avant validation.
+L'Agilité et la compétence Parade influencent toutes deux la fenêtre effective de timing. Pour la fenêtre totale des attaques ordinaires, la formule validée est :
+
+```text
+Total_Parry_Window_ms = min(400, 350 + (Agility / 20 × 10) + (Parry_Skill / 100 × 40))
+```
+
+- **Agility** : attribut de 0 à 20, apportant jusqu'à **+10 ms**.
+- **Parry_Skill** : compétence de 0 à 100, apportant jusqu'à **+40 ms**.
+- La compétence Parade a donc quatre fois plus d'influence maximale que l'Agilité.
+- La fenêtre totale est plafonnée à **400 ms**.
+
+L'Agilité représente les réflexes physiques et la compétence Parade la maîtrise technique. La formule d'application de ces bonus à la fenêtre parfaite reste à valider. La compétence Parade n'a pas d'effet canonique sur le coût d'endurance.
 
 **Attaques lourdes :** fenêtre de parade totale réduite à **250 ms**, dont une fenêtre de parade parfaite de **100 ms**. Cette réduction s'applique aux attaques identifiées comme lourdes ; les attaques ordinaires conservent les fenêtres de référence ci-dessus. Les fenêtres spécifiques des attaques spéciales pourront être définies individuellement. **L'Agilité facilite le timing des parades contre les attaques lourdes, mais seulement partiellement** : elle peut élargir la fenêtre effective, sans supprimer la difficulté particulière de ces attaques ni les rendre aussi faciles à parer que les attaques ordinaires par défaut. Les coefficients précis restent à définir.
 
