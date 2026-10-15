@@ -79,12 +79,12 @@ Le système doit pouvoir prendre en compte :
 - type d'attaque ;
 - arme ou équipement utilisé pour parer ;
 - état du joueur ;
-- attaques imparables ou non parables ;
+- exceptions spéciales de défense explicitement définies ; aucune attaque n'est imparable par défaut, conformément à `specs/COMBAT_SYSTEM_SPEC.md` ;
 - coût éventuel en Endurance ;
 - récupération après tentative ;
 - distinction entre parade parfaite et parade réussie non parfaite.
 
-Les valeurs de fenêtre, coûts, pénalités et effets ne sont pas encore figés et seront équilibrés dans le prototype.
+Les fenêtres de parade et les coûts d'endurance canoniques sont définis dans `specs/COMBAT_SYSTEM_SPEC.md`. Les valeurs non spécifiées dans ce document d'architecture doivent être lues dans les spécifications canoniques, et non réinventées ici ; le calibrage en jeu reste à effectuer.
 
 ### Parade et progression
 
