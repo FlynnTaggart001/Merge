@@ -228,7 +228,7 @@ Les conséquences exactes du poids de l'armure sur la mobilité et l'endurance r
 - Les créatures massives résistent davantage au déséquilibre.
 - Les attaques puissantes et chargées peuvent favoriser le stagger, sans garantir qu'une cible résistante soit interrompue.
 
-La durée du stagger réussi est fixée à **3 secondes**. Les seuils numériques qui déterminent si le stagger réussit et les effets précis pendant ces 3 secondes restent à définir. Les règles d'interruption sont définies séparément à la section 16 ; elles ne doivent pas être modifiées sans décision explicite.
+La durée du stagger réussi est fixée à **3 secondes**. Pendant ces 3 secondes, la cible est **immobilisée et incapable d'attaquer**. Les seuils numériques qui déterminent si le stagger réussit et les détails des réactions d'animation restent à définir. Les règles d'interruption sont définies séparément à la section 16 ; elles ne doivent pas être modifiées sans décision explicite.
 
 ## 9. Critiques
 
@@ -366,7 +366,7 @@ Une attaque ordinaire ou une attaque chargée à moins de 100 % ne peut pas, à 
 Les valeurs déjà fixées dans les sections précédentes (coûts de base d'endurance, régénération, formule de dégâts physiques, coefficients d'armure, charge maximale et multiplicateur critique) ne sont pas à redéfinir dans une autre spécification sans décision explicite.
 
 - coefficients exacts de l'influence de l'Agilité et de la compétence Parade sur les fenêtres de timing ;
-- formule précise du stagger et seuils de réussite (la durée approuvée est de 3 secondes) ;
+- formule précise du stagger et seuils de réussite (durée approuvée : 3 secondes ; cible immobilisée et incapable d'attaquer pendant le stagger) ;
 - détails de résolution des interruptions et du bris de défense, en conservant la règle canonique suivante : seuls un coup critique, un stagger réussi ou une attaque chargée à 100 % peuvent interrompre une autre attaque ou briser une défense ;
 - détails des combos spéciaux par arme ;
 - comportement exact des réactions automatiques de Réflexe ;
