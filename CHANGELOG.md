@@ -9,8 +9,8 @@ Tous les changements notables du projet sont documentés dans ce fichier. Le for
 - Corrected `specs/COMBAT_AND_EFFECTS.md` so data-driven attack definitions do not permit un-parryable attacks by default.
 - Updated `ROADMAP.md` to separate specified combat rules from pending design decisions and Unreal validation.
 - Clarified the base cost of 10 endurance per blocked impact; heavy-armor stamina surcharge is approved in principle, with exact coefficients still pending.
-- Reaffirmed `specs/COMBAT_SYSTEM_SPEC.md` as canonical and marked the existing `docs/gameplay/COMBAT_RESOLUTION.md` as historical pending reconciliation.
-- Updated weapon base damage by family (unarmed remains open), synchronized `GAME_BIBLE.md`, `ROADMAP.md`, `docs/CONSISTENCY_AUDIT.md`, `specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md`, and `specs/COMBAT_AND_EFFECTS.md`; flagged the older combat resolution model for reconciliation.
+- Reaffirmed `specs/COMBAT_SYSTEM_SPEC.md` as the single canonical combat specification; the old `docs/gameplay/COMBAT_RESOLUTION.md` content is removed and the file now redirects to canonical rules.
+- Updated weapon base damage by family (unarmed remains open) and synchronized `GAME_BIBLE.md`, `ROADMAP.md`, `docs/CONSISTENCY_AUDIT.md`, `specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md`, and `specs/COMBAT_AND_EFFECTS.md`; removed the superseded combat model.
 
 ### Changed — AI toolchain selected (2026-10-13)
 - Official Merge AI tools are now **ChatGPT Plus, Claude Code, and Wingman Premium** only.
