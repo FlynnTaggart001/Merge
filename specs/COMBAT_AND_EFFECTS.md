@@ -37,7 +37,7 @@ Une résolution de dégâts doit pouvoir connaître :
 
 ## Types de dégâts
 
-Le système doit être extensible : les types définitifs ne sont pas encore figés. Les résistances doivent être data-driven.
+Les catégories principales canoniques sont **Physique** et **Magique**. Pour les dégâts physiques, tranchant, perforant et contondant sont des propriétés de dégâts qui déterminent notamment la réduction d'armure. Les résistances détaillées doivent rester data-driven ; voir `specs/COMBAT_SYSTEM_SPEC.md`.
 
 ## Défense
 
