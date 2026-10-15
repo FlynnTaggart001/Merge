@@ -2,7 +2,7 @@
 
 **Statut :** APPROUVÉ — système de conception actuel  
 **Moteur :** Unreal Engine 5.8.1  
-**Référence canonique :** ce fichier est la spécification centrale du combat. Au 2026-10-15, `COMBAT_RESOLUTION.md` n'est pas présent aux chemins historiques vérifiés dans la branche `main`. Ne pas créer un second document concurrent ; toute référence historique doit pointer ici tant que le document historique n'est pas retrouvé.
+**Référence canonique :** ce fichier est la spécification centrale du combat. Le document existant `docs/gameplay/COMBAT_RESOLUTION.md` contient un modèle de résolution plus ancien et des paramètres qui ne sont pas tous alignés sur les décisions canoniques actuelles. Il est conservé comme document historique à réconcilier ; il ne doit pas remplacer cette spécification ni servir de contrat d'implémentation tant que les conflits identifiés dans `docs/CONSISTENCY_AUDIT.md` ne sont pas résolus. Ne pas créer de second document concurrent.
 
 ## 1. Principes
 
