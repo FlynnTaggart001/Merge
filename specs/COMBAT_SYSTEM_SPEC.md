@@ -255,7 +255,28 @@ La chance de critique dépend de :
 
 Le plafond de la chance de critique est fixé à **15 %**. Le maximum doit être réservé aux personnages disposant de caractéristiques et d'une maîtrise de l'arme élevées.
 
-Les facteurs retenus sont Agilité, Perception et Maîtrise de l'arme (ou compétence de combat pertinente). **La formule exacte et les poids de chaque facteur restent à confirmer** : aucune formule proposée ne devient canonique sans validation explicite.
+La formule canonique validée est :
+
+```
+Critical_Chance_Percent = min(15, (Agility + Perception) / 4 + Weapon_Mastery / 20)
+```
+
+- Agilité et Perception sont chacune notées de 0 à 20.
+- Maîtrise de l'arme (ou compétence de combat pertinente) est notée de 0 à 100.
+- La chance est plafonnée à **15 %** ; atteindre ce plafond demande des caractéristiques élevées et une maîtrise élevée.
+- Les résultats de la formule sont exprimés en pourcentage.
+
+Exemples de référence :
+
+| Agilité | Perception | Maîtrise | Chance de critique |
+|---:|---:|---:|---:|
+| 6 | 6 | 0 | 3 % |
+| 10 | 10 | 50 | 7,5 % |
+| 14 | 14 | 80 | 11 % |
+| 18 | 18 | 100 | 14 % |
+| 20 | 20 | 100 | 15 % |
+
+Les critiques garantis par une parade parfaite ou un backstab restent distincts de cette probabilité aléatoire.
 
 ### 9.3 Multiplicateur de critique
 
@@ -351,7 +372,7 @@ Les valeurs déjà fixées dans les sections précédentes (coûts de base d'end
 - comportement exact des réactions automatiques de Réflexe ;
 - détails de l'IA de combat ;
 - système de magie en combat ;
-- formule exacte de la chance de critique incorporant Agilité, Perception et Maîtrise de l'arme, avec plafond à 15 % et maximum réservé aux statistiques élevées.
+- influence détaillée des différentes compétences de combat sur la chance de critique lorsqu'une compétence pertinente remplace la Maîtrise de l'arme.
 
 Ces éléments sont des sous-systèmes ou paramètres encore à concevoir, pas des contradictions avec le système approuvé.
 
