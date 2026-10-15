@@ -37,13 +37,16 @@ Le document `docs/gameplay/COMBAT_RESOLUTION.md` existe bien. Il contient un anc
 - Force : +2 % par point, jusqu'à +40 % à 20/20.
 - Réductions d'armure fixes : tranchant 35 %/60 %, perforant 30 %/45 %, contondant 25 %/40 % (armure légère/lourde).
 - Critique : multiplicateur de 2× ; parade parfaite et backstab peuvent déclencher un critique contextuel garanti selon les conditions décrites.
+- Fenêtre de parade ordinaire : 350 ms de référence au total (dont 200 ms parfaite), avec plafonds respectifs de 400 ms et 250 ms ; attaques lourdes : 250 ms au total et 100 ms parfaite de référence, plafonds de 275 ms et 125 ms.
+- Résistance au stagger : `10 + (0,5 × poids_kg) + (0,2 × taille_cm) + bonus_armure` ; bonus 0 sans armure, 15 légère, 35 lourde. Stagger uniquement si les dégâts finaux dépassent strictement le seuil ; durée 2,9 s.
+- Dégâts de base : dague 20, épée 25, hache 28, lance 26, masse 32, arme à deux mains 35, arc 22, arbalète 30 ; mains nues à définir.
 - Qualité d'arme : influence la résistance à la dégradation, pas les dégâts de base ; une arme standard à 0 % de durabilité est inutilisable et une réparation restaure 100 %.
 
 ## 4. Clarification apportée sur le blocage
 
 Le coût de base canonique actuel est de **10 endurance par impact effectivement bloqué**, quelle que soit la durée de garde. Une garde sans impact coûte 0.
 
-La spécification décrit aussi un style lourd davantage orienté vers le blocage et mentionnait un blocage plus coûteux. Ces formulations ne définissaient pas de modificateur chiffré. Le document de combat est clarifié : un surcoût selon le poids de l'armure reste **à décider** ; aucun coefficient supplémentaire ne doit être inventé ou implémenté avant approbation. Le coût de base de 10 reste la valeur utilisable en attendant cette décision.
+L'armure lourde réduit la vitesse de déplacement/course et augmente le coût d'endurance des actions physiques qui consomment de l'endurance. Ce principe est approuvé ; le coefficient exact, y compris le surcoût applicable au blocage, reste à définir. Aucun multiplicateur numérique ne doit être inventé avant validation. Le coût de base du blocage reste de 10 endurance par impact.
 
 ## 5. Éléments de conception restant à définir
 
@@ -69,6 +72,6 @@ Restent à vérifier sur une machine équipée d'Unreal Engine 5.8.1 :
 
 ## 7. Conclusion
 
-L'audit documentaire confirme les règles canoniques principales et met à jour l'état des paramètres de combat. La contradiction rédactionnelle autour du coût du blocage est explicitée sans inventer de nouvelle valeur. Le statut documentaire ne vaut pas validation technique.
+L'audit documentaire confirme les règles canoniques principales et met à jour l'état des paramètres de combat. Les contradictions les plus importantes identifiées entre la spécification canonique et l'ancien document `docs/gameplay/COMBAT_RESOLUTION.md` sont consignées ; les paramètres canoniques déjà décidés ont été synchronisés dans la roadmap et les résumés concernés. Le document historique reste à réconcilier. Le statut documentaire ne vaut pas validation technique.
 
 **Dernière mise à jour :** 2026-10-15
