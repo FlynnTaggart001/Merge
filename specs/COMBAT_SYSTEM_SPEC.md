@@ -228,7 +228,7 @@ Les conséquences exactes du poids de l'armure sur la mobilité et l'endurance r
 - Les créatures massives résistent davantage au déséquilibre.
 - Les attaques puissantes et chargées peuvent favoriser le stagger, sans garantir qu'une cible résistante soit interrompue.
 
-Les seuils numériques, la durée du déséquilibre, les effets précis et les règles d'interruption restent à définir. Ces points ne doivent pas être inventés lors de l'implémentation.
+Les seuils numériques, la durée du déséquilibre et les effets précis restent à définir. Les règles d'interruption sont définies séparément à la section 16 ; elles ne doivent pas être modifiées sans décision explicite.
 
 ## 9. Critiques
 
@@ -332,11 +332,21 @@ Les exceptions propres aux créatures uniques ou immortelles restent définies p
 
 ## 16. Éléments encore à définir
 
+### 16.1 Règle canonique d'interruption et de bris de défense
+
+Seuls les événements suivants peuvent interrompre une autre attaque en cours ou briser une défense :
+
+- **Attaque critique** ;
+- **Stagger réussi** ;
+- **Attaque chargée à 100 %** (charge maximale de 3 secondes).
+
+Une attaque ordinaire ou une attaque chargée à moins de 100 % ne peut pas, à elle seule, interrompre une autre attaque ni briser une défense. Cette règle limite les interruptions aux événements qui ont une importance tactique particulière. Les conditions précises d'application, les priorités en cas d'événements simultanés et les réactions d'animation restent à définir, sans élargir la liste des événements autorisés.
+
 Les valeurs déjà fixées dans les sections précédentes (coûts de base d'endurance, régénération, formule de dégâts physiques, coefficients d'armure, charge maximale et multiplicateur critique) ne sont pas à redéfinir dans une autre spécification sans décision explicite.
 
 - coefficients exacts de l'influence de l'Agilité et de la compétence Parade sur les fenêtres de timing ;
 - formule précise du stagger, seuils et durée ;
-- règles précises d'interruption ;
+- détails de résolution des interruptions et du bris de défense, en conservant la règle canonique suivante : seuls un coup critique, un stagger réussi ou une attaque chargée à 100 % peuvent interrompre une autre attaque ou briser une défense ;
 - détails des combos spéciaux par arme ;
 - comportement exact des réactions automatiques de Réflexe ;
 - détails de l'IA de combat ;
