@@ -234,7 +234,7 @@ La durée du stagger réussi est fixée à **2,9 secondes**. Pendant ces 2,9 sec
 
 Les coups critiques de situation se déclenchent automatiquement dans des contextes définis, **sans tirage aléatoire** :
 
-- **Parade parfaite** → contre-attaque automatique avec coup critique sur l'ennemi.
+- **Parade parfaite** → contre-attaque automatique avec coup critique sur l'ennemi. Cette contre-attaque peut provoquer un stagger uniquement si ses dégâts critiques calculés sont **strictement supérieurs** à la statistique de stagger de la cible ; elle ne provoque pas systématiquement un stagger.
 - **Backstab** (attaque depuis l'arrière) → coup critique automatique.
 
 Ces critiques se déclenchent toujours dans les conditions appropriées et ne dépendent pas d'une probabilité aléatoire générale.
