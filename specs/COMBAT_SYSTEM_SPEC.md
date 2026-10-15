@@ -84,7 +84,7 @@ L'Agilité influence la facilité physique du timing :
 - personnage moyen : fenêtre normale ;
 - personnage lourd / peu agile : fenêtre plus courte.
 
-La compétence Parade représente la maîtrise technique et influence également la facilité du test.
+La compétence Parade représente la maîtrise technique et influence également la facilité du test. **Toutes les attaques ennemies sont parables, y compris celles des boss et les attaques spéciales**, mais certaines attaques plus lourdes ou spéciales peuvent avoir une fenêtre de parade plus courte, ce qui les rend plus difficiles à parer parfaitement. Aucune attaque n'est déclarée imparable par défaut.
 
 **Fenêtres de timing retenues pour un personnage de référence :**
 - fenêtre de parade parfaite : **200 ms** ;
