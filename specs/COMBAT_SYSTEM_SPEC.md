@@ -222,11 +222,9 @@ Les conséquences exactes du poids de l'armure sur la mobilité et l'endurance r
 
 ## 8. Stagger
 
-**Modèle retenu : puissance d'impact contre résistance de la cible.** Chaque attaque possède une puissance d'impact, comparée à la résistance au stagger de la cible. Cette résistance est déterminée par le poids, la taille et l'armure de la cible. Le stagger réussit lorsque l'impact atteint le seuil requis. La formule et les valeurs numériques restent à définir.
+**Règle canonique : dégâts de l'attaque comparés à la statistique de stagger de la cible.** Le stagger se déclenche lorsque les dégâts calculés de l'attaque dépassent la statistique de stagger de l'ennemi. Cette règle s'applique à tous les types d'attaque, notamment les attaques normales, les attaques chargées, les coups critiques et toute autre attaque qui inflige des dégâts. Le type d'attaque ne reçoit pas de règle de stagger séparée : c'est le montant final des dégâts qui est comparé à la statistique de stagger de la cible.
 
-- Les petites cibles légères sont généralement plus faciles à déséquilibrer.
-- Les créatures massives résistent davantage au déséquilibre.
-- Les attaques puissantes et chargées peuvent favoriser le stagger, sans garantir qu'une cible résistante soit interrompue.
+La statistique de stagger de l'ennemi représente sa résistance au déséquilibre et doit tenir compte de son poids, de sa taille et de son armure. La formule de calcul de cette statistique et ses valeurs numériques restent à définir.
 
 La durée du stagger réussi est fixée à **2,9 secondes**. Pendant ces 2,9 secondes, la cible est **immobilisée et incapable d'attaquer**. Elle ne bénéficie d'**aucune protection supplémentaire contre les dégâts** pendant le stagger : les attaques continuent à infliger leurs dégâts normalement selon les règles de combat applicables. Cette durée est volontairement inférieure aux 3 secondes nécessaires pour charger une attaque à 100 %, afin de limiter l'enchaînement facile d'un second stagger par une attaque chargée au maximum. **Une cible peut être stagger de nouveau dès qu'elle est de nouveau éligible ; aucune immunité ou résistance temporaire supplémentaire après le stagger n'est prévue.** Les seuils numériques qui déterminent si le stagger réussit et les détails des réactions d'animation restent à définir. Les règles d'interruption sont définies séparément à la section 16 ; elles ne doivent pas être modifiées sans décision explicite.
 
@@ -366,7 +364,7 @@ Une attaque ordinaire ou une attaque chargée à moins de 100 % ne peut pas, à 
 Les valeurs déjà fixées dans les sections précédentes (coûts de base d'endurance, régénération, formule de dégâts physiques, coefficients d'armure, charge maximale et multiplicateur critique) ne sont pas à redéfinir dans une autre spécification sans décision explicite.
 
 - coefficients exacts de l'influence de l'Agilité et de la compétence Parade sur les fenêtres de timing ;
-- formule précise du stagger et seuils de réussite (durée approuvée : 2,9 secondes ; cible immobilisée et incapable d'attaquer pendant le stagger) ;
+- formule et valeurs de la statistique de stagger des ennemis (la règle est approuvée : stagger si les dégâts calculés de n'importe quelle attaque dépassent cette statistique ; durée : 2,9 secondes ; cible immobilisée et incapable d'attaquer pendant le stagger) ;
 - détails de résolution des interruptions et du bris de défense, en conservant la règle canonique suivante : seuls un coup critique, un stagger réussi ou une attaque chargée à 100 % peuvent interrompre une autre attaque ou briser une défense ;
 - détails des combos spéciaux par arme ;
 - comportement exact des réactions automatiques de Réflexe ;
