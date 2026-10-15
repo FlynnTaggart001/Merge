@@ -104,7 +104,17 @@ Total_Parry_Window_ms = min(400, 350 + (Agility / 20 × 10) + (Parry_Skill / 100
 - La compétence Parade a donc quatre fois plus d'influence maximale que l'Agilité.
 - La fenêtre totale est plafonnée à **400 ms**.
 
-L'Agilité représente les réflexes physiques et la compétence Parade la maîtrise technique. La formule d'application de ces bonus à la fenêtre parfaite reste à valider. La compétence Parade n'a pas d'effet canonique sur le coût d'endurance.
+L'Agilité représente les réflexes physiques et la compétence Parade la maîtrise technique. La fenêtre parfaite utilise les mêmes bonus que la fenêtre totale, avec sa propre base et son propre plafond :
+
+```text
+Perfect_Parry_Window_ms = min(250, 200 + (Agility / 20 × 10) + (Parry_Skill / 100 × 40))
+```
+
+- Fenêtre parfaite de référence : **200 ms**.
+- Bonus maximal d'Agilité : **+10 ms**.
+- Bonus maximal de compétence Parade : **+40 ms**.
+- Plafond de fenêtre parfaite : **250 ms**.
+- La fenêtre parfaite reste toujours incluse dans la fenêtre totale. La compétence Parade n'a pas d'effet canonique sur le coût d'endurance.
 
 **Attaques lourdes :** fenêtre de parade totale réduite à **250 ms**, dont une fenêtre de parade parfaite de **100 ms**. Cette réduction s'applique aux attaques identifiées comme lourdes ; les attaques ordinaires conservent les fenêtres de référence ci-dessus. Les fenêtres spécifiques des attaques spéciales pourront être définies individuellement. **L'Agilité facilite le timing des parades contre les attaques lourdes, mais seulement partiellement** : elle peut élargir la fenêtre effective, sans supprimer la difficulté particulière de ces attaques ni les rendre aussi faciles à parer que les attaques ordinaires par défaut. Les coefficients précis restent à définir.
 
