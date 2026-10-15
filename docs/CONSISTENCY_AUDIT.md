@@ -25,7 +25,7 @@
 - `specs/CANONICAL_SKILLS.md` : compétences de maîtrise des neuf familles.
 - `specs/SKILL_PROGRESSION.md` : progression des compétences et anti-farming.
 
-Le document `docs/gameplay/COMBAT_RESOLUTION.md` existe bien. Il contient un ancien modèle probabiliste d'opposition attaque/esquive/blocage, des fenêtres de parade encore marquées « à définir », autorise des attaques non parables par données et utilise dans ses exemples des caractéristiques supérieures à l'échelle canonique 0–20 (par exemple Agilité 25/70 et Perception 60). Ces points ne sont pas alignés sur toutes les règles canoniques actuelles de `specs/COMBAT_SYSTEM_SPEC.md` (combat temps réel, fenêtres de parade définies, toutes les attaques parables par défaut). Le fichier est conservé ; il doit être réconcilié ou explicitement maintenu comme historique avant implémentation. Ne pas créer de nouveau document concurrent.
+Le contenu contradictoire de `docs/gameplay/COMBAT_RESOLUTION.md` a été retiré le 2026-10-15 et remplacé par une page de redirection vers les spécifications canoniques. L'ancien modèle probabiliste attaque/esquive/blocage, ses fenêtres de parade non définies, les attaques non parables génériques et les exemples hors échelle 0–20 ne sont plus des règles actives. Aucun de ces anciens paramètres ne doit être réintroduit. Les règles actuelles sont dans `specs/COMBAT_SYSTEM_SPEC.md` et `specs/WEAPONS_AND_EQUIPMENT_SPEC.md`.
 
 ## 3. Paramètres de combat déjà spécifiés
 
@@ -72,6 +72,6 @@ Restent à vérifier sur une machine équipée d'Unreal Engine 5.8.1 :
 
 ## 7. Conclusion
 
-L'audit documentaire confirme les règles canoniques principales et met à jour l'état des paramètres de combat. Les contradictions les plus importantes identifiées entre la spécification canonique et l'ancien document `docs/gameplay/COMBAT_RESOLUTION.md` sont consignées ; les paramètres canoniques déjà décidés ont été synchronisés dans la roadmap et les résumés concernés. Le document historique reste à réconcilier. Le statut documentaire ne vaut pas validation technique.
+L'audit documentaire confirme les règles canoniques principales et met à jour l'état des paramètres de combat. Le conflit documentaire provenant de l'ancien `docs/gameplay/COMBAT_RESOLUTION.md` a été supprimé : son contenu a été remplacé par une redirection vers les règles canoniques. Les paramètres encore ouverts listés dans la section 5 sont des décisions réellement en attente, pas des règles contradictoires. Le statut documentaire ne vaut pas validation technique.
 
 **Dernière mise à jour :** 2026-10-15
