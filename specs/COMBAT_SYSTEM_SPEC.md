@@ -144,7 +144,8 @@ Le blocage est une défense plus stable et moins dépendante du timing précis.
 **Coût d'endurance :** le simple maintien de la garde ne consomme aucune endurance. L'endurance est consommée uniquement lorsqu'une attaque ennemie est effectivement interceptée par le blocage.
 
 - Garde maintenue sans attaque reçue : **0 endurance**.
-- Attaque effectivement bloquée : **10 endurance par impact bloqué** (coût de base canonique actuel).
+- Attaque effectivement bloquée : **10 endurance par impact bloqué** (coût de base canonique actuel), à condition que le joueur dispose d'au moins 10 endurance au moment de l'impact.
+- **Endurance insuffisante :** si le joueur a moins de 10 endurance au moment où l'attaque arrive, le blocage échoue complètement et l'attaque inflige ses dégâts normalement ; aucun dégât n'est absorbé par la garde.
 - Une attaque qui rate le joueur ou ne touche pas la garde : **0 endurance**.
 - Aucun modificateur supplémentaire lié au poids de l'armure n'est encore défini. Jusqu'à décision explicite, appliquer uniformément le coût de base de 10 ; ne pas inventer de multiplicateur.
 
