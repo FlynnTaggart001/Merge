@@ -404,13 +404,13 @@ Seuls les événements suivants peuvent interrompre une autre attaque en cours o
 - **Stagger réussi** ;
 - **Attaque chargée à 100 %** (charge maximale de 3 secondes).
 
-Une attaque ordinaire ou une attaque chargée à moins de 100 % ne peut pas, à elle seule, interrompre une autre attaque ni briser une défense. Cette règle limite les interruptions aux événements qui ont une importance tactique particulière. Les conditions précises d'application, les priorités en cas d'événements simultanés et les réactions d'animation restent à définir, sans élargir la liste des événements autorisés.
+Une attaque ordinaire ou une attaque chargée à moins de 100 % ne peut pas, à elle seule, interrompre une autre attaque ni briser une défense. Cette règle limite les interruptions aux événements qui ont une importance tactique particulière.\n\n**Conséquence canonique d'un bris de défense — option B approuvée le 2026-10-15 :** le bris de défense ne provoque pas automatiquement un stagger. L'attaque inflige les dégâts normalement calculés ; la cible subit un stagger uniquement si les dégâts finaux dépassent strictement son seuil de stagger, conformément à la règle générale. Ainsi, un coup critique ou une attaque chargée à 100 % peut briser la défense sans immobiliser automatiquement la cible si le seuil de stagger n'est pas dépassé.\n\nLes priorités en cas d'événements simultanés et les réactions d'animation restent à définir, sans élargir la liste des événements autorisés.
 
 Les valeurs déjà fixées dans les sections précédentes (coûts de base d'endurance, régénération, formule de dégâts physiques, coefficients d'armure, charge maximale et multiplicateur critique) ne sont pas à redéfinir dans une autre spécification sans décision explicite.
 
 - coefficients exacts de l'influence de l'Agilité et de la compétence Parade sur les fenêtres de timing ;
 - formule et coefficients de la statistique de stagger calculée automatiquement depuis le poids, la taille et l'armure des ennemis (règle approuvée : stagger si les dégâts calculés de n'importe quelle attaque dépassent cette statistique ; durée : 2,9 secondes ; cible immobilisée et incapable d'attaquer pendant le stagger) ;
-- détails de résolution des interruptions et du bris de défense, en conservant la règle canonique suivante : seuls un coup critique, un stagger réussi ou une attaque chargée à 100 % peuvent interrompre une autre attaque ou briser une défense ;
+- priorités de résolution des interruptions en cas d'événements simultanés et réactions d'animation, en conservant la règle canonique suivante : seuls un coup critique, un stagger réussi ou une attaque chargée à 100 % peuvent interrompre une autre attaque ou briser une défense ;
 - détails des combos spéciaux par arme ;
 - comportement exact des réactions automatiques de Réflexe ;
 - détails de l'IA de combat ;
