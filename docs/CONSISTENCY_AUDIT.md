@@ -25,7 +25,7 @@
 - `specs/CANONICAL_SKILLS.md` : compétences de maîtrise des neuf familles.
 - `specs/SKILL_PROGRESSION.md` : progression des compétences et anti-farming.
 
-Le document `docs/gameplay/COMBAT_RESOLUTION.md` existe bien. Il contient un ancien modèle probabiliste d'opposition attaque/esquive/blocage, des fenêtres de parade encore marquées « à définir » et autorise des attaques non parables par données. Ces points ne sont pas alignés sur toutes les règles canoniques actuelles de `specs/COMBAT_SYSTEM_SPEC.md` (combat temps réel, fenêtres de parade définies, toutes les attaques parables par défaut). Le fichier est conservé ; il doit être réconcilié ou explicitement maintenu comme historique avant implémentation. Ne pas créer de nouveau document concurrent.
+Le document `docs/gameplay/COMBAT_RESOLUTION.md` existe bien. Il contient un ancien modèle probabiliste d'opposition attaque/esquive/blocage, des fenêtres de parade encore marquées « à définir », autorise des attaques non parables par données et utilise dans ses exemples des caractéristiques supérieures à l'échelle canonique 0–20 (par exemple Agilité 25/70 et Perception 60). Ces points ne sont pas alignés sur toutes les règles canoniques actuelles de `specs/COMBAT_SYSTEM_SPEC.md` (combat temps réel, fenêtres de parade définies, toutes les attaques parables par défaut). Le fichier est conservé ; il doit être réconcilié ou explicitement maintenu comme historique avant implémentation. Ne pas créer de nouveau document concurrent.
 
 ## 3. Paramètres de combat déjà spécifiés
 
