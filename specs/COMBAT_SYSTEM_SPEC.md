@@ -75,7 +75,7 @@ Le test ne s'active que lorsqu'une attaque ennemie est réellement susceptible d
 Résultats :
 - Parade parfaite : aucun dégât ; **interruption immédiate de l'attaque ennemie et déclenchement automatique de la contre-attaque critique** (le joueur n'a pas à déclencher une action distincte). La contre-attaque inflige un coup critique à l'ennemi. Cette contre-attaque touche automatiquement et ne peut pas être bloquée ni parée par les défenses ordinaires de l'ennemi ; d'éventuelles exceptions liées à des capacités spéciales devront être définies explicitement.
 - Parade réussie mais non parfaite : aucun dégât, sans contre automatique.
-- Parade ratée : le joueur reçoit un coup critique.
+- Parade ratée : le joueur reçoit un coup critique et dépense **10 points d'endurance**, comme pour une parade réussie non parfaite.
 
 Une parade réussie annule donc les dégâts de l'attaque parée.
 
