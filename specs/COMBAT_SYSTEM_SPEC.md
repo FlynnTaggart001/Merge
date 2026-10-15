@@ -86,6 +86,12 @@ L'Agilité influence la facilité physique du timing :
 
 La compétence Parade représente la maîtrise technique et influence également la facilité du test.
 
+**Fenêtres de timing retenues pour un personnage de référence :**
+- fenêtre de parade parfaite : **200 ms** ;
+- fenêtre de parade normale : **350 ms au total**, incluant la fenêtre parfaite.
+
+L'Agilité et la compétence Parade modifient la facilité du timing. Leurs coefficients exacts et la manière précise de déplacer ou d'élargir ces fenêtres restent à définir ; ne pas inventer de coefficients avant validation.
+
 Un personnage lourd peut toujours parer, mais peut choisir de privilégier le blocage.
 
 ### 3.3 Blocage
@@ -216,11 +222,13 @@ Les conséquences exactes du poids de l'armure sur la mobilité et l'endurance r
 
 ## 8. Stagger
 
-Le stagger dépend notamment de la puissance et de l'impact de l'attaque ainsi que du poids et de la taille de la cible.
+**Modèle retenu : stagger équilibré.** La résistance au stagger dépend notamment de la puissance et de l'impact de l'attaque, ainsi que du poids, de la taille et de l'armure de la cible.
 
-Une petite cible légère peut donc être déséquilibrée plus facilement qu'une créature massive.
+- Les petites cibles légères sont généralement plus faciles à déséquilibrer.
+- Les créatures massives résistent davantage au déséquilibre.
+- Les attaques puissantes et chargées peuvent favoriser le stagger, sans garantir qu'une cible résistante soit interrompue.
 
-Les seuils et résultats exacts restent à définir.
+Les seuils numériques, la durée du déséquilibre, les effets précis et les règles d'interruption restent à définir. Ces points ne doivent pas être inventés lors de l'implémentation.
 
 ## 9. Critiques
 
@@ -245,7 +253,9 @@ La chance de critique dépend de :
 - **Perception** du personnage attaquant ;
 - **Maîtrise de l'arme** (ou compétence de combat pertinente) du personnage attaquant.
 
-La formule exacte et les poids de chaque facteur : À DÉFINIR.
+Le plafond de la chance de critique est fixé à **15 %**. Le maximum doit être réservé aux personnages disposant de caractéristiques et d'une maîtrise de l'arme élevées.
+
+Les facteurs retenus sont Agilité, Perception et Maîtrise de l'arme (ou compétence de combat pertinente). **La formule exacte et les poids de chaque facteur restent à confirmer** : aucune formule proposée ne devient canonique sans validation explicite.
 
 ### 9.3 Multiplicateur de critique
 
@@ -324,14 +334,14 @@ Les exceptions propres aux créatures uniques ou immortelles restent définies p
 
 Les valeurs déjà fixées dans les sections précédentes (coûts de base d'endurance, régénération, formule de dégâts physiques, coefficients d'armure, charge maximale et multiplicateur critique) ne sont pas à redéfinir dans une autre spécification sans décision explicite.
 
-- valeurs des fenêtres de parade ;
-- formule précise du stagger ;
+- coefficients exacts de l'influence de l'Agilité et de la compétence Parade sur les fenêtres de timing ;
+- formule précise du stagger, seuils et durée ;
 - règles précises d'interruption ;
 - détails des combos spéciaux par arme ;
 - comportement exact des réactions automatiques de Réflexe ;
 - détails de l'IA de combat ;
 - système de magie en combat ;
-- formule exacte de la chance de critique incorporant Agilité, Perception et Maîtrise de l'arme.
+- formule exacte de la chance de critique incorporant Agilité, Perception et Maîtrise de l'arme, avec plafond à 15 % et maximum réservé aux statistiques élevées.
 
 Ces éléments sont des sous-systèmes ou paramètres encore à concevoir, pas des contradictions avec le système approuvé.
 
