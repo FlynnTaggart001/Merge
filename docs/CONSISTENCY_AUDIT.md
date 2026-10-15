@@ -47,17 +47,14 @@ La spécification décrit aussi un style lourd davantage orienté vers le blocag
 
 ## 5. Éléments de conception restant à définir
 
-- Formule et poids exacts de la chance de critique (Agilité, Perception et maîtrise pertinente).
-- Fenêtres numériques de parade.
-- Seuils et résultats exacts du stagger.
-- Règles d'interruption et détails des réactions automatiques de Réflexe.
-- Dégâts de base de chaque famille d'arme et valeurs détaillées des projectiles.
-- Éventuel modificateur du coût de blocage selon l'armure.
-- Effets du poids d'armure sur la mobilité/endurance.
+- Formule exacte de la chance de critique (Agilité, Perception et maîtrise pertinente).
+- Calibrage en jeu des dégâts de base et des seuils de stagger déjà spécifiés.
+- Dégâts à mains nues, trajectoires/vitesses des projectiles et valeurs détaillées des attaques à distance.
+- Coefficients exacts des pénalités de mobilité et du surcoût d'endurance de l'armure lourde.
 - Formule des coûts de réparation selon Forge et taux de dégradation par qualité.
-- Détails définitifs des combos spéciaux, de l'IA et du système de magie en combat.
+- Priorités de résolution des événements simultanés, détails des réactions automatiques de Réflexe, combos spéciaux, IA et magie en combat.
 
-Ces points sont des décisions ouvertes, pas automatiquement des contradictions. Ils ne doivent pas être remplis arbitrairement dans le code.
+Les fenêtres de parade, la formule de résistance au stagger et les dégâts de base des familles d'armes (hors mains nues) sont maintenant spécifiés. Leur calibration en jeu reste distincte de la décision de conception. Les paramètres encore ouverts ne doivent pas être remplis arbitrairement dans le code.
 
 ## 6. Feuille de route et validation Unreal
 
