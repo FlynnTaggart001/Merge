@@ -1,5 +1,15 @@
 # Changelog
 
+Tous les changements notables du projet sont documentés dans ce fichier. Le format suit [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) et le projet s'inspire de [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Documentation — roadmap and combat audit (2026-10-15)
+- Updated `ROADMAP.md` to separate specified combat rules from pending design decisions and Unreal validation.
+- Clarified the base cost of 10 endurance per blocked impact; any heavy-armor surcharge remains undecided pending approval.
+- Reaffirmed `specs/COMBAT_SYSTEM_SPEC.md` as the central combat specification; historical `COMBAT_RESOLUTION.md` paths were not found during the audit.
+- Updated `specs/WEAPONS_AND_EQUIPMENT_SPEC.md` and `docs/CONSISTENCY_AUDIT.md` to reflect current rules and open parameters.
+
 ### Changed — AI toolchain selected (2026-10-13)
 - Official Merge AI tools are now **ChatGPT Plus, Claude Code, and Wingman Premium** only.
 - Added ai/TOOLCHAIN.md as the canonical responsibility, cost, and handoff guide.
@@ -185,4 +195,4 @@ le projet suit [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-**Dernière mise à jour** : 2026-09-22
+**Dernière mise à jour** : 2026-10-15
