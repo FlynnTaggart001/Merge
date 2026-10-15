@@ -116,7 +116,20 @@ Perfect_Parry_Window_ms = min(250, 200 + (Agility / 20 × 10) + (Parry_Skill / 1
 - Plafond de fenêtre parfaite : **250 ms**.
 - La fenêtre parfaite reste toujours incluse dans la fenêtre totale. La compétence Parade n'a pas d'effet canonique sur le coût d'endurance.
 
-**Attaques lourdes :** fenêtre de parade totale réduite à **250 ms**, dont une fenêtre de parade parfaite de **100 ms**. Cette réduction s'applique aux attaques identifiées comme lourdes ; les attaques ordinaires conservent les fenêtres de référence ci-dessus. Les fenêtres spécifiques des attaques spéciales pourront être définies individuellement. **L'Agilité facilite le timing des parades contre les attaques lourdes, mais seulement partiellement** : elle peut élargir la fenêtre effective, sans supprimer la difficulté particulière de ces attaques ni les rendre aussi faciles à parer que les attaques ordinaires par défaut. Les coefficients précis restent à définir.
+**Attaques lourdes :** fenêtre de parade totale de référence de **250 ms**, dont une fenêtre de parade parfaite de **100 ms**. Cette réduction s'applique aux attaques identifiées comme lourdes ; les attaques ordinaires conservent les fenêtres de référence ci-dessus. Les fenêtres spécifiques des attaques spéciales pourront être définies individuellement.
+
+La progression des fenêtres contre les attaques lourdes est réduite de moitié par rapport aux attaques ordinaires :
+
+```text
+Heavy_Total_Parry_Window_ms = min(275, 250 + (Agility / 20 × 5) + (Parry_Skill / 100 × 20))
+Heavy_Perfect_Parry_Window_ms = min(125, 100 + (Agility / 20 × 5) + (Parry_Skill / 100 × 20))
+```
+
+- L'Agilité apporte jusqu'à **+5 ms**.
+- La compétence Parade apporte jusqu'à **+20 ms**.
+- La fenêtre totale est plafonnée à **275 ms** et la fenêtre parfaite à **125 ms**.
+- La fenêtre parfaite reste incluse dans la fenêtre totale.
+- Cette progression partiellement réduite préserve la difficulté particulière des attaques lourdes. Les coefficients sont désormais définis pour les attaques ordinaires et lourdes.
 
 Un personnage lourd peut toujours parer, mais peut choisir de privilégier le blocage.
 
