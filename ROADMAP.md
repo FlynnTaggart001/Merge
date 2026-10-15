@@ -104,11 +104,11 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 
 **Avant de figer le contrat d'implémentation :**
 - [ ] Décider la formule de chance de critique (Agilité, Perception et maîtrise pertinente).
-- [ ] Définir les fenêtres numériques de parade et les seuils de stagger.
-- [ ] Définir les règles d'interruption et les réactions automatiques de Réflexe.
-- [ ] Définir les dégâts de base par famille d'arme et les trajectoires/projectiles.
-- [ ] Décider si le poids d'armure modifie le coût de blocage ; la valeur de base actuelle est 10 endurance par impact bloqué.
-- [ ] Définir les effets exacts du poids d'armure sur mobilité/endurance et les coûts de réparation/dégradation.
+- [x] Spécifier les fenêtres numériques de parade et la formule/seuil de stagger ; [ ] calibrer les valeurs en jeu.
+- [x] Définir les événements autorisés à interrompre une attaque/briser une défense ; [ ] définir les priorités des événements simultanés et le comportement détaillé de Réflexe.
+- [x] Définir les dégâts de base des familles d'armes (sauf mains nues, encore à définir) ; [ ] définir les trajectoires/projectiles et calibrer les dégâts en jeu.
+- [x] Décision prise : l'armure lourde réduit la mobilité et augmente les coûts d'endurance des actions physiques consommatrices ; [ ] définir les coefficients exacts, dont le surcoût applicable au blocage.
+- [ ] Définir les coefficients exacts des pénalités de mobilité/endurance, ainsi que les coûts de réparation et les taux de dégradation.
 
 **Implémentation prévue après validation locale de la Phase 1 :**
 - [ ] Perception / bruit / visibilité
