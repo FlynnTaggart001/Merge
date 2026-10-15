@@ -6,9 +6,9 @@ Tous les changements notables du projet sont documentés dans ce fichier. Le for
 
 ### Documentation — roadmap and combat audit (2026-10-15)
 - Updated `ROADMAP.md` to separate specified combat rules from pending design decisions and Unreal validation.
-- Clarified the base cost of 10 endurance per blocked impact; any heavy-armor surcharge remains undecided pending approval.
-- Reaffirmed `specs/COMBAT_SYSTEM_SPEC.md` as the central combat specification; historical `COMBAT_RESOLUTION.md` paths were not found during the audit.
-- Updated `specs/WEAPONS_AND_EQUIPMENT_SPEC.md` with fixed base damage by weapon family (unarmed remains open), and synchronized `GAME_BIBLE.md`, `ROADMAP.md`, and `docs/CONSISTENCY_AUDIT.md` with the now-specified parry windows, stagger resistance, and interruption rules.
+- Clarified the base cost of 10 endurance per blocked impact; heavy-armor stamina surcharge is approved in principle, with exact coefficients still pending.
+- Reaffirmed `specs/COMBAT_SYSTEM_SPEC.md` as canonical and marked the existing `docs/gameplay/COMBAT_RESOLUTION.md` as historical pending reconciliation.
+- Updated weapon base damage by family (unarmed remains open), synchronized `GAME_BIBLE.md`, `ROADMAP.md`, `docs/CONSISTENCY_AUDIT.md`, `specs/GAMEPLAY_SYSTEMS_MASTER_SPEC.md`, and `specs/COMBAT_AND_EFFECTS.md`; flagged the older combat resolution model for reconciliation.
 
 ### Changed — AI toolchain selected (2026-10-13)
 - Official Merge AI tools are now **ChatGPT Plus, Claude Code, and Wingman Premium** only.
