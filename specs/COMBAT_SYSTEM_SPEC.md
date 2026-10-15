@@ -159,6 +159,7 @@ Les attaques de base n'ont pas de coût d'endurance.
 - **Esquive : 20 endurance** par utilisation.
 - **Parade réussie : 10 endurance**.
 - **Parade parfaite : 5 endurance**.
+- **Condition d'utilisation de la parade :** le joueur doit disposer d'au moins l'endurance nécessaire au coût applicable ; si son endurance est insuffisante, la parade ne peut pas être exécutée. Le coût est de 5 points pour une parade parfaite et de 10 points pour une parade réussie non parfaite. La règle exacte de vérification de l'endurance lorsque le résultat du timing n'est pas encore connu reste à préciser.
 - **Blocage : 10 endurance par impact effectivement bloqué**, et non par seconde de garde.
 - **Attaque puissante : 20 à 40 endurance** selon le niveau de charge.
 - **Attaque spéciale : 30 endurance**.
