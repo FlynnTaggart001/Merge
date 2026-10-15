@@ -92,6 +92,8 @@ La compétence Parade représente la maîtrise technique et influence également
 
 L'Agilité et la compétence Parade modifient la facilité du timing. Leurs coefficients exacts et la manière précise de déplacer ou d'élargir ces fenêtres restent à définir ; ne pas inventer de coefficients avant validation.
 
+**Attaques lourdes :** fenêtre de parade totale réduite à **250 ms**, dont une fenêtre de parade parfaite de **100 ms**. Cette réduction s'applique aux attaques identifiées comme lourdes ; les attaques ordinaires conservent les fenêtres de référence ci-dessus. Les fenêtres spécifiques des attaques spéciales pourront être définies individuellement.
+
 Un personnage lourd peut toujours parer, mais peut choisir de privilégier le blocage.
 
 ### 3.3 Blocage
