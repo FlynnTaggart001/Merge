@@ -56,7 +56,17 @@ Maximum weapon mastery therefore contributes **+50% damage** and each point of S
 
 Example: All standard iron swords have the same base damage. A superior-quality sword does not use a different base—quality affects durability, not damage directly.
 
-**Exact base values per weapon type:** À DÉFINIR during implementation phase.
+| Weapon family | Base damage | Intended role |
+|---|---:|---|
+| Dagger (Dague) | 20 | Fast attacks and stealth; preserves the previously established dagger baseline |
+| Sword (Épée) | 25 | Versatile, balanced weapon |
+| Axe (Hache) | 28 | Higher slashing damage |
+| Lance (Lance) | 26 | Reach and piercing damage |
+| Mace (Masse) | 32 | High blunt damage; two-handed under the canonical blunt-weapon rule |
+| Two-Handed Weapon (Arme à deux mains) | 35 | Highest melee base damage |
+| Bow (Arc) | 22 | Ranged damage with a faster firing cadence than a crossbow |
+| Crossbow (Arbalète) | 30 | Higher ranged damage balanced by slower reload/cadence |
+| Unarmed Combat (Combat à mains nues) | À DÉFINIR | Keep separate until its specific combat rules and baseline are reconciled |
 
 ### 3.3 Weapon Mastery Contribution
 
@@ -258,7 +268,7 @@ Properties defined per weapon:
 | Weapon_ID | String | "sword_iron_001" | No |
 | Display_Name | String | "Iron Sword" | No |
 | Family | Enum | Sword | No |
-| Base_Damage | Float | 15.0 | No |
+| Base_Damage | Float | 25.0 (example: standard sword) | No |
 | Weight | Float | 2.5 kg | No |
 | Attack_Speed | Float | 1.0 sec/swing | No |
 | Physical_Property | Enum | Slashing | No |
@@ -357,7 +367,7 @@ This specification focuses on weapons. Armor, accessories, and other equipment a
 
 The rules already fixed in this document (damage scaling, armor reductions, critical multiplier, fixed weapon properties, and durability at 0% making a standard weapon unusable) must not be treated as undecided or independently redefined by another combat document.
 
-- Base damage values for each weapon family
+- In-game calibration and balance testing of the fixed base damage values, including interaction with armor and stagger; unarmed damage remains to be defined
 - Exact Forge skill scaling for repair costs
 - Degradation rate per quality level
 - Whether weight affects mobility or stamina costs
