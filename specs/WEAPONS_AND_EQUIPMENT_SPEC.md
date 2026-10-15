@@ -268,7 +268,7 @@ Properties defined per weapon:
 | Weapon_ID | String | "sword_iron_001" | No |
 | Display_Name | String | "Iron Sword" | No |
 | Family | Enum | Sword | No |
-| Base_Damage | Float | 25.0 (example: standard sword) | No |
+| Base_Damage | Float | 25.0 | No |
 | Weight | Float | 2.5 kg | No |
 | Attack_Speed | Float | 1.0 sec/swing | No |
 | Physical_Property | Enum | Slashing | No |
