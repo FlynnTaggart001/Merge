@@ -19,10 +19,10 @@ AMergeCharacter::AMergeCharacter()
 	bUseControllerRotationRoll = false;
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
-	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, MovementRotationRate, 0.0f);
 	GetCharacterMovement()->JumpZVelocity = 500.f;
 	GetCharacterMovement()->AirControl = 0.35f;
-	GetCharacterMovement()->MaxWalkSpeed = 500.f;
+	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 
@@ -56,6 +56,12 @@ void AMergeCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 		{
 			EnhancedInput->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMergeCharacter::Move);
 		}
+		if (SprintAction)
+		{
+			EnhancedInput->BindAction(SprintAction, ETriggerEvent::Started, this, &AMergeCharacter::StartSprinting);
+			EnhancedInput->BindAction(SprintAction, ETriggerEvent::Completed, this, &AMergeCharacter::StopSprinting);
+			EnhancedInput->BindAction(SprintAction, ETriggerEvent::Canceled, this, &AMergeCharacter::StopSprinting);
+		}
 		if (LookAction)
 		{
 			EnhancedInput->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMergeCharacter::Look);
@@ -82,6 +88,16 @@ void AMergeCharacter::Move(const FInputActionValue& Value)
 
 	AddMovementInput(ForwardDirection, MovementVector.Y);
 	AddMovementInput(RightDirection, MovementVector.X);
+}
+
+void AMergeCharacter::StartSprinting()
+{
+	GetCharacterMovement()->MaxWalkSpeed = SprintSpeed;
+}
+
+void AMergeCharacter::StopSprinting()
+{
+	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 }
 
 void AMergeCharacter::Look(const FInputActionValue& Value)

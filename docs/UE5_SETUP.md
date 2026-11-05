@@ -49,6 +49,20 @@ Source/Merge/
 
 Use Enhanced Input (already in `Merge.Build.cs` and `DefaultInput.ini`).
 
+`AMergeCharacter` reads its Move, Look, Jump, Interact, and Sprint actions from
+the character defaults. Create and assign those `Input Action` assets in
+`BP_MergeCharacter` (or a child Blueprint), then map them in the input mapping
+context assigned to `AMergePlayerController::DefaultMappingContext`.
+
+For the ground movement prototype, configure Move as a 2D axis action and map
+WASD plus the left gamepad stick. Configure Sprint as a digital action and map
+Left Shift plus a gamepad face/shoulder button; sprint is active only while
+held. Set `Walk Speed`, `Sprint Speed`, and `Movement Rotation Rate` on the
+character defaults to tune the feel. The C++ defaults are 300 cm/s, 600 cm/s,
+and 500 degrees/s respectively. Movement is camera-yaw-relative and the
+character rotates toward its movement direction. No skeletal mesh or animation
+blueprint is required for the movement logic itself.
+
 ## Validation checklist (local)
 
 - [ ] Project opens in UE 5.8.1
