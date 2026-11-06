@@ -63,6 +63,27 @@ and 500 degrees/s respectively. Movement is camera-yaw-relative and the
 character rotates toward its movement direction. No skeletal mesh or animation
 blueprint is required for the movement logic itself.
 
+## Character attributes prototype
+
+`AMergeCharacter` includes a `UMergeAttributeComponent` for health and stamina.
+The defaults follow `specs/COMBAT_SYSTEM_SPEC.md`: 100 health, 100 stamina,
+stamina regeneration at 15 points/second after 0.5 seconds without spending,
+and sprint cost at 5 points/second. Sprint stops automatically when stamina is
+insufficient. The component exposes health/stamina change events and a defeat
+event for Blueprint UI and later combat integration; defeat does not yet add
+death, respawn, or world-state behavior.
+
+To smoke-test in Unreal, compile the `MergeEditor` target, create/open a test
+map with a Player Start, set `AMergeGameMode` (or a child Blueprint) as the
+GameMode, and possess `AMergeCharacter` (or its child Blueprint). Assign the
+Move and Sprint actions as described above. In PIE, hold Sprint while moving:
+the character should run faster, stamina should fall, then recover after the
+configured delay when Sprint is released. With no UI yet, inspect
+`AttributeComponent` on the possessed character in the Blueprint debugger or
+bind its `OnStaminaChanged` event to a temporary Print String. `ApplyDamage`,
+`RestoreHealth`, `TrySpendStamina`, and `RestoreStamina` are callable from C++
+and Blueprint for prototype testing.
+
 ## Validation checklist (local)
 
 - [ ] Project opens in UE 5.8.1

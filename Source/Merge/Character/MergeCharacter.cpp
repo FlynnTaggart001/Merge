@@ -1,6 +1,7 @@
 // Copyright Merge Project. All Rights Reserved.
 
 #include "Character/MergeCharacter.h"
+#include "Character/MergeAttributeComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -10,7 +11,8 @@
 
 AMergeCharacter::AMergeCharacter()
 {
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
+	AttributeComponent = CreateDefaultSubobject<UMergeAttributeComponent>(TEXT("AttributeComponent"));
 
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
@@ -39,6 +41,15 @@ AMergeCharacter::AMergeCharacter()
 void AMergeCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+void AMergeCharacter::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	if (bIsSprinting && !AttributeComponent->TrySpendStamina(SprintStaminaCostPerSecond * DeltaSeconds))
+	{
+		StopSprinting();
+	}
 }
 
 void AMergeCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -92,11 +103,13 @@ void AMergeCharacter::Move(const FInputActionValue& Value)
 
 void AMergeCharacter::StartSprinting()
 {
+	bIsSprinting = true;
 	GetCharacterMovement()->MaxWalkSpeed = SprintSpeed;
 }
 
 void AMergeCharacter::StopSprinting()
 {
+	bIsSprinting = false;
 	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 }
 
