@@ -1,7 +1,7 @@
 # Merge — Reputation System Specification
 
-**Status:** SPÉCIFIÉ — système canonique en préproduction  
-**Engine:** Unreal Engine 5.8.1
+**Status:** SPÉCIFIÉ — système canonique en préproduction
+**Engine:** Unreal Engine 5.8.4
 
 ---
 
@@ -168,6 +168,6 @@ This specification documents how reputation functions in the game world. It does
 
 ---
 
-**Last updated:** 2026-10-02  
-**Status:** SPÉCIFIÉ — Préproduction Phase 0  
+**Last updated:** 2026-10-02
+**Status:** SPÉCIFIÉ — Préproduction Phase 0
 **Next step:** Define numerical scale and faction-specific mechanics

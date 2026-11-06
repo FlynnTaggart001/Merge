@@ -1,7 +1,7 @@
 # Merge — Performance & Simulation Specification
 
 **Statut** : APPROUVÉ — contrainte d'architecture
-**Moteur** : Unreal Engine 5.8.1
+**Moteur** : Unreal Engine 5.8.4
 **Langage principal** : C++20
 
 ## 1. Principe fondamental

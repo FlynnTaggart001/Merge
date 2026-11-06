@@ -1,11 +1,11 @@
 # Merge — Gestion des terres et domaine noble
 
-**Statut** : Conception validée  
+**Statut** : Conception validée
 **Lié à** : Q-005 — Devenir noble
 
 ## Vue d’ensemble
 
-Lorsqu’un joueur obtient un titre de noblesse (via Q-005 ou autre moyen), il acquiert un **domaine**.  
+Lorsqu’un joueur obtient un titre de noblesse (via Q-005 ou autre moyen), il acquiert un **domaine**.
 Ce système permet de gérer les terres, les revenus, la population et les conséquences politiques liées au roi.
 
 Le système doit rester léger (pas de micro-gestion lourde) tout en produisant des conséquences persistantes dans le monde non régénératif de Merge.
@@ -47,8 +47,8 @@ Le **Bonheur général** du peuple du domaine est une valeur entre 0 et 100 %.
 
 ### Conception
 
-Le joueur est donc encouragé à maintenir un équilibre :  
-trop bien traiter son peuple = danger politique de la part du roi.  
+Le joueur est donc encouragé à maintenir un équilibre :
+trop bien traiter son peuple = danger politique de la part du roi.
 Trop mal le traiter = risque de révolte locale / perte de revenus / réputation négative.
 
 ---

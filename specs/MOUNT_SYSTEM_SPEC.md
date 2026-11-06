@@ -1,7 +1,7 @@
 # Merge — Mount System Specification
 
-**Statut :** APPROUVÉ — architecture de pré-implémentation  
-**Moteur :** Unreal Engine 5.8.1  
+**Statut :** APPROUVÉ — architecture de pré-implémentation
+**Moteur :** Unreal Engine 5.8.4
 **Langage principal :** C++20
 
 Le joueur dispose de deux voies principales :

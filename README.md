@@ -1,7 +1,7 @@
 # Merge
 
 Action-RPG with intentional PS1 aesthetic.  
-**Engine:** Unreal Engine 5.8.1 · **Primary language:** C++20 · **Complementary:** Blueprint
+**Engine:** Unreal Engine 5.8.4 · **Primary language:** C++20 · **Complementary:** Blueprint
 
 ## Status
 
@@ -9,7 +9,7 @@ Action-RPG with intentional PS1 aesthetic.
 |-------|--------|
 | 0 — Vision / Game Bible | VALIDÉ — vision et règles spécifiées |
 | 0.5 — AI infrastructure / security | OPÉRATIONNEL pour les garde-fous et le workflow ; planner et providers IA réels en attente |
-| 1 — UE5 foundation | SCAFFOLD livré ; compilation UE 5.8.1 et PIE à valider localement |
+| 1 — UE5 foundation | SCAFFOLD livré ; compilation UE 5.8.4 et PIE à valider localement |
 | 2+ | PROPOSÉ / à venir |
 
 Les systèmes gameplay détaillés sont **spécifiés mais non déclarés comme implémentés** tant qu'ils n'ont pas été prototypés et validés dans Unreal.
@@ -61,7 +61,7 @@ La pile officielle comprend uniquement **ChatGPT Plus**, **Claude Code** et **Wi
 
 ## Validation locale
 
-UE 5.8.1, C++20, génération des project files, Blueprints, `L_TestArena`, Enhanced Input, PIE et profiling restent à valider localement.
+UE 5.8.4, C++20, génération des project files, Blueprints, `L_TestArena`, Enhanced Input, PIE et profiling restent à valider localement.
 
 ## Statuts
 

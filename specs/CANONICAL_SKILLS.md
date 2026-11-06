@@ -1,7 +1,7 @@
 # Merge — Compétences canoniques
 
-**Statut :** APPROUVÉ — liste canonique  
-**Moteur :** Unreal Engine 5.8.1
+**Statut :** APPROUVÉ — liste canonique
+**Moteur :** Unreal Engine 5.8.4
 
 Merge possède **46 compétences uniques**.
 

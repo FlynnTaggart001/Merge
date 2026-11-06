@@ -1,7 +1,7 @@
 # Merge — Characteristic Progression
 
 **Status:** APPROVED
-**Engine:** Unreal Engine 5.8.1
+**Engine:** Unreal Engine 5.8.4
 
 ## Core rules
 

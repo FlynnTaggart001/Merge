@@ -1,7 +1,7 @@
 # Merge — Weapons and Equipment Specification
 
-**Status:** SPÉCIFIÉ — system architecture and canonical rules  
-**Engine:** Unreal Engine 5.8.1  
+**Status:** SPÉCIFIÉ — system architecture and canonical rules
+**Engine:** Unreal Engine 5.8.4
 **Canonical combat reference:** `specs/COMBAT_SYSTEM_SPEC.md`
 
 ---
@@ -379,6 +379,6 @@ This specification integrates with:
 
 ---
 
-**Last updated:** 2026-10-15  
-**Status:** SPÉCIFIÉ — Preproduction Phase 0  
-**Next steps:** Define numerical values, finalize armor specification, implement in Unreal Engine 5.8.1
+**Last updated:** 2026-10-15
+**Status:** SPÉCIFIÉ — Preproduction Phase 0
+**Next steps:** Define numerical values, finalize armor specification, implement in Unreal Engine 5.8.4

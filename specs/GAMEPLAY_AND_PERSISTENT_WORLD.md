@@ -1,7 +1,7 @@
 # Merge — Gameplay & Persistent World Specification
 
 **Statut** : APPROUVÉ — conception / architecture
-**Moteur** : Unreal Engine 5.8.1
+**Moteur** : Unreal Engine 5.8.4
 **Langage principal** : C++20
 
 ---

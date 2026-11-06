@@ -1,7 +1,7 @@
 # Merge — Regional Probabilistic Simulation Specification
 
 **Statut** : APPROUVÉ — architecture de performance
-**Engine** : Unreal Engine 5.8.1
+**Engine** : Unreal Engine 5.8.4
 **Langage principal** : C++20
 
 ## 1. Principe fondamental

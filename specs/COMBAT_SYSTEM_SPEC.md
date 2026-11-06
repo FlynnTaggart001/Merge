@@ -1,7 +1,7 @@
 # Merge — Combat System Specification
 
-**Statut :** APPROUVÉ — système de conception actuel  
-**Moteur :** Unreal Engine 5.8.1  
+**Statut :** APPROUVÉ — système de conception actuel
+**Moteur :** Unreal Engine 5.8.4
 **Référence canonique :** ce fichier est la spécification centrale du combat. Au 2026-10-15, `COMBAT_RESOLUTION.md` n'est pas présent aux chemins historiques vérifiés dans la branche `main`. Ne pas créer un second document concurrent ; toute référence historique doit pointer ici tant que le document historique n'est pas retrouvé.
 
 ## 1. Principes
@@ -335,4 +335,4 @@ Les valeurs déjà fixées dans les sections précédentes (coûts de base d'end
 
 Ces éléments sont des sous-systèmes ou paramètres encore à concevoir, pas des contradictions avec le système approuvé.
 
-**État de validation au 2026-10-15 :** spécification documentaire seulement. La compilation UE 5.8.1, l'intégration C++, les animations/collisions, les tests de dégâts et les tests PIE restent à effectuer localement. L'approbation du document ne signifie pas que le combat est implémenté ou validé.
+**État de validation au 2026-10-15 :** spécification documentaire seulement. La compilation UE 5.8.4, l'intégration C++, les animations/collisions, les tests de dégâts et les tests PIE restent à effectuer localement. L'approbation du document ne signifie pas que le combat est implémenté ou validé.

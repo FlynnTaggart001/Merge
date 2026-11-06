@@ -1,3 +1,7 @@
+## Unreleased
+
+- Updated the target Unreal Engine version to 5.8.4 across project configuration and active documentation.
+
 # Changelog
 
 Tous les changements notables du projet sont documentés dans ce fichier. Le format suit [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) et le projet s'inspire de [Semantic Versioning](https://semver.org/spec/v2.0.0.html).

@@ -1,7 +1,7 @@
 # Merge — Master Gameplay Systems Specification
 
 **Statut** : APPROUVÉ — architecture de pré-implémentation
-**Engine** : Unreal Engine 5.8.1
+**Engine** : Unreal Engine 5.8.4
 **Langage principal** : C++20
 **Blueprint** : présentation, contenu éditable et prototypage ciblé
 
