@@ -2,7 +2,7 @@
 
 **Statut :** APPROUVÉ — système de conception actuel  
 **Moteur :** Unreal Engine 5.8.1  
-**Référence canonique :** ce fichier est la spécification centrale du combat. Au 2026-10-15, `COMBAT_RESOLUTION.md` n'est pas présent aux chemins historiques vérifiés dans la branche `main`. Ne pas créer un second document concurrent ; toute référence historique doit pointer ici tant que le document historique n'est pas retrouvé.
+**Référence canonique :** ce fichier est la spécification centrale du combat. `docs/gameplay/COMBAT_RESOLUTION.md` a été remplacé par une redirection et ne définit plus aucune règle de gameplay. Les règles d'armes, dégâts, armures, durabilité et équipement sont complétées par `specs/WEAPONS_AND_EQUIPMENT_SPEC.md`. En cas de doute, ces deux spécifications prévalent sur les résumés d'architecture et les anciennes entrées du changelog. Ne pas créer de second document de combat concurrent.
 
 ## 1. Principes
 
@@ -73,18 +73,67 @@ La parade utilise un test de timing inspiré du principe des tests de compétenc
 Le test ne s'active que lorsqu'une attaque ennemie est réellement susceptible de toucher le joueur. Si l'attaque rate naturellement le joueur, aucun test de parade ne s'active.
 
 Résultats :
-- Parade parfaite : aucun dégât + contre automatique + coup critique sur l'ennemi.
+- Parade parfaite : aucun dégât ; **interruption immédiate de l'attaque ennemie et déclenchement automatique de la contre-attaque critique** (le joueur n'a pas à déclencher une action distincte). La contre-attaque inflige un coup critique à l'ennemi. Cette contre-attaque touche automatiquement la cible parée, même si celle-ci se déplace normalement, et ne peut pas être bloquée ni parée par les défenses ordinaires de l'ennemi. Elle applique les dégâts critiques normaux et peut tuer la cible si ses points de vie tombent à zéro ; aucune règle générale ne limite ses dégâts à 1 PV restant. Elle ne peut pas non plus être interrompue par une attaque ordinaire. Seule une capacité spéciale explicitement définie, notamment celle d'un boss, peut permettre à la cible d'éviter la contre-attaque ou interrompre celle-ci.
 - Parade réussie mais non parfaite : aucun dégât, sans contre automatique.
-- Parade ratée : le joueur reçoit un coup critique.
+- Parade ratée : le joueur reçoit un coup critique et dépense **10 points d'endurance**, comme pour une parade réussie non parfaite.
 
 Une parade réussie annule donc les dégâts de l'attaque parée.
+
+**Protection pendant la parade parfaite :** l'attaque parée est annulée et ne blesse pas le joueur pendant la résolution de la parade parfaite et de sa contre-attaque automatique. En revanche, cette protection ne s'étend pas aux autres ennemis : leurs attaques peuvent toucher le joueur normalement pendant cette séquence. Les capacités spéciales peuvent suivre des règles distinctes uniquement si elles sont explicitement définies.
+
+**Parades consécutives :** le joueur peut tenter une nouvelle parade immédiatement après une parade précédente, sans délai artificiel imposé. Chaque tentative reste soumise à la condition de disposer d'au moins **10 points d'endurance avant la tentative** et au coût correspondant au résultat (5 pour une parade parfaite, 10 pour une parade normale ou ratée). Le seuil de 10 points est vérifié au début de la tentative uniquement : une fois la tentative autorisée, le joueur n'a pas besoin de conserver 10 points jusqu'à sa résolution. Si la parade est parfaite, le coût appliqué est de 5 points.
 
 L'Agilité influence la facilité physique du timing :
 - personnage agile : fenêtre plus large ;
 - personnage moyen : fenêtre normale ;
 - personnage lourd / peu agile : fenêtre plus courte.
 
-La compétence Parade représente la maîtrise technique et influence également la facilité du test.
+La compétence Parade représente la maîtrise technique et influence également la facilité du test. **Toutes les attaques ennemies sont parables, y compris celles des boss et les attaques spéciales**, mais certaines attaques plus lourdes ou spéciales peuvent avoir une fenêtre de parade plus courte, ce qui les rend plus difficiles à parer parfaitement. Aucune attaque n'est déclarée imparable par défaut.
+
+**Fenêtres de timing retenues pour un personnage de référence :**
+- fenêtre de parade parfaite : **200 ms** ;
+- fenêtre de parade normale : **350 ms au total**, incluant la fenêtre parfaite.
+- **Plafond de la fenêtre totale des attaques ordinaires : 400 ms** après prise en compte de l'Agilité et de la compétence Parade ; la progression ne peut pas dépasser cette limite.
+- **Plafond distinct de la fenêtre parfaite : 250 ms**. La fenêtre parfaite de référence reste de 200 ms, mais peut s'élargir avec la progression, sans jamais dépasser 250 ms.
+- Les deux plafonds sont indépendants : la fenêtre totale ne dépasse jamais 400 ms et la fenêtre parfaite ne dépasse jamais 250 ms ; la fenêtre parfaite reste incluse dans la fenêtre totale.
+
+L'Agilité et la compétence Parade influencent toutes deux la fenêtre effective de timing. Pour la fenêtre totale des attaques ordinaires, la formule validée est :
+
+```text
+Total_Parry_Window_ms = min(400, 350 + (Agility / 20 × 10) + (Parry_Skill / 100 × 40))
+```
+
+- **Agility** : attribut de 0 à 20, apportant jusqu'à **+10 ms**.
+- **Parry_Skill** : compétence de 0 à 100, apportant jusqu'à **+40 ms**.
+- La compétence Parade a donc quatre fois plus d'influence maximale que l'Agilité.
+- La fenêtre totale est plafonnée à **400 ms**.
+
+L'Agilité représente les réflexes physiques et la compétence Parade la maîtrise technique. La fenêtre parfaite utilise les mêmes bonus que la fenêtre totale, avec sa propre base et son propre plafond :
+
+```text
+Perfect_Parry_Window_ms = min(250, 200 + (Agility / 20 × 10) + (Parry_Skill / 100 × 40))
+```
+
+- Fenêtre parfaite de référence : **200 ms**.
+- Bonus maximal d'Agilité : **+10 ms**.
+- Bonus maximal de compétence Parade : **+40 ms**.
+- Plafond de fenêtre parfaite : **250 ms**.
+- La fenêtre parfaite reste toujours incluse dans la fenêtre totale. La compétence Parade n'a pas d'effet canonique sur le coût d'endurance.
+
+**Attaques lourdes :** fenêtre de parade totale de référence de **250 ms**, dont une fenêtre de parade parfaite de **100 ms**. Cette réduction s'applique aux attaques identifiées comme lourdes ; les attaques ordinaires conservent les fenêtres de référence ci-dessus. Les fenêtres spécifiques des attaques spéciales pourront être définies individuellement.
+
+La progression des fenêtres contre les attaques lourdes est réduite de moitié par rapport aux attaques ordinaires :
+
+```text
+Heavy_Total_Parry_Window_ms = min(275, 250 + (Agility / 20 × 5) + (Parry_Skill / 100 × 20))
+Heavy_Perfect_Parry_Window_ms = min(125, 100 + (Agility / 20 × 5) + (Parry_Skill / 100 × 20))
+```
+
+- L'Agilité apporte jusqu'à **+5 ms**.
+- La compétence Parade apporte jusqu'à **+20 ms**.
+- La fenêtre totale est plafonnée à **275 ms** et la fenêtre parfaite à **125 ms**.
+- La fenêtre parfaite reste incluse dans la fenêtre totale.
+- Cette progression partiellement réduite préserve la difficulté particulière des attaques lourdes. Les coefficients sont désormais définis pour les attaques ordinaires et lourdes.
 
 Un personnage lourd peut toujours parer, mais peut choisir de privilégier le blocage.
 
@@ -95,9 +144,10 @@ Le blocage est une défense plus stable et moins dépendante du timing précis.
 **Coût d'endurance :** le simple maintien de la garde ne consomme aucune endurance. L'endurance est consommée uniquement lorsqu'une attaque ennemie est effectivement interceptée par le blocage.
 
 - Garde maintenue sans attaque reçue : **0 endurance**.
-- Attaque effectivement bloquée : **10 endurance par impact bloqué** (coût de base canonique actuel).
+- Attaque effectivement bloquée : **10 endurance par impact bloqué** (coût de base canonique actuel), à condition que le joueur dispose d'au moins 10 endurance au moment de l'impact.
+- **Endurance insuffisante :** si le joueur a moins de 10 endurance au moment où l'attaque arrive, le blocage échoue complètement et l'attaque inflige ses dégâts normalement ; aucun dégât n'est absorbé par la garde.
 - Une attaque qui rate le joueur ou ne touche pas la garde : **0 endurance**.
-- Aucun modificateur supplémentaire lié au poids de l'armure n'est encore défini. Jusqu'à décision explicite, appliquer uniformément le coût de base de 10 ; ne pas inventer de multiplicateur.
+- **Effet du poids de l'armure approuvé le 2026-10-15 (option B) :** l'armure lourde augmente le coût d'endurance des actions physiques qui consomment de l'endurance. Le coût de base du blocage reste de 10 par impact ; le surcoût exact et sa formule restent à définir. En attendant cette valeur, ne pas inventer de multiplicateur numérique.
 
 Les personnages lourds ont tendance à privilégier le blocage ; leur armure plus élevée compense une partie des dégâts qui peuvent traverser le blocage.
 
@@ -114,6 +164,7 @@ Les attaques de base n'ont pas de coût d'endurance.
 - **Esquive : 20 endurance** par utilisation.
 - **Parade réussie : 10 endurance**.
 - **Parade parfaite : 5 endurance**.
+- **Condition d'utilisation de la parade :** le joueur doit disposer d'au moins l'endurance nécessaire au coût applicable ; si son endurance est insuffisante, la parade ne peut pas être exécutée. Le coût est de 5 points pour une parade parfaite et de 10 points pour une parade réussie non parfaite. **Vérification avant tentative :** le joueur doit avoir au moins **10 points d'endurance** au début de toute tentative de parade, car le résultat du timing n'est pas encore connu. Si le joueur a moins de 10 points, aucune parade ne peut être tentée. Après résolution, une parade parfaite coûte **5 points** et une parade réussie non parfaite coûte **10 points**.
 - **Blocage : 10 endurance par impact effectivement bloqué**, et non par seconde de garde.
 - **Attaque puissante : 20 à 40 endurance** selon le niveau de charge.
 - **Attaque spéciale : 30 endurance**.
@@ -141,7 +192,7 @@ Personnage lourd :
 - armure généralement plus élevée pour compenser une partie des dégâts résiduels ;
 - style fondé davantage sur l'endurance et la résistance.
 
-Le coût de base du blocage reste de 10 endurance par impact. Un surcoût lié à l'armure lourde est une décision de design encore ouverte ; aucun surcoût ne doit être implémenté avant que sa valeur et sa règle soient approuvées.
+Le coût de base du blocage reste de 10 endurance par impact. Le principe d'un surcoût lié à l'armure lourde est approuvé (option B, 2026-10-15) ; sa valeur et sa formule restent à définir. Aucun multiplicateur numérique ne doit être inventé avant cette précision.
 
 Aucun style n'est imposé au joueur.
 
@@ -212,15 +263,15 @@ Il n'existe pas de catégorie d'armure moyenne.
 
 L'armure légère fournit une protection significative tout en restant moins résistante que l'armure lourde. L'armure lourde est particulièrement résistante au tranchant, résiste davantage au perforant qu'au tranchant, et reste vulnérable au contondant relativement aux deux autres propriétés.
 
-Les conséquences exactes du poids de l'armure sur la mobilité et l'endurance restent à définir.
+**Décision canonique — effets du poids de l'armure (option B approuvée le 2026-10-15) :** l'armure lourde réduit la vitesse de déplacement et de course, et augmente le coût d'endurance des actions physiques qui consomment de l'endurance. L'armure légère n'applique aucun malus supplémentaire lié au poids. Les coefficients exacts de réduction de vitesse et d'augmentation des coûts d'endurance restent à définir ; les coûts de base déjà fixés ailleurs dans cette spécification restent les références et ne sont pas remplacés par de nouvelles valeurs.
 
 ## 8. Stagger
 
-Le stagger dépend notamment de la puissance et de l'impact de l'attaque ainsi que du poids et de la taille de la cible.
+**Règle canonique : dégâts de l'attaque comparés à la statistique de stagger de la cible.** Le stagger se déclenche uniquement lorsque les dégâts calculés de l'attaque sont strictement supérieurs à la statistique de stagger de l'ennemi : atteindre exactement le seuil ne suffit pas. Cette règle s'applique à tous les types d'attaque, notamment les attaques normales, les attaques chargées, les coups critiques et toute autre attaque qui inflige des dégâts. Le type d'attaque ne reçoit pas de règle de stagger séparée : c'est le montant final des dégâts qui est comparé à la statistique de stagger de la cible. **Aucun bonus de stagger indépendant n'est ajouté au seul fait de charger une attaque** : une attaque chargée est plus efficace pour provoquer un stagger uniquement si ses dégâts finaux sont plus élevés. **Les coups critiques ne reçoivent pas non plus de bonus de stagger spécifique** : leur éventuelle capacité à dépasser le seuil provient uniquement de leurs dégâts critiques, calculés avec le multiplicateur critique de ×2. **La contre-attaque critique déclenchée par une parade parfaite suit exactement cette même règle** : elle provoque un stagger uniquement si ses dégâts critiques finaux sont strictement supérieurs à la statistique de stagger de la cible ; la parade parfaite ne provoque jamais un stagger automatiquement.
 
-Une petite cible légère peut donc être déséquilibrée plus facilement qu'une créature massive.
+La statistique de stagger de l'ennemi représente sa résistance au déséquilibre et est **calculée automatiquement à partir de son poids, de sa taille et de son armure**. **Formule canonique approuvée le 2026-10-15 (option A) :** `Résistance_Stagger = 10 + (0,5 × Poids_kg) + (0,2 × Taille_cm) + Bonus_Armure`. Le poids est le facteur dominant et la taille joue un rôle complémentaire. Le bonus d'armure vaut **0 sans armure**, **15 avec une armure légère** et **35 avec une armure lourde**. Ces coefficients constituent la règle de calcul de la résistance ; la règle existante reste inchangée : un stagger se déclenche uniquement si les dégâts finaux de l'attaque sont strictement supérieurs à cette résistance.
 
-Les seuils et résultats exacts restent à définir.
+La durée du stagger réussi est fixée à **2,9 secondes**. Pendant ces 2,9 secondes, la cible est **immobilisée et incapable d'attaquer**. Elle ne bénéficie d'**aucune protection supplémentaire contre les dégâts** pendant le stagger : les attaques continuent à infliger leurs dégâts normalement selon les règles de combat applicables. Cette durée est volontairement inférieure aux 3 secondes nécessaires pour charger une attaque à 100 %, afin de limiter l'enchaînement facile d'un second stagger par une attaque chargée au maximum. **Une cible peut être stagger de nouveau dès qu'elle est de nouveau éligible ; aucune immunité ou résistance temporaire supplémentaire après le stagger n'est prévue.** Un ennemi peut être stagger **pendant une attaque en cours** : si les dégâts de l'attaque reçue dépassent strictement son seuil de stagger, son attaque est interrompue et le stagger s'applique. Lorsque deux attaques semblent toucher simultanément, la priorité exacte de résolution reste à définir. L'implémentation devra appliquer un ordre déterministe et vérifier pour chaque attaque si les interruptions et états résultants permettent encore de toucher. La formule numérique de résistance au stagger est définie ci-dessus ; il reste à calibrer en jeu les valeurs produites par cette formule et à finaliser les réactions d'animation. Les règles d'interruption sont définies séparément à la section 16 ; elles ne doivent pas être modifiées sans décision explicite.
 
 ## 9. Critiques
 
@@ -228,7 +279,7 @@ Les seuils et résultats exacts restent à définir.
 
 Les coups critiques de situation se déclenchent automatiquement dans des contextes définis, **sans tirage aléatoire** :
 
-- **Parade parfaite** → contre-attaque automatique avec coup critique sur l'ennemi.
+- **Parade parfaite** → contre-attaque automatique avec coup critique sur l'ennemi. Cette contre-attaque peut provoquer un stagger uniquement si ses dégâts critiques calculés sont **strictement supérieurs** à la statistique de stagger de la cible ; elle ne provoque pas systématiquement un stagger.
 - **Backstab** (attaque depuis l'arrière) → coup critique automatique.
 
 Ces critiques se déclenchent toujours dans les conditions appropriées et ne dépendent pas d'une probabilité aléatoire générale.
@@ -245,7 +296,30 @@ La chance de critique dépend de :
 - **Perception** du personnage attaquant ;
 - **Maîtrise de l'arme** (ou compétence de combat pertinente) du personnage attaquant.
 
-La formule exacte et les poids de chaque facteur : À DÉFINIR.
+Le plafond de la chance de critique est fixé à **15 %**. Le maximum doit être réservé aux personnages disposant de caractéristiques et d'une maîtrise de l'arme élevées.
+
+La formule canonique validée est :
+
+```
+Critical_Chance_Percent = min(15, (Agility + Perception) / 4 + Weapon_Mastery / 20)
+```
+
+- Agilité et Perception sont chacune notées de 0 à 20.
+- Maîtrise de l'arme (ou compétence de combat pertinente) est notée de 0 à 100.
+- La chance est plafonnée à **15 %** ; atteindre ce plafond demande des caractéristiques élevées et une maîtrise élevée.
+- Les résultats de la formule sont exprimés en pourcentage.
+
+Exemples de référence :
+
+| Agilité | Perception | Maîtrise | Chance de critique |
+|---:|---:|---:|---:|
+| 6 | 6 | 0 | 3 % |
+| 10 | 10 | 50 | 7,5 % |
+| 14 | 14 | 80 | 11 % |
+| 18 | 18 | 100 | 14 % |
+| 20 | 20 | 100 | 15 % |
+
+Les critiques garantis par une parade parfaite ou un backstab restent distincts de cette probabilité aléatoire.
 
 ### 9.3 Multiplicateur de critique
 
@@ -322,16 +396,30 @@ Les exceptions propres aux créatures uniques ou immortelles restent définies p
 
 ## 16. Éléments encore à définir
 
+### 16.1 Règle canonique d'interruption et de bris de défense
+
+Seuls les événements suivants peuvent interrompre une autre attaque en cours ou briser une défense :
+
+- **Attaque critique** ;
+- **Stagger réussi** ;
+- **Attaque chargée à 100 %** (charge maximale de 3 secondes).
+
+Une attaque ordinaire ou une attaque chargée à moins de 100 % ne peut pas, à elle seule, interrompre une autre attaque ni briser une défense. Cette règle limite les interruptions aux événements qui ont une importance tactique particulière.
+
+**Conséquence canonique d'un bris de défense — option B approuvée le 2026-10-15 :** le bris de défense ne provoque pas automatiquement un stagger. L'attaque inflige les dégâts normalement calculés ; la cible subit un stagger uniquement si les dégâts finaux dépassent strictement son seuil de stagger, conformément à la règle générale. Ainsi, un coup critique ou une attaque chargée à 100 % peut briser la défense sans immobiliser automatiquement la cible si le seuil de stagger n'est pas dépassé.
+
+Les priorités en cas d'événements simultanés et les réactions d'animation restent à définir, sans élargir la liste des événements autorisés.
+
 Les valeurs déjà fixées dans les sections précédentes (coûts de base d'endurance, régénération, formule de dégâts physiques, coefficients d'armure, charge maximale et multiplicateur critique) ne sont pas à redéfinir dans une autre spécification sans décision explicite.
 
-- valeurs des fenêtres de parade ;
-- formule précise du stagger ;
-- règles précises d'interruption ;
+- calibrage en jeu des fenêtres de parade définies aux sections 3.2 et 3.3, sans dépasser les plafonds canoniques ;
+- calibrage en jeu des valeurs produites par la formule canonique de résistance au stagger (10 + 0,5 × poids en kg + 0,2 × taille en cm + bonus d'armure : 0 sans armure, 15 légère, 35 lourde), sans modifier la règle approuvée : les dégâts finaux doivent dépasser strictement la résistance ; durée : 2,9 secondes ; cible immobilisée et incapable d'attaquer pendant le stagger ;
+- priorités de résolution des interruptions en cas d'événements simultanés et réactions d'animation, en conservant la règle canonique suivante : seuls un coup critique, un stagger réussi ou une attaque chargée à 100 % peuvent interrompre une autre attaque ou briser une défense ;
 - détails des combos spéciaux par arme ;
 - comportement exact des réactions automatiques de Réflexe ;
 - détails de l'IA de combat ;
 - système de magie en combat ;
-- formule exacte de la chance de critique incorporant Agilité, Perception et Maîtrise de l'arme.
+- influence détaillée des différentes compétences de combat sur la chance de critique lorsqu'une compétence pertinente remplace la Maîtrise de l'arme.
 
 Ces éléments sont des sous-systèmes ou paramètres encore à concevoir, pas des contradictions avec le système approuvé.
 

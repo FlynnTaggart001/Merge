@@ -25,7 +25,7 @@
 - `specs/CANONICAL_SKILLS.md` : compétences de maîtrise des neuf familles.
 - `specs/SKILL_PROGRESSION.md` : progression des compétences et anti-farming.
 
-Au 2026-10-15, le fichier historique `COMBAT_RESOLUTION.md` n'a pas été retrouvé à la racine ni au chemin `gameplay/COMBAT_RESOLUTION.md` vérifié pendant l'audit. La spécification centrale disponible est `specs/COMBAT_SYSTEM_SPEC.md`. Ne pas recréer de document concurrent : vérifier l'historique Git si le contenu historique doit être récupéré, puis corriger les références obsolètes.
+Le contenu contradictoire de `docs/gameplay/COMBAT_RESOLUTION.md` a été retiré le 2026-10-15 et remplacé par une page de redirection vers les spécifications canoniques. L'ancien modèle probabiliste attaque/esquive/blocage, ses fenêtres de parade non définies, les attaques non parables génériques et les exemples hors échelle 0–20 ne sont plus des règles actives. Aucun de ces anciens paramètres ne doit être réintroduit. Les règles actuelles sont dans `specs/COMBAT_SYSTEM_SPEC.md` et `specs/WEAPONS_AND_EQUIPMENT_SPEC.md`.
 
 ## 3. Paramètres de combat déjà spécifiés
 
@@ -37,27 +37,27 @@ Au 2026-10-15, le fichier historique `COMBAT_RESOLUTION.md` n'a pas été retrou
 - Force : +2 % par point, jusqu'à +40 % à 20/20.
 - Réductions d'armure fixes : tranchant 35 %/60 %, perforant 30 %/45 %, contondant 25 %/40 % (armure légère/lourde).
 - Critique : multiplicateur de 2× ; parade parfaite et backstab peuvent déclencher un critique contextuel garanti selon les conditions décrites.
+- Fenêtre de parade ordinaire : 350 ms de référence au total (dont 200 ms parfaite), avec plafonds respectifs de 400 ms et 250 ms ; attaques lourdes : 250 ms au total et 100 ms parfaite de référence, plafonds de 275 ms et 125 ms.
+- Résistance au stagger : `10 + (0,5 × poids_kg) + (0,2 × taille_cm) + bonus_armure` ; bonus 0 sans armure, 15 légère, 35 lourde. Stagger uniquement si les dégâts finaux dépassent strictement le seuil ; durée 2,9 s.
+- Dégâts de base : dague 20, épée 25, hache 28, lance 26, masse 32, arme à deux mains 35, arc 22, arbalète 30 ; mains nues à définir.
 - Qualité d'arme : influence la résistance à la dégradation, pas les dégâts de base ; une arme standard à 0 % de durabilité est inutilisable et une réparation restaure 100 %.
 
 ## 4. Clarification apportée sur le blocage
 
 Le coût de base canonique actuel est de **10 endurance par impact effectivement bloqué**, quelle que soit la durée de garde. Une garde sans impact coûte 0.
 
-La spécification décrit aussi un style lourd davantage orienté vers le blocage et mentionnait un blocage plus coûteux. Ces formulations ne définissaient pas de modificateur chiffré. Le document de combat est clarifié : un surcoût selon le poids de l'armure reste **à décider** ; aucun coefficient supplémentaire ne doit être inventé ou implémenté avant approbation. Le coût de base de 10 reste la valeur utilisable en attendant cette décision.
+L'armure lourde réduit la vitesse de déplacement/course et augmente le coût d'endurance des actions physiques qui consomment de l'endurance. Ce principe est approuvé ; le coefficient exact, y compris le surcoût applicable au blocage, reste à définir. Aucun multiplicateur numérique ne doit être inventé avant validation. Le coût de base du blocage reste de 10 endurance par impact.
 
 ## 5. Éléments de conception restant à définir
 
-- Formule et poids exacts de la chance de critique (Agilité, Perception et maîtrise pertinente).
-- Fenêtres numériques de parade.
-- Seuils et résultats exacts du stagger.
-- Règles d'interruption et détails des réactions automatiques de Réflexe.
-- Dégâts de base de chaque famille d'arme et valeurs détaillées des projectiles.
-- Éventuel modificateur du coût de blocage selon l'armure.
-- Effets du poids d'armure sur la mobilité/endurance.
+- Formule exacte de la chance de critique (Agilité, Perception et maîtrise pertinente).
+- Calibrage en jeu des dégâts de base et des seuils de stagger déjà spécifiés.
+- Dégâts à mains nues, trajectoires/vitesses des projectiles et valeurs détaillées des attaques à distance.
+- Coefficients exacts des pénalités de mobilité et du surcoût d'endurance de l'armure lourde.
 - Formule des coûts de réparation selon Forge et taux de dégradation par qualité.
-- Détails définitifs des combos spéciaux, de l'IA et du système de magie en combat.
+- Priorités de résolution des événements simultanés, détails des réactions automatiques de Réflexe, combos spéciaux, IA et magie en combat.
 
-Ces points sont des décisions ouvertes, pas automatiquement des contradictions. Ils ne doivent pas être remplis arbitrairement dans le code.
+Les fenêtres de parade, la formule de résistance au stagger et les dégâts de base des familles d'armes (hors mains nues) sont maintenant spécifiés. Leur calibration en jeu reste distincte de la décision de conception. Les paramètres encore ouverts ne doivent pas être remplis arbitrairement dans le code.
 
 ## 6. Feuille de route et validation Unreal
 
@@ -72,6 +72,6 @@ Restent à vérifier sur une machine équipée d'Unreal Engine 5.8.1 :
 
 ## 7. Conclusion
 
-L'audit documentaire confirme les règles canoniques principales et met à jour l'état des paramètres de combat. La contradiction rédactionnelle autour du coût du blocage est explicitée sans inventer de nouvelle valeur. Le statut documentaire ne vaut pas validation technique.
+L'audit documentaire confirme les règles canoniques principales et met à jour l'état des paramètres de combat. Le conflit documentaire provenant de l'ancien `docs/gameplay/COMBAT_RESOLUTION.md` a été supprimé : son contenu a été remplacé par une redirection vers les règles canoniques. Les paramètres encore ouverts listés dans la section 5 sont des décisions réellement en attente, pas des règles contradictoires. Le statut documentaire ne vaut pas validation technique.
 
 **Dernière mise à jour :** 2026-10-15

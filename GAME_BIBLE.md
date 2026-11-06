@@ -463,17 +463,17 @@ Le système détaillé est défini dans `specs/COMBAT_SYSTEM_SPEC.md`.
 - Parade ratée : coup critique subi
 - Agilité : facilite la fenêtre de parade pour les personnages agiles et la rend plus difficile pour les personnages lourds
 - Les personnages lourds peuvent privilégier le blocage et compenser avec une armure plus élevée
-- Le blocage consomme davantage d'endurance
+- Le blocage coûte 10 endurance par impact effectivement bloqué ; une garde sans impact coûte 0. L'armure lourde augmente le coût des actions physiques consommatrices d'endurance, mais le surcoût exact reste à définir.
 
 ### Dégâts
 - Deux catégories principales : **physique** et **magique**
 - Tranchant, perforant et contondant sont des propriétés des armes, pas des catégories principales indépendantes
-- Formule exacte des dégâts encore à définir
+- La formule canonique des dégâts physiques et les réductions d'armure sont définies dans `specs/COMBAT_SYSTEM_SPEC.md` et `specs/WEAPONS_AND_EQUIPMENT_SPEC.md`. Les dégâts de base par famille sont définis dans la spécification d'armes ; les valeurs de combat restent à calibrer en jeu.
 - Les critiques sont principalement contextuels
 
 ### Stagger
 - Dépend notamment de la puissance/impact de l'attaque ainsi que du poids et de la taille de la cible
-- Formule et seuils exacts encore à définir
+- Résistance au stagger : `10 + (0,5 × poids en kg) + (0,2 × taille en cm) + bonus d'armure` (0 sans armure, 15 armure légère, 35 armure lourde). Le stagger se déclenche uniquement si les dégâts finaux dépassent strictement ce seuil ; durée de 2,9 secondes. Voir `specs/COMBAT_SYSTEM_SPEC.md`.
 
 ### Furtivité et Réflexe
 - Discrétion de l'attaquant → Perception de la cible → Réflexe automatique si une réaction est possible
