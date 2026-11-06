@@ -7,7 +7,7 @@
 - Preproduction documentation: established
 - Game vision: established in `GAME_BIBLE.md`
 - Technical architecture: approved
-- Engine: **Unreal Engine 5.8.1** (documented choice)
+- Engine: **Unreal Engine 5.8.4** (documented choice)
 - Primary language: C++ — approved
 - Blueprint: complementary
 - Unreal project scaffold: **created** (`Merge.uproject`, Source/, Config/)
@@ -30,7 +30,7 @@
 
 ## Immediate objectives
 
-1. Open `Merge.uproject` with UE 5.8.1 and compile the `Merge` module.
+1. Open `Merge.uproject` with UE 5.8.4 and compile the `Merge` module.
 2. Create foundation Blueprints + `L_TestArena` map.
 3. Verify movement / camera / jump in PIE.
 4. Only then start Core Game Systems (Phase 2).

@@ -1,7 +1,7 @@
 # Merge — Combat, Damage & Effects Specification
 
 **Statut** : APPROUVÉ — architecture
-**Engine** : Unreal Engine 5.8.1
+**Engine** : Unreal Engine 5.8.4
 
 ## Responsabilités
 

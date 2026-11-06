@@ -8,6 +8,7 @@
 #include "MergeCharacter.generated.h"
 
 class UCameraComponent;
+class UMergeAttributeComponent;
 class USpringArmComponent;
 class UInputAction;
 class UInputMappingContext;
@@ -27,6 +28,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	// --- Camera ---
@@ -35,6 +37,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	TObjectPtr<UCameraComponent> FollowCamera;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Attributes", meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UMergeAttributeComponent> AttributeComponent;
 
 	// --- Enhanced Input ---
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
@@ -62,14 +67,19 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement", meta = (ClampMin = "0.0", Units = "degrees/s"))
 	float MovementRotationRate = 500.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Movement|Sprint", meta = (ClampMin = "0.0", Units = "stamina/s"))
+	float SprintStaminaCostPerSecond = 5.0f;
+
 	// --- Input handlers ---
 	void Move(const FInputActionValue& Value);
 	void StartSprinting();
 	void StopSprinting();
+	bool bIsSprinting = false;
 	void Look(const FInputActionValue& Value);
 	void Interact(const FInputActionValue& Value);
 
 public:
 	FORCEINLINE USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+	FORCEINLINE UMergeAttributeComponent* GetAttributeComponent() const { return AttributeComponent; }
 };

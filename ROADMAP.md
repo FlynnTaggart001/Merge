@@ -62,7 +62,7 @@ Cette roadmap définit les grandes phases de développement de **Merge**. Une m�
 **Statut : 🟡 SCAFFOLD LIVRÉ — compilation locale requise**
 
 ### Livré sur GitHub
-- [x] `Merge.uproject` (UE 5.8.1)
+- [x] `Merge.uproject` (UE 5.8.4)
 - [x] Module C++ `Merge` (Core + Character)
 - [x] Config DefaultEngine / Input / GameplayTags
 - [x] Guide `docs/UE5_SETUP.md`
@@ -242,6 +242,6 @@ Prototype technique → contenu → expansion du monde → quêtes/factions → 
 
 ---
 
-**Dernière mise à jour** : 2026-10-15  
-**Moteur** : Unreal Engine 5.8.1  
+**Dernière mise à jour** : 2026-10-15
+**Moteur** : Unreal Engine 5.8.4
 **Langage principal** : C++

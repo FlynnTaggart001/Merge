@@ -63,7 +63,7 @@ Ces points sont des décisions ouvertes, pas automatiquement des contradictions.
 
 La feuille de route est datée du 2026-10-15. La Phase 1 reste : **scaffold livré, validation locale requise**. Les systèmes de combat et de progression sont spécifiés mais ne sont pas déclarés implémentés.
 
-Restent à vérifier sur une machine équipée d'Unreal Engine 5.8.1 :
+Restent à vérifier sur une machine équipée d'Unreal Engine 5.8.4 :
 - génération des project files et compilation C++ ;
 - création/configuration des Blueprints et de `L_TestArena` ;
 - Enhanced Input, déplacement, caméra et saut ;

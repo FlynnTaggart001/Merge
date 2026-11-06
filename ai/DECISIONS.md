@@ -15,7 +15,7 @@
 
 ### DECISION-0001 — Unreal Engine 5
 - **Status:** APPROVED
-- **Decision:** Merge uses Unreal Engine 5.8.1.
+- **Decision:** Merge uses Unreal Engine 5.8.4.
 - **Date:** 2026-08-19
 
 ### DECISION-0002 — Primary language

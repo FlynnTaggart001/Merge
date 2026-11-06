@@ -187,7 +187,7 @@ World Partition, streaming, culling, LOD/HLOD, timers/batches, IA à fréquence 
 
 ## Priorité d'implémentation
 
-1. Valider le bootstrap Unreal 5.8.1 et le mouvement de base.
+1. Valider le bootstrap Unreal 5.8.4 et le mouvement de base.
 2. Prototyper mouvement, ressource d'Endurance, roulade, bond arrière, pas de côté et saut.
 3. Prototyper accroupissement, furtivité et Backstab.
 4. Prototyper CombatResolver, armes, blocage, parade et i-frames.

@@ -3,7 +3,7 @@
 
 **Date** : 2026-08-19
 **Statut** : APPROUVÉ
-**Engine** : Unreal Engine 5.8.1
+**Engine** : Unreal Engine 5.8.4
 **Langage Principal** : C++
 **Langage Complémentaire** : Blueprint (prototypage & UI)
 
@@ -27,7 +27,7 @@ L'architecture est conçue pour :
 ## 2. Stack Technologique
 
 ### Engine
-- **Unreal Engine 5.8.1** (version obligatoire)
+- **Unreal Engine 5.8.4** (version obligatoire)
 - **Plateforme cible** : Windows PC (extensible)
 - **Résolution cible** : À DÉCIDER
 - **FPS cible** : À DÉCIDER
@@ -197,7 +197,7 @@ FQuestProgress
 ```cpp
 /**
  * Applique les dégâts au personnage
- * 
+ *
  * @param DamageAmount Montant des dégâts à appliquer
  * @param DamageType Type de dégâts (tranchant, contondant, etc.)
  * @param InstigatorController Contrôleur qui cause les dégâts
@@ -306,22 +306,22 @@ struct FWeaponRow : public FTableRowBase
 {
     UPROPERTY(EditAnywhere, BlueprintReadOnly)
     FName WeaponID;
-    
+
     UPROPERTY(EditAnywhere, BlueprintReadOnly)
     FString DisplayName;
-    
+
     UPROPERTY(EditAnywhere, BlueprintReadOnly)
     float BaseDamage;
-    
+
     UPROPERTY(EditAnywhere, BlueprintReadOnly)
     EWeaponType WeaponType;
-    
+
     UPROPERTY(EditAnywhere, BlueprintReadOnly)
     float Weight;
-    
+
     UPROPERTY(EditAnywhere, BlueprintReadOnly)
     UTexture2D* Icon;
-    
+
     UPROPERTY(EditAnywhere, BlueprintReadOnly)
     FString Description;
 };
@@ -370,16 +370,16 @@ class MERGE_API UMergeSaveGame : public USaveGame
 public:
     UPROPERTY()
     FString SaveName;
-    
+
     UPROPERTY()
     FDateTime SaveTime;
-    
+
     UPROPERTY()
     FPlayerSaveData PlayerData;
-    
+
     UPROPERTY()
     FWorldSaveData WorldData;
-    
+
     UPROPERTY()
     FGameSettingsSaveData GameSettings;
 };
@@ -396,13 +396,13 @@ class MERGE_API ASaveGameManager : public AActor
 public:
     UFUNCTION(BlueprintCallable, Category = "Save")
     void SaveGame(const FString& SaveSlot);
-    
+
     UFUNCTION(BlueprintCallable, Category = "Save")
     void LoadGame(const FString& SaveSlot);
-    
+
     UFUNCTION(BlueprintCallable, Category = "Save")
     void DeleteSave(const FString& SaveSlot);
-    
+
     UFUNCTION(BlueprintCallable, Category = "Save")
     bool SaveExists(const FString& SaveSlot);
 };
@@ -472,13 +472,13 @@ class MERGE_API AWorldRegion : public AActor
 public:
     UPROPERTY(EditAnywhere)
     FString RegionName;
-    
+
     UPROPERTY(EditAnywhere)
     FBox RegionBounds;
-    
+
     UPROPERTY(EditAnywhere)
     float StreamingPriority = 1.0f;
-    
+
     // Déclenche le chargement de contenu
     virtual void OnRegionLoaded();
     virtual void OnRegionUnloaded();
@@ -514,17 +514,17 @@ class MERGE_API ANPCCharacter : public ACharacterBase
 public:
     UFUNCTION(BlueprintCallable, Category = "AI")
     void ExecuteRoutine(float CurrentTime);
-    
+
     UFUNCTION(BlueprintCallable, Category = "AI")
     void DetectPlayer(APlayerCharacter* Player);
-    
+
     UFUNCTION(BlueprintCallable, Category = "AI")
     void RespondToEvent(FNPCEvent Event);
 
 protected:
     UPROPERTY(EditAnywhere)
     TArray<FNPCRoutineStep> DailyRoutine;
-    
+
     UPROPERTY(EditAnywhere)
     float DetectionRange = 1000.0f;  // À calibrer
 };
@@ -541,13 +541,13 @@ struct FNPCMassData : public FMassFragment
 {
     UPROPERTY()
     FString NPCID;
-    
+
     UPROPERTY()
     FVector GoalPosition;
-    
+
     UPROPERTY()
     float DetectionRange;
-    
+
     UPROPERTY()
     EAIState CurrentState;
 };
@@ -669,7 +669,7 @@ class MERGE_API APS1PostProcessVolume : public APostProcessVolume
 
 public:
     virtual void BeginPlay() override;
-    
+
 private:
     void SetupPS1Effects();
     void ConfigureGraininess();
@@ -771,7 +771,7 @@ void MergeConsoleCommands::RegisterCommands()
         TEXT("Activate god mode"),
         FConsoleCommandDelegate::CreateStatic(&ActivateGodMode)
     );
-    
+
     IConsoleManager::Get().RegisterConsoleCommand(
         TEXT("merge.spawnenemy"),
         TEXT("Spawn enemy at player location"),

@@ -1,7 +1,7 @@
 # Merge — System Integration Matrix
 
 **Statut** : APPROUVÉ — référence d'intégration
-**Engine** : Unreal Engine 5.8.1
+**Engine** : Unreal Engine 5.8.4
 **Langage principal** : C++20
 
 Ce document sert de contrôle de cohérence entre les spécifications de gameplay de Merge. Une règle détaillée reste dans sa spécification spécialisée ; cette matrice indique les dépendances et les contrats entre systèmes.

@@ -34,7 +34,7 @@ Quand Wingman Premium est utilisé dans Unreal Editor, ajouter ces informations 
 
 ```text
 TOOL_USED: Wingman Premium
-UNREAL_ENGINE_VERSION: 5.8.1
+UNREAL_ENGINE_VERSION: 5.8.4
 PROJECT_OR_MAP:
 BLUEPRINTS_ASSETS_SETTINGS_CHANGED:
 EDITOR_STEPS_PERFORMED:

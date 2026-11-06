@@ -1,7 +1,7 @@
 # Merge — Progression Design Baseline — 2026-09-16
 
 **Status:** HISTORICAL BASELINE — superseded by the canonical attribute-first creation rules on 2026-09-22
-**Engine:** Unreal Engine 5.8.1
+**Engine:** Unreal Engine 5.8.4
 
 ## 1. Skills
 

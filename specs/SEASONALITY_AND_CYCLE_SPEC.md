@@ -1,7 +1,7 @@
 # Merge — Seasonality & Seasonal Cycle Specification
 
 **Statut** : APPROUVÉ — architecture de pré-implémentation
-**Engine** : Unreal Engine 5.8.1
+**Engine** : Unreal Engine 5.8.4
 **Langage principal** : C++20
 
 ## 1. Objectif

@@ -1,7 +1,7 @@
 # Merge — Player Progression Specification
 
 **Status:** APPROVED — canonical progression architecture
-**Engine:** Unreal Engine 5.8.1
+**Engine:** Unreal Engine 5.8.4
 
 ## 1. Core principle
 

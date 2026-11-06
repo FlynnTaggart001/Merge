@@ -1,7 +1,7 @@
 # Merge — Skill Progression Specification
 
-**Statut :** APPROUVÉ — baseline canonique  
-**Moteur :** Unreal Engine 5.8.1  
+**Statut :** APPROUVÉ — baseline canonique
+**Moteur :** Unreal Engine 5.8.4
 **Compétences :** 46 ; échelle 0–100 affichée en pourcentage
 
 Merge utilise le **Learning by Doing**. Une activité pertinente, réellement pratiquée, réussie et validée donne des points de progression à la compétence concernée. À la création, aucune compétence ne reçoit de points manuellement : sa valeur initiale est calculée par `Caractéristique × 4` ou `moyenne(Caractéristiques liées) × 4`.

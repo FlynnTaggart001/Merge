@@ -1,7 +1,7 @@
 # Merge — Physical Weapon Combat & Mastery Specification
 
 **Statut** : APPROUVÉ — conception / architecture
-**Moteur** : Unreal Engine 5.8.1
+**Moteur** : Unreal Engine 5.8.4
 **Langage principal** : C++
 
 ## 1. Principe
